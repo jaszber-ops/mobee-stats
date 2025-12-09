@@ -35,7 +35,7 @@ jobs:
       - name: Send Slack notification with PDF
         env:
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
-          CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
+          CHANNEL_ID: ${{ secrets.REPORT_CHANNEL_ID }}
         run: |
           python3 .github/scripts/send_slack_report.py
 
