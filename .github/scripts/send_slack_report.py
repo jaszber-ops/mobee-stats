@@ -60,27 +60,52 @@ def send_slack_report():
         print(f"Error posting message: {response.json()}")
         return
 
-    # Then upload the PDF
+    # Then upload the PDF using files.uploadV2
     with open('mobee_stats_report.pdf', 'rb') as pdf_file:
-        response = requests.post(
-            'https://slack.com/api/files.upload',
+        # Step 1: Get upload URL
+        upload_response = requests.post(
+            'https://slack.com/api/files.getUploadURLExternal',
             headers={
-                'Authorization': f'Bearer {SLACK_TOKEN}'
+                'Authorization': f'Bearer {SLACK_TOKEN}',
+                'Content-Type': 'application/json'
             },
-            files={
-                'file': ('mobee_stats_report.pdf', pdf_file, 'application/pdf')
+            json={
+                'filename': 'mobee_stats_report.pdf',
+                'length': pdf_file.seek(0, 2)
+            }
+        )
+
+        pdf_file.seek(0)  # Reset file pointer
+        upload_data = upload_response.json()
+
+        if not upload_data.get('ok'):
+            print(f"❌ Error getting upload URL: {upload_data}")
+            return
+
+        # Step 2: Upload file to URL
+        upload_url = upload_data['upload_url']
+        file_id = upload_data['file_id']
+
+        requests.post(upload_url, files={'file': pdf_file})
+
+        # Step 3: Complete the upload
+        complete_response = requests.post(
+            'https://slack.com/api/files.completeUploadExternal',
+            headers={
+                'Authorization': f'Bearer {SLACK_TOKEN}',
+                'Content-Type': 'application/json'
             },
-            data={
-                'channels': CHANNEL_ID,
-                'title': f'Mobee Stats Report - {stats["total_games"]} Games',
+            json={
+                'files': [{'id': file_id, 'title': f'Mobee Stats Report - {stats["total_games"]} Games'}],
+                'channel_id': CHANNEL_ID,
                 'initial_comment': 'Daily Statistics Report'
             }
         )
 
-    if response.json().get('ok'):
-        print('✅ Successfully sent Slack report with PDF attachment')
-    else:
-        print(f"❌ Error uploading PDF: {response.json()}")
+        if complete_response.json().get('ok'):
+            print('✅ Successfully sent Slack report with PDF attachment')
+        else:
+            print(f"❌ Error completing upload: {complete_response.json()}")
 
 if __name__ == '__main__':
     send_slack_report()
