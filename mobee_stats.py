@@ -14,11 +14,25 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, Image
 from reportlab.lib import colors
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 import matplotlib
 matplotlib.use('Agg')  # Use non-interactive backend
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
 import io
 import os
+
+# Register Roboto fonts for PDF
+pdfmetrics.registerFont(TTFont('Roboto', 'fonts/Roboto-Regular.ttf'))
+pdfmetrics.registerFont(TTFont('Roboto-Bold', 'fonts/Roboto-Bold.ttf'))
+pdfmetrics.registerFont(TTFont('Roboto-Italic', 'fonts/Roboto-Italic.ttf'))
+pdfmetrics.registerFont(TTFont('Roboto-BoldItalic', 'fonts/Roboto-BoldItalic.ttf'))
+
+# Register Roboto font family for matplotlib
+roboto_path = 'fonts/Roboto-Regular.ttf'
+fm.fontManager.addfont(roboto_path)
+plt.rcParams['font.family'] = 'Roboto'
 
 # Slack credentials from environment variables
 SLACK_TOKEN = os.environ.get('SLACK_TOKEN', '')
@@ -512,7 +526,7 @@ def create_pdf_report(stats, output_file, games=None):
     title_style = ParagraphStyle(
         'CustomTitle',
         parent=styles['Heading1'],
-        fontName='Times-Roman',
+        fontName='Roboto',
         fontSize=16,
         textColor=colors.HexColor('#1a1a1a'),
         spaceAfter=6,
@@ -523,7 +537,7 @@ def create_pdf_report(stats, output_file, games=None):
     normal_style = ParagraphStyle(
         'CustomNormal',
         parent=styles['Normal'],
-        fontName='Times-Roman',
+        fontName='Roboto',
         fontSize=10,
         leading=12
     )
@@ -532,7 +546,7 @@ def create_pdf_report(stats, output_file, games=None):
     heading_style = ParagraphStyle(
         'CustomHeading',
         parent=styles['Heading2'],
-        fontName='Times-Bold',
+        fontName='Roboto-Bold',
         fontSize=11,
         textColor=colors.HexColor('#2c3e50'),
         spaceAfter=4,
@@ -560,12 +574,12 @@ def create_pdf_report(stats, output_file, games=None):
 
     overall_table = Table(overall_data, colWidths=[1.7*inch, 0.8*inch, 1.5*inch, 0.8*inch])
     overall_table.setStyle(TableStyle([
-        ('FONTNAME', (0, 0), (-1, -1), 'Times-Roman'),
+        ('FONTNAME', (0, 0), (-1, -1), 'Roboto'),
         ('FONTSIZE', (0, 0), (-1, -1), 10),
         ('TEXTCOLOR', (0, 0), (0, -1), colors.HexColor('#34495e')),
         ('TEXTCOLOR', (2, 0), (2, -1), colors.HexColor('#34495e')),
-        ('FONTNAME', (1, 0), (1, -1), 'Times-Bold'),
-        ('FONTNAME', (3, 0), (3, -1), 'Times-Bold'),
+        ('FONTNAME', (1, 0), (1, -1), 'Roboto-Bold'),
+        ('FONTNAME', (3, 0), (3, -1), 'Roboto-Bold'),
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
         ('TOPPADDING', (0, 0), (-1, -1), 2),
         ('BOTTOMPADDING', (0, 0), (-1, -1), 2),
@@ -582,9 +596,9 @@ def create_pdf_report(stats, output_file, games=None):
 
     dist_table = Table(dist_data, colWidths=[1.2*inch, 1.2*inch, 1.2*inch])
     dist_table.setStyle(TableStyle([
-        ('FONTNAME', (0, 0), (-1, -1), 'Times-Roman'),
+        ('FONTNAME', (0, 0), (-1, -1), 'Roboto'),
         ('FONTSIZE', (0, 0), (-1, -1), 10),
-        ('FONTNAME', (0, 0), (-1, 0), 'Times-Bold'),
+        ('FONTNAME', (0, 0), (-1, 0), 'Roboto-Bold'),
         ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#ecf0f1')),
         ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
         ('ALIGN', (1, 0), (-1, -1), 'CENTER'),
@@ -620,9 +634,9 @@ def create_pdf_report(stats, output_file, games=None):
 
     leaderboard_table = Table(leaderboard_data, colWidths=[0.4*inch, 0.8*inch, 0.5*inch, 1.2*inch, 1.4*inch])
     leaderboard_table.setStyle(TableStyle([
-        ('FONTNAME', (0, 0), (-1, -1), 'Times-Roman'),
+        ('FONTNAME', (0, 0), (-1, -1), 'Roboto'),
         ('FONTSIZE', (0, 0), (-1, -1), 7),
-        ('FONTNAME', (0, 0), (-1, 0), 'Times-Bold'),
+        ('FONTNAME', (0, 0), (-1, 0), 'Roboto-Bold'),
         ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#ecf0f1')),
         # Highlight top 3
         ('BACKGROUND', (0, 1), (-1, 1), colors.HexColor('#FFD700')),  # Gold
@@ -655,9 +669,9 @@ def create_pdf_report(stats, output_file, games=None):
 
             daily_table = Table(daily_table_data, colWidths=[2.5*inch, 0.8*inch, 1.0*inch])
             daily_table.setStyle(TableStyle([
-                ('FONTNAME', (0, 0), (-1, -1), 'Times-Roman'),
+                ('FONTNAME', (0, 0), (-1, -1), 'Roboto'),
                 ('FONTSIZE', (0, 0), (-1, -1), 7),
-                ('FONTNAME', (0, 0), (-1, 0), 'Times-Bold'),
+                ('FONTNAME', (0, 0), (-1, 0), 'Roboto-Bold'),
                 ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#ecf0f1')),
                 ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
                 ('ALIGN', (1, 0), (-1, -1), 'CENTER'),
@@ -711,9 +725,9 @@ def create_pdf_report(stats, output_file, games=None):
 
     games_table = Table(player_games_data, colWidths=[0.4*inch, 0.6*inch, 0.9*inch, 2.4*inch])
     games_table.setStyle(TableStyle([
-        ('FONTNAME', (0, 0), (-1, -1), 'Times-Roman'),
+        ('FONTNAME', (0, 0), (-1, -1), 'Roboto'),
         ('FONTSIZE', (0, 0), (-1, -1), 7),
-        ('FONTNAME', (0, 0), (-1, 0), 'Times-Bold'),
+        ('FONTNAME', (0, 0), (-1, 0), 'Roboto-Bold'),
         ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#ecf0f1')),
         ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
         ('ALIGN', (0, 0), (2, -1), 'CENTER'),
@@ -743,9 +757,9 @@ def create_pdf_report(stats, output_file, games=None):
 
     platform_table = Table(platform_data, colWidths=[2.0*inch, 0.8*inch, 0.9*inch, 0.6*inch])
     platform_table.setStyle(TableStyle([
-        ('FONTNAME', (0, 0), (-1, -1), 'Times-Roman'),
+        ('FONTNAME', (0, 0), (-1, -1), 'Roboto'),
         ('FONTSIZE', (0, 0), (-1, -1), 8),
-        ('FONTNAME', (0, 0), (-1, 0), 'Times-Bold'),
+        ('FONTNAME', (0, 0), (-1, 0), 'Roboto-Bold'),
         ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#ecf0f1')),
         ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
         ('ALIGN', (1, 0), (-1, -1), 'CENTER'),
@@ -773,9 +787,9 @@ def create_pdf_report(stats, output_file, games=None):
 
     engagement_table = Table(engagement_data, colWidths=[2.0*inch, 1.0*inch, 1.3*inch])
     engagement_table.setStyle(TableStyle([
-        ('FONTNAME', (0, 0), (-1, -1), 'Times-Roman'),
+        ('FONTNAME', (0, 0), (-1, -1), 'Roboto'),
         ('FONTSIZE', (0, 0), (-1, -1), 9),
-        ('FONTNAME', (0, 0), (-1, 0), 'Times-Bold'),
+        ('FONTNAME', (0, 0), (-1, 0), 'Roboto-Bold'),
         ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#ecf0f1')),
         ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
         ('ALIGN', (1, 0), (-1, -1), 'CENTER'),
@@ -800,9 +814,9 @@ def create_pdf_report(stats, output_file, games=None):
 
     countries_table = Table(countries_data, colWidths=[2.0*inch, 1.0*inch, 1.3*inch])
     countries_table.setStyle(TableStyle([
-        ('FONTNAME', (0, 0), (-1, -1), 'Times-Roman'),
+        ('FONTNAME', (0, 0), (-1, -1), 'Roboto'),
         ('FONTSIZE', (0, 0), (-1, -1), 9),
-        ('FONTNAME', (0, 0), (-1, 0), 'Times-Bold'),
+        ('FONTNAME', (0, 0), (-1, 0), 'Roboto-Bold'),
         ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#ecf0f1')),
         ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
         ('ALIGN', (1, 0), (-1, -1), 'CENTER'),
@@ -829,9 +843,9 @@ def create_pdf_report(stats, output_file, games=None):
 
     city_table = Table(city_data, colWidths=[1.8*inch, 0.5*inch, 1.8*inch, 0.5*inch])
     city_table.setStyle(TableStyle([
-        ('FONTNAME', (0, 0), (-1, -1), 'Times-Roman'),
+        ('FONTNAME', (0, 0), (-1, -1), 'Roboto'),
         ('FONTSIZE', (0, 0), (-1, -1), 9),
-        ('FONTNAME', (0, 0), (-1, 0), 'Times-Bold'),
+        ('FONTNAME', (0, 0), (-1, 0), 'Roboto-Bold'),
         ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#ecf0f1')),
         ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
         ('ALIGN', (1, 0), (-1, -1), 'CENTER'),
