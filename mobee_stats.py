@@ -526,7 +526,7 @@ def create_pdf_report(stats, output_file, games=None):
     title_style = ParagraphStyle(
         'CustomTitle',
         parent=styles['Heading1'],
-        fontName='Roboto',
+        fontName='Roboto-Bold',
         fontSize=16,
         textColor=colors.HexColor('#1a1a1a'),
         spaceAfter=6,

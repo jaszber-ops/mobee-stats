@@ -19,27 +19,20 @@ def send_slack_report():
     summary = f"""📊 *Daily Mobee Game Statistics Report*
 
 *Overall Stats:*
-• Total Games: {stats['total_games']}
-• Unique Players: {stats['unique_players']}
-• High Score Games: {stats['high_score_games']}
+• Total Games: {stats['total_games']:,}
+• Unique Players: {stats['unique_players']:,}
 
-*Score Stats:*
-• Average Score: {stats['avg_score']:.2f}
-• Median Score: {stats['median_score']:.2f}
-• Highest Score: {stats['max_score']}
-
-*Top 3 Players by Games:*
+*Top Countries:*
 """
 
-    for i, (player, scores) in enumerate(stats['top_players_by_games'][:3], 1):
-        avg = sum(scores) / len(scores)
-        summary += f"{i}. `{player}` - {len(scores)} games (avg: {avg:.1f})\n"
+    # Get top 3 countries with percentages
+    total_games = stats['total_games']
+    sorted_countries = sorted(stats['country_counts'].items(), key=lambda x: x[1], reverse=True)[:3]
+    for country, count in sorted_countries:
+        percentage = (count / total_games) * 100
+        summary += f"• {country}: {count:,} games ({percentage:.1f}%)\n"
 
-    summary += f"\n*Top 3 High Scores:*\n"
-    for i, (player, score) in enumerate(stats['top_players_by_score'][:3], 1):
-        summary += f"{i}. `{player}` - {score} points\n"
-
-    summary += "\n📄 Full PDF report attached below."
+    summary += "\n📄 Full detailed report attached as PDF."
 
     # First, post the message
     response = requests.post(
