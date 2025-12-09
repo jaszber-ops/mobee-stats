@@ -36,6 +36,7 @@ jobs:
         env:
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
           CHANNEL_ID: ${{ secrets.REPORT_CHANNEL_ID }}
+          REPORT_CHANNEL_ID: ${{ secrets.REPORT_CHANNEL_ID }}
         run: |
           python3 .github/scripts/send_slack_report.py
 
