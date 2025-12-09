@@ -68,10 +68,9 @@ def send_slack_report():
     upload_response = requests.post(
         'https://slack.com/api/files.getUploadURLExternal',
         headers={
-            'Authorization': f'Bearer {SLACK_TOKEN}',
-            'Content-Type': 'application/json'
+            'Authorization': f'Bearer {SLACK_TOKEN}'
         },
-        json={
+        data={
             'filename': 'mobee_stats_report.pdf',
             'length': file_size
         }
