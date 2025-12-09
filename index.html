@@ -35,6 +35,7 @@
             margin-bottom: 30px;
             border-bottom: 2px solid #ecf0f1;
             padding-bottom: 20px;
+            position: relative;
         }
 
         h1 {
@@ -48,6 +49,32 @@
             font-size: 1em;
             font-style: italic;
             color: #666;
+        }
+
+        .pdf-download {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .pdf-download:hover {
+            background: #5568d3;
+        }
+
+        .pdf-icon {
+            width: 20px;
+            height: 20px;
         }
 
         .section {
@@ -135,6 +162,17 @@
             h1 {
                 font-size: 1.5em;
             }
+
+            .pdf-download {
+                position: static;
+                margin: 0 auto 15px;
+                width: fit-content;
+            }
+
+            header {
+                display: flex;
+                flex-direction: column;
+            }
         }
 
         .loading {
@@ -159,6 +197,15 @@
         <div id="error" style="display: none;"></div>
         <div id="content" style="display: none;">
             <header>
+                <a href="mobee_stats_report.pdf" class="pdf-download" download>
+                    <svg class="pdf-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+                        <path d="M14 2v6h6"/>
+                        <path d="M12 18v-6"/>
+                        <path d="M9 15l3 3 3-3"/>
+                    </svg>
+                    Download PDF
+                </a>
                 <h1>MOBEE GAME STATISTICS REPORT</h1>
                 <div class="subtitle" id="generatedDate">Generated: Loading...</div>
             </header>
