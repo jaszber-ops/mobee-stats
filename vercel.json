@@ -1,47 +1,8 @@
 {
-  "builds": [
-    {
-      "src": "api/stats.py",
-      "use": "@vercel/python"
-    },
-    {
-      "src": "api/daily-report.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/stats",
-      "dest": "api/stats.py"
-    },
-    {
-      "src": "/api/daily-report",
-      "dest": "api/daily-report.py"
-    }
-  ],
   "crons": [
     {
       "path": "/api/daily-report",
       "schedule": "0 9 * * *"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Access-Control-Allow-Methods",
-          "value": "GET, OPTIONS"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "Content-Type"
-        }
-      ]
     }
   ]
 }
