@@ -48,6 +48,13 @@ jobs:
         run: |
           python3 .github/scripts/send_email_report.py
 
+      - name: Commit and push PDF to repository
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add mobee_stats_report.pdf mobee_stats.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update daily statistics report [skip ci]" && git push)
+
       - name: Upload PDF as artifact
         uses: actions/upload-artifact@v4
         with:

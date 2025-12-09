@@ -10,10 +10,9 @@ venv/
 
 # Data files (optional - you can commit these for static fallback)
 # mobee_games_raw.json
-# mobee_stats.json
 
-# PDF output
-mobee_stats_report.pdf
+# PDF output - now committed for web access
+# mobee_stats_report.pdf
 
 # Vercel
 .vercel
