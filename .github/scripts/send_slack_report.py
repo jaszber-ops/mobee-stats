@@ -61,51 +61,53 @@ def send_slack_report():
         return
 
     # Then upload the PDF using files.uploadV2
+    import os
+    file_size = os.path.getsize('mobee_stats_report.pdf')
+
+    # Step 1: Get upload URL
+    upload_response = requests.post(
+        'https://slack.com/api/files.getUploadURLExternal',
+        headers={
+            'Authorization': f'Bearer {SLACK_TOKEN}',
+            'Content-Type': 'application/json'
+        },
+        json={
+            'filename': 'mobee_stats_report.pdf',
+            'length': file_size
+        }
+    )
+
+    upload_data = upload_response.json()
+
+    if not upload_data.get('ok'):
+        print(f"❌ Error getting upload URL: {upload_data}")
+        return
+
+    # Step 2: Upload file to URL
+    upload_url = upload_data['upload_url']
+    file_id = upload_data['file_id']
+
     with open('mobee_stats_report.pdf', 'rb') as pdf_file:
-        # Step 1: Get upload URL
-        upload_response = requests.post(
-            'https://slack.com/api/files.getUploadURLExternal',
-            headers={
-                'Authorization': f'Bearer {SLACK_TOKEN}',
-                'Content-Type': 'application/json'
-            },
-            json={
-                'filename': 'mobee_stats_report.pdf',
-                'length': pdf_file.seek(0, 2)
-            }
-        )
-
-        pdf_file.seek(0)  # Reset file pointer
-        upload_data = upload_response.json()
-
-        if not upload_data.get('ok'):
-            print(f"❌ Error getting upload URL: {upload_data}")
-            return
-
-        # Step 2: Upload file to URL
-        upload_url = upload_data['upload_url']
-        file_id = upload_data['file_id']
-
         requests.post(upload_url, files={'file': pdf_file})
 
-        # Step 3: Complete the upload
-        complete_response = requests.post(
-            'https://slack.com/api/files.completeUploadExternal',
-            headers={
-                'Authorization': f'Bearer {SLACK_TOKEN}',
-                'Content-Type': 'application/json'
-            },
-            json={
-                'files': [{'id': file_id, 'title': f'Mobee Stats Report - {stats["total_games"]} Games'}],
-                'channel_id': CHANNEL_ID,
-                'initial_comment': 'Daily Statistics Report'
-            }
-        )
+    # Step 3: Complete the upload
+    complete_response = requests.post(
+        'https://slack.com/api/files.completeUploadExternal',
+        headers={
+            'Authorization': f'Bearer {SLACK_TOKEN}',
+            'Content-Type': 'application/json'
+        },
+        json={
+            'files': [{'id': file_id, 'title': f'Mobee Stats Report - {stats["total_games"]} Games'}],
+            'channel_id': CHANNEL_ID,
+            'initial_comment': 'Daily Statistics Report'
+        }
+    )
 
-        if complete_response.json().get('ok'):
-            print('✅ Successfully sent Slack report with PDF attachment')
-        else:
-            print(f"❌ Error completing upload: {complete_response.json()}")
+    if complete_response.json().get('ok'):
+        print('✅ Successfully sent Slack report with PDF attachment')
+    else:
+        print(f"❌ Error completing upload: {complete_response.json()}")
 
 if __name__ == '__main__':
     send_slack_report()
