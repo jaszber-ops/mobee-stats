@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobee Game Statistics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .last-updated {
+            margin-top: 10px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-subtext {
+            font-size: 0.85em;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #333;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .chart-container {
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: #f8f9fa;
+            color: #667eea;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .rank {
+            font-weight: bold;
+            color: #667eea;
+            width: 40px;
+        }
+
+        .gold { color: #FFD700; }
+        .silver { color: #C0C0C0; }
+        .bronze { color: #CD7F32; }
+
+        .progress-bar {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 20px;
+            overflow: hidden;
+            margin: 5px 0;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            height: 100%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-size: 0.75em;
+            font-weight: bold;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .badge-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .badge-success {
+            background: #51cf66;
+            color: white;
+        }
+
+        .badge-warning {
+            background: #ffd43b;
+            color: #333;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        .error {
+            background: #ff6b6b;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Mobee Game Statistics</h1>
+            <div class="subtitle">Live Player Performance Dashboard</div>
+            <div class="last-updated" id="lastUpdated">Loading...</div>
+        </header>
+
+        <div id="loading" class="loading">Loading statistics...</div>
+        <div id="error" style="display: none;"></div>
+        <div id="content" style="display: none;">
+            <!-- Main Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Total Games</div>
+                    <div class="stat-value" id="totalGames">-</div>
+                    <div class="stat-subtext">All time plays</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Unique Players</div>
+                    <div class="stat-value" id="uniquePlayers">-</div>
+                    <div class="stat-subtext">Active players</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Average Score</div>
+                    <div class="stat-value" id="avgScore">-</div>
+                    <div class="stat-subtext">Points per game</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">High Score</div>
+                    <div class="stat-value" id="maxScore">-</div>
+                    <div class="stat-subtext">Record holder</div>
+                </div>
+            </div>
+
+            <!-- Score Distribution -->
+            <div class="section">
+                <h2 class="section-title">📊 Score Distribution</h2>
+                <div id="scoreDistribution"></div>
+            </div>
+
+            <!-- Two Column Layout -->
+            <div class="two-column">
+                <!-- Top Players by Games -->
+                <div class="section">
+                    <h2 class="section-title">🏆 Most Active Players</h2>
+                    <table id="topPlayersByGames">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Player</th>
+                                <th>Games</th>
+                                <th>Avg Score</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <!-- Top Players by Score -->
+                <div class="section">
+                    <h2 class="section-title">🥇 High Score Leaders</h2>
+                    <table id="topPlayersByScore">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Player</th>
+                                <th>High Score</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Platform Stats -->
+            <div class="section">
+                <h2 class="section-title">📱 Platform Statistics</h2>
+                <table id="platformStats">
+                    <thead>
+                        <tr>
+                            <th>Platform</th>
+                            <th>Games</th>
+                            <th>Avg Score</th>
+                            <th>Max Score</th>
+                            <th>Share</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <!-- Engagement & Location -->
+            <div class="two-column">
+                <div class="section">
+                    <h2 class="section-title">👥 Player Engagement</h2>
+                    <div id="engagement"></div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">🌎 Top Countries</h2>
+                    <table id="topCountries">
+                        <thead>
+                            <tr>
+                                <th>Country</th>
+                                <th>Games</th>
+                                <th>Avg Score</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Top Cities -->
+            <div class="section">
+                <h2 class="section-title">🌍 Top Cities</h2>
+                <div class="two-column">
+                    <table id="topCities1">
+                        <thead>
+                            <tr>
+                                <th>City</th>
+                                <th>Games</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <table id="topCities2">
+                        <thead>
+                            <tr>
+                                <th>City</th>
+                                <th>Games</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function loadStats() {
+            try {
+                // Try to fetch from API first, fallback to static JSON
+                let response;
+                try {
+                    response = await fetch('/api/stats');
+                } catch (e) {
+                    // Fallback to local JSON for development
+                    response = await fetch('mobee_stats.json');
+                }
+
+                if (!response.ok) throw new Error('Failed to load stats');
+                const stats = await response.json();
+
+                displayStats(stats);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            } catch (error) {
+                console.error('Error loading stats:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error').className = 'error';
+                document.getElementById('error').textContent = 'Failed to load statistics. Please try again later.';
+            }
+        }
+
+        function displayStats(stats) {
+            // Update timestamp
+            document.getElementById('lastUpdated').textContent =
+                `Last updated: ${new Date().toLocaleString()}`;
+
+            // Main stats
+            document.getElementById('totalGames').textContent = stats.total_games.toLocaleString();
+            document.getElementById('uniquePlayers').textContent = stats.unique_players.toLocaleString();
+            document.getElementById('avgScore').textContent = stats.avg_score.toFixed(2);
+            document.getElementById('maxScore').textContent = stats.max_score;
+
+            // Score Distribution
+            const distContainer = document.getElementById('scoreDistribution');
+            const ranges = ['0-5', '6-10', '11-15', '16-20', '20+'];
+            distContainer.innerHTML = ranges.map(range => {
+                const count = stats.score_distribution[range];
+                const percentage = ((count / stats.total_games) * 100).toFixed(1);
+                return `
+                    <div style="margin: 15px 0;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span><strong>${range} points</strong></span>
+                            <span>${count} games (${percentage}%)</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${percentage}%">${percentage}%</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Top Players by Games
+            const gamesTable = document.getElementById('topPlayersByGames').querySelector('tbody');
+            gamesTable.innerHTML = stats.top_players_by_games.slice(0, 10).map((player, idx) => {
+                const [code, scores] = player;
+                const avg = (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(2);
+                const rankClass = idx === 0 ? 'gold' : idx === 1 ? 'silver' : idx === 2 ? 'bronze' : '';
+                return `
+                    <tr>
+                        <td class="rank ${rankClass}">${idx + 1}</td>
+                        <td><strong>${code}</strong></td>
+                        <td>${scores.length}</td>
+                        <td>${avg}</td>
+                    </tr>
+                `;
+            }).join('');
+
+            // Top Players by Score
+            const scoreTable = document.getElementById('topPlayersByScore').querySelector('tbody');
+            scoreTable.innerHTML = stats.top_players_by_score.slice(0, 10).map((player, idx) => {
+                const [code, score] = player;
+                const rankClass = idx === 0 ? 'gold' : idx === 1 ? 'silver' : idx === 2 ? 'bronze' : '';
+                return `
+                    <tr>
+                        <td class="rank ${rankClass}">${idx + 1}</td>
+                        <td><strong>${code}</strong></td>
+                        <td>${score}</td>
+                    </tr>
+                `;
+            }).join('');
+
+            // Platform Stats
+            const platformTable = document.getElementById('platformStats').querySelector('tbody');
+            const platforms = Object.entries(stats.platform_scores)
+                .sort((a, b) => b[1].count - a[1].count)
+                .slice(0, 10);
+
+            platformTable.innerHTML = platforms.map(([platform, data]) => {
+                const percentage = ((data.count / stats.total_games) * 100).toFixed(1);
+                return `
+                    <tr>
+                        <td><strong>${platform}</strong></td>
+                        <td>${data.count}</td>
+                        <td>${data.avg.toFixed(2)}</td>
+                        <td>${data.max}</td>
+                        <td>
+                            <div class="progress-bar" style="width: 150px;">
+                                <div class="progress-fill" style="width: ${percentage}%">${percentage}%</div>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            // Engagement
+            const eng = stats.engagement;
+            const engContainer = document.getElementById('engagement');
+            engContainer.innerHTML = `
+                <div style="margin: 15px 0;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span><strong>One-time Players</strong></span>
+                        <span>${eng.one_time_players} <span class="badge badge-warning">${((eng.one_time_players/stats.unique_players)*100).toFixed(1)}%</span></span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span><strong>Returning Players</strong></span>
+                        <span>${eng.returning_players} <span class="badge badge-success">${((eng.returning_players/stats.unique_players)*100).toFixed(1)}%</span></span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span><strong>Super Engaged (10+ games)</strong></span>
+                        <span>${eng.super_engaged} <span class="badge badge-primary">${((eng.super_engaged/stats.unique_players)*100).toFixed(1)}%</span></span>
+                    </div>
+                </div>
+            `;
+
+            // Top Countries
+            const countryTable = document.getElementById('topCountries').querySelector('tbody');
+            const countries = Object.entries(stats.location_scores)
+                .filter(([_, data]) => data.count >= 5)
+                .sort((a, b) => b[1].avg - a[1].avg)
+                .slice(0, 5);
+
+            countryTable.innerHTML = countries.map(([country, data]) => `
+                <tr>
+                    <td><strong>${country}</strong></td>
+                    <td>${data.count}</td>
+                    <td>${data.avg.toFixed(2)}</td>
+                </tr>
+            `).join('');
+
+            // Top Cities
+            const cities = Object.entries(stats.city_counts)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 10);
+
+            const midpoint = Math.ceil(cities.length / 2);
+            const cities1 = cities.slice(0, midpoint);
+            const cities2 = cities.slice(midpoint);
+
+            document.getElementById('topCities1').querySelector('tbody').innerHTML =
+                cities1.map(([city, count]) => `
+                    <tr>
+                        <td><strong>${city}</strong></td>
+                        <td>${count}</td>
+                    </tr>
+                `).join('');
+
+            document.getElementById('topCities2').querySelector('tbody').innerHTML =
+                cities2.map(([city, count]) => `
+                    <tr>
+                        <td><strong>${city}</strong></td>
+                        <td>${count}</td>
+                    </tr>
+                `).join('');
+        }
+
+        // Load stats on page load
+        loadStats();
+
+        // Auto-refresh every 5 minutes
+        setInterval(loadStats, 5 * 60 * 1000);
+    </script>
+</body>
+</html>

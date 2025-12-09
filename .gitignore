@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+*.egg-info/
+
+# Data files (optional - you can commit these for static fallback)
+# mobee_games_raw.json
+# mobee_stats.json
+
+# PDF output
+mobee_stats_report.pdf
+
+# Vercel
+.vercel
+
+# OS
+.DS_Store
+
+# Environment variables and secrets
+.env
+.env.local
+.env*.local
+secrets.json
+
+# Credentials
+credentials.json
+config/secrets.yml
