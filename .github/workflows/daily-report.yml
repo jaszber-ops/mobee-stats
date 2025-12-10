@@ -23,7 +23,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests reportlab matplotlib pillow
+          pip install requests reportlab matplotlib pillow sendgrid
 
       - name: Generate statistics and PDF
         env:
@@ -41,6 +41,7 @@ jobs:
           python3 .github/scripts/send_slack_report.py
 
       - name: Send Email notification
+        continue-on-error: true
         env:
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
