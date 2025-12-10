@@ -263,9 +263,18 @@
             </div>
 
             <!-- Daily Statistics -->
-            <div class="section" id="dailySection">
+            <div class="section" id="dailySection" style="display: none;">
                 <div class="section-title">DAILY STATISTICS (LAST 30 DAYS)</div>
-                <div id="dailyStatsContainer"></div>
+                <table id="dailyStatsTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Games</th>
+                            <th>Unique Players</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
                 <div class="chart-container" style="max-width: 100%;">
                     <canvas id="dailyActivityChart"></canvas>
                 </div>
@@ -310,6 +319,28 @@
                 </div>
             </div>
 
+            <!-- Platform Unique Players Chart -->
+            <div class="section">
+                <div class="chart-container">
+                    <canvas id="platformPlayersChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Player Engagement -->
+            <div class="section">
+                <div class="section-title">PLAYER ENGAGEMENT</div>
+                <table id="engagementTable">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Count</th>
+                            <th>Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
             <!-- Top Countries -->
             <div class="section">
                 <div class="section-title">TOP COUNTRIES</div>
@@ -318,11 +349,36 @@
                         <tr>
                             <th>Country</th>
                             <th>Games</th>
-                            <th>Percentage</th>
+                            <th>Avg Score</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
                 </table>
+            </div>
+
+            <!-- Top Cities -->
+            <div class="section">
+                <div class="section-title">TOP CITIES BY GAMES PLAYED</div>
+                <div class="two-column">
+                    <table id="topCitiesTable1">
+                        <thead>
+                            <tr>
+                                <th>City</th>
+                                <th>Games</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <table id="topCitiesTable2">
+                        <thead>
+                            <tr>
+                                <th>City</th>
+                                <th>Games</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -401,6 +457,25 @@
 
             // Daily Statistics
             if (stats.daily_stats && stats.daily_stats.length > 0) {
+                document.getElementById('dailySection').style.display = 'block';
+
+                // Populate daily stats table
+                const dailyStatsTable = document.getElementById('dailyStatsTable').querySelector('tbody');
+                const recentDays = stats.daily_stats.slice(-30); // Last 30 days
+
+                dailyStatsTable.innerHTML = recentDays.map(day => {
+                    const date = new Date(day.date);
+                    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    const formattedDate = date.toLocaleDateString('en-US', options);
+                    return `
+                        <tr>
+                            <td>${formattedDate}</td>
+                            <td style="text-align: center;">${day.games}</td>
+                            <td style="text-align: center;">${day.unique_players}</td>
+                        </tr>
+                    `;
+                }).join('');
+
                 createDailyStatsChart(stats);
             }
 
@@ -441,23 +516,70 @@
             }).join('');
 
             createPlatformChart(stats);
+            createPlatformPlayersChart(stats);
+
+            // Player Engagement
+            const engagementTable = document.getElementById('engagementTable').querySelector('tbody');
+            const eng = stats.engagement;
+            engagementTable.innerHTML = `
+                <tr>
+                    <td>One-time Players</td>
+                    <td style="text-align: center;">${eng.one_time_players}</td>
+                    <td style="text-align: center;">${((eng.one_time_players / stats.unique_players) * 100).toFixed(1)}%</td>
+                </tr>
+                <tr>
+                    <td>Returning Players</td>
+                    <td style="text-align: center;">${eng.returning_players}</td>
+                    <td style="text-align: center;">${((eng.returning_players / stats.unique_players) * 100).toFixed(1)}%</td>
+                </tr>
+                <tr>
+                    <td>Super Engaged (10+)</td>
+                    <td style="text-align: center;">${eng.super_engaged}</td>
+                    <td style="text-align: center;">${((eng.super_engaged / stats.unique_players) * 100).toFixed(1)}%</td>
+                </tr>
+            `;
 
             // Top Countries
             const countryTable = document.getElementById('countryTable').querySelector('tbody');
-            const countries = Object.entries(stats.country_counts)
-                .sort((a, b) => b[1] - a[1])
+            const countries = Object.entries(stats.location_scores)
+                .filter(([_, data]) => data.count >= 5)
+                .sort((a, b) => b[1].count - a[1].count)
                 .slice(0, 10);
 
-            countryTable.innerHTML = countries.map(([country, count]) => {
-                const percentage = ((count / stats.total_games) * 100).toFixed(1);
+            countryTable.innerHTML = countries.map(([country, data]) => {
                 return `
                     <tr>
                         <td><strong>${country}</strong></td>
-                        <td>${count}</td>
-                        <td>${percentage}%</td>
+                        <td style="text-align: center;">${data.count}</td>
+                        <td style="text-align: center;">${data.avg.toFixed(2)}</td>
                     </tr>
                 `;
             }).join('');
+
+            // Top Cities
+            const cities = Object.entries(stats.city_counts)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 10);
+
+            const midpoint = Math.ceil(cities.length / 2);
+            const cities1 = cities.slice(0, midpoint);
+            const cities2 = cities.slice(midpoint);
+
+            document.getElementById('topCitiesTable1').querySelector('tbody').innerHTML =
+                cities1.map(([city, count]) => `
+                    <tr>
+                        <td><strong>${city}</strong></td>
+                        <td style="text-align: center;">${count}</td>
+                    </tr>
+                `).join('');
+
+            document.getElementById('topCitiesTable2').querySelector('tbody').innerHTML =
+                cities2.map(([city, count]) => `
+                    <tr>
+                        <td><strong>${city}</strong></td>
+                        <td style="text-align: center;">${count}</td>
+                    </tr>
+                `).join('');
         }
 
         function createScoreDistChart(stats) {
@@ -674,6 +796,69 @@
                         title: {
                             display: true,
                             text: 'Top 10 Platforms by Games Played',
+                            font: { size: 14, weight: 'bold', family: 'Roboto' }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(0,0,0,0.1)' },
+                            ticks: { font: { family: 'Roboto' } }
+                        },
+                        x: {
+                            ticks: {
+                                font: { family: 'Roboto', size: 9 },
+                                maxRotation: 45,
+                                minRotation: 45
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createPlatformPlayersChart(stats) {
+            const ctx = document.getElementById('platformPlayersChart');
+            if (charts.platformPlayers) charts.platformPlayers.destroy();
+
+            const platforms = Object.entries(stats.platform_scores)
+                .sort((a, b) => b[1].count - a[1].count)
+                .slice(0, 10);
+            const labels = platforms.map(p => p[0].substring(0, 20));
+
+            // Note: We don't have unique players per platform in the stats
+            // This would need to be calculated from raw game data
+            // For now, we'll skip this chart or use a placeholder
+            const data = platforms.map(p => p[1].count); // Using game count as placeholder
+
+            // Generate colors using a different gradient (plasma-like)
+            const colors = data.map((_, i) => {
+                const ratio = i / Math.max(data.length - 1, 1);
+                const r = Math.round(13 + (240 - 13) * ratio);
+                const g = Math.round(8 + (249 - 8) * ratio);
+                const b = Math.round(135 + (33 - 135) * ratio);
+                return `rgb(${r}, ${g}, ${b})`;
+            });
+
+            charts.platformPlayers = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Unique Players',
+                        data: data,
+                        backgroundColor: colors,
+                        borderColor: 'white',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: 'Top 10 Platforms by Unique Players',
                             font: { size: 14, weight: 'bold', family: 'Roboto' }
                         }
                     },
