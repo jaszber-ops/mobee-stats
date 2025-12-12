@@ -1,14 +1,14 @@
 {
-  "total_games": 2382,
+  "total_games": 2387,
   "unique_players": 366,
   "high_score_games": 434,
-  "avg_score": 8.04701931150294,
-  "median_score": 8.0,
+  "avg_score": 8.043988269794722,
+  "median_score": 8,
   "max_score": 24,
   "min_score": 0,
   "city_counts": {
-    "Zumikon": 26,
-    "Budapest": 1196,
+    "Budapest": 1200,
+    "Zumikon": 27,
     "Sz\u00e9kesfeh\u00e9rv\u00e1r": 177,
     "Westlake Village": 1,
     "P\u00e9cs": 230,
@@ -95,8 +95,8 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Switzerland": 82,
-    "Hungary": 1981,
+    "Hungary": 1985,
+    "Switzerland": 83,
     "United States": 137,
     "The Netherlands": 3,
     "Germany": 79,
@@ -117,7 +117,8 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "iPhone Safari": 514,
+    "Android Safari": 11,
+    "iPhone Safari": 515,
     "Android Chrome": 1006,
     "Windows Chrome": 305,
     "iPhone Browser": 181,
@@ -128,15 +129,19 @@
     "Mac Safari": 140,
     "Mac Firefox": 2,
     "Other Firefox": 5,
-    "Android Safari": 7,
     "iPad Safari": 2,
     "Other Chrome": 4,
     "Unknown": 9
   },
   "platform_scores": {
+    "Android Safari": {
+      "count": 11,
+      "avg": 6.7272727272727275,
+      "max": 9
+    },
     "iPhone Safari": {
-      "count": 514,
-      "avg": 6.717898832684825,
+      "count": 515,
+      "avg": 6.72621359223301,
       "max": 17
     },
     "Android Chrome": {
@@ -189,11 +194,6 @@
       "avg": 9.4,
       "max": 16
     },
-    "Android Safari": {
-      "count": 7,
-      "avg": 7.428571428571429,
-      "max": 9
-    },
     "iPad Safari": {
       "count": 2,
       "avg": 5.0,
@@ -211,13 +211,13 @@
     }
   },
   "location_scores": {
-    "Switzerland": {
-      "count": 82,
-      "avg": 6.817073170731708
-    },
     "Hungary": {
-      "count": 1981,
-      "avg": 8.143361938414943
+      "count": 1985,
+      "avg": 8.138035264483626
+    },
+    "Switzerland": {
+      "count": 83,
+      "avg": 6.867469879518072
     },
     "United States": {
       "count": 137,
@@ -295,9 +295,10 @@
   "engagement": {
     "one_time_players": 128,
     "returning_players": 238,
-    "super_engaged": 52
+    "super_engaged": 53
   },
   "player_cities": {
+    "qhpgsw": 1,
     "fklht5": 1,
     "6gawu9": 1,
     "tccyzp": 1,
@@ -510,7 +511,6 @@
     "pccr6k": 1,
     "xj7cxa": 1,
     "n2z3s3": 1,
-    "qhpgsw": 1,
     "annere": 1,
     "3d6n9x": 1,
     "hitazh": 1,
@@ -666,6 +666,7 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "qhpgsw": 1,
     "fklht5": 1,
     "6gawu9": 1,
     "tccyzp": 1,
@@ -878,7 +879,6 @@
     "pccr6k": 1,
     "xj7cxa": 1,
     "n2z3s3": 1,
-    "qhpgsw": 1,
     "annere": 1,
     "3d6n9x": 1,
     "hitazh": 1,
@@ -1034,6 +1034,7 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "qhpgsw": "Budapest",
     "fklht5": "Zumikon",
     "6gawu9": "Budapest",
     "tccyzp": "Budapest",
@@ -1246,7 +1247,6 @@
     "pccr6k": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
     "xj7cxa": "Szentendre",
     "n2z3s3": "Szeged",
-    "qhpgsw": "Budapest",
     "annere": "Kecskem\u00e9t",
     "3d6n9x": "Szigetszentmikl\u00f3s",
     "hitazh": "Budapest",
@@ -1402,6 +1402,11 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "qhpgsw": {
+      "location": "Budapest, Hungary",
+      "platform": "Android Safari",
+      "timestamp": 1765550799.277729
+    },
     "fklht5": {
       "location": "Zumikon, Switzerland",
       "platform": "iPhone Safari",
@@ -2421,11 +2426,6 @@
       "location": "Szeged, Hungary",
       "platform": "Android Chrome",
       "timestamp": 1765145954.588319
-    },
-    "qhpgsw": {
-      "location": "Budapest, Hungary",
-      "platform": "Android Safari",
-      "timestamp": 1765134296.366289
     },
     "annere": {
       "location": "Kecskem\u00e9t, Hungary",
@@ -4106,9 +4106,9 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 705,
-    "6-10": 1014,
-    "11-15": 509,
+    "0-5": 706,
+    "6-10": 1017,
+    "11-15": 510,
     "16-20": 143,
     "20+": 11
   },
@@ -4140,8 +4140,8 @@
     },
     {
       "date": "2025-12-12",
-      "games": 24,
-      "unique_players": 7
+      "games": 29,
+      "unique_players": 8
     }
   ]
 }
