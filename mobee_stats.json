@@ -1,13 +1,13 @@
 {
-  "total_games": 2370,
+  "total_games": 2375,
   "unique_players": 366,
   "high_score_games": 434,
-  "avg_score": 8.024050632911392,
-  "median_score": 8.0,
+  "avg_score": 8.026105263157895,
+  "median_score": 8,
   "max_score": 24,
   "min_score": 0,
   "city_counts": {
-    "Sz\u00e9kesfeh\u00e9rv\u00e1r": 172,
+    "Sz\u00e9kesfeh\u00e9rv\u00e1r": 177,
     "Budapest": 1190,
     "Westlake Village": 1,
     "P\u00e9cs": 230,
@@ -95,7 +95,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 1970,
+    "Hungary": 1975,
     "United States": 137,
     "Switzerland": 81,
     "The Netherlands": 3,
@@ -117,7 +117,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Windows Chrome": 299,
+    "Windows Chrome": 304,
     "Android Chrome": 1001,
     "iPhone Safari": 513,
     "iPhone Browser": 181,
@@ -135,8 +135,8 @@
   },
   "platform_scores": {
     "Windows Chrome": {
-      "count": 299,
-      "avg": 7.364548494983278,
+      "count": 304,
+      "avg": 7.391447368421052,
       "max": 18
     },
     "Android Chrome": {
@@ -212,8 +212,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 1970,
-      "avg": 8.11472081218274
+      "count": 1975,
+      "avg": 8.116962025316456
     },
     "United States": {
       "count": 137,
@@ -3394,6 +3394,11 @@
     [
       "hcm7x9",
       [
+        5,
+        9,
+        12,
+        11,
+        8,
         13,
         11,
         10,
@@ -4096,9 +4101,9 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 703,
-    "6-10": 1011,
-    "11-15": 506,
+    "0-5": 704,
+    "6-10": 1013,
+    "11-15": 508,
     "16-20": 140,
     "20+": 10
   },
@@ -4130,7 +4135,7 @@
     },
     {
       "date": "2025-12-12",
-      "games": 12,
+      "games": 17,
       "unique_players": 4
     }
   ]
