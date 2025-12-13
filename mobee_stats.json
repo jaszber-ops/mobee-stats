@@ -1,13 +1,13 @@
 {
-  "total_games": 2514,
+  "total_games": 2515,
   "unique_players": 374,
   "high_score_games": 455,
-  "avg_score": 8.012330946698489,
-  "median_score": 8.0,
+  "avg_score": 8.009542743538768,
+  "median_score": 8,
   "max_score": 24,
   "min_score": 0,
   "city_counts": {
-    "Los Angeles": 127,
+    "Los Angeles": 128,
     "Budapest": 1279,
     "Sz\u00e9kesfeh\u00e9rv\u00e1r": 195,
     "Iregszemcse": 1,
@@ -98,7 +98,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "United States": 155,
+    "United States": 156,
     "Hungary": 2088,
     "Switzerland": 89,
     "The Netherlands": 3,
@@ -120,7 +120,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Mac Chrome": 75,
+    "Mac Chrome": 76,
     "iPad Safari": 31,
     "iPhone Safari": 555,
     "Android Chrome": 1034,
@@ -138,8 +138,8 @@
   },
   "platform_scores": {
     "Mac Chrome": {
-      "count": 75,
-      "avg": 5.8,
+      "count": 76,
+      "avg": 5.7368421052631575,
       "max": 16
     },
     "iPad Safari": {
@@ -215,8 +215,8 @@
   },
   "location_scores": {
     "United States": {
-      "count": 155,
-      "avg": 7.341935483870968
+      "count": 156,
+      "avg": 7.301282051282051
     },
     "Hungary": {
       "count": 2088,
@@ -1429,6 +1429,11 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "ay22ps": {
+      "location": "Los Angeles, United States",
+      "platform": "Mac Chrome",
+      "timestamp": 1765144243.712029
+    },
     "8ow4ia": {
       "location": "Budapest, Hungary",
       "platform": "iPad Safari",
@@ -1473,11 +1478,6 @@
       "location": "Budapest, Hungary",
       "platform": "iPhone Safari",
       "timestamp": 1765574066.271539
-    },
-    "ay22ps": {
-      "location": "Los Angeles, United States",
-      "platform": "Mac Chrome",
-      "timestamp": 1765144243.712029
     },
     "6bay5g": {
       "location": "Budapest, Hungary",
@@ -3831,6 +3831,7 @@
     [
       "ay22ps",
       [
+        1,
         0,
         0,
         0,
@@ -4185,7 +4186,7 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 749,
+    "0-5": 750,
     "6-10": 1069,
     "11-15": 539,
     "16-20": 146,
@@ -4224,7 +4225,7 @@
     },
     {
       "date": "2025-12-13",
-      "games": 37,
+      "games": 38,
       "unique_players": 3
     }
   ]
