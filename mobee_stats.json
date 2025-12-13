@@ -1,15 +1,15 @@
 {
-  "total_games": 2591,
-  "unique_players": 378,
-  "high_score_games": 459,
-  "avg_score": 8.030490158240061,
-  "median_score": 8,
+  "total_games": 2596,
+  "unique_players": 380,
+  "high_score_games": 460,
+  "avg_score": 8.02657935285054,
+  "median_score": 8.0,
   "max_score": 24,
   "min_score": 0,
   "city_counts": {
+    "Gyomaendr\u0151d": 12,
+    "Budapest": 1331,
     "Basel": 24,
-    "Gyomaendr\u0151d": 8,
-    "Budapest": 1330,
     "Paks": 1,
     "Ingolstadt": 47,
     "P\u00e9cs": 233,
@@ -101,8 +101,8 @@
     "12/6/2025": 5
   },
   "country_counts": {
+    "Hungary": 2156,
     "Switzerland": 97,
-    "Hungary": 2151,
     "Germany": 81,
     "United States": 159,
     "The Netherlands": 3,
@@ -123,9 +123,9 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
+    "Android Chrome": 1054,
+    "iPhone Browser": 195,
     "iPhone Safari": 585,
-    "Android Chrome": 1050,
-    "iPhone Browser": 194,
     "Mac Safari": 143,
     "iPad Safari": 51,
     "Mac Chrome": 76,
@@ -140,20 +140,20 @@
     "Unknown": 9
   },
   "platform_scores": {
+    "Android Chrome": {
+      "count": 1054,
+      "avg": 8.833965844402277,
+      "max": 24
+    },
+    "iPhone Browser": {
+      "count": 195,
+      "avg": 10.123076923076923,
+      "max": 20
+    },
     "iPhone Safari": {
       "count": 585,
       "avg": 6.996581196581197,
       "max": 18
-    },
-    "Android Chrome": {
-      "count": 1050,
-      "avg": 8.846666666666666,
-      "max": 24
-    },
-    "iPhone Browser": {
-      "count": 194,
-      "avg": 10.1340206185567,
-      "max": 20
     },
     "Mac Safari": {
       "count": 143,
@@ -217,13 +217,13 @@
     }
   },
   "location_scores": {
+    "Hungary": {
+      "count": 2156,
+      "avg": 8.162801484230055
+    },
     "Switzerland": {
       "count": 97,
       "avg": 6.618556701030927
-    },
-    "Hungary": {
-      "count": 2151,
-      "avg": 8.167828916782891
     },
     "Germany": {
       "count": 81,
@@ -299,13 +299,15 @@
     }
   },
   "engagement": {
-    "one_time_players": 133,
-    "returning_players": 245,
-    "super_engaged": 59
+    "one_time_players": 134,
+    "returning_players": 246,
+    "super_engaged": 60
   },
   "player_cities": {
-    "vk1yze": 1,
+    "r2xhmp": 1,
+    "tvntlo": 1,
     "rayz9h": 1,
+    "vk1yze": 1,
     "iyu8hr": 1,
     "4sumzg": 1,
     "apj34x": 1,
@@ -684,8 +686,10 @@
     "Unknown": 2
   },
   "player_platforms": {
-    "vk1yze": 1,
+    "r2xhmp": 1,
+    "tvntlo": 1,
     "rayz9h": 1,
+    "vk1yze": 1,
     "iyu8hr": 1,
     "4sumzg": 1,
     "apj34x": 1,
@@ -1064,8 +1068,10 @@
     "Unknown": 1
   },
   "player_most_common_city": {
-    "vk1yze": "Basel",
+    "r2xhmp": "Gyomaendr\u0151d",
+    "tvntlo": "Budapest",
     "rayz9h": "Gyomaendr\u0151d",
+    "vk1yze": "Basel",
     "iyu8hr": "Budapest",
     "4sumzg": "Budapest",
     "apj34x": "Paks",
@@ -1444,15 +1450,25 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
-    "vk1yze": {
-      "location": "Basel, Switzerland",
-      "platform": "iPhone Safari",
-      "timestamp": 1765175420.376719
+    "r2xhmp": {
+      "location": "Gyomaendr\u0151d, Hungary",
+      "platform": "Android Chrome",
+      "timestamp": 1765635820.340449
+    },
+    "tvntlo": {
+      "location": "Budapest, Hungary",
+      "platform": "iPhone Browser",
+      "timestamp": 1765635534.394959
     },
     "rayz9h": {
       "location": "Gyomaendr\u0151d, Hungary",
       "platform": "Android Chrome",
       "timestamp": 1765631848.898159
+    },
+    "vk1yze": {
+      "location": "Basel, Switzerland",
+      "platform": "iPhone Safari",
+      "timestamp": 1765175420.376719
     },
     "iyu8hr": {
       "location": "Budapest, Hungary",
@@ -4238,8 +4254,8 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 773,
-    "6-10": 1085,
+    "0-5": 775,
+    "6-10": 1088,
     "11-15": 571,
     "16-20": 151,
     "20+": 11
@@ -4277,8 +4293,8 @@
     },
     {
       "date": "2025-12-13",
-      "games": 114,
-      "unique_players": 15
+      "games": 119,
+      "unique_players": 17
     }
   ]
 }
