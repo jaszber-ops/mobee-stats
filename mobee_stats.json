@@ -1,12 +1,13 @@
 {
-  "total_games": 2629,
-  "unique_players": 383,
-  "high_score_games": 464,
-  "avg_score": 7.99695701787752,
-  "median_score": 8,
+  "total_games": 2630,
+  "unique_players": 384,
+  "high_score_games": 465,
+  "avg_score": 7.996577946768061,
+  "median_score": 8.0,
   "max_score": 24,
   "min_score": 0,
   "city_counts": {
+    "Budapest": 1332,
     "Zollikon": 2,
     "Reykjavik": 1,
     "Zug": 10,
@@ -14,7 +15,6 @@
     "Los Angeles": 138,
     "Gyomaendr\u0151d": 23,
     "Basel": 25,
-    "Budapest": 1331,
     "Paks": 1,
     "Ingolstadt": 47,
     "P\u00e9cs": 233,
@@ -103,10 +103,10 @@
     "12/6/2025": 5
   },
   "country_counts": {
+    "Hungary": 2168,
     "Switzerland": 110,
     "Iceland": 1,
     "United States": 167,
-    "Hungary": 2167,
     "Germany": 81,
     "The Netherlands": 3,
     "United Kingdom": 14,
@@ -126,10 +126,10 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
+    "iPhone Browser": 196,
     "iPhone Safari": 589,
     "Android Chrome": 1075,
     "Mac Chrome": 84,
-    "iPhone Browser": 195,
     "Mac Safari": 143,
     "iPad Safari": 51,
     "Windows Chrome": 306,
@@ -143,6 +143,11 @@
     "Unknown": 9
   },
   "platform_scores": {
+    "iPhone Browser": {
+      "count": 196,
+      "avg": 10.107142857142858,
+      "max": 20
+    },
     "iPhone Safari": {
       "count": 589,
       "avg": 7.00339558573854,
@@ -157,11 +162,6 @@
       "count": 84,
       "avg": 5.821428571428571,
       "max": 16
-    },
-    "iPhone Browser": {
-      "count": 195,
-      "avg": 10.123076923076923,
-      "max": 20
     },
     "Mac Safari": {
       "count": 143,
@@ -220,6 +220,10 @@
     }
   },
   "location_scores": {
+    "Hungary": {
+      "count": 2168,
+      "avg": 8.144833948339484
+    },
     "Switzerland": {
       "count": 110,
       "avg": 6.572727272727272
@@ -231,10 +235,6 @@
     "United States": {
       "count": 167,
       "avg": 7.227544910179641
-    },
-    "Hungary": {
-      "count": 2167,
-      "avg": 8.145362251961236
     },
     "Germany": {
       "count": 81,
@@ -306,11 +306,12 @@
     }
   },
   "engagement": {
-    "one_time_players": 134,
+    "one_time_players": 135,
     "returning_players": 249,
     "super_engaged": 63
   },
   "player_cities": {
+    "hae648": 1,
     "0pk8cj": 1,
     "y880qp": 1,
     "h52r9e": 1,
@@ -696,6 +697,7 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "hae648": 1,
     "0pk8cj": 1,
     "y880qp": 1,
     "h52r9e": 1,
@@ -1081,6 +1083,7 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "hae648": "Budapest",
     "0pk8cj": "Zollikon",
     "y880qp": "Reykjavik",
     "h52r9e": "Zug",
@@ -1466,6 +1469,11 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "hae648": {
+      "location": "Budapest, Hungary",
+      "platform": "iPhone Browser",
+      "timestamp": 1765653336.189769
+    },
     "0pk8cj": {
       "location": "Zollikon, Switzerland",
       "platform": "iPhone Safari",
@@ -4294,7 +4302,7 @@
   ],
   "score_distribution": {
     "0-5": 793,
-    "6-10": 1098,
+    "6-10": 1099,
     "11-15": 576,
     "16-20": 151,
     "20+": 11
@@ -4332,8 +4340,8 @@
     },
     {
       "date": "2025-12-13",
-      "games": 152,
-      "unique_players": 23
+      "games": 153,
+      "unique_players": 24
     }
   ]
 }
