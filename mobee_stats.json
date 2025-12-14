@@ -1,13 +1,13 @@
 {
-  "total_games": 2790,
-  "unique_players": 398,
-  "high_score_games": 486,
-  "avg_score": 8.176702508960574,
-  "median_score": 8.0,
+  "total_games": 2791,
+  "unique_players": 399,
+  "high_score_games": 487,
+  "avg_score": 8.177355786456467,
+  "median_score": 8,
   "max_score": 25,
   "min_score": 0,
   "city_counts": {
-    "Budapest": 1417,
+    "Budapest": 1418,
     "Gyomaendr\u0151d": 42,
     "P\u00e9cs": 238,
     "Sikl\u00f3s": 21,
@@ -105,7 +105,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 2304,
+    "Hungary": 2305,
     "Switzerland": 134,
     "Iceland": 1,
     "United States": 167,
@@ -128,7 +128,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "iPhone Safari": 615,
+    "iPhone Safari": 616,
     "iPad Safari": 56,
     "Android Chrome": 1163,
     "iPhone Browser": 201,
@@ -146,8 +146,8 @@
   },
   "platform_scores": {
     "iPhone Safari": {
-      "count": 615,
-      "avg": 7.097560975609756,
+      "count": 616,
+      "avg": 7.1022727272727275,
       "max": 18
     },
     "iPad Safari": {
@@ -223,8 +223,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 2304,
-      "avg": 8.34939236111111
+      "count": 2305,
+      "avg": 8.350108459869848
     },
     "Switzerland": {
       "count": 134,
@@ -308,11 +308,12 @@
     }
   },
   "engagement": {
-    "one_time_players": 138,
+    "one_time_players": 139,
     "returning_players": 260,
     "super_engaged": 65
   },
   "player_cities": {
+    "ia8q1j": 1,
     "iyu8hr": 1,
     "8ow4ia": 1,
     "r2xhmp": 1,
@@ -713,6 +714,7 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "ia8q1j": 1,
     "iyu8hr": 1,
     "8ow4ia": 1,
     "r2xhmp": 1,
@@ -1113,6 +1115,7 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "ia8q1j": "Budapest",
     "iyu8hr": "Budapest",
     "8ow4ia": "Budapest",
     "r2xhmp": "Gyomaendr\u0151d",
@@ -1513,6 +1516,11 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "ia8q1j": {
+      "location": "Budapest, Hungary",
+      "platform": "iPhone Safari",
+      "timestamp": 1765736705.822629
+    },
     "iyu8hr": {
       "location": "Budapest, Hungary",
       "platform": "iPhone Safari",
@@ -4474,7 +4482,7 @@
   ],
   "score_distribution": {
     "0-5": 825,
-    "6-10": 1144,
+    "6-10": 1145,
     "11-15": 613,
     "16-20": 186,
     "20+": 22
@@ -4517,8 +4525,8 @@
     },
     {
       "date": "2025-12-14",
-      "games": 81,
-      "unique_players": 15
+      "games": 82,
+      "unique_players": 16
     }
   ]
 }
