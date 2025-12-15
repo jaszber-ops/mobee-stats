@@ -1,18 +1,18 @@
 {
-  "total_games": 3062,
-  "unique_players": 422,
-  "high_score_games": 523,
-  "avg_score": 8.25375571521881,
-  "median_score": 8.0,
+  "total_games": 3085,
+  "unique_players": 424,
+  "high_score_games": 527,
+  "avg_score": 8.26288492706645,
+  "median_score": 8,
   "max_score": 25,
   "min_score": 0,
   "city_counts": {
-    "Debrecen": 189,
-    "Budapest": 1535,
+    "Budapest": 1544,
+    "Debrecen": 202,
+    "P\u00e9cs": 245,
     "Sz\u00e9kesfeh\u00e9rv\u00e1r": 217,
     "Si\u00f3fok": 1,
     "Kiskunmajsa": 1,
-    "P\u00e9cs": 244,
     "Nagyat\u00e1d": 6,
     "Oberengstringen": 8,
     "Baja": 3,
@@ -109,7 +109,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 2560,
+    "Hungary": 2583,
     "Switzerland": 146,
     "Germany": 85,
     "Iceland": 1,
@@ -132,8 +132,8 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 1335,
-    "Windows Chrome": 371,
+    "Windows Chrome": 380,
+    "Android Chrome": 1349,
     "iPhone Safari": 643,
     "iPhone Browser": 215,
     "Windows Safari": 40,
@@ -149,15 +149,15 @@
     "Unknown": 9
   },
   "platform_scores": {
-    "Android Chrome": {
-      "count": 1335,
-      "avg": 9.083146067415731,
-      "max": 25
-    },
     "Windows Chrome": {
-      "count": 371,
-      "avg": 7.606469002695418,
+      "count": 380,
+      "avg": 7.66578947368421,
       "max": 18
+    },
+    "Android Chrome": {
+      "count": 1349,
+      "avg": 9.083024462564863,
+      "max": 25
     },
     "iPhone Safari": {
       "count": 643,
@@ -227,8 +227,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 2560,
-      "avg": 8.42578125
+      "count": 2583,
+      "avg": 8.435152922957801
     },
     "Switzerland": {
       "count": 146,
@@ -312,12 +312,14 @@
     }
   },
   "engagement": {
-    "one_time_players": 150,
-    "returning_players": 272,
+    "one_time_players": 151,
+    "returning_players": 273,
     "super_engaged": 70
   },
   "player_cities": {
+    "dag986": 1,
     "9xwiaw": 1,
+    "kdbz8h": 1,
     "3joxix": 1,
     "2xolmp": 2,
     "hcm7x9": 1,
@@ -741,7 +743,9 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "dag986": 1,
     "9xwiaw": 1,
+    "kdbz8h": 1,
     "3joxix": 1,
     "2xolmp": 1,
     "hcm7x9": 1,
@@ -1165,7 +1169,9 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "dag986": "Budapest",
     "9xwiaw": "Debrecen",
+    "kdbz8h": "P\u00e9cs",
     "3joxix": "Debrecen",
     "2xolmp": "Budapest",
     "hcm7x9": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
@@ -1589,10 +1595,20 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "dag986": {
+      "location": "Budapest, Hungary",
+      "platform": "Windows Chrome",
+      "timestamp": 1765838224.989639
+    },
     "9xwiaw": {
       "location": "Debrecen, Hungary",
       "platform": "Android Chrome",
       "timestamp": 1765825523.730219
+    },
+    "kdbz8h": {
+      "location": "P\u00e9cs, Hungary",
+      "platform": "Android Chrome",
+      "timestamp": 1765835410.331209
     },
     "3joxix": {
       "location": "Debrecen, Hungary",
@@ -4310,6 +4326,95 @@
       ]
     ],
     [
+      "9xwiaw",
+      [
+        8,
+        11,
+        10,
+        4,
+        9,
+        6,
+        12,
+        13,
+        7,
+        9,
+        11,
+        14,
+        5,
+        7,
+        11,
+        5,
+        14,
+        5,
+        11,
+        11,
+        8,
+        10,
+        7,
+        12,
+        10,
+        11,
+        8,
+        8,
+        7,
+        9,
+        11,
+        6,
+        12,
+        10,
+        14,
+        7,
+        6,
+        8,
+        8,
+        8,
+        6,
+        4,
+        2,
+        9,
+        8,
+        9,
+        14,
+        5,
+        8,
+        10,
+        11,
+        4,
+        12,
+        5,
+        6,
+        1,
+        8,
+        11,
+        11,
+        4,
+        11,
+        10,
+        9,
+        8,
+        11,
+        12,
+        8,
+        8,
+        7,
+        9,
+        15,
+        5,
+        11,
+        6,
+        9,
+        7,
+        13,
+        9,
+        5,
+        6,
+        8,
+        9,
+        10,
+        6
+      ]
+    ],
+    [
       "ay22ps",
       [
         0,
@@ -4386,82 +4491,6 @@
         6,
         8,
         8
-      ]
-    ],
-    [
-      "9xwiaw",
-      [
-        7,
-        11,
-        5,
-        14,
-        5,
-        11,
-        11,
-        8,
-        10,
-        7,
-        12,
-        10,
-        11,
-        8,
-        8,
-        7,
-        9,
-        11,
-        6,
-        12,
-        10,
-        14,
-        7,
-        6,
-        8,
-        8,
-        8,
-        6,
-        4,
-        2,
-        9,
-        8,
-        9,
-        14,
-        5,
-        8,
-        10,
-        11,
-        4,
-        12,
-        5,
-        6,
-        1,
-        8,
-        11,
-        11,
-        4,
-        11,
-        10,
-        9,
-        8,
-        11,
-        12,
-        8,
-        8,
-        7,
-        9,
-        15,
-        5,
-        11,
-        6,
-        9,
-        7,
-        13,
-        9,
-        5,
-        6,
-        8,
-        9,
-        10,
-        6
       ]
     ],
     [
@@ -4739,9 +4768,9 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 891,
-    "6-10": 1251,
-    "11-15": 684,
+    "0-5": 893,
+    "6-10": 1263,
+    "11-15": 693,
     "16-20": 210,
     "20+": 26
   },
@@ -4788,8 +4817,8 @@
     },
     {
       "date": "2025-12-15",
-      "games": 228,
-      "unique_players": 34
+      "games": 251,
+      "unique_players": 36
     }
   ]
 }
