@@ -1,12 +1,13 @@
 {
-  "total_games": 3240,
-  "unique_players": 431,
+  "total_games": 3242,
+  "unique_players": 432,
   "high_score_games": 544,
-  "avg_score": 8.244753086419752,
+  "avg_score": 8.242134484885874,
   "median_score": 8.0,
   "max_score": 25,
   "min_score": 0,
   "city_counts": {
+    "Kisb\u00e9r": 2,
     "P\u00e9cs": 260,
     "Gyomaendr\u0151d": 66,
     "Gy\u0151r": 49,
@@ -109,7 +110,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 2736,
+    "Hungary": 2738,
     "United States": 168,
     "Local/Unknown": 10,
     "Switzerland": 146,
@@ -132,7 +133,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Windows Chrome": 403,
+    "Windows Chrome": 405,
     "Android Chrome": 1437,
     "Windows Safari": 66,
     "iPhone Safari": 653,
@@ -150,8 +151,8 @@
   },
   "platform_scores": {
     "Windows Chrome": {
-      "count": 403,
-      "avg": 7.684863523573201,
+      "count": 405,
+      "avg": 7.666666666666667,
       "max": 18
     },
     "Android Chrome": {
@@ -227,8 +228,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 2736,
-      "avg": 8.406798245614034
+      "count": 2738,
+      "avg": 8.403579254930607
     },
     "United States": {
       "count": 168,
@@ -313,10 +314,11 @@
   },
   "engagement": {
     "one_time_players": 153,
-    "returning_players": 278,
+    "returning_players": 279,
     "super_engaged": 73
   },
   "player_cities": {
+    "agdov3": 1,
     "l8of10": 1,
     "r2xhmp": 1,
     "p1n45l": 1,
@@ -750,6 +752,7 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "agdov3": 1,
     "l8of10": 1,
     "r2xhmp": 1,
     "p1n45l": 1,
@@ -1183,6 +1186,7 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "agdov3": "Kisb\u00e9r",
     "l8of10": "P\u00e9cs",
     "r2xhmp": "Gyomaendr\u0151d",
     "p1n45l": "Gy\u0151r",
@@ -1616,6 +1620,11 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "agdov3": {
+      "location": "Kisb\u00e9r, Hungary",
+      "platform": "Windows Chrome",
+      "timestamp": 1765926059.272809
+    },
     "l8of10": {
       "location": "P\u00e9cs, Hungary",
       "platform": "Windows Chrome",
@@ -4867,7 +4876,7 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 939,
+    "0-5": 941,
     "6-10": 1332,
     "11-15": 729,
     "16-20": 214,
@@ -4921,8 +4930,8 @@
     },
     {
       "date": "2025-12-16",
-      "games": 155,
-      "unique_players": 19
+      "games": 157,
+      "unique_players": 20
     }
   ]
 }
