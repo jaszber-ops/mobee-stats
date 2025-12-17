@@ -1,13 +1,13 @@
 {
-  "total_games": 3264,
+  "total_games": 3268,
   "unique_players": 433,
-  "high_score_games": 545,
-  "avg_score": 8.24234068627451,
+  "high_score_games": 546,
+  "avg_score": 8.246328029375764,
   "median_score": 8.0,
   "max_score": 25,
   "min_score": 0,
   "city_counts": {
-    "Eger": 18,
+    "Eger": 22,
     "Los Angeles": 144,
     "Kisb\u00e9r": 2,
     "P\u00e9cs": 260,
@@ -110,7 +110,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 2755,
+    "Hungary": 2759,
     "United States": 173,
     "Local/Unknown": 10,
     "Switzerland": 146,
@@ -133,7 +133,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Windows Firefox": 99,
+    "Windows Firefox": 103,
     "iPhone Safari": 658,
     "Windows Chrome": 405,
     "Android Chrome": 1437,
@@ -151,8 +151,8 @@
   },
   "platform_scores": {
     "Windows Firefox": {
-      "count": 99,
-      "avg": 5.606060606060606,
+      "count": 103,
+      "avg": 5.834951456310679,
       "max": 24
     },
     "iPhone Safari": {
@@ -228,8 +228,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 2755,
-      "avg": 8.404355716878403
+      "count": 2759,
+      "avg": 8.408843783979703
     },
     "United States": {
       "count": 173,
@@ -1626,7 +1626,7 @@
     "ihc45a": {
       "location": "Eger, Hungary",
       "platform": "Windows Firefox",
-      "timestamp": 1765953908.010549
+      "timestamp": 1765956820.813749
     },
     "vf4pmj": {
       "location": "Los Angeles, United States",
@@ -4885,8 +4885,8 @@
   ],
   "score_distribution": {
     "0-5": 945,
-    "6-10": 1345,
-    "11-15": 734,
+    "6-10": 1347,
+    "11-15": 736,
     "16-20": 214,
     "20+": 26
   },
@@ -4943,7 +4943,7 @@
     },
     {
       "date": "2025-12-17",
-      "games": 22,
+      "games": 26,
       "unique_players": 2
     }
   ]
