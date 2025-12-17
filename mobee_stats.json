@@ -1,13 +1,13 @@
 {
-  "total_games": 3246,
+  "total_games": 3247,
   "unique_players": 432,
   "high_score_games": 544,
-  "avg_score": 8.241219963031423,
-  "median_score": 8.0,
+  "avg_score": 8.24083769633508,
+  "median_score": 8,
   "max_score": 25,
   "min_score": 0,
   "city_counts": {
-    "Los Angeles": 143,
+    "Los Angeles": 144,
     "Kisb\u00e9r": 2,
     "P\u00e9cs": 260,
     "Gyomaendr\u0151d": 66,
@@ -110,7 +110,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "United States": 172,
+    "United States": 173,
     "Hungary": 2738,
     "Local/Unknown": 10,
     "Switzerland": 146,
@@ -133,7 +133,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "iPhone Safari": 657,
+    "iPhone Safari": 658,
     "Windows Chrome": 405,
     "Android Chrome": 1437,
     "Windows Safari": 66,
@@ -151,8 +151,8 @@
   },
   "platform_scores": {
     "iPhone Safari": {
-      "count": 657,
-      "avg": 7.228310502283105,
+      "count": 658,
+      "avg": 7.227963525835866,
       "max": 18
     },
     "Windows Chrome": {
@@ -228,8 +228,8 @@
   },
   "location_scores": {
     "United States": {
-      "count": 172,
-      "avg": 7.215116279069767
+      "count": 173,
+      "avg": 7.213872832369942
     },
     "Hungary": {
       "count": 2738,
@@ -4877,7 +4877,7 @@
   ],
   "score_distribution": {
     "0-5": 942,
-    "6-10": 1334,
+    "6-10": 1335,
     "11-15": 730,
     "16-20": 214,
     "20+": 26
@@ -4935,7 +4935,7 @@
     },
     {
       "date": "2025-12-17",
-      "games": 4,
+      "games": 5,
       "unique_players": 1
     }
   ]
