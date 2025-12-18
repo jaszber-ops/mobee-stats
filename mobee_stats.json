@@ -1,12 +1,13 @@
 {
-  "total_games": 3501,
+  "total_games": 3502,
   "unique_players": 449,
   "high_score_games": 579,
-  "avg_score": 8.427592116538133,
-  "median_score": 8,
+  "avg_score": 8.427755568246717,
+  "median_score": 8.0,
   "max_score": 25,
   "min_score": 0,
   "city_counts": {
+    "Allschwil": 15,
     "Budapest": 1679,
     "P\u00e9cs": 268,
     "Sz\u00e9kesfeh\u00e9rv\u00e1r": 226,
@@ -17,7 +18,6 @@
     "Fehervarcsurgo": 1,
     "Csurg\u00f3": 1,
     "Gyomaendr\u0151d": 77,
-    "Allschwil": 14,
     "Manchester": 15,
     "Unknown City": 32,
     "Pusztavacs": 1,
@@ -114,9 +114,9 @@
     "12/6/2025": 5
   },
   "country_counts": {
+    "Switzerland": 150,
     "Hungary": 2952,
     "Belgium": 23,
-    "Switzerland": 149,
     "United Kingdom": 18,
     "Local/Unknown": 32,
     "United States": 173,
@@ -137,9 +137,9 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
+    "iPhone Safari": 669,
     "Windows Safari": 82,
     "Windows Chrome": 457,
-    "iPhone Safari": 668,
     "Android Chrome": 1587,
     "iPad Safari": 61,
     "Other Chrome": 6,
@@ -154,6 +154,11 @@
     "Unknown": 9
   },
   "platform_scores": {
+    "iPhone Safari": {
+      "count": 669,
+      "avg": 7.300448430493273,
+      "max": 20
+    },
     "Windows Safari": {
       "count": 82,
       "avg": 6.670731707317073,
@@ -163,11 +168,6 @@
       "count": 457,
       "avg": 7.844638949671772,
       "max": 19
-    },
-    "iPhone Safari": {
-      "count": 668,
-      "avg": 7.297904191616767,
-      "max": 20
     },
     "Android Chrome": {
       "count": 1587,
@@ -231,6 +231,10 @@
     }
   },
   "location_scores": {
+    "Switzerland": {
+      "count": 150,
+      "avg": 7.013333333333334
+    },
     "Hungary": {
       "count": 2952,
       "avg": 8.588075880758808
@@ -238,10 +242,6 @@
     "Belgium": {
       "count": 23,
       "avg": 10.608695652173912
-    },
-    "Switzerland": {
-      "count": 149,
-      "avg": 7.0
     },
     "United Kingdom": {
       "count": 18,
@@ -322,6 +322,7 @@
     "super_engaged": 78
   },
   "player_cities": {
+    "y8ut9r": 2,
     "4ryygm": 1,
     "zg1d2j": 1,
     "iyu8hr": 1,
@@ -343,7 +344,6 @@
     "2yng62": 1,
     "73ek4n": 1,
     "w0zfyb": 1,
-    "y8ut9r": 2,
     "01vyps": 1,
     "wiewmw": 1,
     "pqj2z4": 1,
@@ -773,6 +773,7 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "y8ut9r": 1,
     "4ryygm": 1,
     "zg1d2j": 1,
     "iyu8hr": 1,
@@ -794,7 +795,6 @@
     "2yng62": 1,
     "73ek4n": 1,
     "w0zfyb": 1,
-    "y8ut9r": 1,
     "01vyps": 1,
     "wiewmw": 1,
     "pqj2z4": 1,
@@ -1224,6 +1224,7 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "y8ut9r": "Allschwil",
     "4ryygm": "Budapest",
     "zg1d2j": "P\u00e9cs",
     "iyu8hr": "Budapest",
@@ -1245,7 +1246,6 @@
     "2yng62": "P\u00e9cs",
     "73ek4n": "P\u00e9cs",
     "w0zfyb": "P\u00e9cs",
-    "y8ut9r": "Allschwil",
     "01vyps": "Budapest",
     "wiewmw": "Manchester",
     "pqj2z4": "Budapest",
@@ -1675,6 +1675,11 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "y8ut9r": {
+      "location": "Allschwil, Switzerland",
+      "platform": "iPhone Safari",
+      "timestamp": 1765575766.519499
+    },
     "4ryygm": {
       "location": "Budapest, Hungary",
       "platform": "Windows Safari",
@@ -1779,11 +1784,6 @@
       "location": "P\u00e9cs, Hungary",
       "platform": "Android Chrome",
       "timestamp": 1766001819.128059
-    },
-    "y8ut9r": {
-      "location": "Allschwil, Switzerland",
-      "platform": "iPhone Safari",
-      "timestamp": 1765575766.519499
     },
     "01vyps": {
       "location": "Budapest, Hungary",
@@ -5142,7 +5142,7 @@
   ],
   "score_distribution": {
     "0-5": 982,
-    "6-10": 1421,
+    "6-10": 1422,
     "11-15": 813,
     "16-20": 253,
     "20+": 32
@@ -5205,8 +5205,8 @@
     },
     {
       "date": "2025-12-18",
-      "games": 115,
-      "unique_players": 17
+      "games": 116,
+      "unique_players": 18
     }
   ]
 }
