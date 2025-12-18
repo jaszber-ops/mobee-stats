@@ -1,16 +1,17 @@
 {
-  "total_games": 3387,
-  "unique_players": 442,
+  "total_games": 3422,
+  "unique_players": 443,
   "high_score_games": 568,
-  "avg_score": 8.306465899025687,
-  "median_score": 8,
+  "avg_score": 8.355639976621859,
+  "median_score": 8.0,
   "max_score": 25,
   "min_score": 0,
   "city_counts": {
+    "Debrecen": 310,
+    "Budapest": 1629,
+    "Fehervarcsurgo": 1,
     "Csurg\u00f3": 1,
-    "Budapest": 1615,
     "P\u00e9cs": 267,
-    "Debrecen": 290,
     "Gyomaendr\u0151d": 77,
     "Allschwil": 14,
     "Sz\u00e9kesfeh\u00e9rv\u00e1r": 218,
@@ -112,7 +113,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 2849,
+    "Hungary": 2884,
     "Switzerland": 149,
     "United Kingdom": 18,
     "Local/Unknown": 32,
@@ -135,8 +136,8 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 1512,
-    "Windows Chrome": 443,
+    "Android Chrome": 1546,
+    "Windows Chrome": 444,
     "iPhone Safari": 662,
     "Other Chrome": 6,
     "Mac Chrome": 85,
@@ -153,13 +154,13 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 1512,
-      "avg": 9.116402116402117,
+      "count": 1546,
+      "avg": 9.212160413971539,
       "max": 25
     },
     "Windows Chrome": {
-      "count": 443,
-      "avg": 7.679458239277652,
+      "count": 444,
+      "avg": 7.664414414414415,
       "max": 18
     },
     "iPhone Safari": {
@@ -230,8 +231,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 2849,
-      "avg": 8.471042471042471
+      "count": 2884,
+      "avg": 8.527392510402219
     },
     "Switzerland": {
       "count": 149,
@@ -315,16 +316,17 @@
     }
   },
   "engagement": {
-    "one_time_players": 155,
+    "one_time_players": 156,
     "returning_players": 287,
     "super_engaged": 75
   },
   "player_cities": {
+    "5dslpp": 2,
+    "6gawu9": 1,
+    "u91t30": 1,
     "lyruer": 1,
     "1rov9x": 1,
     "2yng62": 1,
-    "5dslpp": 2,
-    "6gawu9": 1,
     "73ek4n": 1,
     "w0zfyb": 1,
     "r2xhmp": 1,
@@ -764,11 +766,12 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "5dslpp": 1,
+    "6gawu9": 1,
+    "u91t30": 1,
     "lyruer": 1,
     "1rov9x": 1,
     "2yng62": 1,
-    "5dslpp": 1,
-    "6gawu9": 1,
     "73ek4n": 1,
     "w0zfyb": 1,
     "r2xhmp": 1,
@@ -1208,11 +1211,12 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "5dslpp": "Debrecen",
+    "6gawu9": "Budapest",
+    "u91t30": "Fehervarcsurgo",
     "lyruer": "Csurg\u00f3",
     "1rov9x": "Budapest",
     "2yng62": "P\u00e9cs",
-    "5dslpp": "Debrecen",
-    "6gawu9": "Budapest",
     "73ek4n": "P\u00e9cs",
     "w0zfyb": "P\u00e9cs",
     "r2xhmp": "Gyomaendr\u0151d",
@@ -1652,6 +1656,21 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "5dslpp": {
+      "location": "Debrecen, Hungary",
+      "platform": "Android Chrome",
+      "timestamp": 1765992688.471269
+    },
+    "6gawu9": {
+      "location": "Budapest, Hungary",
+      "platform": "Android Chrome",
+      "timestamp": 1765662491.143109
+    },
+    "u91t30": {
+      "location": "Fehervarcsurgo, Hungary",
+      "platform": "Windows Chrome",
+      "timestamp": 1766038264.663309
+    },
     "lyruer": {
       "location": "Csurg\u00f3, Hungary",
       "platform": "Android Chrome",
@@ -1666,16 +1685,6 @@
       "location": "P\u00e9cs, Hungary",
       "platform": "Windows Chrome",
       "timestamp": 1766009781.574049
-    },
-    "5dslpp": {
-      "location": "Debrecen, Hungary",
-      "platform": "Android Chrome",
-      "timestamp": 1765992688.471269
-    },
-    "6gawu9": {
-      "location": "Budapest, Hungary",
-      "platform": "Android Chrome",
-      "timestamp": 1765662491.143109
     },
     "73ek4n": {
       "location": "P\u00e9cs, Hungary",
@@ -3802,6 +3811,20 @@
     [
       "6gawu9",
       [
+        4,
+        20,
+        19,
+        16,
+        15,
+        19,
+        21,
+        19,
+        19,
+        14,
+        16,
+        18,
+        19,
+        15,
         20,
         17,
         20,
@@ -4507,6 +4530,109 @@
       ]
     ],
     [
+      "5dslpp",
+      [
+        9,
+        14,
+        12,
+        8,
+        10,
+        11,
+        10,
+        15,
+        10,
+        11,
+        14,
+        9,
+        13,
+        12,
+        12,
+        8,
+        16,
+        15,
+        8,
+        7,
+        13,
+        10,
+        6,
+        12,
+        8,
+        10,
+        15,
+        12,
+        13,
+        12,
+        12,
+        2,
+        13,
+        14,
+        12,
+        10,
+        11,
+        12,
+        5,
+        10,
+        9,
+        11,
+        11,
+        10,
+        9,
+        11,
+        17,
+        16,
+        15,
+        10,
+        0,
+        4,
+        4,
+        11,
+        11,
+        10,
+        9,
+        8,
+        9,
+        12,
+        12,
+        8,
+        8,
+        9,
+        5,
+        12,
+        11,
+        12,
+        10,
+        10,
+        15,
+        10,
+        12,
+        4,
+        4,
+        10,
+        12,
+        13,
+        11,
+        14,
+        13,
+        12,
+        14,
+        14,
+        8,
+        11,
+        9,
+        9,
+        6,
+        11,
+        6,
+        4,
+        10,
+        9,
+        7,
+        2,
+        6,
+        4
+      ]
+    ],
+    [
       "oytad3",
       [
         8,
@@ -4606,89 +4732,6 @@
         0,
         7,
         5
-      ]
-    ],
-    [
-      "5dslpp",
-      [
-        13,
-        10,
-        6,
-        12,
-        8,
-        10,
-        15,
-        12,
-        13,
-        12,
-        12,
-        2,
-        13,
-        14,
-        12,
-        10,
-        11,
-        12,
-        5,
-        10,
-        9,
-        11,
-        11,
-        10,
-        9,
-        11,
-        17,
-        16,
-        15,
-        10,
-        0,
-        4,
-        4,
-        11,
-        11,
-        10,
-        9,
-        8,
-        9,
-        12,
-        12,
-        8,
-        8,
-        9,
-        5,
-        12,
-        11,
-        12,
-        10,
-        10,
-        15,
-        10,
-        12,
-        4,
-        4,
-        10,
-        12,
-        13,
-        11,
-        14,
-        13,
-        12,
-        14,
-        14,
-        8,
-        11,
-        9,
-        9,
-        6,
-        11,
-        6,
-        4,
-        10,
-        9,
-        7,
-        2,
-        6,
-        4
       ]
     ],
     [
@@ -5019,11 +5062,11 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 974,
-    "6-10": 1387,
-    "11-15": 764,
-    "16-20": 231,
-    "20+": 31
+    "0-5": 976,
+    "6-10": 1396,
+    "11-15": 777,
+    "16-20": 241,
+    "20+": 32
   },
   "daily_stats": [
     {
@@ -5083,8 +5126,8 @@
     },
     {
       "date": "2025-12-18",
-      "games": 1,
-      "unique_players": 1
+      "games": 36,
+      "unique_players": 4
     }
   ]
 }
