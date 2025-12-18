@@ -1,12 +1,13 @@
 {
-  "total_games": 3386,
-  "unique_players": 441,
-  "high_score_games": 567,
-  "avg_score": 8.305965741287656,
-  "median_score": 8.0,
+  "total_games": 3387,
+  "unique_players": 442,
+  "high_score_games": 568,
+  "avg_score": 8.306465899025687,
+  "median_score": 8,
   "max_score": 25,
   "min_score": 0,
   "city_counts": {
+    "Csurg\u00f3": 1,
     "Budapest": 1615,
     "P\u00e9cs": 267,
     "Debrecen": 290,
@@ -111,7 +112,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 2848,
+    "Hungary": 2849,
     "Switzerland": 149,
     "United Kingdom": 18,
     "Local/Unknown": 32,
@@ -134,7 +135,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 1511,
+    "Android Chrome": 1512,
     "Windows Chrome": 443,
     "iPhone Safari": 662,
     "Other Chrome": 6,
@@ -152,8 +153,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 1511,
-      "avg": 9.115817339510258,
+      "count": 1512,
+      "avg": 9.116402116402117,
       "max": 25
     },
     "Windows Chrome": {
@@ -229,8 +230,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 2848,
-      "avg": 8.470505617977528
+      "count": 2849,
+      "avg": 8.471042471042471
     },
     "Switzerland": {
       "count": 149,
@@ -314,11 +315,12 @@
     }
   },
   "engagement": {
-    "one_time_players": 154,
+    "one_time_players": 155,
     "returning_players": 287,
     "super_engaged": 75
   },
   "player_cities": {
+    "lyruer": 1,
     "1rov9x": 1,
     "2yng62": 1,
     "5dslpp": 2,
@@ -762,6 +764,7 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "lyruer": 1,
     "1rov9x": 1,
     "2yng62": 1,
     "5dslpp": 1,
@@ -1205,6 +1208,7 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "lyruer": "Csurg\u00f3",
     "1rov9x": "Budapest",
     "2yng62": "P\u00e9cs",
     "5dslpp": "Debrecen",
@@ -1648,6 +1652,11 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "lyruer": {
+      "location": "Csurg\u00f3, Hungary",
+      "platform": "Android Chrome",
+      "timestamp": 1766030756.493189
+    },
     "1rov9x": {
       "location": "Budapest, Hungary",
       "platform": "Android Chrome",
@@ -5011,7 +5020,7 @@
   ],
   "score_distribution": {
     "0-5": 974,
-    "6-10": 1386,
+    "6-10": 1387,
     "11-15": 764,
     "16-20": 231,
     "20+": 31
@@ -5071,6 +5080,11 @@
       "date": "2025-12-17",
       "games": 144,
       "unique_players": 20
+    },
+    {
+      "date": "2025-12-18",
+      "games": 1,
+      "unique_players": 1
     }
   ]
 }
