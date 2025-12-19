@@ -1,18 +1,18 @@
 {
-  "total_games": 3852,
+  "total_games": 3857,
   "unique_players": 460,
   "high_score_games": 603,
-  "avg_score": 8.411214953271028,
-  "median_score": 8.0,
+  "avg_score": 8.411718952553798,
+  "median_score": 8,
   "max_score": 25,
   "min_score": 0,
   "city_counts": {
+    "Debrecen": 339,
     "Uccle": 12,
     "Budapest": 1912,
     "\u00c9rd": 4,
     "Sikl\u00f3s": 70,
     "Unknown City": 35,
-    "Debrecen": 334,
     "Vienna": 2,
     "Li\u00e8ge": 36,
     "Gyomaendr\u0151d": 79,
@@ -114,8 +114,8 @@
     "12/6/2025": 5
   },
   "country_counts": {
+    "Hungary": 3266,
     "Belgium": 51,
-    "Hungary": 3261,
     "Local/Unknown": 35,
     "Austria": 9,
     "United States": 174,
@@ -137,8 +137,8 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
+    "Android Chrome": 1690,
     "Windows Chrome": 488,
-    "Android Chrome": 1685,
     "iPhone Safari": 742,
     "Mac Safari": 267,
     "Windows Safari": 100,
@@ -154,15 +154,15 @@
     "Unknown": 9
   },
   "platform_scores": {
+    "Android Chrome": {
+      "count": 1690,
+      "avg": 9.233136094674556,
+      "max": 25
+    },
     "Windows Chrome": {
       "count": 488,
       "avg": 8.276639344262295,
       "max": 22
-    },
-    "Android Chrome": {
-      "count": 1685,
-      "avg": 9.234421364985163,
-      "max": 25
     },
     "iPhone Safari": {
       "count": 742,
@@ -231,13 +231,13 @@
     }
   },
   "location_scores": {
+    "Hungary": {
+      "count": 3266,
+      "avg": 8.511328842620943
+    },
     "Belgium": {
       "count": 51,
       "avg": 13.392156862745098
-    },
-    "Hungary": {
-      "count": 3261,
-      "avg": 8.510886231217418
     },
     "Local/Unknown": {
       "count": 35,
@@ -322,6 +322,7 @@
     "super_engaged": 85
   },
   "player_cities": {
+    "5dslpp": 2,
     "z0498h": 1,
     "hphhm0": 2,
     "7x9v6b": 1,
@@ -331,7 +332,6 @@
     "4ryygm": 1,
     "4839eh": 1,
     "6t66sg": 1,
-    "5dslpp": 2,
     "qegmpg": 1,
     "r68mtw": 2,
     "2hmhsf": 1,
@@ -784,6 +784,7 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "5dslpp": 1,
     "z0498h": 1,
     "hphhm0": 1,
     "7x9v6b": 1,
@@ -793,7 +794,6 @@
     "4ryygm": 1,
     "4839eh": 1,
     "6t66sg": 1,
-    "5dslpp": 1,
     "qegmpg": 1,
     "r68mtw": 1,
     "2hmhsf": 1,
@@ -1246,6 +1246,7 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "5dslpp": "Debrecen",
     "z0498h": "Uccle",
     "hphhm0": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
     "7x9v6b": "\u00c9rd",
@@ -1255,7 +1256,6 @@
     "4ryygm": "Budapest",
     "4839eh": "Unknown City",
     "6t66sg": "Budapest",
-    "5dslpp": "Debrecen",
     "qegmpg": "Vienna",
     "r68mtw": "Debrecen",
     "2hmhsf": "Budapest",
@@ -1708,6 +1708,11 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "5dslpp": {
+      "location": "Debrecen, Hungary",
+      "platform": "Android Chrome",
+      "timestamp": 1766161774.522249
+    },
     "z0498h": {
       "location": "Uccle, Belgium",
       "platform": "Windows Chrome",
@@ -1752,11 +1757,6 @@
       "location": "Budapest, Hungary",
       "platform": "Android Chrome",
       "timestamp": 1766165916.579159
-    },
-    "5dslpp": {
-      "location": "Debrecen, Hungary",
-      "platform": "Android Chrome",
-      "timestamp": 1766161774.522249
     },
     "r68mtw": {
       "location": "Debrecen, Hungary",
@@ -4572,6 +4572,11 @@
     [
       "5dslpp",
       [
+        5,
+        10,
+        11,
+        6,
+        12,
         9,
         0,
         3,
@@ -5326,9 +5331,9 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1070,
-    "6-10": 1579,
-    "11-15": 900,
+    "0-5": 1071,
+    "6-10": 1581,
+    "11-15": 902,
     "16-20": 268,
     "20+": 35
   },
@@ -5395,7 +5400,7 @@
     },
     {
       "date": "2025-12-19",
-      "games": 285,
+      "games": 290,
       "unique_players": 24
     }
   ]
