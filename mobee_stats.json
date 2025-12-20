@@ -1,13 +1,13 @@
 {
-  "total_games": 3953,
+  "total_games": 3956,
   "unique_players": 467,
-  "high_score_games": 612,
-  "avg_score": 8.401467240070833,
-  "median_score": 8,
+  "high_score_games": 613,
+  "avg_score": 8.402426693629929,
+  "median_score": 8.0,
   "max_score": 25,
   "min_score": 0,
   "city_counts": {
-    "Lenzburg": 8,
+    "Lenzburg": 11,
     "Porto Cristo": 5,
     "Budapest": 1925,
     "P\u00e9cs": 275,
@@ -120,7 +120,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Switzerland": 166,
+    "Switzerland": 169,
     "Spain": 6,
     "Hungary": 3346,
     "Ireland": 3,
@@ -144,7 +144,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "iPhone Safari": 773,
+    "iPhone Safari": 776,
     "Android Chrome": 1739,
     "Windows Chrome": 497,
     "Windows Safari": 105,
@@ -162,8 +162,8 @@
   },
   "platform_scores": {
     "iPhone Safari": {
-      "count": 773,
-      "avg": 7.232858990944373,
+      "count": 776,
+      "avg": 7.242268041237113,
       "max": 20
     },
     "Android Chrome": {
@@ -239,8 +239,8 @@
   },
   "location_scores": {
     "Switzerland": {
-      "count": 166,
-      "avg": 6.819277108433735
+      "count": 169,
+      "avg": 6.8698224852071
     },
     "Spain": {
       "count": 6,
@@ -1271,7 +1271,7 @@
     "Unknown": 1
   },
   "player_most_common_city": {
-    "a1ezmh": "Zumikon",
+    "a1ezmh": "Lenzburg",
     "6gawu9": "Budapest",
     "hphhm0": "Budapest",
     "25c3hc": "P\u00e9cs",
@@ -1743,7 +1743,7 @@
     "a1ezmh": {
       "location": "Lenzburg, Switzerland",
       "platform": "iPhone Safari",
-      "timestamp": 1766265246.463399
+      "timestamp": 1766272444.711979
     },
     "6gawu9": {
       "location": "Budapest, Hungary",
@@ -5423,8 +5423,8 @@
   ],
   "score_distribution": {
     "0-5": 1095,
-    "6-10": 1635,
-    "11-15": 917,
+    "6-10": 1637,
+    "11-15": 918,
     "16-20": 271,
     "20+": 35
   },
@@ -5496,7 +5496,7 @@
     },
     {
       "date": "2025-12-20",
-      "games": 96,
+      "games": 99,
       "unique_players": 17
     }
   ]
