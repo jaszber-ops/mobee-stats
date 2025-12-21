@@ -1,12 +1,13 @@
 {
-  "total_games": 3973,
+  "total_games": 3975,
   "unique_players": 468,
   "high_score_games": 617,
-  "avg_score": 8.395670777749812,
+  "avg_score": 8.394465408805031,
   "median_score": 8,
   "max_score": 25,
   "min_score": 0,
   "city_counts": {
+    "Gy\u0151r": 51,
     "Mosonmagyar\u00f3v\u00e1r": 15,
     "Santa Monica": 5,
     "Lenzburg": 12,
@@ -38,7 +39,6 @@
     "Eger": 22,
     "Los Angeles": 144,
     "Kisb\u00e9r": 2,
-    "Gy\u0151r": 49,
     "Si\u00f3fok": 1,
     "Kiskunmajsa": 1,
     "Nagyat\u00e1d": 6,
@@ -121,7 +121,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 3361,
+    "Hungary": 3363,
     "United States": 175,
     "Switzerland": 170,
     "Spain": 6,
@@ -145,13 +145,13 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
+    "Mac Safari": 269,
     "Android Chrome": 1754,
     "Mac Chrome": 86,
     "iPhone Safari": 777,
     "Windows Chrome": 497,
     "Windows Safari": 105,
     "iPhone Browser": 222,
-    "Mac Safari": 267,
     "Windows Firefox": 112,
     "iPad Safari": 61,
     "Other Chrome": 6,
@@ -162,6 +162,11 @@
     "Unknown": 9
   },
   "platform_scores": {
+    "Mac Safari": {
+      "count": 269,
+      "avg": 7.895910780669145,
+      "max": 19
+    },
     "Android Chrome": {
       "count": 1754,
       "avg": 9.19612314709236,
@@ -191,11 +196,6 @@
       "count": 222,
       "avg": 10.004504504504505,
       "max": 20
-    },
-    "Mac Safari": {
-      "count": 267,
-      "avg": 7.910112359550562,
-      "max": 19
     },
     "Windows Firefox": {
       "count": 112,
@@ -240,8 +240,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 3361,
-      "avg": 8.485272240404642
+      "count": 3363,
+      "avg": 8.483794231341065
     },
     "United States": {
       "count": 175,
@@ -334,6 +334,7 @@
     "super_engaged": 87
   },
   "player_cities": {
+    "t5jbkh": 2,
     "k2cove": 1,
     "ay22ps": 2,
     "a1ezmh": 4,
@@ -469,7 +470,6 @@
     "apj34x": 1,
     "0r4dql": 1,
     "sig3bg": 1,
-    "t5jbkh": 1,
     "etx0b8": 1,
     "3zspsc": 3,
     "u1wxv7": 1,
@@ -804,6 +804,7 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "t5jbkh": 1,
     "k2cove": 1,
     "ay22ps": 1,
     "a1ezmh": 1,
@@ -939,7 +940,6 @@
     "apj34x": 1,
     "0r4dql": 1,
     "sig3bg": 1,
-    "t5jbkh": 1,
     "etx0b8": 1,
     "3zspsc": 1,
     "u1wxv7": 1,
@@ -1274,6 +1274,7 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "t5jbkh": "Ingolstadt",
     "k2cove": "Mosonmagyar\u00f3v\u00e1r",
     "ay22ps": "Los Angeles",
     "a1ezmh": "Lenzburg",
@@ -1409,7 +1410,6 @@
     "apj34x": "Paks",
     "0r4dql": "Budapest",
     "sig3bg": "Budapest",
-    "t5jbkh": "Ingolstadt",
     "etx0b8": "Budapest",
     "3zspsc": "Santa Monica",
     "u1wxv7": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
@@ -1744,6 +1744,11 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "t5jbkh": {
+      "location": "Ingolstadt, Germany",
+      "platform": "Mac Safari",
+      "timestamp": 1765139089.905079
+    },
     "k2cove": {
       "location": "Mosonmagyar\u00f3v\u00e1r, Hungary",
       "platform": "Android Chrome",
@@ -2413,11 +2418,6 @@
       "location": "Budapest, Hungary",
       "platform": "iPhone Browser",
       "timestamp": 1765192234.668769
-    },
-    "t5jbkh": {
-      "location": "Ingolstadt, Germany",
-      "platform": "Mac Safari",
-      "timestamp": 1765139089.905079
     },
     "3zspsc": {
       "location": "Westlake Village, United States",
@@ -5432,8 +5432,8 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1101,
-    "6-10": 1646,
+    "0-5": 1102,
+    "6-10": 1647,
     "11-15": 920,
     "16-20": 271,
     "20+": 35
@@ -5511,8 +5511,8 @@
     },
     {
       "date": "2025-12-21",
-      "games": 16,
-      "unique_players": 2
+      "games": 18,
+      "unique_players": 3
     }
   ]
 }
