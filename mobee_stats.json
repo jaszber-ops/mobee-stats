@@ -1,12 +1,13 @@
 {
-  "total_games": 3977,
+  "total_games": 3981,
   "unique_players": 468,
-  "high_score_games": 617,
-  "avg_score": 8.395775710334423,
+  "high_score_games": 618,
+  "avg_score": 8.395880432052248,
   "median_score": 8,
   "max_score": 25,
   "min_score": 0,
   "city_counts": {
+    "Frankfurt am Main": 26,
     "Budapest": 1927,
     "Gy\u0151r": 51,
     "Mosonmagyar\u00f3v\u00e1r": 15,
@@ -65,7 +66,6 @@
     "Burbank": 24,
     "Veszpr\u00e9m": 4,
     "Nijmegen": 3,
-    "Frankfurt am Main": 22,
     "Szigetszentmikl\u00f3s": 5,
     "G\u00e1rdony": 15,
     "Echternacherbruck": 6,
@@ -121,6 +121,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
+    "Germany": 89,
     "Hungary": 3365,
     "United States": 175,
     "Switzerland": 170,
@@ -130,7 +131,6 @@
     "Local/Unknown": 35,
     "Austria": 9,
     "United Kingdom": 18,
-    "Germany": 85,
     "Iceland": 1,
     "The Netherlands": 3,
     "Italy": 3,
@@ -145,9 +145,9 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
+    "Android Chrome": 1758,
     "iPad Safari": 63,
     "Mac Safari": 269,
-    "Android Chrome": 1754,
     "Mac Chrome": 86,
     "iPhone Safari": 777,
     "Windows Chrome": 497,
@@ -162,6 +162,11 @@
     "Unknown": 9
   },
   "platform_scores": {
+    "Android Chrome": {
+      "count": 1758,
+      "avg": 9.194539249146757,
+      "max": 25
+    },
     "iPad Safari": {
       "count": 63,
       "avg": 9.936507936507937,
@@ -171,11 +176,6 @@
       "count": 269,
       "avg": 7.895910780669145,
       "max": 19
-    },
-    "Android Chrome": {
-      "count": 1754,
-      "avg": 9.19612314709236,
-      "max": 25
     },
     "Mac Chrome": {
       "count": 86,
@@ -239,6 +239,10 @@
     }
   },
   "location_scores": {
+    "Germany": {
+      "count": 89,
+      "avg": 9.269662921348315
+    },
     "Hungary": {
       "count": 3365,
       "avg": 8.485289747399703
@@ -274,10 +278,6 @@
     "United Kingdom": {
       "count": 18,
       "avg": 12.5
-    },
-    "Germany": {
-      "count": 85,
-      "avg": 9.305882352941177
     },
     "Iceland": {
       "count": 1,
@@ -334,6 +334,7 @@
     "super_engaged": 87
   },
   "player_cities": {
+    "nd33fy": 4,
     "8ow4ia": 1,
     "t5jbkh": 2,
     "k2cove": 1,
@@ -519,7 +520,6 @@
     "bboe61": 1,
     "wdzy5o": 1,
     "16ppia": 1,
-    "nd33fy": 4,
     "29h393": 1,
     "2mp687": 1,
     "2zgckj": 2,
@@ -804,6 +804,7 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "nd33fy": 1,
     "8ow4ia": 1,
     "t5jbkh": 1,
     "k2cove": 1,
@@ -989,7 +990,6 @@
     "bboe61": 1,
     "wdzy5o": 1,
     "16ppia": 1,
-    "nd33fy": 1,
     "29h393": 1,
     "2mp687": 1,
     "2zgckj": 1,
@@ -1274,6 +1274,7 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "nd33fy": "Frankfurt am Main",
     "8ow4ia": "Budapest",
     "t5jbkh": "Ingolstadt",
     "k2cove": "Mosonmagyar\u00f3v\u00e1r",
@@ -1459,7 +1460,6 @@
     "bboe61": "Budapest",
     "wdzy5o": "P\u00e9cs",
     "16ppia": "G\u00e1rdony",
-    "nd33fy": "Frankfurt am Main",
     "29h393": "P\u00e9cs",
     "2mp687": "Biatorb\u00e1gy",
     "2zgckj": "Manchester",
@@ -1744,6 +1744,11 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "nd33fy": {
+      "location": "Frankfurt am Main, Germany",
+      "platform": "Android Chrome",
+      "timestamp": 1766341594.378649
+    },
     "8ow4ia": {
       "location": "Budapest, Hungary",
       "platform": "iPad Safari",
@@ -2653,11 +2658,6 @@
       "location": "G\u00e1rdony, Hungary",
       "platform": "Windows Chrome",
       "timestamp": 1765369190.951229
-    },
-    "nd33fy": {
-      "location": "Echternacherbruck, Germany",
-      "platform": "Android Chrome",
-      "timestamp": 1765368276.874039
     },
     "29h393": {
       "location": "P\u00e9cs, Hungary",
@@ -5432,9 +5432,9 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1102,
-    "6-10": 1648,
-    "11-15": 921,
+    "0-5": 1103,
+    "6-10": 1650,
+    "11-15": 922,
     "16-20": 271,
     "20+": 35
   },
@@ -5511,8 +5511,8 @@
     },
     {
       "date": "2025-12-21",
-      "games": 20,
-      "unique_players": 4
+      "games": 24,
+      "unique_players": 5
     }
   ]
 }
