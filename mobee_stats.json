@@ -1,13 +1,13 @@
 {
-  "total_games": 3956,
+  "total_games": 3957,
   "unique_players": 467,
   "high_score_games": 613,
-  "avg_score": 8.402426693629929,
-  "median_score": 8.0,
+  "avg_score": 8.401314126863786,
+  "median_score": 8,
   "max_score": 25,
   "min_score": 0,
   "city_counts": {
-    "Lenzburg": 11,
+    "Lenzburg": 12,
     "Porto Cristo": 5,
     "Budapest": 1925,
     "P\u00e9cs": 275,
@@ -120,7 +120,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Switzerland": 169,
+    "Switzerland": 170,
     "Spain": 6,
     "Hungary": 3346,
     "Ireland": 3,
@@ -144,7 +144,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "iPhone Safari": 776,
+    "iPhone Safari": 777,
     "Android Chrome": 1739,
     "Windows Chrome": 497,
     "Windows Safari": 105,
@@ -162,8 +162,8 @@
   },
   "platform_scores": {
     "iPhone Safari": {
-      "count": 776,
-      "avg": 7.242268041237113,
+      "count": 777,
+      "avg": 7.238095238095238,
       "max": 20
     },
     "Android Chrome": {
@@ -239,8 +239,8 @@
   },
   "location_scores": {
     "Switzerland": {
-      "count": 169,
-      "avg": 6.8698224852071
+      "count": 170,
+      "avg": 6.852941176470588
     },
     "Spain": {
       "count": 6,
@@ -5422,7 +5422,7 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1095,
+    "0-5": 1096,
     "6-10": 1637,
     "11-15": 918,
     "16-20": 271,
@@ -5496,7 +5496,7 @@
     },
     {
       "date": "2025-12-20",
-      "games": 99,
+      "games": 100,
       "unique_players": 17
     }
   ]
