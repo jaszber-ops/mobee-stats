@@ -1,13 +1,13 @@
 {
-  "total_games": 3982,
+  "total_games": 3984,
   "unique_players": 468,
   "high_score_games": 618,
-  "avg_score": 8.396785534907082,
+  "avg_score": 8.399347389558233,
   "median_score": 8.0,
   "max_score": 25,
   "min_score": 0,
   "city_counts": {
-    "Budapest": 1928,
+    "Budapest": 1930,
     "Frankfurt am Main": 26,
     "Gy\u0151r": 51,
     "Mosonmagyar\u00f3v\u00e1r": 15,
@@ -121,7 +121,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 3366,
+    "Hungary": 3368,
     "Germany": 89,
     "United States": 175,
     "Switzerland": 170,
@@ -145,7 +145,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 1759,
+    "Android Chrome": 1761,
     "iPad Safari": 63,
     "Mac Safari": 269,
     "Mac Chrome": 86,
@@ -163,8 +163,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 1759,
-      "avg": 9.196134167140421,
+      "count": 1761,
+      "avg": 9.201022146507666,
       "max": 25
     },
     "iPad Safari": {
@@ -240,8 +240,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 3366,
-      "avg": 8.486333927510398
+      "count": 3368,
+      "avg": 8.489311163895486
     },
     "Germany": {
       "count": 89,
@@ -5434,7 +5434,7 @@
   "score_distribution": {
     "0-5": 1103,
     "6-10": 1650,
-    "11-15": 923,
+    "11-15": 925,
     "16-20": 271,
     "20+": 35
   },
@@ -5511,7 +5511,7 @@
     },
     {
       "date": "2025-12-21",
-      "games": 25,
+      "games": 27,
       "unique_players": 6
     }
   ]
