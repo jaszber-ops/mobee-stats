@@ -1,13 +1,13 @@
 {
-  "total_games": 4083,
+  "total_games": 4085,
   "unique_players": 468,
   "high_score_games": 621,
-  "avg_score": 8.434729365662504,
+  "avg_score": 8.434761321909425,
   "median_score": 8,
   "max_score": 25,
   "min_score": 0,
   "city_counts": {
-    "Budapest": 1964,
+    "Budapest": 1966,
     "Gy\u00f6ngy\u00f6s": 32,
     "Los Angeles": 145,
     "Gyomaendr\u0151d": 92,
@@ -122,7 +122,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 3458,
+    "Hungary": 3460,
     "United States": 176,
     "Local/Unknown": 43,
     "Germany": 89,
@@ -146,7 +146,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Mac Safari": 303,
+    "Mac Safari": 305,
     "Android Chrome": 1817,
     "iPhone Safari": 778,
     "Windows Chrome": 505,
@@ -164,8 +164,8 @@
   },
   "platform_scores": {
     "Mac Safari": {
-      "count": 303,
-      "avg": 8.138613861386139,
+      "count": 305,
+      "avg": 8.140983606557377,
       "max": 19
     },
     "Android Chrome": {
@@ -241,8 +241,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 3458,
-      "avg": 8.528629265471372
+      "count": 3460,
+      "avg": 8.528612716763005
     },
     "United States": {
       "count": 176,
@@ -4358,6 +4358,8 @@
       "mvgu3u",
       [
         9,
+        8,
+        9,
         13,
         12,
         8,
@@ -5477,7 +5479,7 @@
   ],
   "score_distribution": {
     "0-5": 1113,
-    "6-10": 1695,
+    "6-10": 1697,
     "11-15": 965,
     "16-20": 275,
     "20+": 35
@@ -5560,7 +5562,7 @@
     },
     {
       "date": "2025-12-22",
-      "games": 99,
+      "games": 101,
       "unique_players": 6
     }
   ]
