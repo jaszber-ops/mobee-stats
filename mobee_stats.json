@@ -1,16 +1,16 @@
 {
-  "total_games": 4188,
+  "total_games": 4197,
   "unique_players": 475,
   "high_score_games": 625,
-  "avg_score": 8.537726838586437,
-  "median_score": 8.0,
+  "avg_score": 8.540385989992853,
+  "median_score": 8,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
+    "Budapest": 2037,
     "Copenhagen": 1,
     "Sz\u00e9kesfeh\u00e9rv\u00e1r": 251,
     "Celld\u00f6m\u00f6lk": 2,
-    "Budapest": 2028,
     "Gyomaendr\u0151d": 117,
     "Los Angeles": 148,
     "Gy\u00f6ngy\u00f6s": 32,
@@ -124,8 +124,8 @@
     "12/6/2025": 5
   },
   "country_counts": {
+    "Hungary": 3568,
     "Denmark": 1,
-    "Hungary": 3559,
     "United States": 179,
     "Local/Unknown": 43,
     "Germany": 89,
@@ -149,10 +149,10 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
+    "Mac Safari": 317,
     "Windows Safari": 106,
     "Android Chrome": 1914,
     "Windows Chrome": 507,
-    "Mac Safari": 308,
     "iPhone Safari": 778,
     "iPad Safari": 63,
     "Mac Chrome": 86,
@@ -166,6 +166,11 @@
     "Unknown": 9
   },
   "platform_scores": {
+    "Mac Safari": {
+      "count": 317,
+      "avg": 8.138801261829652,
+      "max": 19
+    },
     "Windows Safari": {
       "count": 106,
       "avg": 7.490566037735849,
@@ -180,11 +185,6 @@
       "count": 507,
       "avg": 8.214990138067062,
       "max": 22
-    },
-    "Mac Safari": {
-      "count": 308,
-      "avg": 8.090909090909092,
-      "max": 19
     },
     "iPhone Safari": {
       "count": 778,
@@ -243,13 +243,13 @@
     }
   },
   "location_scores": {
+    "Hungary": {
+      "count": 3568,
+      "avg": 8.655829596412556
+    },
     "Denmark": {
       "count": 1,
       "avg": 4.0
-    },
-    "Hungary": {
-      "count": 3559,
-      "avg": 8.652992413599325
     },
     "United States": {
       "count": 179,
@@ -342,6 +342,7 @@
     "super_engaged": 87
   },
   "player_cities": {
+    "mvgu3u": 1,
     "qyzfh5": 1,
     "hphhm0": 2,
     "f2atqc": 1,
@@ -352,7 +353,6 @@
     "p7ldpc": 1,
     "sy34gh": 1,
     "ggttsr": 1,
-    "mvgu3u": 1,
     "nd33fy": 5,
     "vf4pmj": 2,
     "y74wa2": 1,
@@ -819,6 +819,7 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "mvgu3u": 1,
     "qyzfh5": 1,
     "hphhm0": 1,
     "f2atqc": 1,
@@ -829,7 +830,6 @@
     "p7ldpc": 1,
     "sy34gh": 1,
     "ggttsr": 1,
-    "mvgu3u": 1,
     "nd33fy": 1,
     "vf4pmj": 1,
     "y74wa2": 1,
@@ -1296,6 +1296,7 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "mvgu3u": "Budapest",
     "qyzfh5": "Copenhagen",
     "hphhm0": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
     "f2atqc": "Celld\u00f6m\u00f6lk",
@@ -1306,7 +1307,6 @@
     "p7ldpc": "Los Angeles",
     "sy34gh": "Los Angeles",
     "ggttsr": "Los Angeles",
-    "mvgu3u": "Budapest",
     "nd33fy": "Gy\u00f6ngy\u00f6s",
     "vf4pmj": "Los Angeles",
     "y74wa2": "Unknown City",
@@ -1773,6 +1773,11 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "mvgu3u": {
+      "location": "Budapest, Hungary",
+      "platform": "Mac Safari",
+      "timestamp": 1766433996.721109
+    },
     "qyzfh5": {
       "location": "Copenhagen, Denmark",
       "platform": "Windows Safari",
@@ -1817,11 +1822,6 @@
       "location": "Los Angeles, United States",
       "platform": "Mac Safari",
       "timestamp": 1766446526.950869
-    },
-    "mvgu3u": {
-      "location": "Budapest, Hungary",
-      "platform": "Mac Safari",
-      "timestamp": 1766433996.721109
     },
     "nd33fy": {
       "location": "Gy\u00f6ngy\u00f6s, Hungary",
@@ -4471,6 +4471,15 @@
     [
       "mvgu3u",
       [
+        11,
+        9,
+        9,
+        7,
+        12,
+        13,
+        10,
+        6,
+        11,
         9,
         8,
         9,
@@ -5618,8 +5627,8 @@
   ],
   "score_distribution": {
     "0-5": 1140,
-    "6-10": 1711,
-    "11-15": 980,
+    "6-10": 1716,
+    "11-15": 984,
     "16-20": 310,
     "20+": 47
   },
@@ -5706,8 +5715,8 @@
     },
     {
       "date": "2025-12-23",
-      "games": 100,
-      "unique_players": 7
+      "games": 109,
+      "unique_players": 8
     }
   ]
 }
