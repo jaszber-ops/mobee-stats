@@ -1,13 +1,13 @@
 {
-  "total_games": 4267,
+  "total_games": 4269,
   "unique_players": 476,
   "high_score_games": 628,
-  "avg_score": 8.552847433794234,
+  "avg_score": 8.55211993441087,
   "median_score": 8,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
-    "Gyomaendr\u0151d": 119,
+    "Gyomaendr\u0151d": 121,
     "Budapest": 2105,
     "Copenhagen": 1,
     "Sz\u00e9kesfeh\u00e9rv\u00e1r": 251,
@@ -124,7 +124,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 3638,
+    "Hungary": 3640,
     "Denmark": 1,
     "United States": 179,
     "Local/Unknown": 43,
@@ -149,7 +149,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 1922,
+    "Android Chrome": 1924,
     "Mac Safari": 379,
     "Windows Safari": 106,
     "Windows Chrome": 507,
@@ -167,8 +167,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 1922,
-      "avg": 9.41987513007284,
+      "count": 1924,
+      "avg": 9.417359667359667,
       "max": 27
     },
     "Mac Safari": {
@@ -244,8 +244,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 3638,
-      "avg": 8.66822429906542
+      "count": 3640,
+      "avg": 8.667307692307693
     },
     "Denmark": {
       "count": 1,
@@ -5163,6 +5163,8 @@
     [
       "r2xhmp",
       [
+        7,
+        7,
         9,
         5,
         8,
@@ -5699,7 +5701,7 @@
   ],
   "score_distribution": {
     "0-5": 1146,
-    "6-10": 1757,
+    "6-10": 1759,
     "11-15": 1004,
     "16-20": 313,
     "20+": 47
@@ -5792,7 +5794,7 @@
     },
     {
       "date": "2025-12-24",
-      "games": 2,
+      "games": 4,
       "unique_players": 1
     }
   ]
