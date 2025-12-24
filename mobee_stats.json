@@ -1,15 +1,15 @@
 {
-  "total_games": 4298,
+  "total_games": 4300,
   "unique_players": 477,
   "high_score_games": 629,
-  "avg_score": 8.554443927408096,
+  "avg_score": 8.552558139534884,
   "median_score": 8.0,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
+    "Gyomaendr\u0151d": 128,
     "Gy\u00f6ngy\u00f6s": 53,
     "Debrecen": 371,
-    "Gyomaendr\u0151d": 126,
     "Budapest": 2107,
     "Copenhagen": 1,
     "Sz\u00e9kesfeh\u00e9rv\u00e1r": 251,
@@ -124,7 +124,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 3669,
+    "Hungary": 3671,
     "Denmark": 1,
     "United States": 179,
     "Local/Unknown": 43,
@@ -149,7 +149,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 1952,
+    "Android Chrome": 1954,
     "Windows Safari": 107,
     "Mac Safari": 379,
     "Windows Chrome": 507,
@@ -167,8 +167,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 1952,
-      "avg": 9.410348360655737,
+      "count": 1954,
+      "avg": 9.40532241555783,
       "max": 27
     },
     "Windows Safari": {
@@ -244,8 +244,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 3669,
-      "avg": 8.669119651131098
+      "count": 3671,
+      "avg": 8.666848270226096
     },
     "Denmark": {
       "count": 1,
@@ -342,9 +342,9 @@
     "super_engaged": 87
   },
   "player_cities": {
+    "r2xhmp": 2,
     "nd33fy": 5,
     "vvh7yf": 1,
-    "r2xhmp": 2,
     "avcxny": 1,
     "0598yf": 1,
     "mvgu3u": 1,
@@ -821,9 +821,9 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "r2xhmp": 1,
     "nd33fy": 1,
     "vvh7yf": 1,
-    "r2xhmp": 1,
     "avcxny": 1,
     "0598yf": 1,
     "mvgu3u": 1,
@@ -1300,9 +1300,9 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "r2xhmp": "Gyomaendr\u0151d",
     "nd33fy": "Gy\u00f6ngy\u00f6s",
     "vvh7yf": "Debrecen",
-    "r2xhmp": "Gyomaendr\u0151d",
     "avcxny": "Budapest",
     "0598yf": "Budapest",
     "mvgu3u": "Budapest",
@@ -1779,6 +1779,11 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "r2xhmp": {
+      "location": "Gyomaendr\u0151d, Hungary",
+      "platform": "Android Chrome",
+      "timestamp": 1766575209.818819
+    },
     "nd33fy": {
       "location": "Gy\u00f6ngy\u00f6s, Hungary",
       "platform": "Android Chrome",
@@ -1788,11 +1793,6 @@
       "location": "Debrecen, Hungary",
       "platform": "Windows Safari",
       "timestamp": 1766578791.722589
-    },
-    "r2xhmp": {
-      "location": "Gyomaendr\u0151d, Hungary",
-      "platform": "Android Chrome",
-      "timestamp": 1766575209.818819
     },
     "avcxny": {
       "location": "Budapest, Hungary",
@@ -5171,6 +5171,8 @@
     [
       "r2xhmp",
       [
+        3,
+        6,
         7,
         7,
         8,
@@ -5729,8 +5731,8 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1150,
-    "6-10": 1775,
+    "0-5": 1151,
+    "6-10": 1776,
     "11-15": 1013,
     "16-20": 313,
     "20+": 47
@@ -5823,7 +5825,7 @@
     },
     {
       "date": "2025-12-24",
-      "games": 33,
+      "games": 35,
       "unique_players": 4
     }
   ]
