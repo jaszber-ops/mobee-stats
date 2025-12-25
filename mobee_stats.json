@@ -1,13 +1,13 @@
 {
-  "total_games": 4337,
+  "total_games": 4344,
   "unique_players": 477,
   "high_score_games": 629,
-  "avg_score": 8.625086465298594,
-  "median_score": 8,
+  "avg_score": 8.621316758747698,
+  "median_score": 8.0,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
-    "Gyomaendr\u0151d": 130,
+    "Gyomaendr\u0151d": 137,
     "Sikl\u00f3s": 93,
     "Tapolca": 32,
     "Budapest": 2108,
@@ -125,7 +125,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 3708,
+    "Hungary": 3715,
     "Denmark": 1,
     "United States": 179,
     "Local/Unknown": 43,
@@ -150,7 +150,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 1989,
+    "Android Chrome": 1996,
     "iPhone Safari": 780,
     "Windows Safari": 107,
     "Mac Safari": 379,
@@ -168,8 +168,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 1989,
-      "avg": 9.549522373051785,
+      "count": 1996,
+      "avg": 9.53807615230461,
       "max": 27
     },
     "iPhone Safari": {
@@ -245,8 +245,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 3708,
-      "avg": 8.750539374325783
+      "count": 3715,
+      "avg": 8.745895020188426
     },
     "Denmark": {
       "count": 1,
@@ -1783,7 +1783,7 @@
     "r2xhmp": {
       "location": "Gyomaendr\u0151d, Hungary",
       "platform": "Android Chrome",
-      "timestamp": 1766575209.818819
+      "timestamp": 1766641240.545269
     },
     "y53er3": {
       "location": "Sikl\u00f3s, Hungary",
@@ -5204,6 +5204,13 @@
     [
       "r2xhmp",
       [
+        7,
+        7,
+        7,
+        8,
+        4,
+        2,
+        9,
         0,
         5,
         3,
@@ -5766,8 +5773,8 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1154,
-    "6-10": 1779,
+    "0-5": 1156,
+    "6-10": 1784,
     "11-15": 1016,
     "16-20": 332,
     "20+": 56
@@ -5862,6 +5869,11 @@
       "date": "2025-12-24",
       "games": 72,
       "unique_players": 7
+    },
+    {
+      "date": "2025-12-25",
+      "games": 7,
+      "unique_players": 1
     }
   ]
 }
