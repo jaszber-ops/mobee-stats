@@ -1,13 +1,13 @@
 {
-  "total_games": 4344,
+  "total_games": 4355,
   "unique_players": 477,
   "high_score_games": 629,
-  "avg_score": 8.621316758747698,
-  "median_score": 8.0,
+  "avg_score": 8.610103329506314,
+  "median_score": 8,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
-    "Gyomaendr\u0151d": 137,
+    "Gyomaendr\u0151d": 148,
     "Sikl\u00f3s": 93,
     "Tapolca": 32,
     "Budapest": 2108,
@@ -125,7 +125,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 3715,
+    "Hungary": 3726,
     "Denmark": 1,
     "United States": 179,
     "Local/Unknown": 43,
@@ -150,7 +150,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 1996,
+    "Android Chrome": 2007,
     "iPhone Safari": 780,
     "Windows Safari": 107,
     "Mac Safari": 379,
@@ -168,8 +168,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 1996,
-      "avg": 9.53807615230461,
+      "count": 2007,
+      "avg": 9.508719481813651,
       "max": 27
     },
     "iPhone Safari": {
@@ -245,8 +245,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 3715,
-      "avg": 8.745895020188426
+      "count": 3726,
+      "avg": 8.732420826623725
     },
     "Denmark": {
       "count": 1,
@@ -5206,6 +5206,17 @@
       [
         7,
         7,
+        1,
+        2,
+        5,
+        4,
+        8,
+        0,
+        2,
+        5,
+        5,
+        7,
+        7,
         7,
         8,
         4,
@@ -5773,8 +5784,8 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1156,
-    "6-10": 1784,
+    "0-5": 1164,
+    "6-10": 1787,
     "11-15": 1016,
     "16-20": 332,
     "20+": 56
@@ -5872,7 +5883,7 @@
     },
     {
       "date": "2025-12-25",
-      "games": 7,
+      "games": 18,
       "unique_players": 1
     }
   ]
