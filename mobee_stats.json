@@ -1,13 +1,13 @@
 {
-  "total_games": 4384,
+  "total_games": 4386,
   "unique_players": 479,
   "high_score_games": 633,
-  "avg_score": 8.589187956204379,
+  "avg_score": 8.587323301413589,
   "median_score": 8.0,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
-    "Gyomaendr\u0151d": 163,
+    "Gyomaendr\u0151d": 165,
     "Budapest": 2116,
     "Jona": 19,
     "Zurich": 38,
@@ -125,7 +125,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 3749,
+    "Hungary": 3751,
     "Switzerland": 176,
     "Denmark": 1,
     "United States": 179,
@@ -150,7 +150,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 2027,
+    "Android Chrome": 2029,
     "iPhone Safari": 785,
     "Windows Firefox": 116,
     "Windows Safari": 107,
@@ -168,8 +168,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 2027,
-      "avg": 9.468179575727676,
+      "count": 2029,
+      "avg": 9.463282405125678,
       "max": 27
     },
     "iPhone Safari": {
@@ -245,8 +245,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 3749,
-      "avg": 8.71565750866898
+      "count": 3751,
+      "avg": 8.713409757398027
     },
     "Switzerland": {
       "count": 176,
@@ -4767,6 +4767,8 @@
     [
       "r2xhmp",
       [
+        5,
+        4,
         6,
         6,
         6,
@@ -5815,7 +5817,7 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1176,
+    "0-5": 1178,
     "6-10": 1803,
     "11-15": 1017,
     "16-20": 332,
@@ -5919,7 +5921,7 @@
     },
     {
       "date": "2025-12-26",
-      "games": 7,
+      "games": 9,
       "unique_players": 1
     }
   ]
