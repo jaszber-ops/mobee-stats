@@ -1,13 +1,13 @@
 {
-  "total_games": 4810,
+  "total_games": 4813,
   "unique_players": 483,
   "high_score_games": 647,
-  "avg_score": 8.827650727650727,
-  "median_score": 9.0,
+  "avg_score": 8.83606897984625,
+  "median_score": 9,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
-    "Budapest": 2309,
+    "Budapest": 2312,
     "P\u00e9cs": 453,
     "Gyomaendr\u0151d": 210,
     "Santa Monica": 6,
@@ -127,7 +127,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 4169,
+    "Hungary": 4172,
     "United States": 180,
     "Germany": 94,
     "Switzerland": 176,
@@ -152,7 +152,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 2312,
+    "Android Chrome": 2315,
     "iPhone Safari": 800,
     "iPhone Browser": 348,
     "Windows Firefox": 116,
@@ -170,8 +170,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 2312,
-      "avg": 9.577854671280276,
+      "count": 2315,
+      "avg": 9.59438444924406,
       "max": 27
     },
     "iPhone Safari": {
@@ -247,8 +247,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 4169,
-      "avg": 8.97961141760614
+      "count": 4172,
+      "avg": 8.9892138063279
     },
     "United States": {
       "count": 180,
@@ -4145,6 +4145,9 @@
     [
       "6gawu9",
       [
+        22,
+        23,
+        22,
         25,
         16,
         23,
@@ -6106,7 +6109,7 @@
     "6-10": 1904,
     "11-15": 1178,
     "16-20": 399,
-    "20+": 79
+    "20+": 82
   },
   "daily_stats": [
     {
@@ -6211,7 +6214,7 @@
     },
     {
       "date": "2025-12-27",
-      "games": 109,
+      "games": 112,
       "unique_players": 7
     }
   ]
