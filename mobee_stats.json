@@ -1,17 +1,17 @@
 {
-  "total_games": 4931,
+  "total_games": 4943,
   "unique_players": 486,
   "high_score_games": 654,
-  "avg_score": 8.870817278442507,
+  "avg_score": 8.879223143839774,
   "median_score": 9,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
+    "P\u00e9cs": 499,
+    "Debrecen": 375,
     "T\u00e1pi\u00f3szentm\u00e1rton": 17,
-    "P\u00e9cs": 488,
     "Budapest": 2372,
     "Leuven": 1,
-    "Debrecen": 374,
     "Los Angeles": 150,
     "Gyomaendr\u0151d": 210,
     "Santa Monica": 6,
@@ -129,7 +129,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 4287,
+    "Hungary": 4299,
     "Belgium": 52,
     "United States": 182,
     "Germany": 94,
@@ -154,7 +154,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 2354,
+    "Android Chrome": 2366,
     "iPhone Safari": 816,
     "Windows Chrome": 517,
     "iPhone Browser": 398,
@@ -172,8 +172,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 2354,
-      "avg": 9.582412914188614,
+      "count": 2366,
+      "avg": 9.59636517328825,
       "max": 27
     },
     "iPhone Safari": {
@@ -249,8 +249,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 4287,
-      "avg": 9.029624445999534
+      "count": 4299,
+      "avg": 9.038846243312399
     },
     "Belgium": {
       "count": 52,
@@ -347,8 +347,9 @@
     "super_engaged": 90
   },
   "player_cities": {
-    "r2xhmp": 3,
     "a03pnz": 1,
+    "dmn1gx": 1,
+    "r2xhmp": 3,
     "ndhw6z": 2,
     "u22sqr": 1,
     "z3gp4k": 2,
@@ -465,7 +466,6 @@
     "92swqy": 1,
     "23l7dl": 1,
     "h02qk5": 1,
-    "dmn1gx": 1,
     "2tq3m8": 1,
     "ipsp72": 1,
     "zddzoy": 1,
@@ -835,8 +835,9 @@
     "Unknown": 2
   },
   "player_platforms": {
-    "r2xhmp": 1,
     "a03pnz": 1,
+    "dmn1gx": 1,
+    "r2xhmp": 1,
     "ndhw6z": 2,
     "u22sqr": 1,
     "z3gp4k": 1,
@@ -953,7 +954,6 @@
     "92swqy": 1,
     "23l7dl": 1,
     "h02qk5": 1,
-    "dmn1gx": 1,
     "2tq3m8": 1,
     "ipsp72": 1,
     "zddzoy": 1,
@@ -1323,8 +1323,9 @@
     "Unknown": 1
   },
   "player_most_common_city": {
-    "r2xhmp": "Gyomaendr\u0151d",
     "a03pnz": "P\u00e9cs",
+    "dmn1gx": "Debrecen",
+    "r2xhmp": "Gyomaendr\u0151d",
     "ndhw6z": "P\u00e9cs",
     "u22sqr": "P\u00e9cs",
     "z3gp4k": "P\u00e9cs",
@@ -1441,7 +1442,6 @@
     "92swqy": "Nagyat\u00e1d",
     "23l7dl": "P\u00e9cs",
     "h02qk5": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
-    "dmn1gx": "Debrecen",
     "2tq3m8": "Debrecen",
     "ipsp72": "Budapest",
     "zddzoy": "Budapest",
@@ -1811,15 +1811,20 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
-    "r2xhmp": {
-      "location": "T\u00e1pi\u00f3szentm\u00e1rton, Hungary",
-      "platform": "Android Chrome",
-      "timestamp": 1766906642.135249
-    },
     "a03pnz": {
       "location": "P\u00e9cs, Hungary",
       "platform": "Android Chrome",
       "timestamp": 1766831518.715249
+    },
+    "dmn1gx": {
+      "location": "Debrecen, Hungary",
+      "platform": "Android Chrome",
+      "timestamp": 1765230361.869299
+    },
+    "r2xhmp": {
+      "location": "T\u00e1pi\u00f3szentm\u00e1rton, Hungary",
+      "platform": "Android Chrome",
+      "timestamp": 1766906642.135249
     },
     "ndhw6z": {
       "location": "P\u00e9cs, Hungary",
@@ -2380,11 +2385,6 @@
       "location": "Sz\u00e9kesfeh\u00e9rv\u00e1r, Hungary",
       "platform": "iPhone Safari",
       "timestamp": 1765811054.357249
-    },
-    "dmn1gx": {
-      "location": "Debrecen, Hungary",
-      "platform": "Android Chrome",
-      "timestamp": 1765230361.869299
     },
     "2tq3m8": {
       "location": "Debrecen, Hungary",
@@ -5319,6 +5319,17 @@
     [
       "a03pnz",
       [
+        8,
+        11,
+        17,
+        4,
+        18,
+        17,
+        2,
+        19,
+        19,
+        16,
+        14,
         5,
         11,
         13,
@@ -6208,10 +6219,10 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1278,
-    "6-10": 1929,
-    "11-15": 1218,
-    "16-20": 422,
+    "0-5": 1281,
+    "6-10": 1930,
+    "11-15": 1220,
+    "16-20": 428,
     "20+": 84
   },
   "daily_stats": [
@@ -6322,8 +6333,8 @@
     },
     {
       "date": "2025-12-28",
-      "games": 58,
-      "unique_players": 7
+      "games": 70,
+      "unique_players": 8
     }
   ]
 }
