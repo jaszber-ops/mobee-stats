@@ -1,13 +1,13 @@
 {
-  "total_games": 4886,
+  "total_games": 4890,
   "unique_players": 485,
   "high_score_games": 649,
-  "avg_score": 8.880679492427344,
+  "avg_score": 8.877709611451943,
   "median_score": 9.0,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
-    "T\u00e1pi\u00f3szentm\u00e1rton": 11,
+    "T\u00e1pi\u00f3szentm\u00e1rton": 15,
     "Budapest": 2368,
     "Leuven": 1,
     "Debrecen": 374,
@@ -129,7 +129,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 4242,
+    "Hungary": 4246,
     "Belgium": 52,
     "United States": 182,
     "Germany": 94,
@@ -154,7 +154,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 2336,
+    "Android Chrome": 2340,
     "Windows Chrome": 508,
     "iPhone Browser": 394,
     "Windows Safari": 110,
@@ -172,8 +172,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 2336,
-      "avg": 9.589897260273972,
+      "count": 2340,
+      "avg": 9.582478632478633,
       "max": 27
     },
     "Windows Chrome": {
@@ -249,8 +249,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 4242,
-      "avg": 9.042668552569543
+      "count": 4246,
+      "avg": 9.0390956194065
     },
     "Belgium": {
       "count": 52,
@@ -4871,6 +4871,10 @@
     [
       "r2xhmp",
       [
+        7,
+        5,
+        4,
+        5,
         11,
         6,
         5,
@@ -6182,8 +6186,8 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1263,
-    "6-10": 1913,
+    "0-5": 1266,
+    "6-10": 1914,
     "11-15": 1206,
     "16-20": 420,
     "20+": 84
@@ -6296,7 +6300,7 @@
     },
     {
       "date": "2025-12-28",
-      "games": 13,
+      "games": 17,
       "unique_players": 3
     }
   ]
