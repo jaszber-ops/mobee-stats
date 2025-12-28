@@ -1,13 +1,13 @@
 {
-  "total_games": 4873,
-  "unique_players": 484,
+  "total_games": 4874,
+  "unique_players": 485,
   "high_score_games": 648,
-  "avg_score": 8.891237430740818,
-  "median_score": 9,
+  "avg_score": 8.889413212966762,
+  "median_score": 9.0,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
-    "Budapest": 2366,
+    "Budapest": 2367,
     "Leuven": 1,
     "Debrecen": 374,
     "Los Angeles": 150,
@@ -128,7 +128,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 4229,
+    "Hungary": 4230,
     "Belgium": 52,
     "United States": 182,
     "Germany": 94,
@@ -153,13 +153,13 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
+    "Windows Chrome": 508,
     "Android Chrome": 2324,
     "iPhone Browser": 394,
     "Windows Safari": 110,
     "iPhone Safari": 802,
     "Windows Firefox": 116,
     "Mac Safari": 379,
-    "Windows Chrome": 507,
     "iPad Safari": 63,
     "Mac Chrome": 86,
     "Other Chrome": 6,
@@ -170,6 +170,11 @@
     "Unknown": 9
   },
   "platform_scores": {
+    "Windows Chrome": {
+      "count": 508,
+      "avg": 8.198818897637794,
+      "max": 22
+    },
     "Android Chrome": {
       "count": 2324,
       "avg": 9.611876075731498,
@@ -199,11 +204,6 @@
       "count": 379,
       "avg": 8.356200527704486,
       "max": 19
-    },
-    "Windows Chrome": {
-      "count": 507,
-      "avg": 8.214990138067062,
-      "max": 22
     },
     "iPad Safari": {
       "count": 63,
@@ -248,8 +248,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 4229,
-      "avg": 9.05533222984157
+      "count": 4230,
+      "avg": 9.053191489361701
     },
     "Belgium": {
       "count": 52,
@@ -341,11 +341,12 @@
     }
   },
   "engagement": {
-    "one_time_players": 168,
+    "one_time_players": 169,
     "returning_players": 316,
     "super_engaged": 90
   },
   "player_cities": {
+    "hdc8pc": 1,
     "6gawu9": 3,
     "qr4v6g": 1,
     "81f9ig": 1,
@@ -832,6 +833,7 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "hdc8pc": 1,
     "6gawu9": 1,
     "qr4v6g": 1,
     "81f9ig": 1,
@@ -1318,6 +1320,7 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "hdc8pc": "Budapest",
     "6gawu9": "Budapest",
     "qr4v6g": "Budapest",
     "81f9ig": "Budapest",
@@ -6167,7 +6170,7 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1256,
+    "0-5": 1257,
     "6-10": 1908,
     "11-15": 1205,
     "16-20": 420,
@@ -6278,6 +6281,11 @@
       "date": "2025-12-27",
       "games": 172,
       "unique_players": 11
+    },
+    {
+      "date": "2025-12-28",
+      "games": 1,
+      "unique_players": 1
     }
   ]
 }
