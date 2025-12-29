@@ -1,13 +1,13 @@
 {
-  "total_games": 5088,
+  "total_games": 5106,
   "unique_players": 486,
   "high_score_games": 655,
-  "avg_score": 9.018867924528301,
+  "avg_score": 9.052291421856639,
   "median_score": 9.0,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
-    "Budapest": 2481,
+    "Budapest": 2499,
     "T\u00e1pi\u00f3szentm\u00e1rton": 24,
     "Sz\u00e9kesfeh\u00e9rv\u00e1r": 256,
     "Domb\u00f3v\u00e1r": 2,
@@ -130,7 +130,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 4444,
+    "Hungary": 4462,
     "Belgium": 52,
     "United States": 182,
     "Germany": 94,
@@ -155,7 +155,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 2431,
+    "Android Chrome": 2449,
     "Windows Chrome": 520,
     "iPhone Browser": 475,
     "iPhone Safari": 816,
@@ -173,8 +173,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 2431,
-      "avg": 9.711229946524064,
+      "count": 2449,
+      "avg": 9.775826868109432,
       "max": 27
     },
     "Windows Chrome": {
@@ -250,8 +250,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 4444,
-      "avg": 9.193519351935194
+      "count": 4462,
+      "avg": 9.231062303899597
     },
     "Belgium": {
       "count": 52,
@@ -349,12 +349,12 @@
   },
   "player_cities": {
     "6gawu9": 3,
+    "hphhm0": 2,
     "55ftpu": 1,
     "xvn6ui": 1,
     "r2xhmp": 3,
     "qr4v6g": 1,
     "tu5p0v": 1,
-    "hphhm0": 2,
     "dbffcd": 1,
     "2xolmp": 3,
     "a03pnz": 1,
@@ -837,12 +837,12 @@
   },
   "player_platforms": {
     "6gawu9": 1,
+    "hphhm0": 1,
     "55ftpu": 1,
     "xvn6ui": 1,
     "r2xhmp": 1,
     "qr4v6g": 1,
     "tu5p0v": 1,
-    "hphhm0": 1,
     "dbffcd": 1,
     "2xolmp": 1,
     "a03pnz": 1,
@@ -1325,12 +1325,12 @@
   },
   "player_most_common_city": {
     "6gawu9": "Budapest",
+    "hphhm0": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
     "55ftpu": "Budapest",
     "xvn6ui": "Budapest",
     "r2xhmp": "Gyomaendr\u0151d",
     "qr4v6g": "Budapest",
     "tu5p0v": "Budapest",
-    "hphhm0": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
     "dbffcd": "Budapest",
     "2xolmp": "Budapest",
     "a03pnz": "P\u00e9cs",
@@ -1817,6 +1817,11 @@
       "platform": "Android Chrome",
       "timestamp": 1767001824.150169
     },
+    "hphhm0": {
+      "location": "Sz\u00e9kesfeh\u00e9rv\u00e1r, Hungary",
+      "platform": "Android Chrome",
+      "timestamp": 1766057242.108069
+    },
     "55ftpu": {
       "location": "Budapest, Hungary",
       "platform": "Windows Chrome",
@@ -1841,11 +1846,6 @@
       "location": "Budapest, Hungary",
       "platform": "Android Chrome",
       "timestamp": 1767013791.574339
-    },
-    "hphhm0": {
-      "location": "Sz\u00e9kesfeh\u00e9rv\u00e1r, Hungary",
-      "platform": "Android Chrome",
-      "timestamp": 1766057242.108069
     },
     "dbffcd": {
       "location": "Budapest, Hungary",
@@ -4167,6 +4167,23 @@
     [
       "6gawu9",
       [
+        6,
+        21,
+        21,
+        8,
+        20,
+        21,
+        21,
+        19,
+        24,
+        20,
+        24,
+        13,
+        22,
+        16,
+        23,
+        18,
+        19,
         20,
         19,
         18,
@@ -6350,10 +6367,10 @@
   ],
   "score_distribution": {
     "0-5": 1298,
-    "6-10": 1944,
-    "11-15": 1270,
-    "16-20": 481,
-    "20+": 95
+    "6-10": 1946,
+    "11-15": 1271,
+    "16-20": 488,
+    "20+": 103
   },
   "daily_stats": [
     {
@@ -6468,7 +6485,7 @@
     },
     {
       "date": "2025-12-29",
-      "games": 57,
+      "games": 75,
       "unique_players": 7
     }
   ]
