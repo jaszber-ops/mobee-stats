@@ -1,15 +1,15 @@
 {
-  "total_games": 5176,
+  "total_games": 5185,
   "unique_players": 487,
   "high_score_games": 656,
-  "avg_score": 9.06163060278207,
-  "median_score": 9.0,
+  "avg_score": 9.073288331726133,
+  "median_score": 9,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
+    "Budapest": 2526,
+    "T\u00e1pi\u00f3szentm\u00e1rton": 48,
     "Szentendre": 14,
-    "Budapest": 2519,
-    "T\u00e1pi\u00f3szentm\u00e1rton": 46,
     "P\u00e9cs": 547,
     "Sz\u00e9kesfeh\u00e9rv\u00e1r": 256,
     "Domb\u00f3v\u00e1r": 2,
@@ -130,7 +130,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 4532,
+    "Hungary": 4541,
     "Belgium": 52,
     "United States": 182,
     "Germany": 94,
@@ -155,8 +155,8 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
+    "Android Chrome": 2517,
     "Windows Firefox": 118,
-    "Android Chrome": 2508,
     "iPhone Browser": 484,
     "Windows Chrome": 520,
     "iPhone Safari": 816,
@@ -172,15 +172,15 @@
     "Unknown": 9
   },
   "platform_scores": {
+    "Android Chrome": {
+      "count": 2517,
+      "avg": 9.77155343663091,
+      "max": 27
+    },
     "Windows Firefox": {
       "count": 118,
       "avg": 5.711864406779661,
       "max": 24
-    },
-    "Android Chrome": {
-      "count": 2508,
-      "avg": 9.75,
-      "max": 27
     },
     "iPhone Browser": {
       "count": 484,
@@ -250,8 +250,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 4532,
-      "avg": 9.238967343336276
+      "count": 4541,
+      "avg": 9.251926888350583
     },
     "Belgium": {
       "count": 52,
@@ -348,10 +348,10 @@
     "super_engaged": 90
   },
   "player_cities": {
-    "j95r3d": 1,
-    "z0f2dn": 1,
     "6gawu9": 3,
     "r2xhmp": 3,
+    "j95r3d": 1,
+    "z0f2dn": 1,
     "a03pnz": 1,
     "qr4v6g": 1,
     "81f9ig": 1,
@@ -837,10 +837,10 @@
     "Unknown": 2
   },
   "player_platforms": {
-    "j95r3d": 1,
-    "z0f2dn": 1,
     "6gawu9": 1,
     "r2xhmp": 1,
+    "j95r3d": 1,
+    "z0f2dn": 1,
     "a03pnz": 1,
     "qr4v6g": 1,
     "81f9ig": 1,
@@ -1326,10 +1326,10 @@
     "Unknown": 1
   },
   "player_most_common_city": {
-    "j95r3d": "Szentendre",
-    "z0f2dn": "Budapest",
     "6gawu9": "Budapest",
     "r2xhmp": "Gyomaendr\u0151d",
+    "j95r3d": "Szentendre",
+    "z0f2dn": "Budapest",
     "a03pnz": "P\u00e9cs",
     "qr4v6g": "Budapest",
     "81f9ig": "Budapest",
@@ -1815,16 +1815,6 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
-    "j95r3d": {
-      "location": "Szentendre, Hungary",
-      "platform": "Windows Firefox",
-      "timestamp": 1767097329.423299
-    },
-    "z0f2dn": {
-      "location": "Budapest, Hungary",
-      "platform": "Android Chrome",
-      "timestamp": 1767088254.783509
-    },
     "6gawu9": {
       "location": "Budapest, Hungary",
       "platform": "Android Chrome",
@@ -1834,6 +1824,16 @@
       "location": "T\u00e1pi\u00f3szentm\u00e1rton, Hungary",
       "platform": "Android Chrome",
       "timestamp": 1767080579.303989
+    },
+    "j95r3d": {
+      "location": "Szentendre, Hungary",
+      "platform": "Windows Firefox",
+      "timestamp": 1767097329.423299
+    },
+    "z0f2dn": {
+      "location": "Budapest, Hungary",
+      "platform": "Android Chrome",
+      "timestamp": 1767088254.783509
     },
     "a03pnz": {
       "location": "P\u00e9cs, Hungary",
@@ -4175,6 +4175,13 @@
     [
       "6gawu9",
       [
+        18,
+        21,
+        16,
+        23,
+        21,
+        18,
+        17,
         11,
         20,
         20,
@@ -5008,6 +5015,8 @@
     [
       "r2xhmp",
       [
+        6,
+        2,
         8,
         7,
         3,
@@ -6439,11 +6448,11 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1320,
-    "6-10": 1961,
+    "0-5": 1321,
+    "6-10": 1962,
     "11-15": 1287,
-    "16-20": 503,
-    "20+": 105
+    "16-20": 507,
+    "20+": 108
   },
   "daily_stats": [
     {
@@ -6563,7 +6572,7 @@
     },
     {
       "date": "2025-12-30",
-      "games": 29,
+      "games": 38,
       "unique_players": 4
     }
   ]
