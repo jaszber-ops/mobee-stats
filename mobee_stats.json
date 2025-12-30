@@ -1,13 +1,13 @@
 {
-  "total_games": 5185,
+  "total_games": 5195,
   "unique_players": 487,
   "high_score_games": 656,
-  "avg_score": 9.073288331726133,
+  "avg_score": 9.082194417709337,
   "median_score": 9,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
-    "Budapest": 2526,
+    "Budapest": 2536,
     "T\u00e1pi\u00f3szentm\u00e1rton": 48,
     "Szentendre": 14,
     "P\u00e9cs": 547,
@@ -130,7 +130,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 4541,
+    "Hungary": 4551,
     "Belgium": 52,
     "United States": 182,
     "Germany": 94,
@@ -155,7 +155,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 2517,
+    "Android Chrome": 2527,
     "Windows Firefox": 118,
     "iPhone Browser": 484,
     "Windows Chrome": 520,
@@ -173,8 +173,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 2517,
-      "avg": 9.77155343663091,
+      "count": 2527,
+      "avg": 9.787099327265532,
       "max": 27
     },
     "Windows Firefox": {
@@ -250,8 +250,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 4541,
-      "avg": 9.251926888350583
+      "count": 4551,
+      "avg": 9.26170072511536
     },
     "Belgium": {
       "count": 52,
@@ -4175,6 +4175,16 @@
     [
       "6gawu9",
       [
+        7,
+        15,
+        16,
+        0,
+        22,
+        0,
+        18,
+        17,
+        20,
+        22,
         18,
         21,
         16,
@@ -6448,11 +6458,11 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1321,
-    "6-10": 1962,
-    "11-15": 1287,
-    "16-20": 507,
-    "20+": 108
+    "0-5": 1323,
+    "6-10": 1963,
+    "11-15": 1288,
+    "16-20": 511,
+    "20+": 110
   },
   "daily_stats": [
     {
@@ -6572,7 +6582,7 @@
     },
     {
       "date": "2025-12-30",
-      "games": 38,
+      "games": 48,
       "unique_players": 4
     }
   ]
