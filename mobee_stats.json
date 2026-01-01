@@ -1,12 +1,14 @@
 {
-  "total_games": 5257,
+  "total_games": 5260,
   "unique_players": 489,
   "high_score_games": 659,
-  "avg_score": 9.101959292372076,
-  "median_score": 9,
+  "avg_score": 9.100760456273765,
+  "median_score": 9.0,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
+    "Rankweil": 1,
+    "Dallas": 2,
     "Zamardi": 3,
     "Budapest": 2576,
     "T\u00e1pi\u00f3szentm\u00e1rton": 63,
@@ -131,16 +133,16 @@
     "12/6/2025": 5
   },
   "country_counts": {
+    "Austria": 10,
+    "United States": 184,
     "Hungary": 4613,
     "Belgium": 52,
-    "United States": 182,
     "Germany": 94,
     "Switzerland": 176,
     "Denmark": 1,
     "Local/Unknown": 43,
     "Spain": 6,
     "Ireland": 3,
-    "Austria": 9,
     "United Kingdom": 18,
     "Iceland": 1,
     "The Netherlands": 3,
@@ -156,9 +158,9 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
+    "iPhone Safari": 822,
     "Android Chrome": 2572,
     "Mac Safari": 381,
-    "iPhone Safari": 819,
     "iPhone Browser": 489,
     "iPad Safari": 66,
     "Windows Chrome": 524,
@@ -173,6 +175,11 @@
     "Unknown": 9
   },
   "platform_scores": {
+    "iPhone Safari": {
+      "count": 822,
+      "avg": 7.221411192214112,
+      "max": 20
+    },
     "Android Chrome": {
       "count": 2572,
       "avg": 9.797822706065318,
@@ -182,11 +189,6 @@
       "count": 381,
       "avg": 8.383202099737533,
       "max": 19
-    },
-    "iPhone Safari": {
-      "count": 819,
-      "avg": 7.222222222222222,
-      "max": 20
     },
     "iPhone Browser": {
       "count": 489,
@@ -250,6 +252,14 @@
     }
   },
   "location_scores": {
+    "Austria": {
+      "count": 10,
+      "avg": 4.1
+    },
+    "United States": {
+      "count": 184,
+      "avg": 7.076086956521739
+    },
     "Hungary": {
       "count": 4613,
       "avg": 9.281812269672665
@@ -257,10 +267,6 @@
     "Belgium": {
       "count": 52,
       "avg": 13.26923076923077
-    },
-    "United States": {
-      "count": 182,
-      "avg": 7.076923076923077
     },
     "Germany": {
       "count": 94,
@@ -285,10 +291,6 @@
     "Ireland": {
       "count": 3,
       "avg": 4.333333333333333
-    },
-    "Austria": {
-      "count": 9,
-      "avg": 3.7777777777777777
     },
     "United Kingdom": {
       "count": 18,
@@ -349,6 +351,7 @@
     "super_engaged": 91
   },
   "player_cities": {
+    "vf4pmj": 4,
     "tu5p0v": 2,
     "qwazx5": 1,
     "6gawu9": 3,
@@ -380,7 +383,6 @@
     "0r4dql": 1,
     "j4xgys": 1,
     "gxw424": 1,
-    "vf4pmj": 2,
     "nd33fy": 6,
     "j88alk": 1,
     "hm1cvn": 1,
@@ -840,6 +842,7 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "vf4pmj": 1,
     "tu5p0v": 1,
     "qwazx5": 1,
     "6gawu9": 1,
@@ -871,7 +874,6 @@
     "0r4dql": 1,
     "j4xgys": 1,
     "gxw424": 1,
-    "vf4pmj": 1,
     "nd33fy": 1,
     "j88alk": 1,
     "hm1cvn": 1,
@@ -1331,6 +1333,7 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "vf4pmj": "Los Angeles",
     "tu5p0v": "Budapest",
     "qwazx5": "Budapest",
     "6gawu9": "Budapest",
@@ -1362,7 +1365,6 @@
     "0r4dql": "Budapest",
     "j4xgys": "P\u00e9cs",
     "gxw424": "Budapest",
-    "vf4pmj": "Los Angeles",
     "nd33fy": "Gy\u00f6ngy\u00f6s",
     "j88alk": "Budapest",
     "hm1cvn": "Budapest",
@@ -1822,6 +1824,11 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "vf4pmj": {
+      "location": "Los Angeles, United States",
+      "platform": "iPhone Safari",
+      "timestamp": 1765582410.856839
+    },
     "tu5p0v": {
       "location": "Budapest, Hungary",
       "platform": "Android Chrome",
@@ -1971,11 +1978,6 @@
       "location": "Budapest, Hungary",
       "platform": "iPhone Browser",
       "timestamp": 1766788559.433379
-    },
-    "vf4pmj": {
-      "location": "Los Angeles, United States",
-      "platform": "iPhone Safari",
-      "timestamp": 1765582410.856839
     },
     "nd33fy": {
       "location": "Gy\u00f6ngy\u00f6s, Hungary",
@@ -6515,8 +6517,8 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1341,
-    "6-10": 1979,
+    "0-5": 1342,
+    "6-10": 1981,
     "11-15": 1300,
     "16-20": 518,
     "20+": 119
@@ -6646,6 +6648,11 @@
       "date": "2025-12-31",
       "games": 27,
       "unique_players": 7
+    },
+    {
+      "date": "2026-01-01",
+      "games": 3,
+      "unique_players": 1
     }
   ]
 }
