@@ -1,13 +1,13 @@
 {
-  "total_games": 5273,
+  "total_games": 5281,
   "unique_players": 489,
   "high_score_games": 659,
-  "avg_score": 9.09159871041153,
+  "avg_score": 9.087483431168339,
   "median_score": 9,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
-    "T\u00e1pi\u00f3szentm\u00e1rton": 76,
+    "T\u00e1pi\u00f3szentm\u00e1rton": 84,
     "Rankweil": 1,
     "Dallas": 2,
     "Zamardi": 3,
@@ -133,7 +133,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 4626,
+    "Hungary": 4634,
     "Austria": 10,
     "United States": 184,
     "Belgium": 52,
@@ -158,7 +158,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 2585,
+    "Android Chrome": 2593,
     "iPhone Safari": 822,
     "Mac Safari": 381,
     "iPhone Browser": 489,
@@ -176,8 +176,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 2585,
-      "avg": 9.775628626692457,
+      "count": 2593,
+      "avg": 9.765136907057462,
       "max": 27
     },
     "iPhone Safari": {
@@ -253,8 +253,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 4626,
-      "avg": 9.270860354517943
+      "count": 4634,
+      "avg": 9.265861027190333
     },
     "Austria": {
       "count": 10,
@@ -1827,7 +1827,7 @@
     "r2xhmp": {
       "location": "T\u00e1pi\u00f3szentm\u00e1rton, Hungary",
       "platform": "Android Chrome",
-      "timestamp": 1767080579.303989
+      "timestamp": 1767311015.666009
     },
     "vf4pmj": {
       "location": "Los Angeles, United States",
@@ -5067,6 +5067,14 @@
     [
       "r2xhmp",
       [
+        6,
+        11,
+        10,
+        9,
+        6,
+        0,
+        4,
+        5,
         9,
         6,
         6,
@@ -6530,9 +6538,9 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1347,
-    "6-10": 1989,
-    "11-15": 1300,
+    "0-5": 1350,
+    "6-10": 1993,
+    "11-15": 1301,
     "16-20": 518,
     "20+": 119
   },
@@ -6664,7 +6672,7 @@
     },
     {
       "date": "2026-01-01",
-      "games": 16,
+      "games": 24,
       "unique_players": 2
     }
   ]
