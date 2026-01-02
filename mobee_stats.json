@@ -1,14 +1,14 @@
 {
-  "total_games": 5301,
+  "total_games": 5307,
   "unique_players": 489,
   "high_score_games": 659,
-  "avg_score": 9.105640445199018,
+  "avg_score": 9.102129263237234,
   "median_score": 9,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
-    "T\u00e1pi\u00f3szentm\u00e1rton": 91,
-    "Dallas": 3,
+    "Dallas": 4,
+    "T\u00e1pi\u00f3szentm\u00e1rton": 96,
     "Budapest": 2588,
     "Rankweil": 1,
     "Zamardi": 3,
@@ -133,8 +133,8 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 4653,
-    "United States": 185,
+    "United States": 186,
+    "Hungary": 4658,
     "Austria": 10,
     "Belgium": 52,
     "Germany": 94,
@@ -158,8 +158,8 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 2612,
-    "iPhone Safari": 823,
+    "iPhone Safari": 824,
+    "Android Chrome": 2617,
     "Mac Safari": 381,
     "iPhone Browser": 489,
     "iPad Safari": 66,
@@ -175,15 +175,15 @@
     "Unknown": 9
   },
   "platform_scores": {
-    "Android Chrome": {
-      "count": 2612,
-      "avg": 9.798621745788667,
-      "max": 27
-    },
     "iPhone Safari": {
-      "count": 823,
-      "avg": 7.218712029161604,
+      "count": 824,
+      "avg": 7.218446601941747,
       "max": 20
+    },
+    "Android Chrome": {
+      "count": 2617,
+      "avg": 9.790982040504394,
+      "max": 27
     },
     "Mac Safari": {
       "count": 381,
@@ -252,13 +252,13 @@
     }
   },
   "location_scores": {
-    "Hungary": {
-      "count": 4653,
-      "avg": 9.286696754781861
-    },
     "United States": {
-      "count": 185,
-      "avg": 7.064864864864865
+      "count": 186,
+      "avg": 7.064516129032258
+    },
+    "Hungary": {
+      "count": 4658,
+      "avg": 9.282954057535424
     },
     "Austria": {
       "count": 10,
@@ -351,8 +351,8 @@
     "super_engaged": 91
   },
   "player_cities": {
-    "r2xhmp": 3,
     "vf4pmj": 4,
+    "r2xhmp": 3,
     "6gawu9": 3,
     "tu5p0v": 2,
     "qwazx5": 1,
@@ -842,8 +842,8 @@
     "Unknown": 2
   },
   "player_platforms": {
-    "r2xhmp": 1,
     "vf4pmj": 1,
+    "r2xhmp": 1,
     "6gawu9": 1,
     "tu5p0v": 1,
     "qwazx5": 1,
@@ -1333,8 +1333,8 @@
     "Unknown": 1
   },
   "player_most_common_city": {
-    "r2xhmp": "Gyomaendr\u0151d",
     "vf4pmj": "Los Angeles",
+    "r2xhmp": "Gyomaendr\u0151d",
     "6gawu9": "Budapest",
     "tu5p0v": "Budapest",
     "qwazx5": "Budapest",
@@ -1824,15 +1824,15 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
-    "r2xhmp": {
-      "location": "T\u00e1pi\u00f3szentm\u00e1rton, Hungary",
-      "platform": "Android Chrome",
-      "timestamp": 1767311015.666009
-    },
     "vf4pmj": {
       "location": "Los Angeles, United States",
       "platform": "iPhone Safari",
       "timestamp": 1765582410.856839
+    },
+    "r2xhmp": {
+      "location": "T\u00e1pi\u00f3szentm\u00e1rton, Hungary",
+      "platform": "Android Chrome",
+      "timestamp": 1767311015.666009
     },
     "6gawu9": {
       "location": "Budapest, Hungary",
@@ -5080,6 +5080,11 @@
       "r2xhmp",
       [
         4,
+        5,
+        6,
+        7,
+        7,
+        4,
         9,
         9,
         4,
@@ -6557,8 +6562,8 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1356,
-    "6-10": 1995,
+    "0-5": 1358,
+    "6-10": 1999,
     "11-15": 1301,
     "16-20": 528,
     "20+": 121
@@ -6696,7 +6701,7 @@
     },
     {
       "date": "2026-01-02",
-      "games": 20,
+      "games": 26,
       "unique_players": 3
     }
   ]
