@@ -1,12 +1,13 @@
 {
-  "total_games": 5369,
-  "unique_players": 489,
-  "high_score_games": 659,
-  "avg_score": 9.069286645557831,
-  "median_score": 9,
+  "total_games": 5374,
+  "unique_players": 490,
+  "high_score_games": 661,
+  "avg_score": 9.06698920729438,
+  "median_score": 9.0,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
+    "Marseille": 5,
     "Lenzburg": 13,
     "Budapest": 2596,
     "T\u00e1pi\u00f3szentm\u00e1rton": 146,
@@ -133,6 +134,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
+    "France": 5,
     "Switzerland": 177,
     "Hungary": 4718,
     "United States": 187,
@@ -158,11 +160,11 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
+    "iPhone Browser": 497,
     "iPhone Safari": 828,
     "Other Chrome": 7,
     "Android Chrome": 2667,
     "Windows Safari": 114,
-    "iPhone Browser": 492,
     "Mac Safari": 381,
     "iPad Safari": 66,
     "Windows Chrome": 524,
@@ -175,6 +177,11 @@
     "Unknown": 9
   },
   "platform_scores": {
+    "iPhone Browser": {
+      "count": 497,
+      "avg": 12.195171026156942,
+      "max": 25
+    },
     "iPhone Safari": {
       "count": 828,
       "avg": 7.217391304347826,
@@ -194,11 +201,6 @@
       "count": 114,
       "avg": 7.456140350877193,
       "max": 15
-    },
-    "iPhone Browser": {
-      "count": 492,
-      "avg": 12.252032520325203,
-      "max": 25
     },
     "Mac Safari": {
       "count": 381,
@@ -252,6 +254,10 @@
     }
   },
   "location_scores": {
+    "France": {
+      "count": 5,
+      "avg": 6.6
+    },
     "Switzerland": {
       "count": 177,
       "avg": 6.740112994350283
@@ -347,10 +353,11 @@
   },
   "engagement": {
     "one_time_players": 169,
-    "returning_players": 320,
+    "returning_players": 321,
     "super_engaged": 91
   },
   "player_cities": {
+    "cjr70n": 1,
     "y8ut9r": 5,
     "t1xaod": 1,
     "r2xhmp": 3,
@@ -842,6 +849,7 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "cjr70n": 1,
     "y8ut9r": 1,
     "t1xaod": 1,
     "r2xhmp": 1,
@@ -1333,6 +1341,7 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "cjr70n": "Marseille",
     "y8ut9r": "Allschwil",
     "t1xaod": "Budapest",
     "r2xhmp": "Gyomaendr\u0151d",
@@ -1824,6 +1833,11 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "cjr70n": {
+      "location": "Marseille, France",
+      "platform": "iPhone Browser",
+      "timestamp": 1767425077.190059
+    },
     "y8ut9r": {
       "location": "Allschwil, Switzerland",
       "platform": "iPhone Safari",
@@ -6612,8 +6626,8 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1378,
-    "6-10": 2039,
+    "0-5": 1379,
+    "6-10": 2043,
     "11-15": 1303,
     "16-20": 528,
     "20+": 121
@@ -6753,6 +6767,11 @@
       "date": "2026-01-02",
       "games": 88,
       "unique_players": 8
+    },
+    {
+      "date": "2026-01-03",
+      "games": 5,
+      "unique_players": 1
     }
   ]
 }
