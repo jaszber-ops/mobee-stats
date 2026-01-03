@@ -1,13 +1,13 @@
 {
-  "total_games": 5374,
+  "total_games": 5375,
   "unique_players": 490,
   "high_score_games": 661,
-  "avg_score": 9.06698920729438,
-  "median_score": 9.0,
+  "avg_score": 9.066976744186046,
+  "median_score": 9,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
-    "Marseille": 5,
+    "Marseille": 6,
     "Lenzburg": 13,
     "Budapest": 2596,
     "T\u00e1pi\u00f3szentm\u00e1rton": 146,
@@ -134,7 +134,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "France": 5,
+    "France": 6,
     "Switzerland": 177,
     "Hungary": 4718,
     "United States": 187,
@@ -160,7 +160,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "iPhone Browser": 497,
+    "iPhone Browser": 498,
     "iPhone Safari": 828,
     "Other Chrome": 7,
     "Android Chrome": 2667,
@@ -178,8 +178,8 @@
   },
   "platform_scores": {
     "iPhone Browser": {
-      "count": 497,
-      "avg": 12.195171026156942,
+      "count": 498,
+      "avg": 12.188755020080322,
       "max": 25
     },
     "iPhone Safari": {
@@ -255,8 +255,8 @@
   },
   "location_scores": {
     "France": {
-      "count": 5,
-      "avg": 6.6
+      "count": 6,
+      "avg": 7.0
     },
     "Switzerland": {
       "count": 177,
@@ -1836,7 +1836,7 @@
     "cjr70n": {
       "location": "Marseille, France",
       "platform": "iPhone Browser",
-      "timestamp": 1767425077.190059
+      "timestamp": 1767429026.425469
     },
     "y8ut9r": {
       "location": "Allschwil, Switzerland",
@@ -6627,7 +6627,7 @@
   ],
   "score_distribution": {
     "0-5": 1379,
-    "6-10": 2043,
+    "6-10": 2044,
     "11-15": 1303,
     "16-20": 528,
     "20+": 121
@@ -6770,7 +6770,7 @@
     },
     {
       "date": "2026-01-03",
-      "games": 5,
+      "games": 6,
       "unique_players": 1
     }
   ]
