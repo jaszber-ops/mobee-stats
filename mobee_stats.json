@@ -1,13 +1,13 @@
 {
-  "total_games": 5421,
+  "total_games": 5426,
   "unique_players": 493,
   "high_score_games": 667,
-  "avg_score": 9.048330566316178,
-  "median_score": 9,
+  "avg_score": 9.04460007371913,
+  "median_score": 9.0,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
-    "T\u00e1pi\u00f3szentm\u00e1rton": 170,
+    "T\u00e1pi\u00f3szentm\u00e1rton": 175,
     "Debrecen": 383,
     "Biatorb\u00e1gy": 19,
     "Budapest": 2604,
@@ -134,7 +134,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 4761,
+    "Hungary": 4766,
     "United States": 190,
     "France": 6,
     "Switzerland": 177,
@@ -160,7 +160,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 2703,
+    "Android Chrome": 2708,
     "iPhone Safari": 837,
     "iPad Browser": 1,
     "iPhone Browser": 498,
@@ -179,8 +179,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 2703,
-      "avg": 9.669626341102479,
+      "count": 2708,
+      "avg": 9.661004431314623,
       "max": 27
     },
     "iPhone Safari": {
@@ -261,8 +261,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 4761,
-      "avg": 9.222642302037388
+      "count": 4766,
+      "avg": 9.218212337389845
     },
     "United States": {
       "count": 190,
@@ -4819,6 +4819,11 @@
       "r2xhmp",
       [
         7,
+        3,
+        8,
+        4,
+        3,
+        7,
         5,
         4,
         4,
@@ -6681,8 +6686,8 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1398,
-    "6-10": 2065,
+    "0-5": 1401,
+    "6-10": 2067,
     "11-15": 1306,
     "16-20": 530,
     "20+": 122
@@ -6830,7 +6835,7 @@
     },
     {
       "date": "2026-01-04",
-      "games": 8,
+      "games": 13,
       "unique_players": 1
     }
   ]
