@@ -1,13 +1,13 @@
 {
-  "total_games": 5426,
+  "total_games": 5430,
   "unique_players": 493,
   "high_score_games": 667,
-  "avg_score": 9.04460007371913,
+  "avg_score": 9.041804788213629,
   "median_score": 9.0,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
-    "T\u00e1pi\u00f3szentm\u00e1rton": 175,
+    "T\u00e1pi\u00f3szentm\u00e1rton": 179,
     "Debrecen": 383,
     "Biatorb\u00e1gy": 19,
     "Budapest": 2604,
@@ -134,7 +134,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 4766,
+    "Hungary": 4770,
     "United States": 190,
     "France": 6,
     "Switzerland": 177,
@@ -160,7 +160,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 2708,
+    "Android Chrome": 2712,
     "iPhone Safari": 837,
     "iPad Browser": 1,
     "iPhone Browser": 498,
@@ -179,8 +179,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 2708,
-      "avg": 9.661004431314623,
+      "count": 2712,
+      "avg": 9.654498525073747,
       "max": 27
     },
     "iPhone Safari": {
@@ -261,8 +261,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 4766,
-      "avg": 9.218212337389845
+      "count": 4770,
+      "avg": 9.214884696016771
     },
     "United States": {
       "count": 190,
@@ -1851,7 +1851,7 @@
     "r2xhmp": {
       "location": "T\u00e1pi\u00f3szentm\u00e1rton, Hungary",
       "platform": "Android Chrome",
-      "timestamp": 1767382461.535529
+      "timestamp": 1767517762.651689
     },
     "7cl4cu": {
       "location": "Debrecen, Hungary",
@@ -4818,6 +4818,10 @@
     [
       "r2xhmp",
       [
+        0,
+        11,
+        5,
+        5,
         7,
         3,
         8,
@@ -6686,9 +6690,9 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1401,
+    "0-5": 1404,
     "6-10": 2067,
-    "11-15": 1306,
+    "11-15": 1307,
     "16-20": 530,
     "20+": 122
   },
@@ -6835,7 +6839,7 @@
     },
     {
       "date": "2026-01-04",
-      "games": 13,
+      "games": 17,
       "unique_players": 1
     }
   ]
