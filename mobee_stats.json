@@ -1,14 +1,15 @@
 {
-  "total_games": 5488,
+  "total_games": 5492,
   "unique_players": 493,
   "high_score_games": 667,
-  "avg_score": 9.122995626822158,
+  "avg_score": 9.12163146394756,
   "median_score": 9.0,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
+    "Allschwil": 17,
+    "T\u00e1pi\u00f3szentm\u00e1rton": 189,
     "Budapest": 2651,
-    "T\u00e1pi\u00f3szentm\u00e1rton": 186,
     "Charleroi": 2,
     "Mattersburg": 6,
     "Debrecen": 383,
@@ -48,7 +49,6 @@
     "\u00c9rd": 4,
     "Vienna": 2,
     "Li\u00e8ge": 36,
-    "Allschwil": 16,
     "Brussels": 3,
     "S\u00e1rospatak": 37,
     "Fehervarcsurgo": 1,
@@ -135,12 +135,12 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 4824,
+    "Switzerland": 178,
+    "Hungary": 4827,
     "Belgium": 54,
     "Austria": 12,
     "United States": 190,
     "France": 6,
-    "Switzerland": 177,
     "Germany": 94,
     "Denmark": 1,
     "Local/Unknown": 43,
@@ -161,8 +161,8 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "iPhone Safari": 839,
-    "Android Chrome": 2768,
+    "iPhone Safari": 840,
+    "Android Chrome": 2771,
     "iPad Browser": 1,
     "iPhone Browser": 498,
     "Other Chrome": 7,
@@ -180,13 +180,13 @@
   },
   "platform_scores": {
     "iPhone Safari": {
-      "count": 839,
-      "avg": 7.253873659117998,
+      "count": 840,
+      "avg": 7.257142857142857,
       "max": 20
     },
     "Android Chrome": {
-      "count": 2768,
-      "avg": 9.804552023121387,
+      "count": 2771,
+      "avg": 9.800793937206784,
       "max": 27
     },
     "iPad Browser": {
@@ -261,9 +261,13 @@
     }
   },
   "location_scores": {
+    "Switzerland": {
+      "count": 178,
+      "avg": 6.758426966292135
+    },
     "Hungary": {
-      "count": 4824,
-      "avg": 9.307835820895523
+      "count": 4827,
+      "avg": 9.305987155583178
     },
     "Belgium": {
       "count": 54,
@@ -280,10 +284,6 @@
     "France": {
       "count": 6,
       "avg": 7.0
-    },
-    "Switzerland": {
-      "count": 177,
-      "avg": 6.740112994350283
     },
     "Germany": {
       "count": 94,
@@ -364,8 +364,9 @@
     "super_engaged": 92
   },
   "player_cities": {
-    "ia8q1j": 1,
+    "y8ut9r": 5,
     "r2xhmp": 3,
+    "ia8q1j": 1,
     "bltf2n": 2,
     "6gawu9": 3,
     "hraqq1": 1,
@@ -376,7 +377,6 @@
     "9wiyli": 1,
     "zcmucj": 1,
     "cjr70n": 1,
-    "y8ut9r": 5,
     "t1xaod": 1,
     "4ryygm": 1,
     "xvn6ui": 1,
@@ -859,8 +859,9 @@
     "Unknown": 2
   },
   "player_platforms": {
-    "ia8q1j": 1,
+    "y8ut9r": 1,
     "r2xhmp": 1,
+    "ia8q1j": 1,
     "bltf2n": 1,
     "6gawu9": 1,
     "hraqq1": 1,
@@ -871,7 +872,6 @@
     "9wiyli": 1,
     "zcmucj": 1,
     "cjr70n": 1,
-    "y8ut9r": 1,
     "t1xaod": 1,
     "4ryygm": 1,
     "xvn6ui": 1,
@@ -1354,8 +1354,9 @@
     "Unknown": 1
   },
   "player_most_common_city": {
-    "ia8q1j": "Budapest",
+    "y8ut9r": "Allschwil",
     "r2xhmp": "Gyomaendr\u0151d",
+    "ia8q1j": "Budapest",
     "bltf2n": "Charleroi",
     "6gawu9": "Budapest",
     "hraqq1": "Mattersburg",
@@ -1366,7 +1367,6 @@
     "9wiyli": "Budapest",
     "zcmucj": "P\u00e9cs",
     "cjr70n": "Marseille",
-    "y8ut9r": "Allschwil",
     "t1xaod": "Budapest",
     "4ryygm": "Budapest",
     "xvn6ui": "Budapest",
@@ -1849,15 +1849,20 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
-    "ia8q1j": {
-      "location": "Budapest, Hungary",
+    "y8ut9r": {
+      "location": "Allschwil, Switzerland",
       "platform": "iPhone Safari",
-      "timestamp": 1767560041.551409
+      "timestamp": 1765575766.519499
     },
     "r2xhmp": {
       "location": "T\u00e1pi\u00f3szentm\u00e1rton, Hungary",
       "platform": "Android Chrome",
       "timestamp": 1767517762.651689
+    },
+    "ia8q1j": {
+      "location": "Budapest, Hungary",
+      "platform": "iPhone Safari",
+      "timestamp": 1767560041.551409
     },
     "bltf2n": {
       "location": "Uccle, Belgium",
@@ -1908,11 +1913,6 @@
       "location": "Marseille, France",
       "platform": "iPhone Browser",
       "timestamp": 1767429026.425469
-    },
-    "y8ut9r": {
-      "location": "Allschwil, Switzerland",
-      "platform": "iPhone Safari",
-      "timestamp": 1765575766.519499
     },
     "t1xaod": {
       "location": "Budapest, Hungary",
@@ -4864,6 +4864,9 @@
     [
       "r2xhmp",
       [
+        6,
+        6,
+        7,
         7,
         7,
         7,
@@ -6744,7 +6747,7 @@
   ],
   "score_distribution": {
     "0-5": 1408,
-    "6-10": 2075,
+    "6-10": 2079,
     "11-15": 1309,
     "16-20": 557,
     "20+": 139
@@ -6894,6 +6897,11 @@
       "date": "2026-01-04",
       "games": 75,
       "unique_players": 5
+    },
+    {
+      "date": "2026-01-05",
+      "games": 4,
+      "unique_players": 2
     }
   ]
 }
