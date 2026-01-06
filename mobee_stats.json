@@ -1,13 +1,13 @@
 {
-  "total_games": 5599,
+  "total_games": 5600,
   "unique_players": 493,
   "high_score_games": 669,
-  "avg_score": 9.135381318092517,
-  "median_score": 9,
+  "avg_score": 9.13375,
+  "median_score": 9.0,
   "max_score": 27,
   "min_score": 0,
   "city_counts": {
-    "Budapest": 2696,
+    "Budapest": 2697,
     "Zamardi": 8,
     "T\u00e1pi\u00f3szentm\u00e1rton": 231,
     "Li\u00e8ge": 37,
@@ -135,7 +135,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 4933,
+    "Hungary": 4934,
     "Belgium": 55,
     "Switzerland": 178,
     "Austria": 12,
@@ -161,8 +161,8 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
+    "Android Chrome": 2836,
     "Windows Safari": 121,
-    "Android Chrome": 2835,
     "iPhone Browser": 512,
     "Windows Firefox": 120,
     "Windows Chrome": 541,
@@ -179,15 +179,15 @@
     "Unknown": 9
   },
   "platform_scores": {
+    "Android Chrome": {
+      "count": 2836,
+      "avg": 9.801128349788435,
+      "max": 27
+    },
     "Windows Safari": {
       "count": 121,
       "avg": 7.710743801652892,
       "max": 15
-    },
-    "Android Chrome": {
-      "count": 2835,
-      "avg": 9.804585537918872,
-      "max": 27
     },
     "iPhone Browser": {
       "count": 512,
@@ -262,8 +262,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 4933,
-      "avg": 9.317859314818568
+      "count": 4934,
+      "avg": 9.315970814754763
     },
     "Belgium": {
       "count": 55,
@@ -364,8 +364,8 @@
     "super_engaged": 94
   },
   "player_cities": {
-    "4ryygm": 1,
     "6gawu9": 4,
+    "4ryygm": 1,
     "xvn6ui": 1,
     "r2xhmp": 3,
     "chhfw1": 1,
@@ -859,8 +859,8 @@
     "Unknown": 2
   },
   "player_platforms": {
-    "4ryygm": 1,
     "6gawu9": 1,
+    "4ryygm": 1,
     "xvn6ui": 1,
     "r2xhmp": 1,
     "chhfw1": 1,
@@ -1354,8 +1354,8 @@
     "Unknown": 1
   },
   "player_most_common_city": {
-    "4ryygm": "Budapest",
     "6gawu9": "Budapest",
+    "4ryygm": "Budapest",
     "xvn6ui": "Budapest",
     "r2xhmp": "T\u00e1pi\u00f3szentm\u00e1rton",
     "chhfw1": "Budapest",
@@ -4239,6 +4239,7 @@
     [
       "6gawu9",
       [
+        0,
         14,
         20,
         17,
@@ -6810,7 +6811,7 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1435,
+    "0-5": 1436,
     "6-10": 2118,
     "11-15": 1329,
     "16-20": 571,
@@ -6969,7 +6970,7 @@
     },
     {
       "date": "2026-01-06",
-      "games": 34,
+      "games": 35,
       "unique_players": 8
     }
   ]
