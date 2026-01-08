@@ -1,14 +1,15 @@
 {
-  "total_games": 5660,
+  "total_games": 5691,
   "unique_players": 493,
-  "high_score_games": 671,
-  "avg_score": 9.16678445229682,
-  "median_score": 9.0,
-  "max_score": 27,
+  "high_score_games": 672,
+  "avg_score": 9.217009312950273,
+  "median_score": 9,
+  "max_score": 29,
   "min_score": 0,
   "city_counts": {
-    "Budapest": 2748,
-    "T\u00e1pi\u00f3szentm\u00e1rton": 237,
+    "Budapest": 2774,
+    "Chicago": 1,
+    "T\u00e1pi\u00f3szentm\u00e1rton": 241,
     "P\u00e9cs": 564,
     "Zamardi": 8,
     "Li\u00e8ge": 37,
@@ -135,11 +136,11 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 4994,
+    "Hungary": 5024,
+    "United States": 191,
     "Belgium": 55,
     "Switzerland": 178,
     "Austria": 12,
-    "United States": 190,
     "France": 6,
     "Germany": 94,
     "Denmark": 1,
@@ -161,13 +162,13 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
+    "Android Chrome": 2892,
+    "iPhone Safari": 842,
     "Windows Safari": 148,
-    "Android Chrome": 2862,
     "Windows Chrome": 548,
     "iPhone Browser": 512,
     "Windows Firefox": 120,
     "Mac Safari": 383,
-    "iPhone Safari": 841,
     "iPad Browser": 1,
     "Other Chrome": 7,
     "iPad Safari": 66,
@@ -179,15 +180,20 @@
     "Unknown": 9
   },
   "platform_scores": {
+    "Android Chrome": {
+      "count": 2892,
+      "avg": 9.937067773167358,
+      "max": 29
+    },
+    "iPhone Safari": {
+      "count": 842,
+      "avg": 7.260095011876484,
+      "max": 20
+    },
     "Windows Safari": {
       "count": 148,
       "avg": 8.27027027027027,
       "max": 16
-    },
-    "Android Chrome": {
-      "count": 2862,
-      "avg": 9.8445143256464,
-      "max": 27
     },
     "Windows Chrome": {
       "count": 548,
@@ -208,11 +214,6 @@
       "count": 383,
       "avg": 8.37597911227154,
       "max": 19
-    },
-    "iPhone Safari": {
-      "count": 841,
-      "avg": 7.260404280618311,
-      "max": 20
     },
     "iPad Browser": {
       "count": 1,
@@ -262,8 +263,12 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 4994,
-      "avg": 9.351221465758911
+      "count": 5024,
+      "avg": 9.407444267515924
+    },
+    "United States": {
+      "count": 191,
+      "avg": 7.057591623036649
     },
     "Belgium": {
       "count": 55,
@@ -276,10 +281,6 @@
     "Austria": {
       "count": 12,
       "avg": 4.583333333333333
-    },
-    "United States": {
-      "count": 190,
-      "avg": 7.057894736842106
     },
     "France": {
       "count": 6,
@@ -364,9 +365,10 @@
     "super_engaged": 94
   },
   "player_cities": {
-    "4ryygm": 1,
-    "r2xhmp": 3,
     "6gawu9": 4,
+    "vf4pmj": 5,
+    "r2xhmp": 3,
+    "4ryygm": 1,
     "25c3hc": 1,
     "55ftpu": 1,
     "hphhm0": 2,
@@ -384,7 +386,6 @@
     "hraqq1": 1,
     "7cl4cu": 1,
     "d9nqsl": 1,
-    "vf4pmj": 4,
     "9wiyli": 1,
     "zcmucj": 1,
     "cjr70n": 1,
@@ -859,9 +860,10 @@
     "Unknown": 2
   },
   "player_platforms": {
-    "4ryygm": 1,
-    "r2xhmp": 1,
     "6gawu9": 1,
+    "vf4pmj": 1,
+    "r2xhmp": 1,
+    "4ryygm": 1,
     "25c3hc": 1,
     "55ftpu": 1,
     "hphhm0": 1,
@@ -879,7 +881,6 @@
     "hraqq1": 1,
     "7cl4cu": 1,
     "d9nqsl": 1,
-    "vf4pmj": 1,
     "9wiyli": 1,
     "zcmucj": 1,
     "cjr70n": 1,
@@ -1354,9 +1355,10 @@
     "Unknown": 1
   },
   "player_most_common_city": {
-    "4ryygm": "Budapest",
-    "r2xhmp": "T\u00e1pi\u00f3szentm\u00e1rton",
     "6gawu9": "Budapest",
+    "vf4pmj": "Los Angeles",
+    "r2xhmp": "T\u00e1pi\u00f3szentm\u00e1rton",
+    "4ryygm": "Budapest",
     "25c3hc": "P\u00e9cs",
     "55ftpu": "Budapest",
     "hphhm0": "Budapest",
@@ -1374,7 +1376,6 @@
     "hraqq1": "Mattersburg",
     "7cl4cu": "Debrecen",
     "d9nqsl": "Budapest",
-    "vf4pmj": "Los Angeles",
     "9wiyli": "Budapest",
     "zcmucj": "P\u00e9cs",
     "cjr70n": "Marseille",
@@ -1849,20 +1850,25 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
-    "4ryygm": {
+    "6gawu9": {
       "location": "Budapest, Hungary",
-      "platform": "Windows Safari",
-      "timestamp": 1767812178.132609
+      "platform": "Android Chrome",
+      "timestamp": 1767879472.769619
+    },
+    "vf4pmj": {
+      "location": "Los Angeles, United States",
+      "platform": "iPhone Safari",
+      "timestamp": 1765582410.856839
     },
     "r2xhmp": {
       "location": "T\u00e1pi\u00f3szentm\u00e1rton, Hungary",
       "platform": "Android Chrome",
       "timestamp": 1767517762.651689
     },
-    "6gawu9": {
+    "4ryygm": {
       "location": "Budapest, Hungary",
-      "platform": "Android Chrome",
-      "timestamp": 1767001824.150169
+      "platform": "Windows Safari",
+      "timestamp": 1767812178.132609
     },
     "25c3hc": {
       "location": "P\u00e9cs, Hungary",
@@ -1948,11 +1954,6 @@
       "location": "Budapest, Hungary",
       "platform": "Android Chrome",
       "timestamp": 1767464535.877229
-    },
-    "vf4pmj": {
-      "location": "Los Angeles, United States",
-      "platform": "iPhone Safari",
-      "timestamp": 1765582410.856839
     },
     "9wiyli": {
       "location": "Budapest, Hungary",
@@ -4239,6 +4240,32 @@
     [
       "6gawu9",
       [
+        14,
+        19,
+        23,
+        19,
+        22,
+        17,
+        20,
+        17,
+        20,
+        22,
+        26,
+        15,
+        21,
+        23,
+        24,
+        22,
+        22,
+        19,
+        29,
+        25,
+        18,
+        26,
+        21,
+        25,
+        20,
+        16,
         20,
         21,
         16,
@@ -4900,6 +4927,10 @@
     [
       "r2xhmp",
       [
+        7,
+        5,
+        6,
+        0,
         8,
         8,
         3,
@@ -6790,7 +6821,7 @@
   "top_players_by_score": [
     [
       "6gawu9",
-      27
+      29
     ],
     [
       "qr4v6g",
@@ -6830,11 +6861,11 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1440,
-    "6-10": 2140,
-    "11-15": 1348,
-    "16-20": 581,
-    "20+": 151
+    "0-5": 1442,
+    "6-10": 2143,
+    "11-15": 1350,
+    "16-20": 591,
+    "20+": 165
   },
   "daily_stats": [
     {
@@ -6999,8 +7030,8 @@
     },
     {
       "date": "2026-01-08",
-      "games": 31,
-      "unique_players": 3
+      "games": 62,
+      "unique_players": 4
     }
   ]
 }
