@@ -1,13 +1,13 @@
 {
-  "total_games": 5860,
+  "total_games": 5862,
   "unique_players": 496,
   "high_score_games": 684,
-  "avg_score": 9.357508532423209,
+  "avg_score": 9.354315933128625,
   "median_score": 9.0,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
-    "Budapest": 2892,
+    "Budapest": 2894,
     "Tatab\u00e1nya": 1,
     "Zumikon": 29,
     "J\u00e1szap\u00e1ti": 10,
@@ -138,7 +138,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 5186,
+    "Hungary": 5188,
     "Switzerland": 180,
     "Local/Unknown": 48,
     "United States": 191,
@@ -164,7 +164,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Windows Chrome": 579,
+    "Windows Chrome": 581,
     "iPhone Browser": 513,
     "iPhone Safari": 846,
     "Android Chrome": 3017,
@@ -183,8 +183,8 @@
   },
   "platform_scores": {
     "Windows Chrome": {
-      "count": 579,
-      "avg": 8.155440414507773,
+      "count": 581,
+      "avg": 8.12736660929432,
       "max": 22
     },
     "iPhone Browser": {
@@ -265,8 +265,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 5186,
-      "avg": 9.559390667180871
+      "count": 5188,
+      "avg": 9.555705474171164
     },
     "Switzerland": {
       "count": 180,
@@ -7002,7 +7002,7 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1462,
+    "0-5": 1464,
     "6-10": 2186,
     "11-15": 1375,
     "16-20": 637,
@@ -7206,7 +7206,7 @@
     },
     {
       "date": "2026-01-15",
-      "games": 21,
+      "games": 23,
       "unique_players": 6
     }
   ]
