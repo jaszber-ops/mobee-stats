@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-01-21T13:06:05.774608+00:00",
+  "generated_at": "2026-01-21T14:39:28.999249+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 4,
-    "unique_players": 1,
-    "avg_score": 6.5,
-    "max_score": 8,
+    "total_games": 6,
+    "unique_players": 2,
+    "avg_score": 6.8,
+    "max_score": 10,
     "score_distribution": {
-      "0-5": 1,
-      "6-10": 3,
+      "0-5": 2,
+      "6-10": 4,
       "11-15": 0,
       "16-20": 0,
       "20+": 0
@@ -16,11 +16,17 @@
     "daily_stats": [
       {
         "date": "2026-01-21",
-        "games": 4,
-        "unique_players": 1
+        "games": 6,
+        "unique_players": 2
       }
     ],
     "top_players_by_score": [
+      {
+        "playerId": "VCWW",
+        "score": 10,
+        "avatarCoords": "12,7",
+        "name": null
+      },
       {
         "playerId": "TJ5Z",
         "score": 8,
@@ -34,17 +40,23 @@
         "games": 4,
         "avgScore": 6.5,
         "avatarCoords": "9,5"
+      },
+      {
+        "playerId": "VCWW",
+        "games": 2,
+        "avgScore": 7.5,
+        "avatarCoords": "12,7"
       }
     ]
   },
   "level_2": {
     "variant": "12",
-    "total_games": 4,
-    "unique_players": 1,
-    "avg_score": 2.0,
+    "total_games": 5,
+    "unique_players": 2,
+    "avg_score": 1.8,
     "max_score": 3,
     "score_distribution": {
-      "0-5": 4,
+      "0-5": 5,
       "6-10": 0,
       "11-15": 0,
       "16-20": 0,
@@ -53,8 +65,8 @@
     "daily_stats": [
       {
         "date": "2026-01-21",
-        "games": 4,
-        "unique_players": 1
+        "games": 5,
+        "unique_players": 2
       }
     ],
     "top_players_by_score": [
@@ -62,6 +74,12 @@
         "playerId": "TJ5Z",
         "score": 2,
         "avatarCoords": "9,5",
+        "name": null
+      },
+      {
+        "playerId": "VCWW",
+        "score": 1,
+        "avatarCoords": "12,7",
         "name": null
       }
     ],
@@ -71,6 +89,12 @@
         "games": 4,
         "avgScore": 2.0,
         "avatarCoords": "9,5"
+      },
+      {
+        "playerId": "VCWW",
+        "games": 1,
+        "avgScore": 1.0,
+        "avatarCoords": "12,7"
       }
     ]
   }
