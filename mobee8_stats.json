@@ -1,33 +1,33 @@
 {
-  "generated_at": "2026-01-21T19:34:20.676158+00:00",
+  "generated_at": "2026-01-21T20:39:55.024842+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 8,
+    "total_games": 9,
     "unique_players": 2,
-    "avg_score": 7.62,
-    "median_score": 8.0,
+    "avg_score": 7.67,
+    "median_score": 8,
     "max_score": 11,
     "min_score": 3,
     "score_distribution": {
       "0-5": 2,
-      "6-10": 5,
+      "6-10": 6,
       "11-15": 1,
       "16-20": 0,
       "20+": 0
     },
     "score_histogram": {
+      "8": 3,
       "11": 1,
       "9": 1,
       "10": 1,
       "5": 1,
       "7": 1,
-      "8": 2,
       "3": 1
     },
     "daily_stats": [
       {
         "date": "2026-01-21",
-        "games": 8,
+        "games": 9,
         "unique_players": 2
       }
     ],
@@ -37,8 +37,8 @@
         "score": 11,
         "avatarCoords": "12,7",
         "name": null,
-        "country": "NL",
-        "city": "Amsterdam"
+        "country": "HU",
+        "city": "Budapest"
       },
       {
         "playerId": "TJ5Z",
@@ -58,8 +58,8 @@
       },
       {
         "playerId": "VCWW",
-        "games": 3,
-        "avgScore": 8.7,
+        "games": 4,
+        "avgScore": 8.5,
         "avatarCoords": "12,7"
       }
     ],
@@ -70,11 +70,19 @@
     },
     "top_countries": [
       [
+        "HU",
+        1
+      ],
+      [
         "NL",
         1
       ]
     ],
     "top_cities": [
+      [
+        "Budapest",
+        1
+      ],
       [
         "Amsterdam",
         1
@@ -83,29 +91,29 @@
   },
   "level_2": {
     "variant": "12",
-    "total_games": 7,
+    "total_games": 8,
     "unique_players": 2,
-    "avg_score": 2.14,
-    "median_score": 2,
+    "avg_score": 2.0,
+    "median_score": 2.0,
     "max_score": 4,
     "min_score": 1,
     "score_distribution": {
-      "0-2": 5,
+      "0-2": 6,
       "3-5": 2,
       "6-8": 0,
       "9-11": 0,
       "12+": 0
     },
     "score_histogram": {
+      "1": 3,
       "2": 3,
       "4": 1,
-      "1": 2,
       "3": 1
     },
     "daily_stats": [
       {
         "date": "2026-01-21",
-        "games": 7,
+        "games": 8,
         "unique_players": 2
       }
     ],
@@ -123,8 +131,8 @@
         "score": 2,
         "avatarCoords": "12,7",
         "name": null,
-        "country": "NL",
-        "city": "Amsterdam"
+        "country": "HU",
+        "city": "Budapest"
       }
     ],
     "top_players_by_games": [
@@ -136,8 +144,8 @@
       },
       {
         "playerId": "VCWW",
-        "games": 2,
-        "avgScore": 1.5,
+        "games": 3,
+        "avgScore": 1.3,
         "avatarCoords": "12,7"
       }
     ],
@@ -148,11 +156,19 @@
     },
     "top_countries": [
       [
+        "HU",
+        1
+      ],
+      [
         "NL",
         1
       ]
     ],
     "top_cities": [
+      [
+        "Budapest",
+        1
+      ],
       [
         "Amsterdam",
         1
