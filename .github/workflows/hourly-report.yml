@@ -31,21 +31,16 @@ jobs:
         env:
           UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
           UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
-        run: |
-          cd stats
-          python3 mobee8_report_generator.py
+        run: python3 mobee8_report_generator.py
 
       - name: Upload PDF to Slack
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
-        run: |
-          cd stats
-          python3 .github/scripts/slack_upload.py
+        run: python3 .github/scripts/slack_upload.py
 
       - name: Commit and push updated files
         run: |
-          cd stats
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
           git add mobee8_stats_report.pdf mobee8_stats.json || true
@@ -55,5 +50,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: mobee8-stats-report
-          path: stats/mobee8_stats_report*.pdf
+          path: mobee8_stats_report*.pdf
           retention-days: 30
