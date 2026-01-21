@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-21T11:31:32.453865+00:00",
+  "generated_at": "2026-01-21T13:06:05.774608+00:00",
   "level_1": {
     "variant": "7",
     "total_games": 4,
@@ -39,12 +39,12 @@
   },
   "level_2": {
     "variant": "12",
-    "total_games": 2,
+    "total_games": 4,
     "unique_players": 1,
-    "avg_score": 2.5,
+    "avg_score": 2.0,
     "max_score": 3,
     "score_distribution": {
-      "0-5": 2,
+      "0-5": 4,
       "6-10": 0,
       "11-15": 0,
       "16-20": 0,
@@ -53,7 +53,7 @@
     "daily_stats": [
       {
         "date": "2026-01-21",
-        "games": 2,
+        "games": 4,
         "unique_players": 1
       }
     ],
@@ -68,8 +68,8 @@
     "top_players_by_games": [
       {
         "playerId": "TJ5Z",
-        "games": 2,
-        "avgScore": 2.5,
+        "games": 4,
+        "avgScore": 2.0,
         "avatarCoords": "9,5"
       }
     ]
