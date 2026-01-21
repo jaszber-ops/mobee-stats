@@ -166,6 +166,8 @@ def fetch_variant_data(variant_key):
     score_histogram = defaultdict(int)  # Individual scores for histogram
     daily_map = {}  # date -> {games, players set}
     player_stats = {}  # playerId -> {games, totalScore, scores[], lastAvatar, lastSeen, highScore}
+    country_stats = defaultdict(int)  # country -> games count
+    city_stats = defaultdict(int)  # city -> games count
     total_games = 0
     total_score = 0
     max_score = 0
@@ -179,6 +181,7 @@ def fetch_variant_data(variant_key):
 
         scores = event.get('scores', {})
         avatars = event.get('avatars', {})
+        locations = event.get('locations', {})  # {playerId: {country, city}}
         ended_at = event.get('endedAt') or event.get('startedAt', 0)
 
         for player_id, score in scores.items():
@@ -215,6 +218,15 @@ def fetch_variant_data(variant_key):
                 if avatar:
                     player_stats[player_id]['lastAvatar'] = avatar
 
+            # Track location stats
+            loc = locations.get(player_id, {})
+            country = loc.get('country')
+            city = loc.get('city')
+            if country and country != "Unknown":
+                country_stats[country] += 1
+            if city and city != "Unknown":
+                city_stats[city] += 1
+
     # Build daily stats (last 30 days)
     daily_stats = []
     for date, data in sorted(daily_map.items()):
@@ -236,6 +248,8 @@ def fetch_variant_data(variant_key):
             # Fetch player metadata
             avatar_coords = None
             name = None
+            country = None
+            city = None
             try:
                 meta = upstash_command(['HGETALL', f'mobee8:player:{player_id}'])
                 if meta:
@@ -244,6 +258,8 @@ def fetch_variant_data(variant_key):
                         meta_dict[meta[j]] = meta[j + 1]
                     avatar_coords = meta_dict.get('avatar')
                     name = meta_dict.get('name')
+                    country = meta_dict.get('country')
+                    city = meta_dict.get('city')
             except:
                 pass
 
@@ -251,7 +267,9 @@ def fetch_variant_data(variant_key):
                 'playerId': player_id,
                 'score': score,
                 'avatarCoords': avatar_coords or player_stats.get(player_id, {}).get('lastAvatar'),
-                'name': name
+                'name': name,
+                'country': country,
+                'city': city
             })
 
     # Top by games played (from event aggregation)
@@ -278,6 +296,10 @@ def fetch_variant_data(variant_key):
         n = len(sorted_scores)
         median_score = sorted_scores[n // 2] if n % 2 == 1 else (sorted_scores[n // 2 - 1] + sorted_scores[n // 2]) / 2
 
+    # Top countries and cities
+    top_countries = sorted(country_stats.items(), key=lambda x: x[1], reverse=True)[:10]
+    top_cities = sorted(city_stats.items(), key=lambda x: x[1], reverse=True)[:10]
+
     return {
         'variant': variant_key,
         'total_games': total_games,
@@ -295,7 +317,9 @@ def fetch_variant_data(variant_key):
             'one_time': one_time_players,
             'returning': returning_players,
             'super_engaged': super_engaged
-        }
+        },
+        'top_countries': top_countries,
+        'top_cities': top_cities
     }
 
 def create_score_histogram(score_histogram, max_score, title, output_path, x_max=30):
