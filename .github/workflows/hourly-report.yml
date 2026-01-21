@@ -1,0 +1,59 @@
+name: Mobee-8 Hourly Stats Report
+
+on:
+  schedule:
+    # Run every hour at minute 0
+    - cron: '0 * * * *'
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  generate-and-upload:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install requests reportlab matplotlib pillow
+
+      - name: Generate PDF report from Redis
+        env:
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+        run: |
+          cd stats
+          python3 mobee8_report_generator.py
+
+      - name: Upload PDF to Slack
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+        run: |
+          cd stats
+          python3 .github/scripts/slack_upload.py
+
+      - name: Commit and push updated files
+        run: |
+          cd stats
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add mobee8_stats_report.pdf mobee8_stats.json || true
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update hourly statistics report [skip ci]" && git push)
+
+      - name: Upload PDF as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobee8-stats-report
+          path: stats/mobee8_stats_report*.pdf
+          retention-days: 30

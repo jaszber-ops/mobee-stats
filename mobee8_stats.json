@@ -1,0 +1,70 @@
+{
+  "generated_at": "2026-01-21T07:12:44.175209+00:00",
+  "level_1": {
+    "variant": "7",
+    "total_games": 4,
+    "unique_players": 1,
+    "avg_score": 6.5,
+    "max_score": 8,
+    "score_distribution": {
+      "0-5": 1,
+      "6-10": 3,
+      "11-15": 0,
+      "16-20": 0,
+      "20+": 0
+    },
+    "daily_stats": [
+      {
+        "date": "2026-01-21",
+        "games": 4,
+        "unique_players": 1
+      }
+    ],
+    "top_players_by_score": [
+      {
+        "playerId": "TJ5Z",
+        "score": 8,
+        "avatarCoords": "9,5",
+        "name": null
+      }
+    ],
+    "top_players_by_games": [
+      {
+        "playerId": "TJ5Z",
+        "games": 4,
+        "avgScore": 6.5,
+        "avatarCoords": "9,5"
+      }
+    ]
+  },
+  "level_2": {
+    "variant": "12",
+    "total_games": 1,
+    "unique_players": 1,
+    "avg_score": 3.0,
+    "max_score": 3,
+    "score_distribution": {
+      "0-5": 1,
+      "6-10": 0,
+      "11-15": 0,
+      "16-20": 0,
+      "20+": 0
+    },
+    "daily_stats": [
+      {
+        "date": "2026-01-21",
+        "games": 1,
+        "unique_players": 1
+      }
+    ],
+    "top_players_by_score": [],
+    "top_players_by_games": [
+      {
+        "playerId": "TJ5Z",
+        "games": 1,
+        "avgScore": 3.0,
+        "avatarCoords": "11,5"
+      }
+    ]
+  }
+}
