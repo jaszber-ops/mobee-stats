@@ -1,13 +1,13 @@
 {
-  "total_games": 6068,
+  "total_games": 6084,
   "unique_players": 500,
   "high_score_games": 688,
-  "avg_score": 9.541364535266974,
+  "avg_score": 9.570841551610782,
   "median_score": 9.0,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
-    "Budapest": 3029,
+    "Budapest": 3045,
     "J\u00e1szap\u00e1ti": 72,
     "P\u00e9cs": 572,
     "Sz\u00e9kesfeh\u00e9rv\u00e1r": 257,
@@ -138,7 +138,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 5389,
+    "Hungary": 5405,
     "Belgium": 60,
     "Switzerland": 180,
     "Local/Unknown": 48,
@@ -164,7 +164,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 3204,
+    "Android Chrome": 3220,
     "Android Firefox": 33,
     "Windows Chrome": 591,
     "iPhone Browser": 515,
@@ -183,8 +183,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 3204,
-      "avg": 10.480337078651685,
+      "count": 3220,
+      "avg": 10.531366459627328,
       "max": 30
     },
     "Android Firefox": {
@@ -265,8 +265,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 5389,
-      "avg": 9.75153089627018
+      "count": 5405,
+      "avg": 9.784088806660499
     },
     "Belgium": {
       "count": 60,
@@ -1876,7 +1876,7 @@
     "6gawu9": {
       "location": "Budapest, Hungary",
       "platform": "Android Chrome",
-      "timestamp": 1768408193.486879
+      "timestamp": 1769001994.883319
     },
     "r2xhmp": {
       "location": "J\u00e1szap\u00e1ti, Hungary",
@@ -4298,6 +4298,22 @@
     [
       "6gawu9",
       [
+        24,
+        25,
+        18,
+        26,
+        19,
+        17,
+        19,
+        24,
+        0,
+        22,
+        19,
+        22,
+        19,
+        27,
+        30,
+        21,
         18,
         16,
         18,
@@ -7217,11 +7233,11 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1498,
+    "0-5": 1499,
     "6-10": 2233,
     "11-15": 1383,
-    "16-20": 680,
-    "20+": 274
+    "16-20": 686,
+    "20+": 283
   },
   "daily_stats": [
     {
@@ -7451,7 +7467,7 @@
     },
     {
       "date": "2026-01-21",
-      "games": 7,
+      "games": 23,
       "unique_players": 3
     }
   ]
