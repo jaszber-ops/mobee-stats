@@ -52,7 +52,7 @@ def load_highlights():
         return "Mobee-8 Stats Report"
 
 def upload_to_slack(pdf_path):
-    """Upload PDF file to Slack channel"""
+    """Upload PDF file to Slack channel using the new v2 API"""
     if not SLACK_BOT_TOKEN:
         print("ERROR: SLACK_BOT_TOKEN not set")
         return False
@@ -66,75 +66,48 @@ def upload_to_slack(pdf_path):
 
     print(f"Uploading {pdf_path} to Slack channel {SLACK_CHANNEL_ID}...")
 
-    # Use files.upload API (v1) - simpler for single file
-    with open(pdf_path, 'rb') as f:
-        response = requests.post(
-            'https://slack.com/api/files.upload',
-            headers={
-                'Authorization': f'Bearer {SLACK_BOT_TOKEN}'
-            },
-            data={
-                'channels': SLACK_CHANNEL_ID,
-                'initial_comment': initial_comment,
-                'title': os.path.basename(pdf_path),
-                'filename': os.path.basename(pdf_path)
-            },
-            files={
-                'file': (os.path.basename(pdf_path), f, 'application/pdf')
-            }
-        )
-
-    result = response.json()
-
-    if result.get('ok'):
-        print(f"Successfully uploaded to Slack!")
-        print(f"File URL: {result.get('file', {}).get('permalink', 'N/A')}")
-        return True
-    else:
-        print(f"Slack upload failed: {result.get('error', 'Unknown error')}")
-
-        # Try v2 API as fallback
-        print("Trying files.uploadV2...")
-        return upload_to_slack_v2(pdf_path, initial_comment)
-
-def upload_to_slack_v2(pdf_path, initial_comment):
-    """Upload using newer v2 API"""
-    # Step 1: Get upload URL
     file_size = os.path.getsize(pdf_path)
     filename = os.path.basename(pdf_path)
 
+    # Step 1: Get upload URL
     response = requests.post(
         'https://slack.com/api/files.getUploadURLExternal',
         headers={
-            'Authorization': f'Bearer {SLACK_BOT_TOKEN}',
-            'Content-Type': 'application/json'
+            'Authorization': f'Bearer {SLACK_BOT_TOKEN}'
         },
-        json={
+        data={
             'filename': filename,
             'length': file_size
         }
     )
 
     result = response.json()
+    print(f"getUploadURLExternal response: ok={result.get('ok')}, error={result.get('error', 'none')}")
+
     if not result.get('ok'):
         print(f"Failed to get upload URL: {result.get('error')}")
         return False
 
     upload_url = result.get('upload_url')
     file_id = result.get('file_id')
+    print(f"Got upload URL, file_id: {file_id}")
 
-    # Step 2: Upload the file
+    # Step 2: Upload the file content to the URL
     with open(pdf_path, 'rb') as f:
-        upload_response = requests.post(
-            upload_url,
-            files={'file': f}
-        )
+        file_content = f.read()
 
+    upload_response = requests.post(
+        upload_url,
+        data=file_content,
+        headers={'Content-Type': 'application/octet-stream'}
+    )
+
+    print(f"Upload response status: {upload_response.status_code}")
     if upload_response.status_code != 200:
-        print(f"Failed to upload file: {upload_response.status_code}")
+        print(f"Failed to upload file: {upload_response.status_code} {upload_response.text}")
         return False
 
-    # Step 3: Complete the upload
+    # Step 3: Complete the upload and share to channel
     complete_response = requests.post(
         'https://slack.com/api/files.completeUploadExternal',
         headers={
@@ -149,8 +122,13 @@ def upload_to_slack_v2(pdf_path, initial_comment):
     )
 
     complete_result = complete_response.json()
+    print(f"completeUploadExternal response: ok={complete_result.get('ok')}, error={complete_result.get('error', 'none')}")
+
     if complete_result.get('ok'):
-        print("Successfully uploaded via v2 API!")
+        print("Successfully uploaded to Slack!")
+        files = complete_result.get('files', [])
+        if files:
+            print(f"File URL: {files[0].get('permalink', 'N/A')}")
         return True
     else:
         print(f"Complete upload failed: {complete_result.get('error')}")
