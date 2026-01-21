@@ -1,21 +1,23 @@
 {
-  "generated_at": "2026-01-21T16:19:30.197376+00:00",
+  "generated_at": "2026-01-21T18:53:39.378858+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 6,
+    "total_games": 8,
     "unique_players": 2,
-    "avg_score": 6.83,
-    "median_score": 7.5,
-    "max_score": 10,
+    "avg_score": 7.62,
+    "median_score": 8.0,
+    "max_score": 11,
     "min_score": 3,
     "score_distribution": {
       "0-5": 2,
-      "6-10": 4,
-      "11-15": 0,
+      "6-10": 5,
+      "11-15": 1,
       "16-20": 0,
       "20+": 0
     },
     "score_histogram": {
+      "11": 1,
+      "9": 1,
       "10": 1,
       "5": 1,
       "7": 1,
@@ -25,35 +27,39 @@
     "daily_stats": [
       {
         "date": "2026-01-21",
-        "games": 6,
+        "games": 8,
         "unique_players": 2
       }
     ],
     "top_players_by_score": [
       {
         "playerId": "VCWW",
-        "score": 10,
+        "score": 11,
         "avatarCoords": "12,7",
-        "name": null
+        "name": null,
+        "country": "NL",
+        "city": "Amsterdam"
       },
       {
         "playerId": "TJ5Z",
-        "score": 8,
+        "score": 9,
         "avatarCoords": "9,5",
-        "name": null
+        "name": null,
+        "country": null,
+        "city": null
       }
     ],
     "top_players_by_games": [
       {
         "playerId": "TJ5Z",
-        "games": 4,
-        "avgScore": 6.5,
+        "games": 5,
+        "avgScore": 7.0,
         "avatarCoords": "9,5"
       },
       {
         "playerId": "VCWW",
-        "games": 2,
-        "avgScore": 7.5,
+        "games": 3,
+        "avgScore": 8.7,
         "avatarCoords": "12,7"
       }
     ],
@@ -61,67 +67,96 @@
       "one_time": 0,
       "returning": 2,
       "super_engaged": 0
-    }
+    },
+    "top_countries": [
+      [
+        "NL",
+        1
+      ]
+    ],
+    "top_cities": [
+      [
+        "Amsterdam",
+        1
+      ]
+    ]
   },
   "level_2": {
     "variant": "12",
-    "total_games": 5,
+    "total_games": 7,
     "unique_players": 2,
-    "avg_score": 1.8,
+    "avg_score": 2.14,
     "median_score": 2,
-    "max_score": 3,
+    "max_score": 4,
     "min_score": 1,
     "score_distribution": {
-      "0-2": 4,
-      "3-5": 1,
+      "0-2": 5,
+      "3-5": 2,
       "6-8": 0,
       "9-11": 0,
       "12+": 0
     },
     "score_histogram": {
+      "2": 3,
+      "4": 1,
       "1": 2,
-      "2": 2,
       "3": 1
     },
     "daily_stats": [
       {
         "date": "2026-01-21",
-        "games": 5,
+        "games": 7,
         "unique_players": 2
       }
     ],
     "top_players_by_score": [
       {
         "playerId": "TJ5Z",
-        "score": 2,
+        "score": 4,
         "avatarCoords": "9,5",
-        "name": null
+        "name": null,
+        "country": null,
+        "city": null
       },
       {
         "playerId": "VCWW",
-        "score": 1,
+        "score": 2,
         "avatarCoords": "12,7",
-        "name": null
+        "name": null,
+        "country": "NL",
+        "city": "Amsterdam"
       }
     ],
     "top_players_by_games": [
       {
         "playerId": "TJ5Z",
-        "games": 4,
-        "avgScore": 2.0,
+        "games": 5,
+        "avgScore": 2.4,
         "avatarCoords": "9,5"
       },
       {
         "playerId": "VCWW",
-        "games": 1,
-        "avgScore": 1.0,
+        "games": 2,
+        "avgScore": 1.5,
         "avatarCoords": "12,7"
       }
     ],
     "engagement": {
-      "one_time": 1,
-      "returning": 1,
+      "one_time": 0,
+      "returning": 2,
       "super_engaged": 0
-    }
+    },
+    "top_countries": [
+      [
+        "NL",
+        1
+      ]
+    ],
+    "top_cities": [
+      [
+        "Amsterdam",
+        1
+      ]
+    ]
   }
 }
