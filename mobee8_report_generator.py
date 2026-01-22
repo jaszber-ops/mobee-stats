@@ -583,14 +583,23 @@ def create_pdf_report(data_7, data_12, output_file):
 
     # Level 1 High Score Leaderboard
     elements.append(Paragraph("<b>High Score Leaderboard (Top 10)</b>", heading_style))
-    score_data_7 = [['Rank', '', 'Player', 'Score']]
+    score_data_7 = [['Rank', '', 'Player', 'Location', 'Score']]
     for i, player in enumerate(data_7['top_players_by_score'][:10]):
         avatar_url = avatar_coords_to_url(player.get('avatarCoords'))
         avatar_img = download_avatar(avatar_url) or ''
         name = player.get('name') or player['playerId'][:8]
-        score_data_7.append([str(i + 1), avatar_img, name, str(player['score'])])
+        # Format location as "City, Country" or just country
+        city = player.get('city') or ''
+        country = player.get('country') or ''
+        if city and city != 'Unknown' and country and country != 'Unknown':
+            location = f"{city}, {country}"
+        elif country and country != 'Unknown':
+            location = country
+        else:
+            location = '-'
+        score_data_7.append([str(i + 1), avatar_img, name, location, str(player['score'])])
 
-    score_table_7 = Table(score_data_7, colWidths=[0.5*inch, 0.4*inch, 2*inch, 0.7*inch])
+    score_table_7 = Table(score_data_7, colWidths=[0.5*inch, 0.4*inch, 1.3*inch, 1.3*inch, 0.6*inch])
     score_table_7.setStyle(TableStyle([
         ('FONTNAME', (0, 0), (-1, -1), 'Helvetica'),
         ('FONTSIZE', (0, 0), (-1, -1), 9),
@@ -598,7 +607,7 @@ def create_pdf_report(data_7, data_12, output_file):
         ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#f5f5f5')),
         ('GRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#cccccc')),
         ('ALIGN', (0, 0), (0, -1), 'CENTER'),
-        ('ALIGN', (3, 0), (3, -1), 'CENTER'),
+        ('ALIGN', (4, 0), (4, -1), 'CENTER'),  # Score column
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
         ('TOPPADDING', (0, 0), (-1, -1), 4),
         ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
@@ -685,14 +694,23 @@ def create_pdf_report(data_7, data_12, output_file):
 
     # Level 2 High Score Leaderboard
     elements.append(Paragraph("<b>High Score Leaderboard (Top 10)</b>", heading_style))
-    score_data_12 = [['Rank', '', 'Player', 'Score']]
+    score_data_12 = [['Rank', '', 'Player', 'Location', 'Score']]
     for i, player in enumerate(data_12['top_players_by_score'][:10]):
         avatar_url = avatar_coords_to_url(player.get('avatarCoords'))
         avatar_img = download_avatar(avatar_url) or ''
         name = player.get('name') or player['playerId'][:8]
-        score_data_12.append([str(i + 1), avatar_img, name, str(player['score'])])
+        # Format location as "City, Country" or just country
+        city = player.get('city') or ''
+        country = player.get('country') or ''
+        if city and city != 'Unknown' and country and country != 'Unknown':
+            location = f"{city}, {country}"
+        elif country and country != 'Unknown':
+            location = country
+        else:
+            location = '-'
+        score_data_12.append([str(i + 1), avatar_img, name, location, str(player['score'])])
 
-    score_table_12 = Table(score_data_12, colWidths=[0.5*inch, 0.4*inch, 2*inch, 0.7*inch])
+    score_table_12 = Table(score_data_12, colWidths=[0.5*inch, 0.4*inch, 1.3*inch, 1.3*inch, 0.6*inch])
     score_table_12.setStyle(TableStyle([
         ('FONTNAME', (0, 0), (-1, -1), 'Helvetica'),
         ('FONTSIZE', (0, 0), (-1, -1), 9),
@@ -700,7 +718,7 @@ def create_pdf_report(data_7, data_12, output_file):
         ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#f5f5f5')),
         ('GRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#cccccc')),
         ('ALIGN', (0, 0), (0, -1), 'CENTER'),
-        ('ALIGN', (3, 0), (3, -1), 'CENTER'),
+        ('ALIGN', (4, 0), (4, -1), 'CENTER'),  # Score column
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
         ('TOPPADDING', (0, 0), (-1, -1), 4),
         ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
