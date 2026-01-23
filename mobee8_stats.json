@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-01-23T11:28:28.347918+00:00",
+  "generated_at": "2026-01-23T13:03:48.914380+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 28,
-    "unique_players": 6,
-    "avg_score": 4.89,
-    "median_score": 6.0,
+    "total_games": 31,
+    "unique_players": 7,
+    "avg_score": 4.42,
+    "median_score": 6,
     "max_score": 11,
     "min_score": 0,
     "score_distribution": {
-      "0-5": 12,
+      "0-5": 15,
       "6-10": 15,
       "11-15": 1,
       "16-20": 0,
       "20+": 0
     },
     "score_histogram": {
+      "0": 12,
       "7": 3,
-      "0": 9,
       "8": 6,
       "6": 3,
       "3": 2,
@@ -39,8 +39,8 @@
       },
       {
         "date": "2026-01-23",
-        "games": 7,
-        "unique_players": 3
+        "games": 10,
+        "unique_players": 4
       }
     ],
     "top_players_by_score": [
@@ -85,6 +85,14 @@
         "city": "Budapest"
       },
       {
+        "playerId": "GPLR",
+        "score": 0,
+        "avatarCoords": "10,9",
+        "name": null,
+        "country": "HU",
+        "city": "Budapest"
+      },
+      {
         "playerId": "7ZEC",
         "score": 0,
         "avatarCoords": "4,8",
@@ -108,8 +116,8 @@
       },
       {
         "playerId": "P98B",
-        "games": 3,
-        "avgScore": 5.0,
+        "games": 5,
+        "avgScore": 3.0,
         "avatarCoords": "10,9"
       },
       {
@@ -125,6 +133,12 @@
         "avatarCoords": "3,3"
       },
       {
+        "playerId": "GPLR",
+        "games": 1,
+        "avgScore": 0.0,
+        "avatarCoords": "10,9"
+      },
+      {
         "playerId": "7ZEC",
         "games": 1,
         "avgScore": 0.0,
@@ -132,14 +146,14 @@
       }
     ],
     "engagement": {
-      "one_time": 1,
+      "one_time": 2,
       "returning": 5,
       "super_engaged": 1
     },
     "top_countries": [
       [
         "HU",
-        20
+        23
       ],
       [
         "NL",
@@ -149,7 +163,7 @@
     "top_cities": [
       [
         "Budapest",
-        20
+        23
       ],
       [
         "Amsterdam",
