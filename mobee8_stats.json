@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-01-23T13:03:48.914380+00:00",
+  "generated_at": "2026-01-23T14:33:35.084047+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 31,
+    "total_games": 32,
     "unique_players": 7,
-    "avg_score": 4.42,
-    "median_score": 6,
+    "avg_score": 4.28,
+    "median_score": 5.5,
     "max_score": 11,
     "min_score": 0,
     "score_distribution": {
-      "0-5": 15,
+      "0-5": 16,
       "6-10": 15,
       "11-15": 1,
       "16-20": 0,
       "20+": 0
     },
     "score_histogram": {
-      "0": 12,
+      "0": 13,
       "7": 3,
       "8": 6,
       "6": 3,
@@ -39,7 +39,7 @@
       },
       {
         "date": "2026-01-23",
-        "games": 10,
+        "games": 11,
         "unique_players": 4
       }
     ],
@@ -49,8 +49,8 @@
         "score": 11,
         "avatarCoords": "12,7",
         "name": null,
-        "country": "HU",
-        "city": "Budapest"
+        "country": "US",
+        "city": "Los Angeles"
       },
       {
         "playerId": "TJ5Z",
@@ -110,8 +110,8 @@
       },
       {
         "playerId": "VCWW",
-        "games": 7,
-        "avgScore": 4.9,
+        "games": 8,
+        "avgScore": 4.2,
         "avatarCoords": "12,7"
       },
       {
@@ -156,6 +156,10 @@
         23
       ],
       [
+        "US",
+        1
+      ],
+      [
         "NL",
         1
       ]
@@ -166,6 +170,10 @@
         23
       ],
       [
+        "Los Angeles",
+        1
+      ],
+      [
         "Amsterdam",
         1
       ]
@@ -173,23 +181,23 @@
   },
   "level_2": {
     "variant": "12",
-    "total_games": 14,
+    "total_games": 15,
     "unique_players": 4,
-    "avg_score": 1.71,
-    "median_score": 1.5,
+    "avg_score": 1.6,
+    "median_score": 1,
     "max_score": 4,
     "min_score": 0,
     "score_distribution": {
-      "0-2": 11,
+      "0-2": 12,
       "3-5": 3,
       "6-8": 0,
       "9-11": 0,
       "12+": 0
     },
     "score_histogram": {
+      "0": 2,
       "1": 6,
       "3": 2,
-      "0": 1,
       "2": 4,
       "4": 1
     },
@@ -206,8 +214,8 @@
       },
       {
         "date": "2026-01-23",
-        "games": 1,
-        "unique_players": 1
+        "games": 2,
+        "unique_players": 2
       }
     ],
     "top_players_by_score": [
@@ -224,8 +232,8 @@
         "score": 2,
         "avatarCoords": "12,7",
         "name": null,
-        "country": "HU",
-        "city": "Budapest"
+        "country": "US",
+        "city": "Los Angeles"
       },
       {
         "playerId": "TQWG",
@@ -247,8 +255,8 @@
     "top_players_by_games": [
       {
         "playerId": "TJ5Z",
-        "games": 9,
-        "avgScore": 2.0,
+        "games": 10,
+        "avgScore": 1.8,
         "avatarCoords": "1,8"
       },
       {
@@ -273,12 +281,12 @@
     "engagement": {
       "one_time": 2,
       "returning": 2,
-      "super_engaged": 0
+      "super_engaged": 1
     },
     "top_countries": [
       [
         "HU",
-        7
+        8
       ],
       [
         "NL",
@@ -288,7 +296,7 @@
     "top_cities": [
       [
         "Budapest",
-        7
+        8
       ],
       [
         "Amsterdam",
