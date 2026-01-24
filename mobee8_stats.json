@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-01-24T10:29:42.015903+00:00",
+  "generated_at": "2026-01-24T11:24:21.581921+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 74,
+    "total_games": 75,
     "unique_players": 12,
-    "avg_score": 3.0,
-    "median_score": 0.0,
+    "avg_score": 3.04,
+    "median_score": 0,
     "max_score": 11,
     "min_score": 0,
     "score_distribution": {
       "0-5": 46,
-      "6-10": 27,
+      "6-10": 28,
       "11-15": 1,
       "16-20": 0,
       "20+": 0
     },
     "score_histogram": {
+      "6": 11,
       "7": 6,
       "0": 41,
-      "6": 10,
       "8": 7,
       "9": 3,
       "1": 1,
@@ -46,8 +46,8 @@
       },
       {
         "date": "2026-01-24",
-        "games": 1,
-        "unique_players": 1
+        "games": 2,
+        "unique_players": 2
       }
     ],
     "top_players_by_score": [
@@ -57,7 +57,7 @@
         "avatarCoords": "12,7",
         "name": null,
         "country": "US",
-        "city": "Los Angeles"
+        "city": "Dallas"
       },
       {
         "playerId": "TJ5Z",
@@ -168,16 +168,16 @@
         "avatarCoords": "1,8"
       },
       {
+        "playerId": "VCWW",
+        "games": 9,
+        "avgScore": 4.4,
+        "avatarCoords": "12,7"
+      },
+      {
         "playerId": "LTF5",
         "games": 8,
         "avgScore": 0.9,
         "avatarCoords": "10,3"
-      },
-      {
-        "playerId": "VCWW",
-        "games": 8,
-        "avgScore": 4.2,
-        "avatarCoords": "12,7"
       },
       {
         "playerId": "GPLR",
@@ -234,7 +234,7 @@
       ],
       [
         "US",
-        1
+        2
       ],
       [
         "NL",
@@ -245,6 +245,10 @@
       [
         "Budapest",
         65
+      ],
+      [
+        "Dallas",
+        1
       ],
       [
         "Los Angeles",
@@ -310,7 +314,7 @@
         "avatarCoords": "12,7",
         "name": null,
         "country": "US",
-        "city": "Los Angeles"
+        "city": "Dallas"
       },
       {
         "playerId": "TQWG",
