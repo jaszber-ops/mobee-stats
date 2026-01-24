@@ -1,32 +1,32 @@
 {
-  "generated_at": "2026-01-24T18:39:35.048319+00:00",
+  "generated_at": "2026-01-24T19:22:49.154161+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 81,
-    "unique_players": 12,
-    "avg_score": 2.93,
+    "total_games": 85,
+    "unique_players": 13,
+    "avg_score": 3.0,
     "median_score": 0,
     "max_score": 11,
     "min_score": 0,
     "score_distribution": {
-      "0-5": 51,
-      "6-10": 29,
+      "0-5": 53,
+      "6-10": 31,
       "11-15": 1,
       "16-20": 0,
       "20+": 0
     },
     "score_histogram": {
+      "6": 13,
+      "1": 2,
+      "5": 2,
       "0": 46,
       "9": 4,
-      "6": 11,
       "7": 6,
       "8": 7,
-      "1": 1,
       "4": 1,
       "3": 2,
       "11": 1,
-      "10": 1,
-      "5": 1
+      "10": 1
     },
     "daily_stats": [
       {
@@ -46,8 +46,8 @@
       },
       {
         "date": "2026-01-24",
-        "games": 8,
-        "unique_players": 5
+        "games": 12,
+        "unique_players": 6
       }
     ],
     "top_players_by_score": [
@@ -124,6 +124,14 @@
         "city": "Budapest"
       },
       {
+        "playerId": "F7PS",
+        "score": 6,
+        "avatarCoords": "10,9",
+        "name": null,
+        "country": "HU",
+        "city": "Budapest"
+      },
+      {
         "playerId": "DCXU",
         "score": 6,
         "avatarCoords": "9,0",
@@ -186,6 +194,12 @@
         "avatarCoords": "10,9"
       },
       {
+        "playerId": "F7PS",
+        "games": 4,
+        "avgScore": 4.5,
+        "avatarCoords": "10,9"
+      },
+      {
         "playerId": "NRHN",
         "games": 4,
         "avgScore": 4.8,
@@ -224,13 +238,13 @@
     ],
     "engagement": {
       "one_time": 2,
-      "returning": 10,
+      "returning": 11,
       "super_engaged": 3
     },
     "top_countries": [
       [
         "HU",
-        71
+        75
       ],
       [
         "US",
@@ -244,7 +258,7 @@
     "top_cities": [
       [
         "Budapest",
-        71
+        75
       ],
       [
         "Dallas",
@@ -262,24 +276,24 @@
   },
   "level_2": {
     "variant": "12",
-    "total_games": 25,
-    "unique_players": 8,
-    "avg_score": 1.0,
-    "median_score": 1,
+    "total_games": 28,
+    "unique_players": 9,
+    "avg_score": 1.04,
+    "median_score": 1.0,
     "max_score": 4,
     "min_score": 0,
     "score_distribution": {
-      "0-2": 22,
+      "0-2": 25,
       "3-5": 3,
       "6-8": 0,
       "9-11": 0,
       "12+": 0
     },
     "score_histogram": {
-      "0": 11,
+      "0": 12,
+      "2": 6,
       "1": 7,
       "3": 2,
-      "2": 4,
       "4": 1
     },
     "daily_stats": [
@@ -300,8 +314,8 @@
       },
       {
         "date": "2026-01-24",
-        "games": 1,
-        "unique_players": 1
+        "games": 4,
+        "unique_players": 2
       }
     ],
     "top_players_by_score": [
@@ -320,6 +334,14 @@
         "name": null,
         "country": "US",
         "city": "Dallas"
+      },
+      {
+        "playerId": "F7PS",
+        "score": 2,
+        "avatarCoords": "10,9",
+        "name": null,
+        "country": "HU",
+        "city": "Budapest"
       },
       {
         "playerId": "TQWG",
@@ -384,6 +406,12 @@
         "avatarCoords": "10,9"
       },
       {
+        "playerId": "F7PS",
+        "games": 3,
+        "avgScore": 1.3,
+        "avatarCoords": "10,9"
+      },
+      {
         "playerId": "P98B",
         "games": 3,
         "avgScore": 0.3,
@@ -422,13 +450,13 @@
     ],
     "engagement": {
       "one_time": 3,
-      "returning": 5,
+      "returning": 6,
       "super_engaged": 1
     },
     "top_countries": [
       [
         "HU",
-        18
+        21
       ],
       [
         "NL",
@@ -438,7 +466,7 @@
     "top_cities": [
       [
         "Budapest",
-        18
+        21
       ],
       [
         "Amsterdam",
