@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-01-24T13:36:29.890077+00:00",
+  "generated_at": "2026-01-24T14:27:30.603792+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 80,
+    "total_games": 81,
     "unique_players": 12,
-    "avg_score": 2.96,
-    "median_score": 0.0,
+    "avg_score": 2.93,
+    "median_score": 0,
     "max_score": 11,
     "min_score": 0,
     "score_distribution": {
-      "0-5": 50,
+      "0-5": 51,
       "6-10": 29,
       "11-15": 1,
       "16-20": 0,
       "20+": 0
     },
     "score_histogram": {
-      "0": 45,
+      "0": 46,
       "9": 4,
       "6": 11,
       "7": 6,
@@ -46,7 +46,7 @@
       },
       {
         "date": "2026-01-24",
-        "games": 7,
+        "games": 8,
         "unique_players": 5
       }
     ],
@@ -192,16 +192,16 @@
         "avatarCoords": "11,5"
       },
       {
+        "playerId": "U8LQ",
+        "games": 3,
+        "avgScore": 3.0,
+        "avatarCoords": "6,2"
+      },
+      {
         "playerId": "TQWG",
         "games": 3,
         "avgScore": 5.7,
         "avatarCoords": "3,3"
-      },
-      {
-        "playerId": "U8LQ",
-        "games": 2,
-        "avgScore": 4.5,
-        "avatarCoords": "6,2"
       },
       {
         "playerId": "JXPJ",
@@ -230,7 +230,7 @@
     "top_countries": [
       [
         "HU",
-        70
+        71
       ],
       [
         "US",
@@ -244,7 +244,7 @@
     "top_cities": [
       [
         "Budapest",
-        70
+        71
       ],
       [
         "Dallas",
