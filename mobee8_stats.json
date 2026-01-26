@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-01-26T14:37:13.250168+00:00",
+  "generated_at": "2026-01-26T15:37:20.487201+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 90,
+    "total_games": 92,
     "unique_players": 13,
-    "avg_score": 3.19,
-    "median_score": 0.0,
+    "avg_score": 3.25,
+    "median_score": 0.5,
     "max_score": 11,
     "min_score": 0,
     "score_distribution": {
-      "0-5": 54,
-      "6-10": 35,
+      "0-5": 55,
+      "6-10": 36,
       "11-15": 1,
       "16-20": 0,
       "20+": 0
     },
     "score_histogram": {
+      "8": 10,
+      "4": 3,
       "6": 15,
-      "8": 9,
-      "4": 2,
       "1": 2,
       "5": 2,
       "0": 46,
@@ -53,6 +53,11 @@
         "date": "2026-01-25",
         "games": 5,
         "unique_players": 1
+      },
+      {
+        "date": "2026-01-26",
+        "games": 2,
+        "unique_players": 1
       }
     ],
     "top_players_by_score": [
@@ -61,8 +66,8 @@
         "score": 11,
         "avatarCoords": "12,7",
         "name": null,
-        "country": "US",
-        "city": "Dallas"
+        "country": "NL",
+        "city": "Amsterdam"
       },
       {
         "playerId": "U8LQ",
@@ -181,16 +186,16 @@
         "avatarCoords": "1,8"
       },
       {
+        "playerId": "VCWW",
+        "games": 11,
+        "avgScore": 4.7,
+        "avatarCoords": "12,7"
+      },
+      {
         "playerId": "F7PS",
         "games": 9,
         "avgScore": 5.6,
         "avatarCoords": "2,5"
-      },
-      {
-        "playerId": "VCWW",
-        "games": 9,
-        "avgScore": 4.4,
-        "avatarCoords": "12,7"
       },
       {
         "playerId": "LTF5",
@@ -244,7 +249,7 @@
     "engagement": {
       "one_time": 2,
       "returning": 11,
-      "super_engaged": 3
+      "super_engaged": 4
     },
     "top_countries": [
       [
@@ -252,12 +257,12 @@
         80
       ],
       [
-        "US",
-        2
+        "NL",
+        3
       ],
       [
-        "NL",
-        1
+        "US",
+        2
       ]
     ],
     "top_cities": [
@@ -266,15 +271,15 @@
         80
       ],
       [
+        "Amsterdam",
+        3
+      ],
+      [
         "Dallas",
         1
       ],
       [
         "Los Angeles",
-        1
-      ],
-      [
-        "Amsterdam",
         1
       ]
     ]
@@ -350,8 +355,8 @@
         "score": 2,
         "avatarCoords": "12,7",
         "name": null,
-        "country": "US",
-        "city": "Dallas"
+        "country": "NL",
+        "city": "Amsterdam"
       },
       {
         "playerId": "TQWG",
