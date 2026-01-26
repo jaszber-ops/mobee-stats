@@ -1,21 +1,23 @@
 {
-  "generated_at": "2026-01-26T19:30:23.917203+00:00",
+  "generated_at": "2026-01-26T20:36:07.991879+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 98,
+    "total_games": 100,
     "unique_players": 14,
-    "avg_score": 3.53,
-    "median_score": 1.0,
+    "avg_score": 3.7,
+    "median_score": 2.0,
     "max_score": 15,
     "min_score": 0,
     "score_distribution": {
       "0-5": 57,
       "6-10": 38,
-      "11-15": 3,
+      "11-15": 5,
       "16-20": 0,
       "20+": 0
     },
     "score_histogram": {
+      "11": 2,
+      "13": 1,
       "0": 48,
       "12": 1,
       "10": 3,
@@ -27,8 +29,7 @@
       "5": 2,
       "9": 4,
       "7": 6,
-      "3": 2,
-      "11": 1
+      "3": 2
     },
     "daily_stats": [
       {
@@ -58,7 +59,7 @@
       },
       {
         "date": "2026-01-26",
-        "games": 8,
+        "games": 10,
         "unique_players": 3
       }
     ],
@@ -220,16 +221,16 @@
         "avatarCoords": "10,9"
       },
       {
+        "playerId": "PTN7",
+        "games": 5,
+        "avgScore": 12.2,
+        "avatarCoords": "0,2"
+      },
+      {
         "playerId": "NRHN",
         "games": 4,
         "avgScore": 4.8,
         "avatarCoords": "11,5"
-      },
-      {
-        "playerId": "PTN7",
-        "games": 3,
-        "avgScore": 12.3,
-        "avatarCoords": "0,2"
       },
       {
         "playerId": "U8LQ",
@@ -270,7 +271,7 @@
     "top_countries": [
       [
         "HU",
-        86
+        88
       ],
       [
         "NL",
@@ -284,7 +285,7 @@
     "top_cities": [
       [
         "Budapest",
-        86
+        88
       ],
       [
         "Amsterdam",
@@ -302,30 +303,33 @@
   },
   "level_2": {
     "variant": "12",
-    "total_games": 49,
+    "total_games": 88,
     "unique_players": 10,
-    "avg_score": 2.37,
-    "median_score": 2,
-    "max_score": 9,
+    "avg_score": 3.86,
+    "median_score": 3.5,
+    "max_score": 12,
     "min_score": 0,
     "score_distribution": {
-      "0-2": 31,
-      "3-5": 11,
-      "6-8": 6,
-      "9-11": 1,
-      "12+": 0
+      "0-2": 34,
+      "3-5": 29,
+      "6-8": 18,
+      "9-11": 5,
+      "12+": 2
     },
     "score_histogram": {
-      "4": 4,
-      "7": 2,
-      "6": 1,
-      "2": 7,
-      "8": 3,
-      "5": 2,
-      "3": 5,
-      "9": 1,
-      "0": 16,
-      "1": 8
+      "6": 6,
+      "10": 1,
+      "5": 11,
+      "3": 10,
+      "1": 9,
+      "7": 8,
+      "4": 8,
+      "12": 2,
+      "2": 9,
+      "8": 4,
+      "11": 1,
+      "9": 3,
+      "0": 16
     },
     "daily_stats": [
       {
@@ -355,14 +359,14 @@
       },
       {
         "date": "2026-01-26",
-        "games": 15,
+        "games": 54,
         "unique_players": 2
       }
     ],
     "top_players_by_score": [
       {
         "playerId": "PTN7",
-        "score": 9,
+        "score": 12,
         "avatarCoords": "0,2",
         "name": null,
         "country": "HU",
@@ -444,7 +448,7 @@
     "top_players_by_games": [
       {
         "playerId": "PTN7",
-        "games": 14,
+        "games": 53,
         "avgScore": 5.7,
         "avatarCoords": "0,2"
       },
@@ -511,7 +515,7 @@
     "top_countries": [
       [
         "HU",
-        42
+        81
       ],
       [
         "NL",
@@ -521,7 +525,7 @@
     "top_cities": [
       [
         "Budapest",
-        42
+        81
       ],
       [
         "Amsterdam",
