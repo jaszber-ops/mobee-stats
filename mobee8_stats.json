@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-01-27T10:37:38.013192+00:00",
+  "generated_at": "2026-01-27T11:30:03.478250+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 123,
+    "total_games": 124,
     "unique_players": 15,
-    "avg_score": 3.75,
-    "median_score": 1,
+    "avg_score": 3.72,
+    "median_score": 1.0,
     "max_score": 15,
     "min_score": 0,
     "score_distribution": {
-      "0-5": 73,
+      "0-5": 74,
       "6-10": 41,
       "11-15": 9,
       "16-20": 0,
       "20+": 0
     },
     "score_histogram": {
+      "0": 60,
       "13": 3,
-      "0": 59,
       "6": 16,
       "3": 4,
       "14": 1,
@@ -65,8 +65,8 @@
       },
       {
         "date": "2026-01-27",
-        "games": 1,
-        "unique_players": 1
+        "games": 2,
+        "unique_players": 2
       }
     ],
     "top_players_by_score": [
@@ -155,8 +155,8 @@
         "score": 7,
         "avatarCoords": "8,3",
         "name": null,
-        "country": "HU",
-        "city": "Budapest"
+        "country": "US",
+        "city": "Oceanside"
       },
       {
         "playerId": "7QMP",
@@ -223,16 +223,16 @@
         "avatarCoords": "12,7"
       },
       {
+        "playerId": "A3K5",
+        "games": 9,
+        "avgScore": 1.8,
+        "avatarCoords": "8,3"
+      },
+      {
         "playerId": "F7PS",
         "games": 9,
         "avgScore": 5.6,
         "avatarCoords": "2,5"
-      },
-      {
-        "playerId": "A3K5",
-        "games": 8,
-        "avgScore": 2.0,
-        "avatarCoords": "8,3"
       },
       {
         "playerId": "LTF5",
@@ -294,12 +294,12 @@
         111
       ],
       [
-        "NL",
+        "US",
         3
       ],
       [
-        "US",
-        2
+        "NL",
+        3
       ]
     ],
     "top_cities": [
@@ -310,6 +310,10 @@
       [
         "Amsterdam",
         3
+      ],
+      [
+        "Oceanside",
+        1
       ],
       [
         "Dallas",
@@ -452,8 +456,8 @@
         "score": 1,
         "avatarCoords": "8,3",
         "name": null,
-        "country": "HU",
-        "city": "Budapest"
+        "country": "US",
+        "city": "Oceanside"
       },
       {
         "playerId": "U8LQ",
