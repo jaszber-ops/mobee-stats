@@ -20,7 +20,7 @@ SLACK_BOT_TOKEN = os.environ.get('SLACK_BOT_TOKEN', '')
 SLACK_CHANNEL_ID = os.environ.get('SLACK_CHANNEL_ID', '')
 
 # Base URL for avatar images on the live site
-AVATAR_BASE_URL = "https://mobee-10.trippplecard.games/assets/avatars_320"
+AVATAR_BASE_URL = "https://mobee-8.trippplecard.games/assets/avatars_320"
 
 def find_latest_pdf():
     """Find the most recent PDF report file"""
