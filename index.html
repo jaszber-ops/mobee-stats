@@ -51,10 +51,15 @@
             color: #666;
         }
 
-        .pdf-download {
+        .header-links {
             position: absolute;
             top: 0;
             right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .header-link {
             display: flex;
             align-items: center;
             gap: 8px;
@@ -69,8 +74,18 @@
             transition: background 0.3s ease;
         }
 
-        .pdf-download:hover {
+        .header-link:hover {
             background: #b8b8b8;
+        }
+
+        .leaderboard-link {
+            background: #E86F51;
+            color: white;
+            border-color: #c95a3f;
+        }
+
+        .leaderboard-link:hover {
+            background: #d45c3e;
         }
 
         .pdf-icon {
@@ -198,10 +213,15 @@
         <div id="error" style="display: none;"></div>
         <div id="content" style="display: none;">
             <header>
-                <a href="mobee_stats_report.pdf" class="pdf-download" download>
-                    <img src="pdf.png" alt="PDF" class="pdf-icon">
-                    Download PDF
-                </a>
+                <div class="header-links">
+                    <a href="leaderboard.html" class="header-link leaderboard-link">
+                        🏆 Leaderboard
+                    </a>
+                    <a href="mobee_stats_report.pdf" class="header-link pdf-download" download>
+                        <img src="pdf.png" alt="PDF" class="pdf-icon">
+                        Download PDF
+                    </a>
+                </div>
                 <h1>MOBEE GAME STATISTICS REPORT</h1>
                 <div class="subtitle" id="generatedDate">Generated: Loading...</div>
             </header>
