@@ -115,6 +115,7 @@
         .scope-tab.active[data-scope="global"] { background: var(--red); }
         .scope-tab.active[data-scope="city"] { background: var(--yellow); }
         .scope-tab.active[data-scope="friends"] { background: var(--green); }
+        .scope-tab.active[data-scope="legacy"] { background: #9b8ec4; }
 
         .scope-tab.disabled {
             color: #bbb;
@@ -421,6 +422,10 @@
                 <span class="icon"><img src="assets/multi.png" alt=""></span>
                 Friends
             </button>
+            <button class="scope-tab" data-scope="legacy">
+                <span class="icon"><img src="assets/symbols/hourglass.png" alt=""></span>
+                Legacy
+            </button>
         </div>
 
         <!-- Time Tabs -->
@@ -558,11 +563,12 @@
 
         // Global state
         let rawGames = [];
+        let legacyGames = []; // Old 6-digit code games from mobee_games_raw.json
         let legacyData = {};
         let playerAvatars = {};
         let symbolsList = [];
         let currentSort = 'total_points';
-        let currentScope = 'city'; // 'global', 'city', or 'friends'
+        let currentScope = 'city'; // 'global', 'city', 'friends', or 'legacy'
         let currentTimeframe = 'alltime'; // 'alltime', 'weekly', or 'today'
         let currentPlayer = new URLSearchParams(window.location.search).get('player')?.toUpperCase() || null;
         let friendsMap = {}; // {playerCode: Set of friend codes}
@@ -601,6 +607,67 @@
             const friends = new Set(friendsMap[currentPlayer]);
             friends.add(currentPlayer); // Include self
             return friends;
+        }
+
+        // Aggregate legacy games into player stats (no level distinction)
+        function aggregateLegacyPlayerData(games) {
+            const players = {};
+
+            for (const game of games) {
+                const code = game.user_code;
+                if (!code) continue;
+
+                if (!players[code]) {
+                    players[code] = {
+                        code,
+                        avatar: getAvatarForCode(code),
+                        total_points: 0,
+                        games: 0,
+                        best: 0,
+                        city: '',
+                        country: ''
+                    };
+                }
+
+                players[code].total_points += game.score || 0;
+                players[code].games += 1;
+                players[code].best = Math.max(players[code].best, game.score || 0);
+                if (game.city) {
+                    players[code].city = game.city;
+                    players[code].country = game.country || '';
+                }
+            }
+
+            return Object.values(players);
+        }
+
+        // Create leaderboard row for legacy view
+        function createLegacyRow(player, position, sortBy) {
+            const rankClass = position <= 3 ? `rank-${position}` : '';
+            const rowColors = ['var(--red)', 'var(--yellow)', 'var(--green)'];
+            const highlight = position <= 3 ? rowColors[position-1] : '#666';
+
+            const totalHighlight = sortBy === 'total_points' && position <= 3 ? highlight : '#666';
+            const bestHighlight = sortBy === 'best' && position <= 3 ? highlight : '#666';
+            const gamesHighlight = sortBy === 'games' && position <= 3 ? highlight : '#666';
+
+            const location = player.country && player.country !== 'Hungary'
+                ? `${player.city}, ${player.country}`
+                : player.city;
+
+            return `
+                <div class="leaderboard-row ${rankClass}">
+                    ${createHexBadge(position)}
+                    ${createAvatar(player.avatar, position)}
+                    <div class="player-info">
+                        <div class="player-code">${player.code}</div>
+                        <div class="player-stats">${location || 'Unknown'}</div>
+                    </div>
+                    <div class="points" style="text-align: right; font-weight: 700; color: ${totalHighlight}">${player.total_points.toLocaleString()}</div>
+                    <div class="best" style="text-align: right; font-weight: 600; color: ${bestHighlight}">${player.best || '-'}</div>
+                    <div class="best" style="text-align: right; font-weight: 600; color: ${gamesHighlight}">${player.games}</div>
+                </div>
+            `;
         }
 
         // Aggregate games into player stats with separate level tracking
@@ -695,8 +762,78 @@
             body.innerHTML = data.map((player, idx) => createRow(player, idx + 1, sortBy)).join('');
         }
 
+        // Update header columns based on current view
+        function updateHeaderColumns(isLegacy) {
+            const header = document.querySelector('.leaderboard-header');
+            if (isLegacy) {
+                header.innerHTML = `
+                    <span>#</span>
+                    <span></span>
+                    <span>Player</span>
+                    <span class="sortable active" data-sort="total_points" title="Total Points">Total</span>
+                    <span class="sortable" data-sort="best" title="Best Score">Best</span>
+                    <span class="sortable" data-sort="games" title="Games Played">Games</span>
+                `;
+            } else {
+                header.innerHTML = `
+                    <span>#</span>
+                    <span></span>
+                    <span>Player</span>
+                    <span class="sortable ${currentSort === 'total_points' ? 'active' : ''}" data-sort="total_points" title="Total Points">Total</span>
+                    <span class="sortable ${currentSort === 'l1_best' ? 'active' : ''}" data-sort="l1_best" title="Level 1 Best">L1 Best</span>
+                    <span class="sortable ${currentSort === 'l2_best' ? 'active' : ''}" data-sort="l2_best" title="Level 2 Best">L2 Best</span>
+                `;
+            }
+            // Re-attach click handlers
+            document.querySelectorAll('.sortable').forEach(el => {
+                el.addEventListener('click', function() {
+                    currentSort = this.dataset.sort;
+                    updateLeaderboard();
+                });
+            });
+        }
+
         // Sort, filter and render
         function updateLeaderboard() {
+            // Handle legacy scope separately
+            if (currentScope === 'legacy') {
+                updateHeaderColumns(true);
+
+                // Filter legacy games by timeframe
+                let filtered = legacyGames;
+                if (currentTimeframe === 'weekly' && filtered.length > 0) {
+                    const latestTimestamp = Math.max(...filtered.map(g => g.timestamp));
+                    const oneWeekBefore = latestTimestamp - (7 * 24 * 60 * 60);
+                    filtered = filtered.filter(g => g.timestamp >= oneWeekBefore);
+                } else if (currentTimeframe === 'today' && filtered.length > 0) {
+                    const latestTimestamp = Math.max(...filtered.map(g => g.timestamp));
+                    const oneDayBefore = latestTimestamp - (24 * 60 * 60);
+                    filtered = filtered.filter(g => g.timestamp >= oneDayBefore);
+                }
+
+                const playerData = aggregateLegacyPlayerData(filtered);
+
+                const sorted = playerData.sort((a, b) => {
+                    if (currentSort === 'total_points') return (b.total_points || 0) - (a.total_points || 0);
+                    if (currentSort === 'best') return (b.best || 0) - (a.best || 0);
+                    if (currentSort === 'games') return (b.games || 0) - (a.games || 0);
+                    return 0;
+                });
+
+                const body = document.getElementById('leaderboardBody');
+                body.innerHTML = sorted.slice(0, 30).map((player, idx) => createLegacyRow(player, idx + 1, currentSort)).join('');
+
+                updateSubtitle(playerData.length, filtered.length, filtered, false);
+
+                document.querySelectorAll('.sortable').forEach(el => {
+                    el.classList.toggle('active', el.dataset.sort === currentSort);
+                });
+                return;
+            }
+
+            // Regular view (global, city, friends)
+            updateHeaderColumns(false);
+
             const filtered = filterGames(rawGames, currentScope, currentTimeframe);
             // Include legacy data only for all-time global view
             const includeLegacy = (currentTimeframe === 'alltime' && currentScope === 'global');
@@ -745,7 +882,7 @@
         // Load data from API (live) or static files (fallback)
         async function loadLeaderboard() {
             try {
-                // Try live API first, then static files as fallback
+                // Try live API first, then static files as fallback for current games
                 let response = await fetch('/api/leaderboard');
                 if (!response.ok) {
                     console.log('API not available, trying static files...');
@@ -770,6 +907,18 @@
                     legacyData = {};
                 }
 
+                // Load legacy games (old 6-digit codes) separately
+                try {
+                    const legacyResponse = await fetch('mobee_games_raw.json');
+                    if (legacyResponse.ok) {
+                        legacyGames = await legacyResponse.json();
+                        console.log(`Loaded ${legacyGames.length} legacy games`);
+                    }
+                } catch (e) {
+                    console.log('Legacy games not available:', e);
+                    legacyGames = [];
+                }
+
                 // Build friends map from game data
                 friendsMap = buildFriendsMap(rawGames);
 
@@ -783,6 +932,12 @@
                     friendsTab.title = 'No multiplayer games yet';
                 } else {
                     friendsTab.title = 'Add ?player=CODE to URL';
+                }
+
+                // Update Legacy tab with count
+                const legacyTab = document.querySelector('.scope-tab[data-scope="legacy"]');
+                if (legacyTab && legacyGames.length > 0) {
+                    legacyTab.title = `${legacyGames.length.toLocaleString()} games from old version`;
                 }
 
                 updateLeaderboard();
@@ -806,7 +961,15 @@
             tab.addEventListener('click', function() {
                 document.querySelectorAll('.scope-tab').forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
+                const prevScope = currentScope;
                 currentScope = this.dataset.scope;
+
+                // Reset sort when switching to/from legacy (different columns)
+                if ((currentScope === 'legacy' && prevScope !== 'legacy') ||
+                    (currentScope !== 'legacy' && prevScope === 'legacy')) {
+                    currentSort = 'total_points';
+                }
+
                 updateLeaderboard();
             });
         });
