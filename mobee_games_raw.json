@@ -1,6 +1,61 @@
 [
   {
     "is_high_score": false,
+    "score": 17,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "6gawu9",
+    "game_number": 941,
+    "game_code": "Unknown",
+    "timestamp": 1769721925.342729
+  },
+  {
+    "is_high_score": false,
+    "score": 0,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "6gawu9",
+    "game_number": 940,
+    "game_code": "Unknown",
+    "timestamp": 1769721865.073359
+  },
+  {
+    "is_high_score": false,
+    "score": 21,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "6gawu9",
+    "game_number": 939,
+    "game_code": "Unknown",
+    "timestamp": 1769721800.533629
+  },
+  {
+    "is_high_score": false,
+    "score": 16,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "6gawu9",
+    "game_number": 938,
+    "game_code": "Unknown",
+    "timestamp": 1769721738.518099
+  },
+  {
+    "is_high_score": false,
+    "score": 17,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "6gawu9",
+    "game_number": 937,
+    "game_code": "Unknown",
+    "timestamp": 1769720150.787529
+  },
+  {
+    "is_high_score": false,
     "score": 7,
     "city": "Budapest",
     "country": "Hungary",
