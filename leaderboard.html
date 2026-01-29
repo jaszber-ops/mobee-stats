@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Møbee Leaderboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f0f4f8;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Møbee Brand Colors */
+        :root {
+            --red: #E86F51;
+            --yellow: #F2C94C;
+            --green: #BFCA86;
+            --cream: #f7f9d2;
+            --bg: #f0f4f8;
+            --text: #333;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+            margin-bottom: 8px;
+        }
+
+        .header h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text);
+            margin: 8px 0 4px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: var(--red);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Scope Tabs */
+        .scope-tabs {
+            display: flex;
+            gap: 8px;
+            background: #fff;
+            padding: 6px;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .scope-tab {
+            flex: 1;
+            padding: 10px 8px;
+            border: none;
+            background: rgba(255,255,255,0.7);
+            color: #555;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .scope-tab.active {
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .scope-tab.active[data-scope="global"] { background: var(--red); }
+        .scope-tab.active[data-scope="city"] { background: var(--yellow); }
+        .scope-tab.active[data-scope="friends"] { background: var(--green); }
+
+        .scope-tab.disabled {
+            color: #bbb;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .scope-tab .icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scope-tab .icon img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        .scope-tab.active .icon img {
+            filter: brightness(10);
+        }
+
+        /* Time Tabs */
+        .time-tabs {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .time-tab {
+            padding: 8px 20px;
+            border: 2px solid #ddd;
+            background: #fff;
+            color: #666;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .time-tab.active {
+            border-color: var(--red);
+            background: rgba(232, 111, 81, 0.15);
+            color: var(--red);
+        }
+
+        .time-tab.disabled {
+            color: #bbb;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        /* Leaderboard Table */
+        .leaderboard {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 3px solid var(--cream);
+        }
+
+        .leaderboard-header {
+            display: grid;
+            grid-template-columns: 40px 44px 1fr 70px 55px 55px;
+            padding: 14px 12px;
+            border-bottom: 2px solid var(--cream);
+            background: linear-gradient(90deg, rgba(232,111,81,0.1), rgba(242,201,76,0.1), rgba(191,202,134,0.1));
+        }
+
+        .leaderboard-header span {
+            color: #666;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .leaderboard-header .sortable {
+            cursor: pointer;
+            user-select: none;
+            text-align: right;
+        }
+
+        .leaderboard-header .sortable:hover {
+            color: var(--red);
+        }
+
+        .leaderboard-header .sortable.active {
+            color: var(--red);
+        }
+
+        .leaderboard-header .sortable.active::after {
+            content: ' ▼';
+            font-size: 8px;
+        }
+
+        .leaderboard-row {
+            display: grid;
+            grid-template-columns: 40px 44px 1fr 70px 55px 55px;
+            padding: 10px 12px;
+            align-items: center;
+            border-bottom: 1px solid #f0f4f8;
+            background: #fff;
+            border-left: 4px solid transparent;
+            transition: background 0.2s ease;
+        }
+
+        .leaderboard-row:last-child {
+            border-bottom: none;
+        }
+
+        .leaderboard-row.rank-1 {
+            background: rgba(232, 111, 81, 0.1);
+            border-left-color: var(--red);
+        }
+
+        .leaderboard-row.rank-2 {
+            background: rgba(242, 201, 76, 0.1);
+            border-left-color: var(--yellow);
+        }
+
+        .leaderboard-row.rank-3 {
+            background: rgba(191, 202, 134, 0.1);
+            border-left-color: var(--green);
+        }
+
+        /* Hexagon Badge */
+        .hex-badge {
+            width: 36px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hex-badge svg {
+            width: 36px;
+            height: 40px;
+        }
+
+        .hex-badge .rank-num {
+            position: absolute;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .hex-badge.rank-1 .rank-num,
+        .hex-badge.rank-2 .rank-num,
+        .hex-badge.rank-3 .rank-num {
+            font-size: 15px;
+            color: #333;
+        }
+
+        /* Avatar */
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #e0e4e8;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            font-size: 20px;
+        }
+
+        .avatar.highlight {
+            border-width: 3px;
+        }
+
+        .avatar.rank-1 {
+            border-color: var(--red);
+            box-shadow: 0 2px 8px rgba(232, 111, 81, 0.4);
+        }
+
+        .avatar.rank-2 {
+            border-color: var(--yellow);
+            box-shadow: 0 2px 8px rgba(242, 201, 76, 0.4);
+        }
+
+        .avatar.rank-3 {
+            border-color: var(--green);
+            box-shadow: 0 2px 8px rgba(191, 202, 134, 0.4);
+        }
+
+        /* Player Info */
+        .player-info {
+            padding-left: 8px;
+        }
+
+        .player-code {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 15px;
+            font-weight: 600;
+            color: #555;
+            letter-spacing: 1.5px;
+        }
+
+        .rank-1 .player-code,
+        .rank-2 .player-code,
+        .rank-3 .player-code {
+            color: var(--text);
+        }
+
+        .player-stats {
+            font-size: 11px;
+            color: #999;
+            margin-top: 2px;
+        }
+
+        /* Points */
+        .points {
+            text-align: right;
+            font-size: 16px;
+            font-weight: 700;
+            color: #666;
+        }
+
+        .rank-1 .points { color: var(--red); }
+        .rank-2 .points { color: var(--yellow); }
+        .rank-3 .points { color: var(--green); }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .footer p {
+            color: #999;
+            font-size: 12px;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .leaderboard-header,
+            .leaderboard-row {
+                grid-template-columns: 32px 36px 1fr 55px 45px 45px;
+                font-size: 12px;
+            }
+
+            .hex-badge {
+                width: 26px;
+                height: 30px;
+            }
+
+            .avatar {
+                width: 32px;
+                height: 32px;
+            }
+
+            .points, .best {
+                font-size: 12px !important;
+            }
+
+            .player-code {
+                font-size: 12px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Dashboard</a>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src="assets/mobee_logo.png" alt="Møbee" class="logo">
+            <h2>🏆 Leaderboard</h2>
+            <p id="statsSubtitle">Loading...</p>
+        </div>
+
+        <!-- Scope Tabs -->
+        <div class="scope-tabs">
+            <button class="scope-tab" data-scope="global">
+                <span class="icon"><img src="assets/symbols/globe.png" alt=""></span>
+                Global
+            </button>
+            <button class="scope-tab active" data-scope="city">
+                <span class="icon"><img src="assets/mobee_logo_sq.png" alt=""></span>
+                Budapest
+            </button>
+            <button class="scope-tab disabled" data-scope="friends" disabled>
+                <span class="icon"><img src="assets/multi.png" alt=""></span>
+                Friends
+            </button>
+        </div>
+
+        <!-- Time Tabs -->
+        <div class="time-tabs">
+            <button class="time-tab active" data-time="alltime">All Time</button>
+            <button class="time-tab" data-time="weekly">Weekly</button>
+            <button class="time-tab" data-time="today">Today</button>
+        </div>
+
+        <!-- Leaderboard -->
+        <div class="leaderboard">
+            <div class="leaderboard-header">
+                <span>#</span>
+                <span></span>
+                <span>Player</span>
+                <span class="sortable active" data-sort="total_points" title="Total Points">Total</span>
+                <span class="sortable" data-sort="l1_best" title="Level 1 Best">L1 Best</span>
+                <span class="sortable" data-sort="l2_best" title="Level 2 Best">L2 Best</span>
+            </div>
+            <div id="leaderboardBody" class="leaderboard-body">
+                <div class="loading">Loading leaderboard...</div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <img src="assets/mobee_logo_sq.png" alt="" style="width: 24px; height: 24px;">
+            <p>Play matches to climb the leaderboard!</p>
+        </div>
+    </div>
+
+    <script>
+        // Avatar symbol images (available in assets/symbols/)
+        const avatarSymbols = [
+            'airplane', 'cat', 'cherry', 'coffee', 'dog', 'doll', 'elephant',
+            'fan', 'flower', 'frenchhorn', 'globe', 'helicopter', 'hourglass',
+            'leaf', 'lightbulb', 'lion', 'mobius', 'pawprint', 'pig', 'pigeon',
+            'rhino', 'sailboat', 'saturn', 'shark', 'shoe', 'snowflake', 'star',
+            'sunglasses', 'train', 'ufo'
+        ];
+
+        // Medal colors for hexagon badges
+        const medalColors = {
+            1: { fill1: '#FFD700', fill2: '#FFA500', text: '#333' },
+            2: { fill1: '#C0C0C0', fill2: '#A8A8A8', text: '#333' },
+            3: { fill1: '#CD7F32', fill2: '#A0522D', text: '#fff' },
+            default: { fill1: '#f7f9d2', fill2: '#e8e8d8', text: '#666' }
+        };
+
+        // Create hexagon badge SVG
+        function createHexBadge(position) {
+            const medal = medalColors[position] || medalColors.default;
+            const gradientId = `medal-${position}`;
+            const strokeColor = position <= 3 ? 'rgba(255,255,255,0.5)' : '#d0d0c0';
+
+            return `
+                <div class="hex-badge ${position <= 3 ? 'rank-' + position : ''}">
+                    <svg viewBox="0 0 40 46">
+                        <defs>
+                            <linearGradient id="${gradientId}" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="${medal.fill1}"/>
+                                <stop offset="100%" stop-color="${medal.fill2}"/>
+                            </linearGradient>
+                        </defs>
+                        <polygon
+                            points="20,0 40,11.5 40,34.5 20,46 0,34.5 0,11.5"
+                            fill="url(#${gradientId})"
+                            stroke="${strokeColor}"
+                            stroke-width="2"
+                        />
+                    </svg>
+                    <span class="rank-num" style="color: ${medal.text}">${position}</span>
+                </div>
+            `;
+        }
+
+        // Get avatar for a player from stored data or generate fallback
+        function getAvatarForCode(code) {
+            // Check if we have a real avatar for this player
+            if (playerAvatars[code]) {
+                return playerAvatars[code];
+            }
+            // Fallback: generate based on code hash - format is "row,col" (0-indexed)
+            const hash = code.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+            const row = hash % 13;
+            const col = (hash * 7) % 10;
+            return `${row},${col}`;
+        }
+
+        // Create avatar element - data is 0-indexed "row,col", files are 1-indexed {col}-{row}.png
+        function createAvatar(avatarStr, position) {
+            const highlightClass = position <= 3 ? `highlight rank-${position}` : '';
+            let [row, col] = (avatarStr || '0,0').split(',').map(Number);
+
+            // Convert 0-indexed to 1-indexed and clamp to valid range (col: 1-10, row: 1-13)
+            col = Math.min(10, Math.max(1, col + 1));
+            row = Math.min(13, Math.max(1, row + 1));
+            const filename = `${col}-${row}.png`;
+
+            return `<div class="avatar ${highlightClass}">
+                <img src="assets/avatars/${filename}" alt="avatar" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+            </div>`;
+        }
+
+        // Create leaderboard row
+        function createRow(player, position, sortBy) {
+            const rankClass = position <= 3 ? `rank-${position}` : '';
+            const rowColors = ['var(--red)', 'var(--yellow)', 'var(--green)'];
+            const highlight = position <= 3 ? rowColors[position-1] : '#666';
+
+            const totalHighlight = sortBy === 'total_points' && position <= 3 ? highlight : '#666';
+            const l1Highlight = sortBy === 'l1_best' && position <= 3 ? highlight : '#666';
+            const l2Highlight = sortBy === 'l2_best' && position <= 3 ? highlight : '#666';
+
+            const totalGames = player.l1_games + player.l2_games;
+            const totalPoints = player.l1_points + player.l2_points;
+
+            return `
+                <div class="leaderboard-row ${rankClass}">
+                    ${createHexBadge(position)}
+                    ${createAvatar(player.avatar, position)}
+                    <div class="player-info">
+                        <div class="player-code">${player.code}</div>
+                        <div class="player-stats">${totalGames} games</div>
+                    </div>
+                    <div class="points" style="text-align: right; font-weight: 700; color: ${totalHighlight}">${totalPoints || '-'}</div>
+                    <div class="best" style="text-align: right; font-weight: 600; color: ${l1Highlight}">${player.l1_best || '-'}</div>
+                    <div class="best" style="text-align: right; font-weight: 600; color: ${l2Highlight}">${player.l2_best || '-'}</div>
+                </div>
+            `;
+        }
+
+        // Global state
+        let rawGames = [];
+        let legacyData = {};
+        let playerAvatars = {};
+        let symbolsList = [];
+        let currentSort = 'total_points';
+        let currentScope = 'city'; // 'global' or 'city'
+        let currentTimeframe = 'alltime'; // 'alltime', 'weekly', or 'today'
+
+        // Aggregate games into player stats with separate level tracking
+        function aggregatePlayerData(games, includeLegacy = false) {
+            const players = {};
+
+            // Add recent games
+            for (const game of games) {
+                const code = game.user_code;
+                if (!players[code]) {
+                    players[code] = {
+                        code,
+                        avatar: getAvatarForCode(code),
+                        l1_points: 0,
+                        l1_games: 0,
+                        l1_best: 0,
+                        l2_points: 0,
+                        l2_games: 0,
+                        l2_best: 0,
+                        cities: new Set()
+                    };
+                }
+
+                const level = game.level || 1;
+                if (level === 1) {
+                    players[code].l1_points += game.score;
+                    players[code].l1_games += 1;
+                    players[code].l1_best = Math.max(players[code].l1_best, game.score);
+                } else if (level === 2) {
+                    players[code].l2_points += game.score;
+                    players[code].l2_games += 1;
+                    players[code].l2_best = Math.max(players[code].l2_best, game.score);
+                }
+                if (game.city) players[code].cities.add(game.city);
+            }
+
+            // Add legacy data if requested (all level 1)
+            if (includeLegacy && legacyData.players) {
+                for (const [code, data] of Object.entries(legacyData.players)) {
+                    if (!players[code]) {
+                        players[code] = {
+                            code,
+                            avatar: getAvatarForCode(code),
+                            l1_points: 0,
+                            l1_games: 0,
+                            l1_best: 0,
+                            l2_points: 0,
+                            l2_games: 0,
+                            l2_best: 0,
+                            cities: new Set()
+                        };
+                    }
+                    // Legacy is level 1 only
+                    players[code].l1_games += data.legacy_games;
+                    players[code].l1_points += data.legacy_games * 7; // Estimated avg
+                    players[code].l1_best = Math.max(players[code].l1_best, data.legacy_high_score);
+                }
+            }
+
+            return Object.values(players);
+        }
+
+        // Filter games by scope and timeframe
+        function filterGames(games, scope, timeframe) {
+            let filtered = games;
+
+            // Filter by scope
+            if (scope === 'city') {
+                filtered = filtered.filter(g => g.city === 'Budapest');
+            }
+
+            // Filter by timeframe
+            if (timeframe === 'weekly' && filtered.length > 0) {
+                const latestTimestamp = Math.max(...filtered.map(g => g.timestamp));
+                const oneWeekBefore = latestTimestamp - (7 * 24 * 60 * 60);
+                filtered = filtered.filter(g => g.timestamp >= oneWeekBefore);
+            } else if (timeframe === 'today' && filtered.length > 0) {
+                const latestTimestamp = Math.max(...filtered.map(g => g.timestamp));
+                const oneDayBefore = latestTimestamp - (24 * 60 * 60);
+                filtered = filtered.filter(g => g.timestamp >= oneDayBefore);
+            }
+
+            return filtered;
+        }
+
+        // Render leaderboard
+        function renderLeaderboard(data, sortBy) {
+            const body = document.getElementById('leaderboardBody');
+            body.innerHTML = data.map((player, idx) => createRow(player, idx + 1, sortBy)).join('');
+        }
+
+        // Sort, filter and render
+        function updateLeaderboard() {
+            const filtered = filterGames(rawGames, currentScope, currentTimeframe);
+            // Include legacy data only for all-time global view
+            const includeLegacy = (currentTimeframe === 'alltime' && currentScope === 'global');
+            const playerData = aggregatePlayerData(filtered, includeLegacy);
+
+            const sorted = playerData.sort((a, b) => {
+                if (currentSort === 'total_points') return ((b.l1_points + b.l2_points) || 0) - ((a.l1_points + a.l2_points) || 0);
+                if (currentSort === 'l1_best') return (b.l1_best || 0) - (a.l1_best || 0);
+                if (currentSort === 'l2_best') return (b.l2_best || 0) - (a.l2_best || 0);
+                return 0;
+            });
+
+            renderLeaderboard(sorted.slice(0, 30), currentSort);
+
+            // Calculate total games including legacy if applicable
+            let totalGames = filtered.length;
+            if (includeLegacy && legacyData.total_legacy_games) {
+                totalGames += legacyData.total_legacy_games;
+            }
+            updateSubtitle(playerData.length, totalGames, filtered, includeLegacy);
+
+            // Update header styles
+            document.querySelectorAll('.sortable').forEach(el => {
+                el.classList.toggle('active', el.dataset.sort === currentSort);
+            });
+        }
+
+        // Update subtitle with stats
+        function updateSubtitle(playerCount, gameCount, filtered, includeLegacy) {
+            let subtitle = `${playerCount} players · ${gameCount.toLocaleString()} games`;
+
+            // Show date range for recent games
+            if (filtered && filtered.length > 0 && !includeLegacy) {
+                const timestamps = filtered.map(g => g.timestamp).filter(t => t > 0);
+                if (timestamps.length > 0) {
+                    const earliest = new Date(Math.min(...timestamps) * 1000);
+                    const latest = new Date(Math.max(...timestamps) * 1000);
+                    const formatDate = d => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    subtitle += ` · ${formatDate(earliest)} - ${formatDate(latest)}`;
+                }
+            }
+
+            document.getElementById('statsSubtitle').textContent = subtitle;
+        }
+
+        // Load data from API (live) or static files (fallback)
+        async function loadLeaderboard() {
+            try {
+                // Try live API first, then static files as fallback
+                let response = await fetch('/api/leaderboard');
+                if (!response.ok) {
+                    console.log('API not available, trying static files...');
+                    response = await fetch('mobee_redis_data.json');
+                }
+                if (!response.ok) {
+                    response = await fetch('mobee_games_raw.json');
+                }
+                if (!response.ok) throw new Error('Failed to load games');
+
+                const data = await response.json();
+
+                // Handle Redis format (from API or static export)
+                if (data.recent_games) {
+                    rawGames = data.recent_games;
+                    legacyData = data.legacy_summary || {};
+                    playerAvatars = data.player_avatars || {};
+                    symbolsList = data.symbols || [];
+                } else {
+                    // Old format - array of games
+                    rawGames = data;
+                    legacyData = {};
+                }
+
+                updateLeaderboard();
+            } catch (error) {
+                console.error('Failed to load leaderboard:', error);
+                document.getElementById('leaderboardBody').innerHTML =
+                    '<div class="loading">Failed to load leaderboard. Please try again.</div>';
+            }
+        }
+
+        // Sort header click handlers
+        document.querySelectorAll('.sortable').forEach(el => {
+            el.addEventListener('click', function() {
+                currentSort = this.dataset.sort;
+                updateLeaderboard();
+            });
+        });
+
+        // Scope tab switching
+        document.querySelectorAll('.scope-tab:not(.disabled)').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.scope-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                currentScope = this.dataset.scope;
+                updateLeaderboard();
+            });
+        });
+
+        // Time tab switching
+        document.querySelectorAll('.time-tab[data-time]:not(.disabled)').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.time-tab[data-time]').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                currentTimeframe = this.dataset.time;
+                updateLeaderboard();
+            });
+        });
+
+        // Load on page load
+        loadLeaderboard();
+
+        // Auto-refresh every 5 minutes
+        setInterval(loadLeaderboard, 5 * 60 * 1000);
+    </script>
+</body>
+</html>
