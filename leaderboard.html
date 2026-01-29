@@ -527,7 +527,9 @@
 
         // Create leaderboard row
         function createRow(player, position, sortBy) {
+            const isCurrentPlayer = currentPlayer && player.code === currentPlayer;
             const rankClass = position <= 3 ? `rank-${position}` : '';
+            const currentClass = isCurrentPlayer ? 'current-player' : '';
             const rowColors = ['var(--red)', 'var(--yellow)', 'var(--green)'];
             const highlight = position <= 3 ? rowColors[position-1] : '#666';
 
@@ -537,13 +539,14 @@
 
             const totalGames = player.l1_games + player.l2_games;
             const totalPoints = player.l1_points + player.l2_points;
+            const youBadge = isCurrentPlayer ? ' <span style="background: var(--red); color: white; padding: 1px 6px; border-radius: 8px; font-size: 10px; margin-left: 4px;">YOU</span>' : '';
 
             return `
-                <div class="leaderboard-row ${rankClass}">
+                <div class="leaderboard-row ${rankClass} ${currentClass}">
                     ${createHexBadge(position)}
                     ${createAvatar(player.avatar, position)}
                     <div class="player-info">
-                        <div class="player-code">${player.code}</div>
+                        <div class="player-code">${player.code}${youBadge}</div>
                         <div class="player-stats">${totalGames} games</div>
                     </div>
                     <div class="points" style="text-align: right; font-weight: 700; color: ${totalHighlight}">${totalPoints || '-'}</div>
@@ -559,8 +562,46 @@
         let playerAvatars = {};
         let symbolsList = [];
         let currentSort = 'total_points';
-        let currentScope = 'city'; // 'global' or 'city'
+        let currentScope = 'city'; // 'global', 'city', or 'friends'
         let currentTimeframe = 'alltime'; // 'alltime', 'weekly', or 'today'
+        let currentPlayer = new URLSearchParams(window.location.search).get('player')?.toUpperCase() || null;
+        let friendsMap = {}; // {playerCode: Set of friend codes}
+
+        // Build friends map from game data (players who shared a room)
+        function buildFriendsMap(games) {
+            const roomPlayers = {}; // {room: Set of player codes}
+
+            // Group players by room
+            for (const game of games) {
+                if (!roomPlayers[game.room]) {
+                    roomPlayers[game.room] = new Set();
+                }
+                roomPlayers[game.room].add(game.user_code);
+            }
+
+            // Build friends map (players who shared a room are friends)
+            const friends = {};
+            for (const players of Object.values(roomPlayers)) {
+                if (players.size > 1) {
+                    const playerList = Array.from(players);
+                    for (const p1 of playerList) {
+                        if (!friends[p1]) friends[p1] = new Set();
+                        for (const p2 of playerList) {
+                            if (p1 !== p2) friends[p1].add(p2);
+                        }
+                    }
+                }
+            }
+            return friends;
+        }
+
+        // Get friends for current player
+        function getFriendCodes() {
+            if (!currentPlayer || !friendsMap[currentPlayer]) return new Set();
+            const friends = new Set(friendsMap[currentPlayer]);
+            friends.add(currentPlayer); // Include self
+            return friends;
+        }
 
         // Aggregate games into player stats with separate level tracking
         function aggregatePlayerData(games, includeLegacy = false) {
@@ -629,6 +670,9 @@
             // Filter by scope
             if (scope === 'city') {
                 filtered = filtered.filter(g => g.city === 'Budapest');
+            } else if (scope === 'friends') {
+                const friendCodes = getFriendCodes();
+                filtered = filtered.filter(g => friendCodes.has(g.user_code));
             }
 
             // Filter by timeframe
@@ -724,6 +768,21 @@
                     // Old format - array of games
                     rawGames = data;
                     legacyData = {};
+                }
+
+                // Build friends map from game data
+                friendsMap = buildFriendsMap(rawGames);
+
+                // Enable/disable Friends tab based on current player
+                const friendsTab = document.querySelector('.scope-tab[data-scope="friends"]');
+                if (currentPlayer && friendsMap[currentPlayer] && friendsMap[currentPlayer].size > 0) {
+                    friendsTab.classList.remove('disabled');
+                    friendsTab.disabled = false;
+                    friendsTab.title = `${friendsMap[currentPlayer].size} friends`;
+                } else if (currentPlayer) {
+                    friendsTab.title = 'No multiplayer games yet';
+                } else {
+                    friendsTab.title = 'Add ?player=CODE to URL';
                 }
 
                 updateLeaderboard();
