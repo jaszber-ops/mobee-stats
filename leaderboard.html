@@ -641,7 +641,7 @@
             return Object.values(players);
         }
 
-        // Create leaderboard row for legacy view
+        // Create leaderboard row for legacy view (no avatars)
         function createLegacyRow(player, position, sortBy) {
             const rankClass = position <= 3 ? `rank-${position}` : '';
             const rowColors = ['var(--red)', 'var(--yellow)', 'var(--green)'];
@@ -658,7 +658,7 @@
             return `
                 <div class="leaderboard-row ${rankClass}">
                     ${createHexBadge(position)}
-                    ${createAvatar(player.avatar, position)}
+                    <div></div>
                     <div class="player-info">
                         <div class="player-code">${player.code}</div>
                         <div class="player-stats">${location || 'Unknown'}</div>
