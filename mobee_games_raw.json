@@ -1,5 +1,27 @@
 [
   {
+    "is_high_score": true,
+    "score": 14,
+    "city": "J\u00e1szap\u00e1ti",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "r2xhmp",
+    "game_number": 605,
+    "game_code": "MOBEE-14-1769766751-3071",
+    "timestamp": 1769766751.155909
+  },
+  {
+    "is_high_score": false,
+    "score": 10,
+    "city": "J\u00e1szap\u00e1ti",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "r2xhmp",
+    "game_number": 604,
+    "game_code": "Unknown",
+    "timestamp": 1769766677.883419
+  },
+  {
     "is_high_score": false,
     "score": 9,
     "city": "J\u00e1szap\u00e1ti",
