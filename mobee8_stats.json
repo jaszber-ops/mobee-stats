@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-01-30T07:01:00.417969+00:00",
+  "generated_at": "2026-01-30T08:51:40.916180+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 144,
+    "total_games": 145,
     "unique_players": 16,
-    "avg_score": 4.19,
-    "median_score": 4.0,
+    "avg_score": 4.25,
+    "median_score": 4,
     "max_score": 17,
     "min_score": 0,
     "score_distribution": {
       "0-5": 80,
       "6-10": 52,
-      "11-15": 10,
+      "11-15": 11,
       "16-20": 2,
       "20+": 0
     },
     "score_histogram": {
+      "12": 3,
       "8": 12,
       "17": 1,
       "7": 10,
-      "12": 2,
       "3": 6,
       "10": 5,
       "4": 4,
@@ -79,6 +79,11 @@
         "date": "2026-01-29",
         "games": 4,
         "unique_players": 3
+      },
+      {
+        "date": "2026-01-30",
+        "games": 1,
+        "unique_players": 1
       }
     ],
     "top_players_by_score": [
@@ -99,20 +104,20 @@
         "city": "Budapest"
       },
       {
+        "playerId": "A3K5",
+        "score": 12,
+        "avatarCoords": "8,3",
+        "name": null,
+        "country": "HU",
+        "city": "Budapest"
+      },
+      {
         "playerId": "TJ5Z",
         "score": 10,
         "avatarCoords": "1,8",
         "name": null,
         "country": "HU",
         "city": "Budapest"
-      },
-      {
-        "playerId": "A3K5",
-        "score": 10,
-        "avatarCoords": "8,3",
-        "name": null,
-        "country": "US",
-        "city": "Oceanside"
       },
       {
         "playerId": "U8LQ",
@@ -226,8 +231,8 @@
       },
       {
         "playerId": "A3K5",
-        "games": 17,
-        "avgScore": 4.0,
+        "games": 18,
+        "avgScore": 4.4,
         "avatarCoords": "8,3"
       },
       {
@@ -311,7 +316,7 @@
     "top_countries": [
       [
         "HU",
-        123
+        124
       ],
       [
         "NL",
@@ -325,7 +330,7 @@
     "top_cities": [
       [
         "Budapest",
-        123
+        124
       ],
       [
         "Amsterdam",
@@ -481,8 +486,8 @@
         "score": 1,
         "avatarCoords": "8,3",
         "name": null,
-        "country": "US",
-        "city": "Oceanside"
+        "country": "HU",
+        "city": "Budapest"
       },
       {
         "playerId": "U8LQ",
