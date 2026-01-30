@@ -1,26 +1,26 @@
 {
-  "generated_at": "2026-01-30T13:12:52.582375+00:00",
+  "generated_at": "2026-01-30T14:41:50.937154+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 146,
+    "total_games": 147,
     "unique_players": 16,
     "avg_score": 4.27,
-    "median_score": 4.0,
+    "median_score": 4,
     "max_score": 17,
     "min_score": 0,
     "score_distribution": {
-      "0-5": 80,
+      "0-5": 81,
       "6-10": 53,
       "11-15": 11,
       "16-20": 2,
       "20+": 0
     },
     "score_histogram": {
+      "3": 7,
       "8": 13,
       "12": 3,
       "17": 1,
       "7": 10,
-      "3": 6,
       "10": 5,
       "4": 4,
       "6": 19,
@@ -82,7 +82,7 @@
       },
       {
         "date": "2026-01-30",
-        "games": 2,
+        "games": 3,
         "unique_players": 2
       }
     ],
@@ -114,7 +114,7 @@
       {
         "playerId": "TJ5Z",
         "score": 10,
-        "avatarCoords": "1,8",
+        "avatarCoords": "12,6",
         "name": null,
         "country": "HU",
         "city": "Budapest"
@@ -219,9 +219,9 @@
     "top_players_by_games": [
       {
         "playerId": "TJ5Z",
-        "games": 23,
+        "games": 24,
         "avgScore": 4.8,
-        "avatarCoords": "1,8"
+        "avatarCoords": "12,6"
       },
       {
         "playerId": "P98B",
@@ -316,7 +316,7 @@
     "top_countries": [
       [
         "HU",
-        125
+        126
       ],
       [
         "NL",
@@ -330,7 +330,7 @@
     "top_cities": [
       [
         "Budapest",
-        125
+        126
       ],
       [
         "Amsterdam",
@@ -436,7 +436,7 @@
       {
         "playerId": "TJ5Z",
         "score": 4,
-        "avatarCoords": "1,8",
+        "avatarCoords": "12,6",
         "name": null,
         "country": "HU",
         "city": "Budapest"
