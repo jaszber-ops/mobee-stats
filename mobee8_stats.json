@@ -1,24 +1,25 @@
 {
-  "generated_at": "2026-01-31T15:31:47.575739+00:00",
+  "generated_at": "2026-01-31T16:38:38.242727+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 151,
-    "unique_players": 16,
-    "avg_score": 4.19,
-    "median_score": 4,
+    "total_games": 158,
+    "unique_players": 17,
+    "avg_score": 4.06,
+    "median_score": 3.0,
     "max_score": 17,
     "min_score": 0,
     "score_distribution": {
-      "0-5": 85,
+      "0-5": 92,
       "6-10": 53,
       "11-15": 11,
       "16-20": 2,
       "20+": 0
     },
     "score_histogram": {
-      "0": 65,
-      "5": 6,
-      "3": 7,
+      "2": 1,
+      "5": 7,
+      "0": 69,
+      "3": 8,
       "8": 13,
       "12": 3,
       "17": 1,
@@ -87,8 +88,8 @@
       },
       {
         "date": "2026-01-31",
-        "games": 1,
-        "unique_players": 1
+        "games": 8,
+        "unique_players": 3
       }
     ],
     "top_players_by_score": [
@@ -205,6 +206,14 @@
         "city": "Budapest"
       },
       {
+        "playerId": "LEDM",
+        "score": 3,
+        "avatarCoords": "12,2",
+        "name": null,
+        "country": "HU",
+        "city": "Budapest"
+      },
+      {
         "playerId": "JXPJ",
         "score": 0,
         "avatarCoords": "3,3",
@@ -224,8 +233,8 @@
     "top_players_by_games": [
       {
         "playerId": "TJ5Z",
-        "games": 25,
-        "avgScore": 4.6,
+        "games": 28,
+        "avgScore": 4.1,
         "avatarCoords": "12,6"
       },
       {
@@ -241,16 +250,16 @@
         "avatarCoords": "8,3"
       },
       {
+        "playerId": "VCWW",
+        "games": 17,
+        "avgScore": 4.5,
+        "avatarCoords": "8,6"
+      },
+      {
         "playerId": "PTN7",
         "games": 16,
         "avgScore": 11.0,
         "avatarCoords": "0,2"
-      },
-      {
-        "playerId": "VCWW",
-        "games": 15,
-        "avgScore": 4.8,
-        "avatarCoords": "8,6"
       },
       {
         "playerId": "7QMP",
@@ -301,27 +310,27 @@
         "avatarCoords": "3,3"
       },
       {
+        "playerId": "LEDM",
+        "games": 2,
+        "avgScore": 1.5,
+        "avatarCoords": "12,2"
+      },
+      {
         "playerId": "JXPJ",
         "games": 2,
         "avgScore": 0.0,
         "avatarCoords": "3,3"
-      },
-      {
-        "playerId": "65QE",
-        "games": 1,
-        "avgScore": 6.0,
-        "avatarCoords": "4,1"
       }
     ],
     "engagement": {
       "one_time": 2,
-      "returning": 14,
+      "returning": 15,
       "super_engaged": 6
     },
     "top_countries": [
       [
         "HU",
-        130
+        137
       ],
       [
         "NL",
@@ -335,7 +344,7 @@
     "top_cities": [
       [
         "Budapest",
-        130
+        137
       ],
       [
         "Amsterdam",
