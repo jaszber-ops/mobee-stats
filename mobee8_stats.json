@@ -1,30 +1,30 @@
 {
-  "generated_at": "2026-01-31T17:30:49.993967+00:00",
+  "generated_at": "2026-01-31T18:43:01.432503+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 163,
+    "total_games": 170,
     "unique_players": 18,
-    "avg_score": 4.01,
-    "median_score": 3,
+    "avg_score": 4.04,
+    "median_score": 3.0,
     "max_score": 17,
     "min_score": 0,
     "score_distribution": {
-      "0-5": 96,
-      "6-10": 54,
+      "0-5": 99,
+      "6-10": 58,
       "11-15": 11,
       "16-20": 2,
       "20+": 0
     },
     "score_histogram": {
-      "8": 14,
+      "8": 15,
+      "7": 13,
+      "1": 7,
+      "2": 3,
       "0": 70,
-      "1": 5,
-      "2": 2,
       "5": 7,
       "3": 8,
       "12": 3,
       "17": 1,
-      "7": 10,
       "10": 5,
       "4": 4,
       "6": 19,
@@ -88,7 +88,7 @@
       },
       {
         "date": "2026-01-31",
-        "games": 13,
+        "games": 20,
         "unique_players": 5
       }
     ],
@@ -158,6 +158,14 @@
         "city": "Budapest"
       },
       {
+        "playerId": "LEDM",
+        "score": 8,
+        "avatarCoords": "11,3",
+        "name": null,
+        "country": "HU",
+        "city": "Budapest"
+      },
+      {
         "playerId": "F7PS",
         "score": 8,
         "avatarCoords": "2,5",
@@ -201,14 +209,6 @@
         "playerId": "65QE",
         "score": 6,
         "avatarCoords": "4,1",
-        "name": null,
-        "country": "HU",
-        "city": "Budapest"
-      },
-      {
-        "playerId": "LEDM",
-        "score": 3,
-        "avatarCoords": "12,2",
         "name": null,
         "country": "HU",
         "city": "Budapest"
@@ -276,6 +276,12 @@
         "avatarCoords": "10,9"
       },
       {
+        "playerId": "LEDM",
+        "games": 11,
+        "avgScore": 3.4,
+        "avatarCoords": "11,3"
+      },
+      {
         "playerId": "LTF5",
         "games": 9,
         "avgScore": 0.8,
@@ -292,12 +298,6 @@
         "games": 6,
         "avgScore": 4.2,
         "avatarCoords": "10,9"
-      },
-      {
-        "playerId": "LEDM",
-        "games": 4,
-        "avgScore": 1.0,
-        "avatarCoords": "12,2"
       },
       {
         "playerId": "NRHN",
@@ -333,12 +333,12 @@
     "engagement": {
       "one_time": 3,
       "returning": 15,
-      "super_engaged": 6
+      "super_engaged": 7
     },
     "top_countries": [
       [
         "HU",
-        142
+        149
       ],
       [
         "NL",
@@ -352,7 +352,7 @@
     "top_cities": [
       [
         "Budapest",
-        142
+        149
       ],
       [
         "Amsterdam",
@@ -374,20 +374,21 @@
   },
   "level_2": {
     "variant": "12",
-    "total_games": 170,
-    "unique_players": 11,
-    "avg_score": 5.05,
-    "median_score": 5.0,
+    "total_games": 173,
+    "unique_players": 12,
+    "avg_score": 4.96,
+    "median_score": 5,
     "max_score": 14,
     "min_score": 0,
     "score_distribution": {
-      "0-2": 48,
+      "0-2": 51,
       "3-5": 46,
       "6-8": 48,
       "9-11": 20,
       "12+": 8
     },
     "score_histogram": {
+      "0": 24,
       "7": 18,
       "5": 16,
       "4": 15,
@@ -396,7 +397,6 @@
       "11": 4,
       "12": 5,
       "9": 10,
-      "0": 21,
       "3": 15,
       "10": 6,
       "2": 14,
@@ -444,6 +444,11 @@
         "date": "2026-01-29",
         "games": 14,
         "unique_players": 2
+      },
+      {
+        "date": "2026-01-31",
+        "games": 3,
+        "unique_players": 1
       }
     ],
     "top_players_by_score": [
@@ -520,6 +525,14 @@
         "city": "Budapest"
       },
       {
+        "playerId": "LEDM",
+        "score": 0,
+        "avatarCoords": "11,3",
+        "name": null,
+        "country": "HU",
+        "city": "Budapest"
+      },
+      {
         "playerId": "DCXU",
         "score": 0,
         "avatarCoords": "9,0",
@@ -568,6 +581,12 @@
         "avatarCoords": "10,9"
       },
       {
+        "playerId": "LEDM",
+        "games": 3,
+        "avgScore": 0.0,
+        "avatarCoords": "11,3"
+      },
+      {
         "playerId": "A3K5",
         "games": 3,
         "avgScore": 0.7,
@@ -606,13 +625,13 @@
     ],
     "engagement": {
       "one_time": 3,
-      "returning": 8,
+      "returning": 9,
       "super_engaged": 2
     },
     "top_countries": [
       [
         "HU",
-        163
+        166
       ],
       [
         "NL",
@@ -622,7 +641,7 @@
     "top_cities": [
       [
         "Budapest",
-        163
+        166
       ],
       [
         "Amsterdam",
