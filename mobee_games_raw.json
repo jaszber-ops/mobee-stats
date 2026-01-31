@@ -1,6 +1,50 @@
 [
   {
     "is_high_score": false,
+    "score": 0,
+    "city": "Sikl\u00f3s",
+    "country": "Hungary",
+    "platform": "Windows Chrome",
+    "user_code": "eaivs9",
+    "game_number": 4,
+    "game_code": "Unknown",
+    "timestamp": 1769819583.076399
+  },
+  {
+    "is_high_score": true,
+    "score": 10,
+    "city": "Sikl\u00f3s",
+    "country": "Hungary",
+    "platform": "Windows Chrome",
+    "user_code": "eaivs9",
+    "game_number": 3,
+    "game_code": "MOBEE-10-1769819504-82C6",
+    "timestamp": 1769819505.641839
+  },
+  {
+    "is_high_score": true,
+    "score": 7,
+    "city": "Sikl\u00f3s",
+    "country": "Hungary",
+    "platform": "Windows Chrome",
+    "user_code": "eaivs9",
+    "game_number": 2,
+    "game_code": "MOBEE-7-1769819437-25B6",
+    "timestamp": 1769819438.162009
+  },
+  {
+    "is_high_score": false,
+    "score": 4,
+    "city": "Sikl\u00f3s",
+    "country": "Hungary",
+    "platform": "Windows Chrome",
+    "user_code": "eaivs9",
+    "game_number": 1,
+    "game_code": "Unknown",
+    "timestamp": 1769819377.265789
+  },
+  {
+    "is_high_score": false,
     "score": 14,
     "city": "Budapest",
     "country": "Hungary",
