@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-01-31T14:32:33.472987+00:00",
+  "generated_at": "2026-01-31T15:31:47.575739+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 150,
+    "total_games": 151,
     "unique_players": 16,
-    "avg_score": 4.21,
-    "median_score": 4.0,
+    "avg_score": 4.19,
+    "median_score": 4,
     "max_score": 17,
     "min_score": 0,
     "score_distribution": {
-      "0-5": 84,
+      "0-5": 85,
       "6-10": 53,
       "11-15": 11,
       "16-20": 2,
       "20+": 0
     },
     "score_histogram": {
-      "0": 64,
+      "0": 65,
       "5": 6,
       "3": 7,
       "8": 13,
@@ -84,6 +84,11 @@
         "date": "2026-01-30",
         "games": 6,
         "unique_players": 4
+      },
+      {
+        "date": "2026-01-31",
+        "games": 1,
+        "unique_players": 1
       }
     ],
     "top_players_by_score": [
@@ -243,8 +248,8 @@
       },
       {
         "playerId": "VCWW",
-        "games": 14,
-        "avgScore": 5.1,
+        "games": 15,
+        "avgScore": 4.8,
         "avatarCoords": "8,6"
       },
       {
@@ -316,7 +321,7 @@
     "top_countries": [
       [
         "HU",
-        129
+        130
       ],
       [
         "NL",
@@ -330,7 +335,7 @@
     "top_cities": [
       [
         "Budapest",
-        129
+        130
       ],
       [
         "Amsterdam",
