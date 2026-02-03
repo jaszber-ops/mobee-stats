@@ -1,27 +1,27 @@
 {
-  "generated_at": "2026-02-03T09:53:56.510597+00:00",
+  "generated_at": "2026-02-03T10:51:46.085820+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 172,
+    "total_games": 173,
     "unique_players": 18,
-    "avg_score": 4.09,
-    "median_score": 3.0,
+    "avg_score": 4.07,
+    "median_score": 3,
     "max_score": 17,
     "min_score": 0,
     "score_distribution": {
-      "0-5": 99,
+      "0-5": 100,
       "6-10": 60,
       "11-15": 11,
       "16-20": 2,
       "20+": 0
     },
     "score_histogram": {
+      "0": 71,
       "9": 7,
       "8": 16,
       "7": 13,
       "1": 7,
       "2": 3,
-      "0": 70,
       "5": 7,
       "3": 8,
       "12": 3,
@@ -98,7 +98,7 @@
       },
       {
         "date": "2026-02-03",
-        "games": 1,
+        "games": 2,
         "unique_players": 1
       }
     ],
@@ -251,8 +251,8 @@
     "top_players_by_games": [
       {
         "playerId": "TJ5Z",
-        "games": 30,
-        "avgScore": 4.4,
+        "games": 31,
+        "avgScore": 4.3,
         "avatarCoords": "12,6"
       },
       {
@@ -348,7 +348,7 @@
     "top_countries": [
       [
         "HU",
-        151
+        152
       ],
       [
         "NL",
@@ -362,7 +362,7 @@
     "top_cities": [
       [
         "Budapest",
-        151
+        152
       ],
       [
         "Amsterdam",
@@ -384,21 +384,21 @@
   },
   "level_2": {
     "variant": "12",
-    "total_games": 174,
+    "total_games": 175,
     "unique_players": 12,
-    "avg_score": 4.93,
-    "median_score": 5.0,
+    "avg_score": 4.9,
+    "median_score": 5,
     "max_score": 14,
     "min_score": 0,
     "score_distribution": {
-      "0-2": 52,
+      "0-2": 53,
       "3-5": 46,
       "6-8": 48,
       "9-11": 20,
       "12+": 8
     },
     "score_histogram": {
-      "0": 25,
+      "0": 26,
       "7": 18,
       "5": 16,
       "4": 15,
@@ -462,6 +462,11 @@
       },
       {
         "date": "2026-02-01",
+        "games": 1,
+        "unique_players": 1
+      },
+      {
+        "date": "2026-02-03",
         "games": 1,
         "unique_players": 1
       }
@@ -573,8 +578,8 @@
       },
       {
         "playerId": "TJ5Z",
-        "games": 15,
-        "avgScore": 1.5,
+        "games": 16,
+        "avgScore": 1.4,
         "avatarCoords": "12,6"
       },
       {
@@ -646,7 +651,7 @@
     "top_countries": [
       [
         "HU",
-        167
+        168
       ],
       [
         "NL",
@@ -656,7 +661,7 @@
     "top_cities": [
       [
         "Budapest",
-        167
+        168
       ],
       [
         "Amsterdam",
