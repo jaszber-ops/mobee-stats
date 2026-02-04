@@ -2,6 +2,17 @@
   {
     "is_high_score": false,
     "score": 6,
+    "city": "Nagykov\u00e1csi",
+    "country": "Hungary",
+    "platform": "Windows Chrome",
+    "user_code": "3ikk8e",
+    "game_number": 1,
+    "game_code": "Unknown",
+    "timestamp": 1770192556.100619
+  },
+  {
+    "is_high_score": false,
+    "score": 6,
     "city": "J\u00e1szap\u00e1ti",
     "country": "Hungary",
     "platform": "Android Chrome",
