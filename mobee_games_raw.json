@@ -1,6 +1,17 @@
 [
   {
     "is_high_score": false,
+    "score": 7,
+    "city": "Pratteln",
+    "country": "Switzerland",
+    "platform": "iPhone Safari",
+    "user_code": "a1ezmh",
+    "game_number": 21,
+    "game_code": "Unknown",
+    "timestamp": 1770493508.940909
+  },
+  {
+    "is_high_score": false,
     "score": 15,
     "city": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
     "country": "Hungary",
