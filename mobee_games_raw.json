@@ -1,6 +1,39 @@
 [
   {
     "is_high_score": false,
+    "score": 7,
+    "city": "J\u00e1szap\u00e1ti",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "r2xhmp",
+    "game_number": 674,
+    "game_code": "Unknown",
+    "timestamp": 1770451045.601229
+  },
+  {
+    "is_high_score": false,
+    "score": 7,
+    "city": "J\u00e1szap\u00e1ti",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "r2xhmp",
+    "game_number": 673,
+    "game_code": "Unknown",
+    "timestamp": 1770450983.034359
+  },
+  {
+    "is_high_score": false,
+    "score": 4,
+    "city": "J\u00e1szap\u00e1ti",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "r2xhmp",
+    "game_number": 672,
+    "game_code": "Unknown",
+    "timestamp": 1770450915.773609
+  },
+  {
+    "is_high_score": false,
     "score": 3,
     "city": "Dietikon",
     "country": "Switzerland",
