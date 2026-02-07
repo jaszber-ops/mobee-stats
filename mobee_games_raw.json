@@ -1,6 +1,17 @@
 [
   {
     "is_high_score": false,
+    "score": 3,
+    "city": "Dietikon",
+    "country": "Switzerland",
+    "platform": "iPhone Safari",
+    "user_code": "a1ezmh",
+    "game_number": 20,
+    "game_code": "Unknown",
+    "timestamp": 1770421349.516459
+  },
+  {
+    "is_high_score": false,
     "score": 1,
     "city": "Budapest",
     "country": "Hungary",
