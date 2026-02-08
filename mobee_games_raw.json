@@ -1,6 +1,61 @@
 [
   {
     "is_high_score": false,
+    "score": 0,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "lbswg4",
+    "game_number": 5,
+    "game_code": "Unknown",
+    "timestamp": 1770535605.102099
+  },
+  {
+    "is_high_score": false,
+    "score": 2,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "lbswg4",
+    "game_number": 4,
+    "game_code": "Unknown",
+    "timestamp": 1770535542.835359
+  },
+  {
+    "is_high_score": false,
+    "score": 1,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "lbswg4",
+    "game_number": 3,
+    "game_code": "Unknown",
+    "timestamp": 1770535482.235149
+  },
+  {
+    "is_high_score": false,
+    "score": 2,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "lbswg4",
+    "game_number": 2,
+    "game_code": "Unknown",
+    "timestamp": 1770535420.266359
+  },
+  {
+    "is_high_score": false,
+    "score": 2,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "lbswg4",
+    "game_number": 1,
+    "game_code": "Unknown",
+    "timestamp": 1770535357.009089
+  },
+  {
+    "is_high_score": false,
     "score": 7,
     "city": "Pratteln",
     "country": "Switzerland",
