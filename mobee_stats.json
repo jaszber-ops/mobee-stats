@@ -1,13 +1,13 @@
 {
-  "total_games": 6415,
+  "total_games": 6416,
   "unique_players": 513,
   "high_score_games": 698,
-  "avg_score": 9.509275136399065,
-  "median_score": 9,
+  "avg_score": 9.508884039900249,
+  "median_score": 9.0,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
-    "J\u00e1szap\u00e1ti": 225,
+    "J\u00e1szap\u00e1ti": 226,
     "Budapest": 3150,
     "Nagykov\u00e1csi": 2,
     "Pratteln": 1,
@@ -144,7 +144,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 5723,
+    "Hungary": 5724,
     "Switzerland": 187,
     "Local/Unknown": 53,
     "The Netherlands": 4,
@@ -170,7 +170,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 3451,
+    "Android Chrome": 3452,
     "Windows Chrome": 654,
     "iPhone Safari": 855,
     "iPhone Browser": 529,
@@ -189,8 +189,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 3451,
-      "avg": 10.428571428571429,
+      "count": 3452,
+      "avg": 10.42757821552723,
       "max": 30
     },
     "Windows Chrome": {
@@ -271,8 +271,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 5723,
-      "avg": 9.711514939716931
+      "count": 5724,
+      "avg": 9.711041229909155
     },
     "Switzerland": {
       "count": 187,
@@ -5342,6 +5342,7 @@
     [
       "r2xhmp",
       [
+        7,
         6,
         8,
         6,
@@ -7596,7 +7597,7 @@
   ],
   "score_distribution": {
     "0-5": 1584,
-    "6-10": 2401,
+    "6-10": 2402,
     "11-15": 1427,
     "16-20": 702,
     "20+": 301
@@ -7921,6 +7922,11 @@
       "date": "2026-02-08",
       "games": 16,
       "unique_players": 4
+    },
+    {
+      "date": "2026-02-09",
+      "games": 1,
+      "unique_players": 1
     }
   ]
 }
