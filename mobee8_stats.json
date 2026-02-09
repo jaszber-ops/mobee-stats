@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-02-09T15:01:07.232317+00:00",
+  "generated_at": "2026-02-09T19:26:32.195111+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 188,
-    "unique_players": 18,
-    "avg_score": 3.96,
-    "median_score": 3.0,
+    "total_games": 189,
+    "unique_players": 19,
+    "avg_score": 3.98,
+    "median_score": 3,
     "max_score": 17,
     "min_score": 0,
     "score_distribution": {
       "0-5": 110,
-      "6-10": 65,
+      "6-10": 66,
       "11-15": 11,
       "16-20": 2,
       "20+": 0
     },
     "score_histogram": {
+      "8": 18,
       "0": 80,
       "6": 21,
-      "8": 17,
       "7": 14,
       "9": 8,
       "5": 8,
@@ -113,8 +113,8 @@
       },
       {
         "date": "2026-02-09",
-        "games": 2,
-        "unique_players": 1
+        "games": 3,
+        "unique_players": 2
       }
     ],
     "top_players_by_score": [
@@ -162,6 +162,14 @@
         "playerId": "NRHN",
         "score": 9,
         "avatarCoords": "11,5",
+        "name": null,
+        "country": "HU",
+        "city": "Budapest"
+      },
+      {
+        "playerId": "TVCF",
+        "score": 8,
+        "avatarCoords": "9,5",
         "name": null,
         "country": "HU",
         "city": "Budapest"
@@ -356,14 +364,14 @@
       }
     ],
     "engagement": {
-      "one_time": 3,
+      "one_time": 4,
       "returning": 15,
       "super_engaged": 7
     },
     "top_countries": [
       [
         "HU",
-        164
+        165
       ],
       [
         "US",
@@ -377,7 +385,7 @@
     "top_cities": [
       [
         "Budapest",
-        164
+        165
       ],
       [
         "Amsterdam",
