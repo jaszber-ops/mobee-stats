@@ -1,12 +1,13 @@
 {
-  "total_games": 6423,
+  "total_games": 6424,
   "unique_players": 513,
   "high_score_games": 698,
-  "avg_score": 9.504904250350304,
-  "median_score": 9,
+  "avg_score": 9.504981320049813,
+  "median_score": 9.0,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
+    "Unknown City": 54,
     "J\u00e1szap\u00e1ti": 233,
     "Budapest": 3150,
     "Nagykov\u00e1csi": 2,
@@ -14,7 +15,6 @@
     "Sz\u00e9kesfeh\u00e9rv\u00e1r": 307,
     "Dietikon": 1,
     "Sikl\u00f3s": 97,
-    "Unknown City": 53,
     "Gy\u0151r\u00fajbar\u00e1t": 2,
     "Amsterdam": 1,
     "Winterthur": 5,
@@ -144,9 +144,9 @@
     "12/6/2025": 5
   },
   "country_counts": {
+    "Local/Unknown": 54,
     "Hungary": 5731,
     "Switzerland": 187,
-    "Local/Unknown": 53,
     "The Netherlands": 4,
     "Belgium": 60,
     "United States": 191,
@@ -170,6 +170,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
+    "Windows Firefox": 121,
     "Android Chrome": 3459,
     "Windows Chrome": 654,
     "iPhone Safari": 855,
@@ -180,7 +181,6 @@
     "iPad Safari": 67,
     "Other Firefox": 30,
     "Windows Safari": 148,
-    "Windows Firefox": 120,
     "iPad Browser": 1,
     "Other Chrome": 7,
     "Mac Firefox": 14,
@@ -188,6 +188,11 @@
     "Unknown": 9
   },
   "platform_scores": {
+    "Windows Firefox": {
+      "count": 121,
+      "avg": 5.768595041322314,
+      "max": 24
+    },
     "Android Chrome": {
       "count": 3459,
       "avg": 10.41832899681989,
@@ -238,11 +243,6 @@
       "avg": 8.27027027027027,
       "max": 16
     },
-    "Windows Firefox": {
-      "count": 120,
-      "avg": 5.733333333333333,
-      "max": 24
-    },
     "iPad Browser": {
       "count": 1,
       "avg": 5.0,
@@ -270,6 +270,10 @@
     }
   },
   "location_scores": {
+    "Local/Unknown": {
+      "count": 54,
+      "avg": 7.0
+    },
     "Hungary": {
       "count": 5731,
       "avg": 9.706333973128599
@@ -277,10 +281,6 @@
     "Switzerland": {
       "count": 187,
       "avg": 6.855614973262032
-    },
-    "Local/Unknown": {
-      "count": 53,
-      "avg": 6.943396226415095
     },
     "The Netherlands": {
       "count": 4,
@@ -373,6 +373,7 @@
     "super_engaged": 97
   },
   "player_cities": {
+    "chhfw1": 2,
     "r2xhmp": 4,
     "55ftpu": 1,
     "ejk7wz": 1,
@@ -421,7 +422,6 @@
     "4ryygm": 1,
     "25c3hc": 1,
     "hphhm0": 2,
-    "chhfw1": 1,
     "z0498h": 2,
     "zg1d2j": 1,
     "0hd1gn": 2,
@@ -888,6 +888,7 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "chhfw1": 1,
     "r2xhmp": 1,
     "55ftpu": 1,
     "ejk7wz": 1,
@@ -936,7 +937,6 @@
     "4ryygm": 1,
     "25c3hc": 1,
     "hphhm0": 1,
-    "chhfw1": 1,
     "z0498h": 1,
     "zg1d2j": 1,
     "0hd1gn": 1,
@@ -1403,6 +1403,7 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "chhfw1": "Budapest",
     "r2xhmp": "T\u00e1pi\u00f3szentm\u00e1rton",
     "55ftpu": "Budapest",
     "ejk7wz": "Nagykov\u00e1csi",
@@ -1451,7 +1452,6 @@
     "4ryygm": "Budapest",
     "25c3hc": "P\u00e9cs",
     "hphhm0": "Budapest",
-    "chhfw1": "Budapest",
     "z0498h": "Uccle",
     "zg1d2j": "P\u00e9cs",
     "0hd1gn": "Budapest",
@@ -1918,6 +1918,11 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "chhfw1": {
+      "location": "Budapest, Hungary",
+      "platform": "Windows Firefox",
+      "timestamp": 1765200838.268869
+    },
     "r2xhmp": {
       "location": "J\u00e1szap\u00e1ti, Hungary",
       "platform": "Android Chrome",
@@ -2137,11 +2142,6 @@
       "location": "Sz\u00e9kesfeh\u00e9rv\u00e1r, Hungary",
       "platform": "Android Chrome",
       "timestamp": 1766057242.108069
-    },
-    "chhfw1": {
-      "location": "Budapest, Hungary",
-      "platform": "Windows Firefox",
-      "timestamp": 1765200838.268869
     },
     "z0498h": {
       "location": "Uccle, Belgium",
@@ -7604,7 +7604,7 @@
   ],
   "score_distribution": {
     "0-5": 1588,
-    "6-10": 2405,
+    "6-10": 2406,
     "11-15": 1427,
     "16-20": 702,
     "20+": 301
@@ -7933,6 +7933,11 @@
     {
       "date": "2026-02-09",
       "games": 8,
+      "unique_players": 1
+    },
+    {
+      "date": "2026-02-10",
+      "games": 1,
       "unique_players": 1
     }
   ]

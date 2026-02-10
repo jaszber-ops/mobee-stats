@@ -1,6 +1,17 @@
 [
   {
     "is_high_score": false,
+    "score": 10,
+    "city": "Unknown City",
+    "country": "Local/Unknown",
+    "platform": "Windows Firefox",
+    "user_code": "chhfw1",
+    "game_number": 26,
+    "game_code": "Unknown",
+    "timestamp": 1770705398.091669
+  },
+  {
+    "is_high_score": false,
     "score": 7,
     "city": "J\u00e1szap\u00e1ti",
     "country": "Hungary",
