@@ -1,6 +1,28 @@
 [
   {
     "is_high_score": false,
+    "score": 8,
+    "city": "J\u00e1szap\u00e1ti",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "r2xhmp",
+    "game_number": 696,
+    "game_code": "Unknown",
+    "timestamp": 1770829010.973489
+  },
+  {
+    "is_high_score": true,
+    "score": 10,
+    "city": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
+    "country": "Hungary",
+    "platform": "iPhone Browser",
+    "user_code": "w3oqir",
+    "game_number": 1,
+    "game_code": "MOBEE-10-1770827177-E2FF",
+    "timestamp": 1770827178.482589
+  },
+  {
+    "is_high_score": false,
     "score": 4,
     "city": "Debrecen",
     "country": "Hungary",
