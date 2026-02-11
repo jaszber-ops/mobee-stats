@@ -58,7 +58,14 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
           git add mobee_stats_report.pdf mobee_stats.json mobee_games_raw.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update hourly statistics [skip ci]" && git push)
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update daily statistics [skip ci]"
+            # Pull with rebase to handle concurrent pushes from hourly workflow
+            git pull --rebase origin main || true
+            git push
+          fi
 
       - name: Upload PDF as artifact
         uses: actions/upload-artifact@v4
