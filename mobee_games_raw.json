@@ -1,5 +1,27 @@
 [
   {
+    "is_high_score": true,
+    "score": 21,
+    "city": "Mosonmagyar\u00f3v\u00e1r",
+    "country": "Hungary",
+    "platform": "Windows Chrome",
+    "user_code": "mzhst2",
+    "game_number": 2,
+    "game_code": "MOBEE-21-1771089674-38A5",
+    "timestamp": 1771089675.631899
+  },
+  {
+    "is_high_score": false,
+    "score": 1,
+    "city": "Mosonmagyar\u00f3v\u00e1r",
+    "country": "Hungary",
+    "platform": "Windows Chrome",
+    "user_code": "mzhst2",
+    "game_number": 1,
+    "game_code": "Unknown",
+    "timestamp": 1771088903.178959
+  },
+  {
     "is_high_score": false,
     "score": 8,
     "city": "J\u00e1szap\u00e1ti",
