@@ -1,5 +1,16 @@
 [
   {
+    "is_high_score": true,
+    "score": 15,
+    "city": "P\u00e9cs",
+    "country": "Hungary",
+    "platform": "Windows Chrome",
+    "user_code": "dggfge",
+    "game_number": 1,
+    "game_code": "MOBEE-15-1771202194-3693",
+    "timestamp": 1771202198.371719
+  },
+  {
     "is_high_score": false,
     "score": 11,
     "city": "Kadark\u00fat",
