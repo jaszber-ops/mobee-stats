@@ -1,13 +1,13 @@
 {
-  "total_games": 6478,
+  "total_games": 6479,
   "unique_players": 520,
   "high_score_games": 709,
-  "avg_score": 9.487959246681074,
-  "median_score": 9.0,
+  "avg_score": 9.487729587899366,
+  "median_score": 9,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
-    "J\u00e1szap\u00e1ti": 252,
+    "J\u00e1szap\u00e1ti": 253,
     "Budapest": 3172,
     "P\u00e9cs": 573,
     "Kadark\u00fat": 4,
@@ -145,7 +145,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 5785,
+    "Hungary": 5786,
     "Local/Unknown": 54,
     "Switzerland": 187,
     "The Netherlands": 4,
@@ -171,7 +171,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 3495,
+    "Android Chrome": 3496,
     "Windows Chrome": 662,
     "iPhone Browser": 534,
     "iPhone Safari": 860,
@@ -190,8 +190,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 3495,
-      "avg": 10.37653791130186,
+      "count": 3496,
+      "avg": 10.375858123569794,
       "max": 30
     },
     "Windows Chrome": {
@@ -272,8 +272,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 5785,
-      "avg": 9.685393258426966
+      "count": 5786,
+      "avg": 9.685101970273072
     },
     "Local/Unknown": {
       "count": 54,
@@ -1418,7 +1418,7 @@
     "Unknown": 1
   },
   "player_most_common_city": {
-    "r2xhmp": "T\u00e1pi\u00f3szentm\u00e1rton",
+    "r2xhmp": "J\u00e1szap\u00e1ti",
     "tccyzp": "Budapest",
     "dggfge": "P\u00e9cs",
     "8qd0yy": "Kadark\u00fat",
@@ -5400,6 +5400,7 @@
       "r2xhmp",
       [
         8,
+        8,
         5,
         5,
         5,
@@ -7680,7 +7681,7 @@
   ],
   "score_distribution": {
     "0-5": 1606,
-    "6-10": 2432,
+    "6-10": 2433,
     "11-15": 1436,
     "16-20": 702,
     "20+": 302
@@ -8049,6 +8050,11 @@
     {
       "date": "2026-02-17",
       "games": 4,
+      "unique_players": 1
+    },
+    {
+      "date": "2026-02-18",
+      "games": 1,
       "unique_players": 1
     }
   ]
