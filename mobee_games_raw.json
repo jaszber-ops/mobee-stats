@@ -1,6 +1,17 @@
 [
   {
     "is_high_score": false,
+    "score": 0,
+    "city": "Stockport",
+    "country": "United Kingdom",
+    "platform": "Mac Chrome",
+    "user_code": "ay22ps",
+    "game_number": 92,
+    "game_code": "Unknown",
+    "timestamp": 1771522621.303739
+  },
+  {
+    "is_high_score": false,
     "score": 7,
     "city": "J\u00e1szap\u00e1ti",
     "country": "Hungary",
