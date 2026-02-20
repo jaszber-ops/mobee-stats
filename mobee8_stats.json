@@ -1,27 +1,27 @@
 {
-  "generated_at": "2026-02-20T10:48:51.410774+00:00",
+  "generated_at": "2026-02-20T11:38:44.017936+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 196,
+    "total_games": 198,
     "unique_players": 19,
-    "avg_score": 4.03,
+    "avg_score": 3.99,
     "median_score": 3.0,
     "max_score": 17,
     "min_score": 0,
     "score_distribution": {
-      "0-5": 112,
+      "0-5": 114,
       "6-10": 71,
       "11-15": 11,
       "16-20": 2,
       "20+": 0
     },
     "score_histogram": {
+      "0": 82,
       "2": 4,
       "1": 8,
       "7": 16,
       "8": 19,
       "6": 23,
-      "0": 80,
       "9": 8,
       "5": 8,
       "3": 8,
@@ -125,6 +125,11 @@
         "date": "2026-02-11",
         "games": 2,
         "unique_players": 1
+      },
+      {
+        "date": "2026-02-20",
+        "games": 2,
+        "unique_players": 1
       }
     ],
     "top_players_by_score": [
@@ -157,8 +162,8 @@
         "score": 10,
         "avatarCoords": "2,9",
         "name": null,
-        "country": "HU",
-        "city": "Budapest"
+        "country": "GB",
+        "city": "Stockport"
       },
       {
         "playerId": "U8LQ",
@@ -284,8 +289,8 @@
     "top_players_by_games": [
       {
         "playerId": "TJ5Z",
-        "games": 49,
-        "avgScore": 3.7,
+        "games": 51,
+        "avgScore": 3.6,
         "avatarCoords": "2,9"
       },
       {
@@ -390,6 +395,10 @@
       [
         "NL",
         8
+      ],
+      [
+        "GB",
+        2
       ]
     ],
     "top_cities": [
@@ -408,6 +417,10 @@
       [
         "Oceanside",
         4
+      ],
+      [
+        "Stockport",
+        2
       ],
       [
         "Los Angeles",
@@ -528,8 +541,8 @@
         "score": 6,
         "avatarCoords": "2,9",
         "name": null,
-        "country": "HU",
-        "city": "Budapest"
+        "country": "GB",
+        "city": "Stockport"
       },
       {
         "playerId": "F7PS",
