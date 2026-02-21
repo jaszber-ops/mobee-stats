@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-02-21T11:29:08.698531+00:00",
+  "generated_at": "2026-02-21T13:04:50.511125+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 198,
+    "total_games": 199,
     "unique_players": 19,
-    "avg_score": 3.99,
-    "median_score": 3.0,
+    "avg_score": 3.97,
+    "median_score": 3,
     "max_score": 17,
     "min_score": 0,
     "score_distribution": {
-      "0-5": 114,
+      "0-5": 115,
       "6-10": 71,
       "11-15": 11,
       "16-20": 2,
       "20+": 0
     },
     "score_histogram": {
-      "0": 82,
+      "0": 83,
       "2": 4,
       "1": 8,
       "7": 16,
@@ -130,6 +130,11 @@
         "date": "2026-02-20",
         "games": 2,
         "unique_players": 1
+      },
+      {
+        "date": "2026-02-21",
+        "games": 1,
+        "unique_players": 1
       }
     ],
     "top_players_by_score": [
@@ -162,8 +167,8 @@
         "score": 10,
         "avatarCoords": "2,9",
         "name": null,
-        "country": "GB",
-        "city": "Stockport"
+        "country": "HU",
+        "city": "Budapest"
       },
       {
         "playerId": "U8LQ",
@@ -289,8 +294,8 @@
     "top_players_by_games": [
       {
         "playerId": "TJ5Z",
-        "games": 51,
-        "avgScore": 3.6,
+        "games": 52,
+        "avgScore": 3.5,
         "avatarCoords": "2,9"
       },
       {
@@ -386,7 +391,7 @@
     "top_countries": [
       [
         "HU",
-        172
+        173
       ],
       [
         "US",
@@ -404,7 +409,7 @@
     "top_cities": [
       [
         "Budapest",
-        172
+        173
       ],
       [
         "Amsterdam",
@@ -541,8 +546,8 @@
         "score": 6,
         "avatarCoords": "2,9",
         "name": null,
-        "country": "GB",
-        "city": "Stockport"
+        "country": "HU",
+        "city": "Budapest"
       },
       {
         "playerId": "F7PS",
