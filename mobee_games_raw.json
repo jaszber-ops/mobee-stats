@@ -1,6 +1,28 @@
 [
   {
     "is_high_score": false,
+    "score": 6,
+    "city": "J\u00e1szap\u00e1ti",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "r2xhmp",
+    "game_number": 726,
+    "game_code": "Unknown",
+    "timestamp": 1771740929.480409
+  },
+  {
+    "is_high_score": false,
+    "score": 9,
+    "city": "J\u00e1szap\u00e1ti",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "r2xhmp",
+    "game_number": 725,
+    "game_code": "Unknown",
+    "timestamp": 1771740867.346389
+  },
+  {
+    "is_high_score": false,
     "score": 9,
     "city": "Budapest",
     "country": "Hungary",
