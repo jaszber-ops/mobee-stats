@@ -1,5 +1,27 @@
 [
   {
+    "is_high_score": true,
+    "score": 16,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "iPhone Browser",
+    "user_code": "w728ns",
+    "game_number": 2,
+    "game_code": "MOBEE-16-1771788438-4786",
+    "timestamp": 1771788439.159199
+  },
+  {
+    "is_high_score": true,
+    "score": 12,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "iPhone Browser",
+    "user_code": "w728ns",
+    "game_number": 1,
+    "game_code": "MOBEE-12-1771788375-CB8B",
+    "timestamp": 1771788376.478089
+  },
+  {
     "is_high_score": false,
     "score": 0,
     "city": "J\u00e1szap\u00e1ti",
