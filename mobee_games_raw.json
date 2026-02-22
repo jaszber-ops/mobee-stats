@@ -1,5 +1,16 @@
 [
   {
+    "is_high_score": false,
+    "score": 2,
+    "city": "Gaspoltshofen",
+    "country": "Austria",
+    "platform": "iPhone Browser",
+    "user_code": "a8f507",
+    "game_number": 1,
+    "game_code": "Unknown",
+    "timestamp": 1771798097.922519
+  },
+  {
     "is_high_score": true,
     "score": 16,
     "city": "Budapest",
