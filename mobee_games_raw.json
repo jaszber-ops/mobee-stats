@@ -1,6 +1,17 @@
 [
   {
     "is_high_score": false,
+    "score": 0,
+    "city": "J\u00e1szap\u00e1ti",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "r2xhmp",
+    "game_number": 727,
+    "game_code": "Unknown",
+    "timestamp": 1771758322.109129
+  },
+  {
+    "is_high_score": false,
     "score": 5,
     "city": "Kadark\u00fat",
     "country": "Hungary",
