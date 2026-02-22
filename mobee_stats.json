@@ -1,13 +1,13 @@
 {
-  "total_games": 6538,
+  "total_games": 6540,
   "unique_players": 523,
   "high_score_games": 713,
-  "avg_score": 9.460844294891404,
+  "avg_score": 9.459327217125383,
   "median_score": 9.0,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
-    "J\u00e1szap\u00e1ti": 265,
+    "J\u00e1szap\u00e1ti": 267,
     "Kadark\u00fat": 22,
     "Budapest": 3191,
     "Recsk": 1,
@@ -147,7 +147,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 5844,
+    "Hungary": 5846,
     "United Kingdom": 19,
     "Local/Unknown": 54,
     "Switzerland": 187,
@@ -173,7 +173,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 3516,
+    "Android Chrome": 3518,
     "Windows Chrome": 670,
     "iPhone Browser": 564,
     "Mac Chrome": 103,
@@ -192,8 +192,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 3516,
-      "avg": 10.360921501706486,
+      "count": 3518,
+      "avg": 10.357589539511086,
       "max": 30
     },
     "Windows Chrome": {
@@ -274,8 +274,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 5844,
-      "avg": 9.654688569472963
+      "count": 5846,
+      "avg": 9.65292507697571
     },
     "United Kingdom": {
       "count": 19,
@@ -1951,6 +1951,11 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "r2xhmp": {
+      "location": "J\u00e1szap\u00e1ti, Hungary",
+      "platform": "Android Chrome",
+      "timestamp": 1769766751.155909
+    },
     "4bl9hs": {
       "location": "Kadark\u00fat, Hungary",
       "platform": "Windows Chrome",
@@ -1965,11 +1970,6 @@
       "location": "Recsk, Hungary",
       "platform": "iPhone Browser",
       "timestamp": 1771751993.057109
-    },
-    "r2xhmp": {
-      "location": "J\u00e1szap\u00e1ti, Hungary",
-      "platform": "Android Chrome",
-      "timestamp": 1769766751.155909
     },
     "fzxknx": {
       "location": "Kadark\u00fat, Hungary",
@@ -5426,6 +5426,8 @@
       "r2xhmp",
       [
         0,
+        9,
+        0,
         6,
         9,
         6,
@@ -7726,8 +7728,8 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1624,
-    "6-10": 2469,
+    "0-5": 1625,
+    "6-10": 2470,
     "11-15": 1441,
     "16-20": 702,
     "20+": 302
@@ -8120,7 +8122,7 @@
     },
     {
       "date": "2026-02-22",
-      "games": 9,
+      "games": 11,
       "unique_players": 4
     }
   ]
