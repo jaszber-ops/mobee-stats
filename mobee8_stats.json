@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-02-23T10:08:05.840113+00:00",
+  "generated_at": "2026-02-23T11:44:49.059940+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 200,
+    "total_games": 201,
     "unique_players": 20,
-    "avg_score": 3.95,
-    "median_score": 3.0,
+    "avg_score": 3.93,
+    "median_score": 3,
     "max_score": 17,
     "min_score": 0,
     "score_distribution": {
-      "0-5": 116,
+      "0-5": 117,
       "6-10": 71,
       "11-15": 11,
       "16-20": 2,
       "20+": 0
     },
     "score_histogram": {
-      "0": 84,
+      "0": 85,
       "2": 4,
       "1": 8,
       "7": 16,
@@ -135,6 +135,11 @@
         "date": "2026-02-21",
         "games": 2,
         "unique_players": 2
+      },
+      {
+        "date": "2026-02-23",
+        "games": 1,
+        "unique_players": 1
       }
     ],
     "top_players_by_score": [
@@ -167,8 +172,8 @@
         "score": 10,
         "avatarCoords": "2,9",
         "name": null,
-        "country": "HU",
-        "city": "Budapest"
+        "country": "US",
+        "city": "New York City"
       },
       {
         "playerId": "U8LQ",
@@ -302,8 +307,8 @@
     "top_players_by_games": [
       {
         "playerId": "TJ5Z",
-        "games": 52,
-        "avgScore": 3.5,
+        "games": 53,
+        "avgScore": 3.4,
         "avatarCoords": "2,9"
       },
       {
@@ -403,7 +408,7 @@
       ],
       [
         "US",
-        9
+        10
       ],
       [
         "NL",
@@ -434,6 +439,10 @@
       [
         "Stockport",
         2
+      ],
+      [
+        "New York City",
+        1
       ],
       [
         "Los Angeles",
@@ -554,8 +563,8 @@
         "score": 6,
         "avatarCoords": "2,9",
         "name": null,
-        "country": "HU",
-        "city": "Budapest"
+        "country": "US",
+        "city": "New York City"
       },
       {
         "playerId": "F7PS",
