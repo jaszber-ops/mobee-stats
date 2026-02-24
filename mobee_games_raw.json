@@ -1,5 +1,27 @@
 [
   {
+    "is_high_score": true,
+    "score": 14,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Windows Firefox",
+    "user_code": "chhfw1",
+    "game_number": 28,
+    "game_code": "MOBEE-14-1771940008-59BA",
+    "timestamp": 1771940009.159169
+  },
+  {
+    "is_high_score": false,
+    "score": 10,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Windows Firefox",
+    "user_code": "chhfw1",
+    "game_number": 27,
+    "game_code": "Unknown",
+    "timestamp": 1771939946.574209
+  },
+  {
     "is_high_score": false,
     "score": 7,
     "city": "J\u00e1szap\u00e1ti",

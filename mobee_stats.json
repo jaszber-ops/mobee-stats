@@ -1,15 +1,15 @@
 {
-  "total_games": 6551,
+  "total_games": 6553,
   "unique_players": 525,
-  "high_score_games": 715,
-  "avg_score": 9.455350328194168,
+  "high_score_games": 716,
+  "avg_score": 9.45612696474897,
   "median_score": 9,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
+    "Budapest": 3195,
     "J\u00e1szap\u00e1ti": 275,
     "Gaspoltshofen": 1,
-    "Budapest": 3193,
     "Kadark\u00fat": 22,
     "Recsk": 1,
     "Debrecen": 396,
@@ -148,7 +148,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 5856,
+    "Hungary": 5858,
     "Austria": 13,
     "United Kingdom": 19,
     "Local/Unknown": 54,
@@ -174,12 +174,12 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
+    "Windows Firefox": 123,
     "Android Chrome": 3526,
     "iPhone Browser": 567,
     "Windows Chrome": 670,
     "Mac Chrome": 103,
     "iPhone Safari": 860,
-    "Windows Firefox": 121,
     "Mac Safari": 384,
     "Android Firefox": 33,
     "iPad Safari": 67,
@@ -192,6 +192,11 @@
     "Unknown": 9
   },
   "platform_scores": {
+    "Windows Firefox": {
+      "count": 123,
+      "avg": 5.869918699186992,
+      "max": 24
+    },
     "Android Chrome": {
       "count": 3526,
       "avg": 10.347702779353375,
@@ -216,11 +221,6 @@
       "count": 860,
       "avg": 7.265116279069767,
       "max": 20
-    },
-    "Windows Firefox": {
-      "count": 121,
-      "avg": 5.768595041322314,
-      "max": 24
     },
     "Mac Safari": {
       "count": 384,
@@ -275,8 +275,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 5856,
-      "avg": 9.649419398907105
+      "count": 5858,
+      "avg": 9.650221918743599
     },
     "Austria": {
       "count": 13,
@@ -377,6 +377,7 @@
     "super_engaged": 100
   },
   "player_cities": {
+    "chhfw1": 2,
     "r2xhmp": 4,
     "a8f507": 1,
     "w728ns": 1,
@@ -394,7 +395,6 @@
     "mzhst2": 1,
     "w3oqir": 1,
     "fqaj8d": 1,
-    "chhfw1": 2,
     "55ftpu": 1,
     "ejk7wz": 1,
     "lbswg4": 1,
@@ -904,6 +904,7 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "chhfw1": 1,
     "r2xhmp": 1,
     "a8f507": 1,
     "w728ns": 1,
@@ -921,7 +922,6 @@
     "mzhst2": 1,
     "w3oqir": 1,
     "fqaj8d": 1,
-    "chhfw1": 1,
     "55ftpu": 1,
     "ejk7wz": 1,
     "lbswg4": 1,
@@ -1431,6 +1431,7 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "chhfw1": "Budapest",
     "r2xhmp": "J\u00e1szap\u00e1ti",
     "a8f507": "Gaspoltshofen",
     "w728ns": "Budapest",
@@ -1448,7 +1449,6 @@
     "mzhst2": "Mosonmagyar\u00f3v\u00e1r",
     "w3oqir": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
     "fqaj8d": "Debrecen",
-    "chhfw1": "Budapest",
     "55ftpu": "Budapest",
     "ejk7wz": "Nagykov\u00e1csi",
     "lbswg4": "Budapest",
@@ -1958,6 +1958,11 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "chhfw1": {
+      "location": "Budapest, Hungary",
+      "platform": "Windows Firefox",
+      "timestamp": 1771940009.159169
+    },
     "r2xhmp": {
       "location": "J\u00e1szap\u00e1ti, Hungary",
       "platform": "Android Chrome",
@@ -2037,11 +2042,6 @@
       "location": "Debrecen, Hungary",
       "platform": "Android Chrome",
       "timestamp": 1766255168.895509
-    },
-    "chhfw1": {
-      "location": "Budapest, Hungary",
-      "platform": "Windows Firefox",
-      "timestamp": 1765200838.268869
     },
     "55ftpu": {
       "location": "Budapest, Hungary",
@@ -7754,8 +7754,8 @@
   ],
   "score_distribution": {
     "0-5": 1631,
-    "6-10": 2472,
-    "11-15": 1443,
+    "6-10": 2473,
+    "11-15": 1444,
     "16-20": 703,
     "20+": 302
   },
@@ -8157,8 +8157,8 @@
     },
     {
       "date": "2026-02-24",
-      "games": 7,
-      "unique_players": 1
+      "games": 9,
+      "unique_players": 2
     }
   ]
 }
