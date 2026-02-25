@@ -1,5 +1,38 @@
 [
   {
+    "is_high_score": true,
+    "score": 12,
+    "city": "Kadark\u00fat",
+    "country": "Hungary",
+    "platform": "Windows Chrome",
+    "user_code": "4bl9hs",
+    "game_number": 11,
+    "game_code": "MOBEE-12-1772009532-2B70",
+    "timestamp": 1772009533.415549
+  },
+  {
+    "is_high_score": false,
+    "score": 9,
+    "city": "Kadark\u00fat",
+    "country": "Hungary",
+    "platform": "Windows Chrome",
+    "user_code": "4bl9hs",
+    "game_number": 10,
+    "game_code": "Unknown",
+    "timestamp": 1772009472.310559
+  },
+  {
+    "is_high_score": false,
+    "score": 0,
+    "city": "Kadark\u00fat",
+    "country": "Hungary",
+    "platform": "Windows Chrome",
+    "user_code": "4bl9hs",
+    "game_number": 9,
+    "game_code": "Unknown",
+    "timestamp": 1772009411.482919
+  },
+  {
     "is_high_score": false,
     "score": 8,
     "city": "J\u00e1szap\u00e1ti",
