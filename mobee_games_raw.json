@@ -1,6 +1,127 @@
 [
   {
     "is_high_score": false,
+    "score": 0,
+    "city": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
+    "country": "Hungary",
+    "platform": "Windows Safari",
+    "user_code": "ub3q3z",
+    "game_number": 11,
+    "game_code": "Unknown",
+    "timestamp": 1772169576.549039
+  },
+  {
+    "is_high_score": false,
+    "score": 4,
+    "city": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
+    "country": "Hungary",
+    "platform": "Windows Safari",
+    "user_code": "ub3q3z",
+    "game_number": 10,
+    "game_code": "Unknown",
+    "timestamp": 1772169514.854639
+  },
+  {
+    "is_high_score": false,
+    "score": 1,
+    "city": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
+    "country": "Hungary",
+    "platform": "Windows Safari",
+    "user_code": "ub3q3z",
+    "game_number": 9,
+    "game_code": "Unknown",
+    "timestamp": 1772168873.556249
+  },
+  {
+    "is_high_score": false,
+    "score": 3,
+    "city": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
+    "country": "Hungary",
+    "platform": "Windows Safari",
+    "user_code": "ub3q3z",
+    "game_number": 8,
+    "game_code": "Unknown",
+    "timestamp": 1772168811.965599
+  },
+  {
+    "is_high_score": false,
+    "score": 2,
+    "city": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
+    "country": "Hungary",
+    "platform": "Windows Safari",
+    "user_code": "ub3q3z",
+    "game_number": 7,
+    "game_code": "Unknown",
+    "timestamp": 1772168747.832019
+  },
+  {
+    "is_high_score": true,
+    "score": 7,
+    "city": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
+    "country": "Hungary",
+    "platform": "Windows Safari",
+    "user_code": "ub3q3z",
+    "game_number": 6,
+    "game_code": "MOBEE-7-1772168668-FE65",
+    "timestamp": 1772168671.690949
+  },
+  {
+    "is_high_score": false,
+    "score": 2,
+    "city": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
+    "country": "Hungary",
+    "platform": "Windows Safari",
+    "user_code": "ub3q3z",
+    "game_number": 5,
+    "game_code": "Unknown",
+    "timestamp": 1772168602.373979
+  },
+  {
+    "is_high_score": false,
+    "score": 0,
+    "city": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
+    "country": "Hungary",
+    "platform": "Windows Safari",
+    "user_code": "ub3q3z",
+    "game_number": 4,
+    "game_code": "Unknown",
+    "timestamp": 1772168541.616239
+  },
+  {
+    "is_high_score": false,
+    "score": 0,
+    "city": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
+    "country": "Hungary",
+    "platform": "Windows Safari",
+    "user_code": "ub3q3z",
+    "game_number": 3,
+    "game_code": "Unknown",
+    "timestamp": 1772168496.331349
+  },
+  {
+    "is_high_score": false,
+    "score": 5,
+    "city": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
+    "country": "Hungary",
+    "platform": "Windows Safari",
+    "user_code": "ub3q3z",
+    "game_number": 2,
+    "game_code": "Unknown",
+    "timestamp": 1772168415.963299
+  },
+  {
+    "is_high_score": false,
+    "score": 0,
+    "city": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
+    "country": "Hungary",
+    "platform": "Windows Safari",
+    "user_code": "ub3q3z",
+    "game_number": 1,
+    "game_code": "Unknown",
+    "timestamp": 1772168385.117549
+  },
+  {
+    "is_high_score": false,
     "score": 6,
     "city": "J\u00e1szap\u00e1ti",
     "country": "Hungary",
