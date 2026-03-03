@@ -1,6 +1,28 @@
 [
   {
     "is_high_score": false,
+    "score": 1,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "iPhone Safari",
+    "user_code": "a1ezmh",
+    "game_number": 23,
+    "game_code": "Unknown",
+    "timestamp": 1772570597.721319
+  },
+  {
+    "is_high_score": false,
+    "score": 0,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "iPhone Safari",
+    "user_code": "a1ezmh",
+    "game_number": 22,
+    "game_code": "Unknown",
+    "timestamp": 1772570535.192539
+  },
+  {
+    "is_high_score": false,
     "score": 7,
     "city": "Kaposvar",
     "country": "Hungary",
