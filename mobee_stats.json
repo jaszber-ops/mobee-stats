@@ -1,14 +1,15 @@
 {
-  "total_games": 6593,
+  "total_games": 6605,
   "unique_players": 526,
   "high_score_games": 718,
-  "avg_score": 9.429394812680115,
+  "avg_score": 9.447388342165027,
   "median_score": 9,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
+    "Budapest": 3211,
+    "Uccle": 13,
     "J\u00e1szap\u00e1ti": 293,
-    "Budapest": 3200,
     "Kaposvar": 3,
     "Sz\u00e9kesfeh\u00e9rv\u00e1r": 319,
     "Kadark\u00fat": 25,
@@ -64,7 +65,6 @@
     "T\u00f6r\u00f6kb\u00e1lint": 1,
     "Kiskunlach\u00e1za": 1,
     "T\u00e1t": 2,
-    "Uccle": 12,
     "\u00c9rd": 4,
     "Vienna": 2,
     "Brussels": 3,
@@ -149,13 +149,13 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 5898,
+    "Hungary": 5909,
+    "Belgium": 61,
     "Austria": 13,
     "United Kingdom": 19,
     "Local/Unknown": 54,
     "Switzerland": 187,
     "The Netherlands": 4,
-    "Belgium": 60,
     "United States": 191,
     "France": 6,
     "Germany": 94,
@@ -175,10 +175,10 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 3550,
+    "Android Chrome": 3561,
+    "Windows Chrome": 674,
     "iPhone Safari": 862,
     "Windows Safari": 159,
-    "Windows Chrome": 673,
     "Windows Firefox": 123,
     "iPhone Browser": 567,
     "Mac Chrome": 103,
@@ -194,9 +194,14 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 3550,
-      "avg": 10.321690140845071,
+      "count": 3561,
+      "avg": 10.352990732940185,
       "max": 30
+    },
+    "Windows Chrome": {
+      "count": 674,
+      "avg": 8.232937685459941,
+      "max": 22
     },
     "iPhone Safari": {
       "count": 862,
@@ -207,11 +212,6 @@
       "count": 159,
       "avg": 7.849056603773585,
       "max": 16
-    },
-    "Windows Chrome": {
-      "count": 673,
-      "avg": 8.234769687964338,
-      "max": 22
     },
     "Windows Firefox": {
       "count": 123,
@@ -276,8 +276,12 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 5898,
-      "avg": 9.619023397761953
+      "count": 5909,
+      "avg": 9.639194449145371
+    },
+    "Belgium": {
+      "count": 61,
+      "avg": 13.131147540983607
     },
     "Austria": {
       "count": 13,
@@ -298,10 +302,6 @@
     "The Netherlands": {
       "count": 4,
       "avg": 6.75
-    },
-    "Belgium": {
-      "count": 60,
-      "avg": 13.233333333333333
     },
     "United States": {
       "count": 191,
@@ -378,6 +378,8 @@
     "super_engaged": 102
   },
   "player_cities": {
+    "6gawu9": 4,
+    "z0498h": 2,
     "r2xhmp": 5,
     "a1ezmh": 7,
     "2hmhsf": 1,
@@ -411,7 +413,6 @@
     "xvn6ui": 1,
     "eaivs9": 1,
     "9fmly6": 1,
-    "6gawu9": 4,
     "nd33fy": 6,
     "y74wa2": 1,
     "gndkfn": 1,
@@ -442,7 +443,6 @@
     "4ryygm": 1,
     "25c3hc": 1,
     "hphhm0": 2,
-    "z0498h": 2,
     "zg1d2j": 1,
     "0hd1gn": 2,
     "zgbjk8": 1,
@@ -906,6 +906,8 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "6gawu9": 1,
+    "z0498h": 1,
     "r2xhmp": 1,
     "a1ezmh": 1,
     "2hmhsf": 1,
@@ -939,7 +941,6 @@
     "xvn6ui": 1,
     "eaivs9": 1,
     "9fmly6": 1,
-    "6gawu9": 1,
     "nd33fy": 1,
     "y74wa2": 1,
     "gndkfn": 1,
@@ -970,7 +971,6 @@
     "4ryygm": 1,
     "25c3hc": 1,
     "hphhm0": 1,
-    "z0498h": 1,
     "zg1d2j": 1,
     "0hd1gn": 1,
     "zgbjk8": 1,
@@ -1434,6 +1434,8 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "6gawu9": "Budapest",
+    "z0498h": "Uccle",
     "r2xhmp": "J\u00e1szap\u00e1ti",
     "a1ezmh": "Lenzburg",
     "2hmhsf": "Budapest",
@@ -1467,7 +1469,6 @@
     "xvn6ui": "Budapest",
     "eaivs9": "Sikl\u00f3s",
     "9fmly6": "Budapest",
-    "6gawu9": "Budapest",
     "nd33fy": "Gy\u00f6ngy\u00f6s",
     "y74wa2": "Unknown City",
     "gndkfn": "Budapest",
@@ -1498,7 +1499,6 @@
     "4ryygm": "Budapest",
     "25c3hc": "P\u00e9cs",
     "hphhm0": "Budapest",
-    "z0498h": "Uccle",
     "zg1d2j": "P\u00e9cs",
     "0hd1gn": "Budapest",
     "zgbjk8": "Biatorb\u00e1gy",
@@ -1962,6 +1962,16 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "6gawu9": {
+      "location": "Budapest, Hungary",
+      "platform": "Android Chrome",
+      "timestamp": 1769001994.883319
+    },
+    "z0498h": {
+      "location": "Uccle, Belgium",
+      "platform": "Windows Chrome",
+      "timestamp": 1765127553.782419
+    },
     "r2xhmp": {
       "location": "J\u00e1szap\u00e1ti, Hungary",
       "platform": "Android Chrome",
@@ -2122,11 +2132,6 @@
       "platform": "iPhone Safari",
       "timestamp": 1765210918.798829
     },
-    "6gawu9": {
-      "location": "Budapest, Hungary",
-      "platform": "Android Chrome",
-      "timestamp": 1769001994.883319
-    },
     "nd33fy": {
       "location": "Gy\u00f6ngy\u00f6s, Hungary",
       "platform": "Android Chrome",
@@ -2261,11 +2266,6 @@
       "location": "Sz\u00e9kesfeh\u00e9rv\u00e1r, Hungary",
       "platform": "Android Chrome",
       "timestamp": 1766057242.108069
-    },
-    "z0498h": {
-      "location": "Uccle, Belgium",
-      "platform": "Windows Chrome",
-      "timestamp": 1765127553.782419
     },
     "zg1d2j": {
       "location": "P\u00e9cs, Hungary",
@@ -4507,6 +4507,17 @@
     [
       "6gawu9",
       [
+        21,
+        20,
+        15,
+        16,
+        25,
+        24,
+        18,
+        19,
+        27,
+        22,
+        18,
         17,
         0,
         21,
@@ -7787,10 +7798,10 @@
   ],
   "score_distribution": {
     "0-5": 1651,
-    "6-10": 2491,
-    "11-15": 1446,
-    "16-20": 703,
-    "20+": 302
+    "6-10": 2492,
+    "11-15": 1447,
+    "16-20": 708,
+    "20+": 307
   },
   "daily_stats": [
     {
@@ -8230,8 +8241,8 @@
     },
     {
       "date": "2026-03-04",
-      "games": 7,
-      "unique_players": 1
+      "games": 19,
+      "unique_players": 3
     }
   ]
 }
