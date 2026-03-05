@@ -1,6 +1,28 @@
 [
   {
     "is_high_score": false,
+    "score": 5,
+    "city": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
+    "country": "Hungary",
+    "platform": "Windows Safari",
+    "user_code": "ub3q3z",
+    "game_number": 13,
+    "game_code": "Unknown",
+    "timestamp": 1772731624.520799
+  },
+  {
+    "is_high_score": false,
+    "score": 0,
+    "city": "Sz\u00e9kesfeh\u00e9rv\u00e1r",
+    "country": "Hungary",
+    "platform": "Windows Safari",
+    "user_code": "ub3q3z",
+    "game_number": 12,
+    "game_code": "Unknown",
+    "timestamp": 1772731564.577039
+  },
+  {
+    "is_high_score": false,
     "score": 6,
     "city": "J\u00e1szap\u00e1ti",
     "country": "Hungary",
