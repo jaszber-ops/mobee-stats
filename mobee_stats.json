@@ -1,15 +1,15 @@
 {
-  "total_games": 6630,
+  "total_games": 6633,
   "unique_players": 526,
   "high_score_games": 718,
-  "avg_score": 9.483559577677225,
-  "median_score": 9.0,
+  "avg_score": 9.482436303331825,
+  "median_score": 9,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
+    "Budapest": 3235,
     "J\u00e1szap\u00e1ti": 295,
     "Sz\u00e9kesfeh\u00e9rv\u00e1r": 321,
-    "Budapest": 3232,
     "Uccle": 13,
     "Kaposvar": 3,
     "Kadark\u00fat": 25,
@@ -149,7 +149,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 5934,
+    "Hungary": 5937,
     "Belgium": 61,
     "Austria": 13,
     "United Kingdom": 19,
@@ -175,7 +175,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 3584,
+    "Android Chrome": 3587,
     "Windows Safari": 161,
     "Windows Chrome": 674,
     "iPhone Safari": 862,
@@ -194,8 +194,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 3584,
-      "avg": 10.41796875,
+      "count": 3587,
+      "avg": 10.415110119877335,
       "max": 30
     },
     "Windows Safari": {
@@ -276,8 +276,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 5934,
-      "avg": 9.678800134816314
+      "count": 5937,
+      "avg": 9.677446521812364
     },
     "Belgium": {
       "count": 61,
@@ -5483,6 +5483,9 @@
     [
       "r2xhmp",
       [
+        9,
+        5,
+        7,
         8,
         6,
         9,
@@ -7820,8 +7823,8 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1653,
-    "6-10": 2494,
+    "0-5": 1654,
+    "6-10": 2496,
     "11-15": 1447,
     "16-20": 715,
     "20+": 321
@@ -8271,6 +8274,11 @@
       "date": "2026-03-05",
       "games": 4,
       "unique_players": 2
+    },
+    {
+      "date": "2026-03-07",
+      "games": 3,
+      "unique_players": 1
     }
   ]
 }
