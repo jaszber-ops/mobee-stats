@@ -1,6 +1,50 @@
 [
   {
     "is_high_score": true,
+    "score": 9,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "iPhone Safari",
+    "user_code": "uvk4lb",
+    "game_number": 1,
+    "game_code": "MOBEE-9-1773065048-E9BF",
+    "timestamp": 1773065050.922009
+  },
+  {
+    "is_high_score": false,
+    "score": 7,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Windows Firefox",
+    "user_code": "chhfw1",
+    "game_number": 30,
+    "game_code": "Unknown",
+    "timestamp": 1773064968.758169
+  },
+  {
+    "is_high_score": false,
+    "score": 11,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Windows Firefox",
+    "user_code": "chhfw1",
+    "game_number": 29,
+    "game_code": "Unknown",
+    "timestamp": 1773064905.706539
+  },
+  {
+    "is_high_score": false,
+    "score": 8,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "r2xhmp",
+    "game_number": 767,
+    "game_code": "Unknown",
+    "timestamp": 1773064385.143429
+  },
+  {
+    "is_high_score": true,
     "score": 16,
     "city": "Budapest",
     "country": "Hungary",
