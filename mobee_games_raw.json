@@ -1,5 +1,16 @@
 [
   {
+    "is_high_score": false,
+    "score": 7,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "r2xhmp",
+    "game_number": 768,
+    "game_code": "Unknown",
+    "timestamp": 1773123013.042779
+  },
+  {
     "is_high_score": true,
     "score": 9,
     "city": "Budapest",
