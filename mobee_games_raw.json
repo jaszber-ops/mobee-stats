@@ -1,6 +1,17 @@
 [
   {
     "is_high_score": false,
+    "score": 4,
+    "city": "Uccle",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "z0498h",
+    "game_number": 12,
+    "game_code": "Unknown",
+    "timestamp": 1773784219.650849
+  },
+  {
+    "is_high_score": false,
     "score": 0,
     "city": "Brussels",
     "country": "Belgium",
