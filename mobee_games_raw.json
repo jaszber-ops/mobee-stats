@@ -1,6 +1,83 @@
 [
   {
     "is_high_score": false,
+    "score": 7,
+    "city": "Brussels",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "r9wpcl",
+    "game_number": 11,
+    "game_code": "Unknown",
+    "timestamp": 1773762887.113649
+  },
+  {
+    "is_high_score": false,
+    "score": 7,
+    "city": "Brussels",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "r9wpcl",
+    "game_number": 10,
+    "game_code": "Unknown",
+    "timestamp": 1773762821.090189
+  },
+  {
+    "is_high_score": false,
+    "score": 6,
+    "city": "Brussels",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "r9wpcl",
+    "game_number": 9,
+    "game_code": "Unknown",
+    "timestamp": 1773762760.043349
+  },
+  {
+    "is_high_score": false,
+    "score": 6,
+    "city": "Brussels",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "r9wpcl",
+    "game_number": 8,
+    "game_code": "Unknown",
+    "timestamp": 1773762699.133679
+  },
+  {
+    "is_high_score": false,
+    "score": 7,
+    "city": "Brussels",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "r9wpcl",
+    "game_number": 7,
+    "game_code": "Unknown",
+    "timestamp": 1773762638.184749
+  },
+  {
+    "is_high_score": false,
+    "score": 6,
+    "city": "Brussels",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "r9wpcl",
+    "game_number": 6,
+    "game_code": "Unknown",
+    "timestamp": 1773762577.273209
+  },
+  {
+    "is_high_score": false,
+    "score": 7,
+    "city": "Brussels",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "r9wpcl",
+    "game_number": 5,
+    "game_code": "Unknown",
+    "timestamp": 1773762516.461349
+  },
+  {
+    "is_high_score": false,
     "score": 5,
     "city": "Brussels",
     "country": "Belgium",
