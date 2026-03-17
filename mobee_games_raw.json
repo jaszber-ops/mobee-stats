@@ -2,6 +2,17 @@
   {
     "is_high_score": false,
     "score": 6,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Windows Firefox",
+    "user_code": "chhfw1",
+    "game_number": 31,
+    "game_code": "Unknown",
+    "timestamp": 1773752744.035539
+  },
+  {
+    "is_high_score": false,
+    "score": 6,
     "city": "Gyomaendr\u0151d",
     "country": "Hungary",
     "platform": "Android Chrome",
