@@ -1,13 +1,13 @@
 {
-  "total_games": 6669,
+  "total_games": 6670,
   "unique_players": 530,
   "high_score_games": 724,
-  "avg_score": 9.472334682860998,
-  "median_score": 9,
+  "avg_score": 9.470914542728636,
+  "median_score": 9.0,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
-    "Brussels": 14,
+    "Brussels": 15,
     "Budapest": 3255,
     "Gyomaendr\u0151d": 213,
     "J\u00e1szap\u00e1ti": 297,
@@ -149,7 +149,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Belgium": 72,
+    "Belgium": 73,
     "Hungary": 5962,
     "Austria": 13,
     "United Kingdom": 19,
@@ -175,7 +175,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Windows Chrome": 690,
+    "Windows Chrome": 691,
     "Windows Firefox": 126,
     "Android Chrome": 3601,
     "iPhone Safari": 865,
@@ -194,8 +194,8 @@
   },
   "platform_scores": {
     "Windows Chrome": {
-      "count": 690,
-      "avg": 8.210144927536232,
+      "count": 691,
+      "avg": 8.198263386396526,
       "max": 22
     },
     "Windows Firefox": {
@@ -276,8 +276,8 @@
   },
   "location_scores": {
     "Belgium": {
-      "count": 72,
-      "avg": 12.11111111111111
+      "count": 73,
+      "avg": 11.945205479452055
     },
     "Hungary": {
       "count": 5962,
@@ -378,8 +378,8 @@
     "super_engaged": 104
   },
   "player_cities": {
+    "2yng62": 3,
     "r9wpcl": 1,
-    "2yng62": 2,
     "chhfw1": 2,
     "r2xhmp": 5,
     "uvk4lb": 1,
@@ -910,8 +910,8 @@
     "Unknown": 2
   },
   "player_platforms": {
-    "r9wpcl": 1,
     "2yng62": 1,
+    "r9wpcl": 1,
     "chhfw1": 1,
     "r2xhmp": 1,
     "uvk4lb": 1,
@@ -1442,8 +1442,8 @@
     "Unknown": 1
   },
   "player_most_common_city": {
-    "r9wpcl": "Brussels",
     "2yng62": "P\u00e9cs",
+    "r9wpcl": "Brussels",
     "chhfw1": "Budapest",
     "r2xhmp": "J\u00e1szap\u00e1ti",
     "uvk4lb": "Budapest",
@@ -7869,7 +7869,7 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1658,
+    "0-5": 1659,
     "6-10": 2526,
     "11-15": 1448,
     "16-20": 716,
@@ -8363,7 +8363,7 @@
     },
     {
       "date": "2026-03-17",
-      "games": 19,
+      "games": 20,
       "unique_players": 4
     }
   ]
