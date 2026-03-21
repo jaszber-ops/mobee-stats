@@ -1,6 +1,17 @@
 [
   {
     "is_high_score": false,
+    "score": 8,
+    "city": "Gyomaendr\u0151d",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "r2xhmp",
+    "game_number": 780,
+    "game_code": "Unknown",
+    "timestamp": 1774128633.831439
+  },
+  {
+    "is_high_score": false,
     "score": 23,
     "city": "Budapest",
     "country": "Hungary",
