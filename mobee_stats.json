@@ -1,13 +1,13 @@
 {
-  "total_games": 6743,
+  "total_games": 6758,
   "unique_players": 530,
   "high_score_games": 724,
-  "avg_score": 9.581047011715853,
-  "median_score": 9,
+  "avg_score": 9.61305119857946,
+  "median_score": 9.0,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
-    "Budapest": 3325,
+    "Budapest": 3340,
     "Gyomaendr\u0151d": 215,
     "Uccle": 14,
     "Brussels": 15,
@@ -149,7 +149,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 6034,
+    "Hungary": 6049,
     "Belgium": 74,
     "Austria": 13,
     "United Kingdom": 19,
@@ -175,7 +175,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 3669,
+    "Android Chrome": 3684,
     "Windows Safari": 165,
     "Windows Chrome": 692,
     "Windows Firefox": 126,
@@ -194,8 +194,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 3669,
-      "avg": 10.586263286999182,
+      "count": 3684,
+      "avg": 10.640879478827362,
       "max": 30
     },
     "Windows Safari": {
@@ -276,8 +276,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 6034,
-      "avg": 9.792509115014916
+      "count": 6049,
+      "avg": 9.82774012233427
     },
     "Belgium": {
       "count": 74,
@@ -1977,7 +1977,7 @@
     "6gawu9": {
       "location": "Budapest, Hungary",
       "platform": "Android Chrome",
-      "timestamp": 1774087204.239289
+      "timestamp": 1774097972.875869
     },
     "r2xhmp": {
       "location": "J\u00e1szap\u00e1ti, Hungary",
@@ -4539,6 +4539,21 @@
     [
       "6gawu9",
       [
+        27,
+        19,
+        24,
+        22,
+        24,
+        27,
+        23,
+        30,
+        25,
+        21,
+        23,
+        22,
+        27,
+        24,
+        22,
         18,
         26,
         23,
@@ -7940,8 +7955,8 @@
     "0-5": 1664,
     "6-10": 2529,
     "11-15": 1452,
-    "16-20": 734,
-    "20+": 364
+    "16-20": 735,
+    "20+": 378
   },
   "daily_stats": [
     {
@@ -8446,7 +8461,7 @@
     },
     {
       "date": "2026-03-21",
-      "games": 56,
+      "games": 71,
       "unique_players": 2
     }
   ]
