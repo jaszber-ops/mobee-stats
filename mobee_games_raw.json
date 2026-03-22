@@ -1,6 +1,28 @@
 [
   {
     "is_high_score": false,
+    "score": 8,
+    "city": "Gyomaendr\u0151d",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "r2xhmp",
+    "game_number": 784,
+    "game_code": "Unknown",
+    "timestamp": 1774200951.903709
+  },
+  {
+    "is_high_score": false,
+    "score": 5,
+    "city": "Gyomaendr\u0151d",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "r2xhmp",
+    "game_number": 783,
+    "game_code": "Unknown",
+    "timestamp": 1774200889.341889
+  },
+  {
+    "is_high_score": false,
     "score": 6,
     "city": "Gyomaendr\u0151d",
     "country": "Hungary",
