@@ -1,13 +1,13 @@
 {
-  "total_games": 6775,
-  "unique_players": 531,
-  "high_score_games": 725,
-  "avg_score": 9.61771217712177,
-  "median_score": 9,
+  "total_games": 6780,
+  "unique_players": 532,
+  "high_score_games": 726,
+  "avg_score": 9.616814159292035,
+  "median_score": 9.0,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
-    "Li\u00e8ge": 47,
+    "Li\u00e8ge": 52,
     "Gyomaendr\u0151d": 225,
     "Budapest": 3342,
     "Uccle": 14,
@@ -149,7 +149,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Belgium": 79,
+    "Belgium": 84,
     "Hungary": 6061,
     "Austria": 13,
     "United Kingdom": 19,
@@ -175,7 +175,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Windows Chrome": 697,
+    "Windows Chrome": 702,
     "Android Chrome": 3695,
     "iPhone Safari": 866,
     "Windows Safari": 165,
@@ -194,8 +194,8 @@
   },
   "platform_scores": {
     "Windows Chrome": {
-      "count": 697,
-      "avg": 8.261119081779054,
+      "count": 702,
+      "avg": 8.262108262108262,
       "max": 22
     },
     "Android Chrome": {
@@ -276,8 +276,8 @@
   },
   "location_scores": {
     "Belgium": {
-      "count": 79,
-      "avg": 12.215189873417721
+      "count": 84,
+      "avg": 11.988095238095237
     },
     "Hungary": {
       "count": 6061,
@@ -374,10 +374,11 @@
   },
   "engagement": {
     "one_time_players": 183,
-    "returning_players": 348,
+    "returning_players": 349,
     "super_engaged": 104
   },
   "player_cities": {
+    "m6o8nd": 1,
     "e88fto": 1,
     "r2xhmp": 5,
     "pd1zmx": 1,
@@ -911,6 +912,7 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "m6o8nd": 1,
     "e88fto": 1,
     "r2xhmp": 1,
     "pd1zmx": 1,
@@ -1444,6 +1446,7 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "m6o8nd": "Li\u00e8ge",
     "e88fto": "Li\u00e8ge",
     "r2xhmp": "J\u00e1szap\u00e1ti",
     "pd1zmx": "Budapest",
@@ -1977,6 +1980,11 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "m6o8nd": {
+      "location": "Li\u00e8ge, Belgium",
+      "platform": "Windows Chrome",
+      "timestamp": 1774613584.017439
+    },
     "e88fto": {
       "location": "Li\u00e8ge, Belgium",
       "platform": "Windows Chrome",
@@ -7971,9 +7979,9 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1666,
-    "6-10": 2537,
-    "11-15": 1453,
+    "0-5": 1667,
+    "6-10": 2540,
+    "11-15": 1454,
     "16-20": 740,
     "20+": 379
   },
@@ -8510,8 +8518,8 @@
     },
     {
       "date": "2026-03-27",
-      "games": 6,
-      "unique_players": 2
+      "games": 11,
+      "unique_players": 3
     }
   ]
 }
