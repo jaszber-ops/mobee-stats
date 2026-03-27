@@ -1,6 +1,61 @@
 [
   {
     "is_high_score": false,
+    "score": 20,
+    "city": "Li\u00e8ge",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "e88fto",
+    "game_number": 18,
+    "game_code": "Unknown",
+    "timestamp": 1774607963.728649
+  },
+  {
+    "is_high_score": false,
+    "score": 18,
+    "city": "Li\u00e8ge",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "e88fto",
+    "game_number": 17,
+    "game_code": "Unknown",
+    "timestamp": 1774607896.054049
+  },
+  {
+    "is_high_score": false,
+    "score": 18,
+    "city": "Li\u00e8ge",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "e88fto",
+    "game_number": 16,
+    "game_code": "Unknown",
+    "timestamp": 1774607827.368629
+  },
+  {
+    "is_high_score": false,
+    "score": 16,
+    "city": "Li\u00e8ge",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "e88fto",
+    "game_number": 15,
+    "game_code": "Unknown",
+    "timestamp": 1774607765.114819
+  },
+  {
+    "is_high_score": false,
+    "score": 17,
+    "city": "Li\u00e8ge",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "e88fto",
+    "game_number": 14,
+    "game_code": "Unknown",
+    "timestamp": 1774607704.861349
+  },
+  {
+    "is_high_score": false,
     "score": 11,
     "city": "Gyomaendr\u0151d",
     "country": "Hungary",
