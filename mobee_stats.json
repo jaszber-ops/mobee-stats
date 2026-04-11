@@ -1,13 +1,14 @@
 {
-  "total_games": 6872,
+  "total_games": 6879,
   "unique_players": 534,
   "high_score_games": 730,
-  "avg_score": 9.674476135040745,
-  "median_score": 9.0,
+  "avg_score": 9.67800552405873,
+  "median_score": 9,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
-    "P\u00e9cs": 615,
+    "P\u00e9cs": 621,
+    "Unknown City": 55,
     "Budapest": 3378,
     "J\u00e1szap\u00e1ti": 307,
     "Sz\u00e9kesfeh\u00e9rv\u00e1r": 322,
@@ -22,7 +23,6 @@
     "Debrecen": 396,
     "Stockport": 1,
     "Mosonmagyar\u00f3v\u00e1r": 17,
-    "Unknown City": 54,
     "Nagykov\u00e1csi": 2,
     "Pratteln": 1,
     "Dietikon": 1,
@@ -149,11 +149,11 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 6153,
+    "Hungary": 6159,
+    "Local/Unknown": 55,
     "Belgium": 84,
     "Austria": 13,
     "United Kingdom": 19,
-    "Local/Unknown": 54,
     "Switzerland": 187,
     "The Netherlands": 4,
     "United States": 191,
@@ -175,7 +175,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 3782,
+    "Android Chrome": 3789,
     "iPhone Safari": 868,
     "Windows Chrome": 705,
     "Windows Safari": 165,
@@ -194,8 +194,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 3782,
-      "avg": 10.715494447382337,
+      "count": 3789,
+      "avg": 10.71997888624967,
       "max": 30
     },
     "iPhone Safari": {
@@ -276,8 +276,12 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 6153,
-      "avg": 9.887046968958233
+      "count": 6159,
+      "avg": 9.892352654651729
+    },
+    "Local/Unknown": {
+      "count": 55,
+      "avg": 6.872727272727273
     },
     "Belgium": {
       "count": 84,
@@ -290,10 +294,6 @@
     "United Kingdom": {
       "count": 19,
       "avg": 11.842105263157896
-    },
-    "Local/Unknown": {
-      "count": 54,
-      "avg": 7.0
     },
     "Switzerland": {
       "count": 187,
@@ -378,7 +378,7 @@
     "super_engaged": 104
   },
   "player_cities": {
-    "a03pnz": 1,
+    "a03pnz": 2,
     "8jlsq2": 1,
     "6gawu9": 4,
     "r2xhmp": 5,
@@ -6771,6 +6771,13 @@
     [
       "a03pnz",
       [
+        13,
+        18,
+        16,
+        14,
+        14,
+        17,
+        0,
         12,
         16,
         2,
@@ -8079,10 +8086,10 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1672,
+    "0-5": 1673,
     "6-10": 2564,
-    "11-15": 1482,
-    "16-20": 756,
+    "11-15": 1485,
+    "16-20": 759,
     "20+": 398
   },
   "daily_stats": [
@@ -8663,7 +8670,7 @@
     },
     {
       "date": "2026-04-11",
-      "games": 2,
+      "games": 9,
       "unique_players": 1
     }
   ]
