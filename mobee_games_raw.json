@@ -1,6 +1,17 @@
 [
   {
     "is_high_score": false,
+    "score": 0,
+    "city": "Brussels",
+    "country": "Belgium",
+    "platform": "Mac Chrome",
+    "user_code": "u3poeg",
+    "game_number": 1,
+    "game_code": "Unknown",
+    "timestamp": 1776081843.668449
+  },
+  {
+    "is_high_score": false,
     "score": 13,
     "city": "P\u00e9cs",
     "country": "Hungary",
