@@ -1,5 +1,38 @@
 [
   {
+    "is_high_score": true,
+    "score": 10,
+    "city": "Cologne",
+    "country": "Germany",
+    "platform": "Android Firefox",
+    "user_code": "s3952w",
+    "game_number": 3,
+    "game_code": "MOBEE-10-1776542577-18C7",
+    "timestamp": 1776542577.667159
+  },
+  {
+    "is_high_score": false,
+    "score": 2,
+    "city": "Cologne",
+    "country": "Germany",
+    "platform": "Android Firefox",
+    "user_code": "s3952w",
+    "game_number": 2,
+    "game_code": "Unknown",
+    "timestamp": 1776542515.769409
+  },
+  {
+    "is_high_score": false,
+    "score": 1,
+    "city": "Cologne",
+    "country": "Germany",
+    "platform": "Android Firefox",
+    "user_code": "s3952w",
+    "game_number": 1,
+    "game_code": "Unknown",
+    "timestamp": 1776542454.217849
+  },
+  {
     "is_high_score": false,
     "score": 14,
     "city": "Budapest",
