@@ -1,17 +1,17 @@
 {
-  "total_games": 6923,
+  "total_games": 6950,
   "unique_players": 536,
   "high_score_games": 731,
-  "avg_score": 9.696952188357649,
-  "median_score": 9,
+  "avg_score": 9.701438848920864,
+  "median_score": 9.0,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
-    "P\u00e9cs": 657,
+    "P\u00e9cs": 683,
+    "Unknown City": 56,
     "Cologne": 3,
     "Budapest": 3382,
     "Brussels": 16,
-    "Unknown City": 55,
     "J\u00e1szap\u00e1ti": 307,
     "Sz\u00e9kesfeh\u00e9rv\u00e1r": 322,
     "Gyomaendr\u0151d": 228,
@@ -150,10 +150,10 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 6199,
+    "Hungary": 6225,
+    "Local/Unknown": 56,
     "Germany": 97,
     "Belgium": 85,
-    "Local/Unknown": 55,
     "Austria": 13,
     "United Kingdom": 19,
     "Switzerland": 187,
@@ -176,7 +176,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 3826,
+    "Android Chrome": 3853,
     "Android Firefox": 36,
     "iPhone Safari": 871,
     "Mac Chrome": 104,
@@ -195,8 +195,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 3826,
-      "avg": 10.746994249869315,
+      "count": 3853,
+      "avg": 10.747729042304698,
       "max": 30
     },
     "Android Firefox": {
@@ -277,8 +277,12 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 6199,
-      "avg": 9.916276818841748
+      "count": 6225,
+      "avg": 9.921285140562249
+    },
+    "Local/Unknown": {
+      "count": 56,
+      "avg": 6.821428571428571
     },
     "Germany": {
       "count": 97,
@@ -287,10 +291,6 @@
     "Belgium": {
       "count": 85,
       "avg": 11.847058823529412
-    },
-    "Local/Unknown": {
-      "count": 55,
-      "avg": 6.872727272727273
     },
     "Austria": {
       "count": 13,
@@ -6478,6 +6478,33 @@
     [
       "a03pnz",
       [
+        2,
+        16,
+        16,
+        4,
+        11,
+        13,
+        10,
+        5,
+        14,
+        12,
+        13,
+        6,
+        12,
+        14,
+        15,
+        13,
+        9,
+        11,
+        7,
+        10,
+        17,
+        2,
+        14,
+        11,
+        12,
+        8,
+        16,
         0,
         16,
         6,
@@ -8135,10 +8162,10 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1677,
-    "6-10": 2572,
-    "11-15": 1504,
-    "16-20": 772,
+    "0-5": 1681,
+    "6-10": 2578,
+    "11-15": 1517,
+    "16-20": 776,
     "20+": 398
   },
   "daily_stats": [
@@ -8744,7 +8771,7 @@
     },
     {
       "date": "2026-04-19",
-      "games": 28,
+      "games": 55,
       "unique_players": 1
     }
   ]
