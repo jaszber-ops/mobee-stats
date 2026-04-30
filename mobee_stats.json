@@ -1,13 +1,13 @@
 {
-  "total_games": 7010,
+  "total_games": 7012,
   "unique_players": 537,
   "high_score_games": 734,
-  "avg_score": 9.712268188302424,
+  "avg_score": 9.711922418710781,
   "median_score": 9.0,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
-    "P\u00e9cs": 700,
+    "P\u00e9cs": 702,
     "Unknown City": 57,
     "Budapest": 3419,
     "J\u00e1szap\u00e1ti": 312,
@@ -150,7 +150,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 6284,
+    "Hungary": 6286,
     "Local/Unknown": 57,
     "Germany": 97,
     "Belgium": 85,
@@ -176,7 +176,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 3913,
+    "Android Chrome": 3915,
     "Android Firefox": 36,
     "iPhone Safari": 871,
     "Mac Chrome": 104,
@@ -195,8 +195,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 3913,
-      "avg": 10.751086123179146,
+      "count": 3915,
+      "avg": 10.74993614303959,
       "max": 30
     },
     "Android Firefox": {
@@ -277,8 +277,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 6284,
-      "avg": 9.932686187141949
+      "count": 6286,
+      "avg": 9.932230353165766
     },
     "Local/Unknown": {
       "count": 57,
@@ -6493,6 +6493,8 @@
     [
       "a03pnz",
       [
+        17,
+        0,
         14,
         17,
         17,
@@ -8213,10 +8215,10 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1692,
+    "0-5": 1693,
     "6-10": 2591,
     "11-15": 1539,
-    "16-20": 790,
+    "16-20": 791,
     "20+": 398
   },
   "daily_stats": [
@@ -8857,7 +8859,7 @@
     },
     {
       "date": "2026-04-30",
-      "games": 6,
+      "games": 8,
       "unique_players": 1
     }
   ]
