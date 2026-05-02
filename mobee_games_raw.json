@@ -1,6 +1,72 @@
 [
   {
     "is_high_score": false,
+    "score": 8,
+    "city": "Sikl\u00f3s",
+    "country": "Hungary",
+    "platform": "iPhone Safari",
+    "user_code": "zjibr7",
+    "game_number": 6,
+    "game_code": "Unknown",
+    "timestamp": 1777739443.655739
+  },
+  {
+    "is_high_score": false,
+    "score": 7,
+    "city": "Sikl\u00f3s",
+    "country": "Hungary",
+    "platform": "iPhone Safari",
+    "user_code": "zjibr7",
+    "game_number": 5,
+    "game_code": "Unknown",
+    "timestamp": 1777739271.086779
+  },
+  {
+    "is_high_score": false,
+    "score": 10,
+    "city": "Sikl\u00f3s",
+    "country": "Hungary",
+    "platform": "iPhone Safari",
+    "user_code": "zjibr7",
+    "game_number": 4,
+    "game_code": "Unknown",
+    "timestamp": 1777739155.678329
+  },
+  {
+    "is_high_score": false,
+    "score": 8,
+    "city": "Sikl\u00f3s",
+    "country": "Hungary",
+    "platform": "iPhone Safari",
+    "user_code": "zjibr7",
+    "game_number": 3,
+    "game_code": "Unknown",
+    "timestamp": 1777739094.718179
+  },
+  {
+    "is_high_score": false,
+    "score": 7,
+    "city": "Sikl\u00f3s",
+    "country": "Hungary",
+    "platform": "iPhone Safari",
+    "user_code": "zjibr7",
+    "game_number": 2,
+    "game_code": "Unknown",
+    "timestamp": 1777738996.017849
+  },
+  {
+    "is_high_score": true,
+    "score": 10,
+    "city": "Sikl\u00f3s",
+    "country": "Hungary",
+    "platform": "iPhone Safari",
+    "user_code": "zjibr7",
+    "game_number": 1,
+    "game_code": "MOBEE-10-1777737827-55B9",
+    "timestamp": 1777737828.544719
+  },
+  {
+    "is_high_score": false,
     "score": 7,
     "city": "J\u00e1szap\u00e1ti",
     "country": "Hungary",
