@@ -1,5 +1,16 @@
 [
   {
+    "is_high_score": true,
+    "score": 7,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "iPhone Safari",
+    "user_code": "qy4ta5",
+    "game_number": 1,
+    "game_code": "MOBEE-7-1777921163-C514",
+    "timestamp": 1777921164.445349
+  },
+  {
     "is_high_score": false,
     "score": 8,
     "city": "Sikl\u00f3s",
