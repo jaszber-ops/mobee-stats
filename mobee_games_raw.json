@@ -1,6 +1,61 @@
 [
   {
     "is_high_score": false,
+    "score": 7,
+    "city": "P\u00e1pa",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "sojike",
+    "game_number": 4,
+    "game_code": "Unknown",
+    "timestamp": 1778263927.557479
+  },
+  {
+    "is_high_score": true,
+    "score": 9,
+    "city": "P\u00e1pa",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "sojike",
+    "game_number": 3,
+    "game_code": "MOBEE-9-1778263830-3D7D",
+    "timestamp": 1778263832.225779
+  },
+  {
+    "is_high_score": false,
+    "score": 7,
+    "city": "P\u00e1pa",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "sojike",
+    "game_number": 2,
+    "game_code": "Unknown",
+    "timestamp": 1778263768.038989
+  },
+  {
+    "is_high_score": true,
+    "score": 8,
+    "city": "P\u00e1pa",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "sojike",
+    "game_number": 1,
+    "game_code": "MOBEE-8-1778263213-1C25",
+    "timestamp": 1778263215.700609
+  },
+  {
+    "is_high_score": true,
+    "score": 9,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "iPhone Safari",
+    "user_code": "hs3tgk",
+    "game_number": 1,
+    "game_code": "MOBEE-9-1778263065-3A80",
+    "timestamp": 1778263066.470349
+  },
+  {
+    "is_high_score": false,
     "score": 15,
     "city": "P\u00e9cs",
     "country": "Hungary",
