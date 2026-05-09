@@ -1,15 +1,15 @@
 {
-  "total_games": 7074,
-  "unique_players": 542,
-  "high_score_games": 741,
-  "avg_score": 9.727735368956743,
-  "median_score": 9.0,
+  "total_games": 7075,
+  "unique_players": 543,
+  "high_score_games": 742,
+  "avg_score": 9.727773851590106,
+  "median_score": 9,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
+    "P\u00e1pa": 5,
     "Zalaegerszeg": 4,
     "P\u00e9cs": 739,
-    "P\u00e1pa": 4,
     "Budapest": 3421,
     "Unknown City": 58,
     "J\u00e1szap\u00e1ti": 320,
@@ -152,7 +152,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 6347,
+    "Hungary": 6348,
     "Local/Unknown": 58,
     "Germany": 97,
     "Belgium": 85,
@@ -178,7 +178,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 3969,
+    "Android Chrome": 3970,
     "iPhone Safari": 879,
     "Android Firefox": 36,
     "Mac Chrome": 104,
@@ -197,8 +197,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 3969,
-      "avg": 10.766943814562863,
+      "count": 3970,
+      "avg": 10.766750629722923,
       "max": 30
     },
     "iPhone Safari": {
@@ -279,8 +279,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 6347,
-      "avg": 9.949109815660941
+      "count": 6348,
+      "avg": 9.949117832388154
     },
     "Local/Unknown": {
       "count": 58,
@@ -376,11 +376,12 @@
     }
   },
   "engagement": {
-    "one_time_players": 185,
+    "one_time_players": 186,
     "returning_players": 357,
     "super_engaged": 105
   },
   "player_cities": {
+    "tpub52": 1,
     "2irs3y": 1,
     "a03pnz": 3,
     "sojike": 1,
@@ -925,6 +926,7 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "tpub52": 1,
     "2irs3y": 1,
     "a03pnz": 1,
     "sojike": 1,
@@ -1469,6 +1471,7 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "tpub52": "P\u00e1pa",
     "2irs3y": "Zalaegerszeg",
     "a03pnz": "P\u00e9cs",
     "sojike": "P\u00e1pa",
@@ -2013,6 +2016,11 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "tpub52": {
+      "location": "P\u00e1pa, Hungary",
+      "platform": "Android Chrome",
+      "timestamp": 1778310651.085109
+    },
     "2irs3y": {
       "location": "Zalaegerszeg, Hungary",
       "platform": "Android Chrome",
@@ -8304,7 +8312,7 @@
   ],
   "score_distribution": {
     "0-5": 1701,
-    "6-10": 2610,
+    "6-10": 2611,
     "11-15": 1557,
     "16-20": 806,
     "20+": 400
@@ -8974,6 +8982,11 @@
       "date": "2026-05-08",
       "games": 16,
       "unique_players": 4
+    },
+    {
+      "date": "2026-05-09",
+      "games": 1,
+      "unique_players": 1
     }
   ]
 }

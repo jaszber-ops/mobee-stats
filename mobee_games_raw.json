@@ -1,5 +1,16 @@
 [
   {
+    "is_high_score": true,
+    "score": 10,
+    "city": "P\u00e1pa",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "tpub52",
+    "game_number": 1,
+    "game_code": "MOBEE-10-1778310650-1350",
+    "timestamp": 1778310651.085109
+  },
+  {
     "is_high_score": false,
     "score": 15,
     "city": "Zalaegerszeg",
