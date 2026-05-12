@@ -1,5 +1,27 @@
 [
   {
+    "is_high_score": false,
+    "score": 7,
+    "city": "Heves",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "r2xhmp",
+    "game_number": 820,
+    "game_code": "Unknown",
+    "timestamp": 1778610267.594759
+  },
+  {
+    "is_high_score": false,
+    "score": 5,
+    "city": "Heves",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "r2xhmp",
+    "game_number": 819,
+    "game_code": "Unknown",
+    "timestamp": 1778610204.076719
+  },
+  {
     "is_high_score": true,
     "score": 12,
     "city": "Zalaegerszeg",
