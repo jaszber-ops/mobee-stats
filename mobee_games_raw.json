@@ -1,6 +1,17 @@
 [
   {
     "is_high_score": true,
+    "score": 12,
+    "city": "Zalaegerszeg",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "tpub52",
+    "game_number": 2,
+    "game_code": "MOBEE-12-1778565842-3606",
+    "timestamp": 1778565845.258949
+  },
+  {
+    "is_high_score": true,
     "score": 13,
     "city": "Zalaegerszeg",
     "country": "Hungary",
