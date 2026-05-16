@@ -1,5 +1,27 @@
 [
   {
+    "is_high_score": true,
+    "score": 17,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "iPhone Safari",
+    "user_code": "po7es9",
+    "game_number": 8,
+    "game_code": "MOBEE-17-1778955657-C368",
+    "timestamp": 1778955657.847869
+  },
+  {
+    "is_high_score": false,
+    "score": 14,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "iPhone Safari",
+    "user_code": "po7es9",
+    "game_number": 7,
+    "game_code": "Unknown",
+    "timestamp": 1778955595.275029
+  },
+  {
     "is_high_score": false,
     "score": 7,
     "city": "Heves",
