@@ -1,5 +1,82 @@
 [
   {
+    "is_high_score": true,
+    "score": 24,
+    "city": "Li\u00e8ge",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "e88fto",
+    "game_number": 25,
+    "game_code": "MOBEE-24-1779442843-0B03",
+    "timestamp": 1779442689.940309
+  },
+  {
+    "is_high_score": true,
+    "score": 22,
+    "city": "Li\u00e8ge",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "e88fto",
+    "game_number": 24,
+    "game_code": "MOBEE-22-1779442767-CCD9",
+    "timestamp": 1779442613.578769
+  },
+  {
+    "is_high_score": false,
+    "score": 20,
+    "city": "Li\u00e8ge",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "e88fto",
+    "game_number": 23,
+    "game_code": "Unknown",
+    "timestamp": 1779442549.231839
+  },
+  {
+    "is_high_score": false,
+    "score": 20,
+    "city": "Li\u00e8ge",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "e88fto",
+    "game_number": 22,
+    "game_code": "Unknown",
+    "timestamp": 1779442457.453589
+  },
+  {
+    "is_high_score": false,
+    "score": 17,
+    "city": "Li\u00e8ge",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "e88fto",
+    "game_number": 21,
+    "game_code": "Unknown",
+    "timestamp": 1779442394.348349
+  },
+  {
+    "is_high_score": false,
+    "score": 16,
+    "city": "Li\u00e8ge",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "e88fto",
+    "game_number": 20,
+    "game_code": "Unknown",
+    "timestamp": 1779442328.479929
+  },
+  {
+    "is_high_score": false,
+    "score": 14,
+    "city": "Li\u00e8ge",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "e88fto",
+    "game_number": 19,
+    "game_code": "Unknown",
+    "timestamp": 1779442254.756169
+  },
+  {
     "is_high_score": false,
     "score": 10,
     "city": "Budapest",
