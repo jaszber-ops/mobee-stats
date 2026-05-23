@@ -1,22 +1,23 @@
 {
-  "generated_at": "2026-05-23T11:18:33.015753+00:00",
+  "generated_at": "2026-05-23T13:53:17.493251+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 202,
+    "total_games": 204,
     "unique_players": 20,
-    "avg_score": 3.91,
+    "avg_score": 3.92,
     "median_score": 3.0,
     "max_score": 17,
     "min_score": 0,
     "score_distribution": {
-      "0-5": 118,
-      "6-10": 71,
+      "0-5": 119,
+      "6-10": 72,
       "11-15": 11,
       "16-20": 2,
       "20+": 0
     },
     "score_histogram": {
-      "0": 86,
+      "0": 87,
+      "10": 6,
       "2": 4,
       "1": 8,
       "7": 16,
@@ -27,7 +28,6 @@
       "3": 8,
       "12": 3,
       "17": 1,
-      "10": 5,
       "4": 4,
       "16": 1,
       "13": 3,
@@ -145,6 +145,11 @@
         "date": "2026-02-25",
         "games": 1,
         "unique_players": 1
+      },
+      {
+        "date": "2026-05-23",
+        "games": 2,
+        "unique_players": 1
       }
     ],
     "top_players_by_score": [
@@ -179,6 +184,14 @@
         "name": null,
         "country": "US",
         "city": "New York City"
+      },
+      {
+        "playerId": "F7PS",
+        "score": 10,
+        "avatarCoords": "2,5",
+        "name": null,
+        "country": "HU",
+        "city": "Budapest"
       },
       {
         "playerId": "U8LQ",
@@ -224,14 +237,6 @@
         "playerId": "LEDM",
         "score": 8,
         "avatarCoords": "11,3",
-        "name": null,
-        "country": "HU",
-        "city": "Budapest"
-      },
-      {
-        "playerId": "F7PS",
-        "score": 8,
-        "avatarCoords": "2,5",
         "name": null,
         "country": "HU",
         "city": "Budapest"
@@ -347,6 +352,12 @@
         "avatarCoords": "10,9"
       },
       {
+        "playerId": "F7PS",
+        "games": 11,
+        "avgScore": 5.5,
+        "avatarCoords": "2,5"
+      },
+      {
         "playerId": "LEDM",
         "games": 11,
         "avgScore": 3.4,
@@ -357,12 +368,6 @@
         "games": 9,
         "avgScore": 0.8,
         "avatarCoords": "10,3"
-      },
-      {
-        "playerId": "F7PS",
-        "games": 9,
-        "avgScore": 5.6,
-        "avatarCoords": "2,5"
       },
       {
         "playerId": "GPLR",
@@ -404,12 +409,12 @@
     "engagement": {
       "one_time": 4,
       "returning": 16,
-      "super_engaged": 7
+      "super_engaged": 8
     },
     "top_countries": [
       [
         "HU",
-        175
+        177
       ],
       [
         "US",
@@ -427,7 +432,7 @@
     "top_cities": [
       [
         "Budapest",
-        175
+        177
       ],
       [
         "Amsterdam",
