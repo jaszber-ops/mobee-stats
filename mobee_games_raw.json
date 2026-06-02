@@ -1,6 +1,28 @@
 [
   {
     "is_high_score": false,
+    "score": 16,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Windows Chrome",
+    "user_code": "tccyzp",
+    "game_number": 71,
+    "game_code": "Unknown",
+    "timestamp": 1780407338.894949
+  },
+  {
+    "is_high_score": false,
+    "score": 14,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Windows Chrome",
+    "user_code": "tccyzp",
+    "game_number": 70,
+    "game_code": "Unknown",
+    "timestamp": 1780407277.506309
+  },
+  {
+    "is_high_score": false,
     "score": 10,
     "city": "Budapest",
     "country": "Hungary",
