@@ -1,5 +1,27 @@
 [
   {
+    "is_high_score": true,
+    "score": 12,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Mac Chrome",
+    "user_code": "fx7zjq",
+    "game_number": 2,
+    "game_code": "MOBEE-12-1781463527-6D1B",
+    "timestamp": 1781463529.989639
+  },
+  {
+    "is_high_score": true,
+    "score": 7,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Mac Chrome",
+    "user_code": "fx7zjq",
+    "game_number": 1,
+    "game_code": "MOBEE-7-1781463456-D229",
+    "timestamp": 1781463459.270539
+  },
+  {
     "is_high_score": false,
     "score": 3,
     "city": "Mosonmagyar\u00f3v\u00e1r",
