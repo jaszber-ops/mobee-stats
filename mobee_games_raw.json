@@ -1,6 +1,17 @@
 [
   {
     "is_high_score": true,
+    "score": 0,
+    "city": "Li\u00e8ge",
+    "country": "Belgium",
+    "platform": "Windows Chrome",
+    "user_code": "3xucmc",
+    "game_number": 1,
+    "game_code": "MOBEE-31-1781691954-3523",
+    "timestamp": 1781691963.293829
+  },
+  {
+    "is_high_score": true,
     "score": 12,
     "city": "Budapest",
     "country": "Hungary",
