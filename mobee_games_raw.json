@@ -1,6 +1,105 @@
 [
   {
     "is_high_score": false,
+    "score": 4,
+    "city": "B\u00fclach",
+    "country": "Switzerland",
+    "platform": "Windows Safari",
+    "user_code": "v81if3",
+    "game_number": 1,
+    "game_code": "Unknown",
+    "timestamp": 1782739100.157979
+  },
+  {
+    "is_high_score": false,
+    "score": 16,
+    "city": "Unknown City",
+    "country": "Local/Unknown",
+    "platform": "Mac Chrome",
+    "user_code": "qunhkx",
+    "game_number": 4,
+    "game_code": "Unknown",
+    "timestamp": 1782739069.706069
+  },
+  {
+    "is_high_score": true,
+    "score": 17,
+    "city": "Unknown City",
+    "country": "Local/Unknown",
+    "platform": "Mac Chrome",
+    "user_code": "qunhkx",
+    "game_number": 3,
+    "game_code": "MOBEE-17-1782738988-7E0B",
+    "timestamp": 1782738988.356689
+  },
+  {
+    "is_high_score": false,
+    "score": 5,
+    "city": "B\u00fclach",
+    "country": "Switzerland",
+    "platform": "Windows Chrome",
+    "user_code": "epl9ff",
+    "game_number": 2,
+    "game_code": "Unknown",
+    "timestamp": 1782738959.376759
+  },
+  {
+    "is_high_score": true,
+    "score": 10,
+    "city": "Unknown City",
+    "country": "Local/Unknown",
+    "platform": "Mac Chrome",
+    "user_code": "qunhkx",
+    "game_number": 2,
+    "game_code": "MOBEE-10-1782738910-A534",
+    "timestamp": 1782738911.074759
+  },
+  {
+    "is_high_score": false,
+    "score": 3,
+    "city": "B\u00fclach",
+    "country": "Switzerland",
+    "platform": "Windows Chrome",
+    "user_code": "epl9ff",
+    "game_number": 1,
+    "game_code": "Unknown",
+    "timestamp": 1782738896.466599
+  },
+  {
+    "is_high_score": false,
+    "score": 6,
+    "city": "B\u00fclach",
+    "country": "Switzerland",
+    "platform": "Windows Firefox",
+    "user_code": "ycv2jv",
+    "game_number": 1,
+    "game_code": "Unknown",
+    "timestamp": 1782738829.886459
+  },
+  {
+    "is_high_score": false,
+    "score": 0,
+    "city": "Unknown City",
+    "country": "Local/Unknown",
+    "platform": "Mac Chrome",
+    "user_code": "qunhkx",
+    "game_number": 1,
+    "game_code": "Unknown",
+    "timestamp": 1782734500.810349
+  },
+  {
+    "is_high_score": false,
+    "score": 0,
+    "city": "B\u00fclach",
+    "country": "Switzerland",
+    "platform": "Android Chrome",
+    "user_code": "h52r9e",
+    "game_number": 18,
+    "game_code": "Unknown",
+    "timestamp": 1782734325.481679
+  },
+  {
+    "is_high_score": false,
     "score": 7,
     "city": "Budapest",
     "country": "Hungary",

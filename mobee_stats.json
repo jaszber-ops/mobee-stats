@@ -1,12 +1,14 @@
 {
-  "total_games": 7132,
-  "unique_players": 549,
-  "high_score_games": 756,
-  "avg_score": 9.733735277621985,
-  "median_score": 9.0,
+  "total_games": 7141,
+  "unique_players": 553,
+  "high_score_games": 758,
+  "avg_score": 9.730009802548663,
+  "median_score": 9,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
+    "B\u00fclach": 5,
+    "Unknown City": 62,
     "Budapest": 3455,
     "Li\u00e8ge": 60,
     "Mosonmagyar\u00f3v\u00e1r": 19,
@@ -14,7 +16,6 @@
     "Zalaegerszeg": 15,
     "P\u00e1pa": 5,
     "P\u00e9cs": 739,
-    "Unknown City": 58,
     "J\u00e1szap\u00e1ti": 320,
     "Sikl\u00f3s": 103,
     "Cologne": 3,
@@ -153,13 +154,13 @@
     "12/6/2025": 5
   },
   "country_counts": {
+    "Switzerland": 192,
+    "Local/Unknown": 62,
     "Hungary": 6397,
     "Belgium": 93,
-    "Local/Unknown": 58,
     "Germany": 97,
     "Austria": 13,
     "United Kingdom": 19,
-    "Switzerland": 187,
     "The Netherlands": 4,
     "United States": 191,
     "France": 6,
@@ -179,13 +180,13 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
+    "Windows Safari": 179,
+    "Mac Chrome": 110,
+    "Windows Chrome": 722,
+    "Windows Firefox": 128,
+    "Android Chrome": 3984,
     "iPhone Safari": 884,
-    "Windows Chrome": 720,
-    "Mac Chrome": 106,
-    "Windows Safari": 178,
-    "Windows Firefox": 127,
     "iPad Safari": 75,
-    "Android Chrome": 3983,
     "Android Firefox": 36,
     "iPhone Browser": 567,
     "Mac Safari": 384,
@@ -197,40 +198,40 @@
     "Unknown": 9
   },
   "platform_scores": {
+    "Windows Safari": {
+      "count": 179,
+      "avg": 8.050279329608939,
+      "max": 16
+    },
+    "Mac Chrome": {
+      "count": 110,
+      "avg": 5.236363636363636,
+      "max": 17
+    },
+    "Windows Chrome": {
+      "count": 722,
+      "avg": 8.328254847645429,
+      "max": 24
+    },
+    "Windows Firefox": {
+      "count": 128,
+      "avg": 5.953125,
+      "max": 24
+    },
+    "Android Chrome": {
+      "count": 3984,
+      "avg": 10.761044176706827,
+      "max": 30
+    },
     "iPhone Safari": {
       "count": 884,
       "avg": 7.328054298642534,
       "max": 20
     },
-    "Windows Chrome": {
-      "count": 720,
-      "avg": 8.340277777777779,
-      "max": 24
-    },
-    "Mac Chrome": {
-      "count": 106,
-      "avg": 5.028301886792453,
-      "max": 16
-    },
-    "Windows Safari": {
-      "count": 178,
-      "avg": 8.073033707865168,
-      "max": 16
-    },
-    "Windows Firefox": {
-      "count": 127,
-      "avg": 5.952755905511811,
-      "max": 24
-    },
     "iPad Safari": {
       "count": 75,
       "avg": 9.933333333333334,
       "max": 16
-    },
-    "Android Chrome": {
-      "count": 3983,
-      "avg": 10.763745920160684,
-      "max": 30
     },
     "Android Firefox": {
       "count": 36,
@@ -279,6 +280,14 @@
     }
   },
   "location_scores": {
+    "Switzerland": {
+      "count": 192,
+      "avg": 6.770833333333333
+    },
+    "Local/Unknown": {
+      "count": 62,
+      "avg": 6.887096774193548
+    },
     "Hungary": {
       "count": 6397,
       "avg": 9.945443176488979
@@ -286,10 +295,6 @@
     "Belgium": {
       "count": 93,
       "avg": 12.258064516129032
-    },
-    "Local/Unknown": {
-      "count": 58,
-      "avg": 6.620689655172414
     },
     "Germany": {
       "count": 97,
@@ -302,10 +307,6 @@
     "United Kingdom": {
       "count": 19,
       "avg": 11.842105263157896
-    },
-    "Switzerland": {
-      "count": 187,
-      "avg": 6.855614973262032
     },
     "The Netherlands": {
       "count": 4,
@@ -377,11 +378,16 @@
     }
   },
   "engagement": {
-    "one_time_players": 187,
-    "returning_players": 362,
+    "one_time_players": 189,
+    "returning_players": 364,
     "super_engaged": 106
   },
   "player_cities": {
+    "v81if3": 1,
+    "qunhkx": 1,
+    "epl9ff": 1,
+    "ycv2jv": 1,
+    "h52r9e": 4,
     "i2x5zs": 2,
     "0rxa6l": 1,
     "3xucmc": 1,
@@ -457,7 +463,6 @@
     "nptkvs": 1,
     "6gwea4": 1,
     "ubywqn": 1,
-    "h52r9e": 3,
     "xutwmj": 1,
     "o2i2rb": 1,
     "mmm46m": 1,
@@ -933,6 +938,11 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "v81if3": 1,
+    "qunhkx": 1,
+    "epl9ff": 1,
+    "ycv2jv": 1,
+    "h52r9e": 1,
     "i2x5zs": 1,
     "0rxa6l": 1,
     "3xucmc": 1,
@@ -1008,7 +1018,6 @@
     "nptkvs": 1,
     "6gwea4": 1,
     "ubywqn": 1,
-    "h52r9e": 1,
     "xutwmj": 1,
     "o2i2rb": 1,
     "mmm46m": 1,
@@ -1484,6 +1493,11 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "v81if3": "B\u00fclach",
+    "qunhkx": "Unknown City",
+    "epl9ff": "B\u00fclach",
+    "ycv2jv": "B\u00fclach",
+    "h52r9e": "Emmenbr\u00fccke",
     "i2x5zs": "Budapest",
     "0rxa6l": "Budapest",
     "3xucmc": "Li\u00e8ge",
@@ -1559,7 +1573,6 @@
     "nptkvs": "Unknown City",
     "6gwea4": "Budapest",
     "ubywqn": "Budapest",
-    "h52r9e": "Emmenbr\u00fccke",
     "xutwmj": "Budapest",
     "o2i2rb": "Kecskem\u00e9t",
     "mmm46m": "P\u00e9cs",
@@ -2035,6 +2048,26 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "v81if3": {
+      "location": "B\u00fclach, Switzerland",
+      "platform": "Windows Safari",
+      "timestamp": 1782739100.157979
+    },
+    "qunhkx": {
+      "location": "Unknown City, Local/Unknown",
+      "platform": "Mac Chrome",
+      "timestamp": 1782738988.356689
+    },
+    "epl9ff": {
+      "location": "B\u00fclach, Switzerland",
+      "platform": "Windows Chrome",
+      "timestamp": 1782738959.376759
+    },
+    "ycv2jv": {
+      "location": "B\u00fclach, Switzerland",
+      "platform": "Windows Firefox",
+      "timestamp": 1782738829.886459
+    },
     "i2x5zs": {
       "location": "P\u00e9cs, Hungary",
       "platform": "iPhone Safari",
@@ -8357,10 +8390,10 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1711,
-    "6-10": 2630,
+    "0-5": 1716,
+    "6-10": 2632,
     "11-15": 1577,
-    "16-20": 812,
+    "16-20": 814,
     "20+": 402
   },
   "daily_stats": [
@@ -9106,8 +9139,8 @@
     },
     {
       "date": "2026-06-29",
-      "games": 1,
-      "unique_players": 1
+      "games": 10,
+      "unique_players": 6
     }
   ]
 }
