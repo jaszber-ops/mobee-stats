@@ -1,6 +1,17 @@
 [
   {
     "is_high_score": false,
+    "score": 7,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "iPhone Safari",
+    "user_code": "i2x5zs",
+    "game_number": 6,
+    "game_code": "Unknown",
+    "timestamp": 1782726844.993899
+  },
+  {
+    "is_high_score": false,
     "score": 2,
     "city": "Budapest",
     "country": "Hungary",
