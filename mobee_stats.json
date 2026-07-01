@@ -1,13 +1,13 @@
 {
-  "total_games": 7141,
-  "unique_players": 553,
+  "total_games": 7142,
+  "unique_players": 554,
   "high_score_games": 758,
-  "avg_score": 9.730009802548663,
-  "median_score": 9,
+  "avg_score": 9.728647437692523,
+  "median_score": 9.0,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
-    "B\u00fclach": 5,
+    "B\u00fclach": 6,
     "Unknown City": 62,
     "Budapest": 3455,
     "Li\u00e8ge": 60,
@@ -154,7 +154,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Switzerland": 192,
+    "Switzerland": 193,
     "Local/Unknown": 62,
     "Hungary": 6397,
     "Belgium": 93,
@@ -180,6 +180,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
+    "Mac Safari": 385,
     "Windows Safari": 179,
     "Mac Chrome": 110,
     "Windows Chrome": 722,
@@ -189,7 +190,6 @@
     "iPad Safari": 75,
     "Android Firefox": 36,
     "iPhone Browser": 567,
-    "Mac Safari": 384,
     "Other Firefox": 30,
     "iPad Browser": 1,
     "Other Chrome": 7,
@@ -198,6 +198,11 @@
     "Unknown": 9
   },
   "platform_scores": {
+    "Mac Safari": {
+      "count": 385,
+      "avg": 8.332467532467533,
+      "max": 19
+    },
     "Windows Safari": {
       "count": 179,
       "avg": 8.050279329608939,
@@ -243,11 +248,6 @@
       "avg": 11.724867724867725,
       "max": 25
     },
-    "Mac Safari": {
-      "count": 384,
-      "avg": 8.354166666666666,
-      "max": 19
-    },
     "Other Firefox": {
       "count": 30,
       "avg": 9.333333333333334,
@@ -281,8 +281,8 @@
   },
   "location_scores": {
     "Switzerland": {
-      "count": 192,
-      "avg": 6.770833333333333
+      "count": 193,
+      "avg": 6.7357512953367875
     },
     "Local/Unknown": {
       "count": 62,
@@ -378,11 +378,12 @@
     }
   },
   "engagement": {
-    "one_time_players": 189,
+    "one_time_players": 190,
     "returning_players": 364,
     "super_engaged": 106
   },
   "player_cities": {
+    "x39chq": 1,
     "v81if3": 1,
     "qunhkx": 1,
     "epl9ff": 1,
@@ -938,6 +939,7 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "x39chq": 1,
     "v81if3": 1,
     "qunhkx": 1,
     "epl9ff": 1,
@@ -1493,6 +1495,7 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "x39chq": "B\u00fclach",
     "v81if3": "B\u00fclach",
     "qunhkx": "Unknown City",
     "epl9ff": "B\u00fclach",
@@ -8390,7 +8393,7 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1716,
+    "0-5": 1717,
     "6-10": 2632,
     "11-15": 1577,
     "16-20": 814,
@@ -9141,6 +9144,11 @@
       "date": "2026-06-29",
       "games": 10,
       "unique_players": 6
+    },
+    {
+      "date": "2026-07-01",
+      "games": 1,
+      "unique_players": 1
     }
   ]
 }

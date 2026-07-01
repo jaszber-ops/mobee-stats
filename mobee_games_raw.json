@@ -1,6 +1,17 @@
 [
   {
     "is_high_score": false,
+    "score": 0,
+    "city": "B\u00fclach",
+    "country": "Switzerland",
+    "platform": "Mac Safari",
+    "user_code": "x39chq",
+    "game_number": 1,
+    "game_code": "Unknown",
+    "timestamp": 1782890318.074859
+  },
+  {
+    "is_high_score": false,
     "score": 4,
     "city": "B\u00fclach",
     "country": "Switzerland",
