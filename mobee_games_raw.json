@@ -1,5 +1,16 @@
 [
   {
+    "is_high_score": true,
+    "score": 20,
+    "city": "Szentgotthard",
+    "country": "Hungary",
+    "platform": "Windows Chrome",
+    "user_code": "tccyzp",
+    "game_number": 72,
+    "game_code": "MOBEE-20-1784288034-7DCE",
+    "timestamp": 1784288042.515629
+  },
+  {
     "is_high_score": false,
     "score": 0,
     "city": "B\u00fclach",
