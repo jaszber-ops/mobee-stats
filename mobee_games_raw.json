@@ -1,5 +1,27 @@
 [
   {
+    "is_high_score": false,
+    "score": 11,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "iPhone Safari",
+    "user_code": "v9u08r",
+    "game_number": 2,
+    "game_code": "Unknown",
+    "timestamp": 1784384432.338949
+  },
+  {
+    "is_high_score": true,
+    "score": 11,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "iPhone Safari",
+    "user_code": "v9u08r",
+    "game_number": 1,
+    "game_code": "MOBEE-11-1784384369-DFB6",
+    "timestamp": 1784384369.690129
+  },
+  {
     "is_high_score": true,
     "score": 20,
     "city": "Szentgotthard",
