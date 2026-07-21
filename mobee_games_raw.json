@@ -1,6 +1,17 @@
 [
   {
     "is_high_score": false,
+    "score": 14,
+    "city": "Szentgotthard",
+    "country": "Hungary",
+    "platform": "Windows Chrome",
+    "user_code": "tccyzp",
+    "game_number": 73,
+    "game_code": "Unknown",
+    "timestamp": 1784615925.958309
+  },
+  {
+    "is_high_score": false,
     "score": 11,
     "city": "Budapest",
     "country": "Hungary",
