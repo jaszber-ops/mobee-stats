@@ -1,6 +1,28 @@
 [
   {
     "is_high_score": false,
+    "score": 0,
+    "city": "Tiszapuspoki",
+    "country": "Hungary",
+    "platform": "Windows Chrome",
+    "user_code": "b7czk7",
+    "game_number": 2,
+    "game_code": "Unknown",
+    "timestamp": 1784983827.545829
+  },
+  {
+    "is_high_score": true,
+    "score": 11,
+    "city": "Tiszapuspoki",
+    "country": "Hungary",
+    "platform": "Windows Chrome",
+    "user_code": "b7czk7",
+    "game_number": 1,
+    "game_code": "MOBEE-11-1784983760-0515",
+    "timestamp": 1784983760.828259
+  },
+  {
+    "is_high_score": false,
     "score": 14,
     "city": "Szentgotthard",
     "country": "Hungary",
