@@ -6,6 +6,17 @@
     "country": "Hungary",
     "platform": "Windows Chrome",
     "user_code": "b7czk7",
+    "game_number": 3,
+    "game_code": "Unknown",
+    "timestamp": 1784989551.747209
+  },
+  {
+    "is_high_score": false,
+    "score": 0,
+    "city": "Tiszapuspoki",
+    "country": "Hungary",
+    "platform": "Windows Chrome",
+    "user_code": "b7czk7",
     "game_number": 2,
     "game_code": "Unknown",
     "timestamp": 1784983827.545829

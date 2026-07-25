@@ -1,13 +1,13 @@
 {
-  "total_games": 7148,
+  "total_games": 7149,
   "unique_players": 556,
   "high_score_games": 761,
-  "avg_score": 9.729854504756576,
-  "median_score": 9.0,
+  "avg_score": 9.728493495593789,
+  "median_score": 9,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
-    "Tiszapuspoki": 2,
+    "Tiszapuspoki": 3,
     "Szentgotthard": 2,
     "Budapest": 3457,
     "B\u00fclach": 6,
@@ -156,7 +156,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 6403,
+    "Hungary": 6404,
     "Switzerland": 193,
     "Local/Unknown": 62,
     "Belgium": 93,
@@ -182,7 +182,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Windows Chrome": 726,
+    "Windows Chrome": 727,
     "iPhone Safari": 886,
     "Mac Safari": 385,
     "Windows Safari": 179,
@@ -201,8 +201,8 @@
   },
   "platform_scores": {
     "Windows Chrome": {
-      "count": 726,
-      "avg": 8.34435261707989,
+      "count": 727,
+      "avg": 8.332874828060522,
       "max": 24
     },
     "iPhone Safari": {
@@ -283,8 +283,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 6403,
-      "avg": 9.946587537091988
+      "count": 6404,
+      "avg": 9.945034353529044
     },
     "Switzerland": {
       "count": 193,
@@ -8411,7 +8411,7 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1718,
+    "0-5": 1719,
     "6-10": 2632,
     "11-15": 1581,
     "16-20": 815,
@@ -9185,7 +9185,7 @@
     },
     {
       "date": "2026-07-25",
-      "games": 2,
+      "games": 3,
       "unique_players": 1
     }
   ]
