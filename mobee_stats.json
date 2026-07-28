@@ -1,14 +1,14 @@
 {
-  "total_games": 7149,
+  "total_games": 7150,
   "unique_players": 556,
   "high_score_games": 761,
-  "avg_score": 9.728493495593789,
-  "median_score": 9,
+  "avg_score": 9.729090909090909,
+  "median_score": 9.0,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
+    "Szentgotthard": 3,
     "Tiszapuspoki": 3,
-    "Szentgotthard": 2,
     "Budapest": 3457,
     "B\u00fclach": 6,
     "Unknown City": 62,
@@ -156,7 +156,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 6404,
+    "Hungary": 6405,
     "Switzerland": 193,
     "Local/Unknown": 62,
     "Belgium": 93,
@@ -182,7 +182,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Windows Chrome": 727,
+    "Windows Chrome": 728,
     "iPhone Safari": 886,
     "Mac Safari": 385,
     "Windows Safari": 179,
@@ -201,8 +201,8 @@
   },
   "platform_scores": {
     "Windows Chrome": {
-      "count": 727,
-      "avg": 8.332874828060522,
+      "count": 728,
+      "avg": 8.340659340659341,
       "max": 24
     },
     "iPhone Safari": {
@@ -283,8 +283,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 6404,
-      "avg": 9.945034353529044
+      "count": 6405,
+      "avg": 9.945667447306791
     },
     "Switzerland": {
       "count": 193,
@@ -385,8 +385,8 @@
     "super_engaged": 106
   },
   "player_cities": {
-    "b7czk7": 1,
     "tccyzp": 2,
+    "b7czk7": 1,
     "v9u08r": 1,
     "x39chq": 1,
     "v81if3": 1,
@@ -943,8 +943,8 @@
     "Unknown": 2
   },
   "player_platforms": {
-    "b7czk7": 1,
     "tccyzp": 1,
+    "b7czk7": 1,
     "v9u08r": 1,
     "x39chq": 1,
     "v81if3": 1,
@@ -1501,8 +1501,8 @@
     "Unknown": 1
   },
   "player_most_common_city": {
-    "b7czk7": "Tiszapuspoki",
     "tccyzp": "Budapest",
+    "b7czk7": "Tiszapuspoki",
     "v9u08r": "Budapest",
     "x39chq": "B\u00fclach",
     "v81if3": "B\u00fclach",
@@ -2059,15 +2059,15 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
-    "b7czk7": {
-      "location": "Tiszapuspoki, Hungary",
-      "platform": "Windows Chrome",
-      "timestamp": 1784983760.828259
-    },
     "tccyzp": {
       "location": "Szentgotthard, Hungary",
       "platform": "Windows Chrome",
       "timestamp": 1784288042.515629
+    },
+    "b7czk7": {
+      "location": "Tiszapuspoki, Hungary",
+      "platform": "Windows Chrome",
+      "timestamp": 1784983760.828259
     },
     "v9u08r": {
       "location": "Budapest, Hungary",
@@ -8413,7 +8413,7 @@
   "score_distribution": {
     "0-5": 1719,
     "6-10": 2632,
-    "11-15": 1581,
+    "11-15": 1582,
     "16-20": 815,
     "20+": 402
   },
@@ -9186,6 +9186,11 @@
     {
       "date": "2026-07-25",
       "games": 3,
+      "unique_players": 1
+    },
+    {
+      "date": "2026-07-28",
+      "games": 1,
       "unique_players": 1
     }
   ]
