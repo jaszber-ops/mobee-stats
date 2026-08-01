@@ -1,5 +1,16 @@
 [
   {
+    "is_high_score": true,
+    "score": 10,
+    "city": "Bataszek",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "74w5qo",
+    "game_number": 1,
+    "game_code": "MOBEE-10-1785590297-276F",
+    "timestamp": 1785590298.842749
+  },
+  {
     "is_high_score": false,
     "score": 14,
     "city": "Szentgotthard",
