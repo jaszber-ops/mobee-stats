@@ -1,17 +1,17 @@
 {
-  "total_games": 7153,
+  "total_games": 7155,
   "unique_players": 557,
   "high_score_games": 762,
-  "avg_score": 9.729763735495597,
+  "avg_score": 9.729559748427674,
   "median_score": 9,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
+    "Budapest": 3459,
     "Hajduszoboszlo": 2,
     "Bataszek": 1,
     "Szentgotthard": 3,
     "Tiszapuspoki": 3,
-    "Budapest": 3457,
     "B\u00fclach": 6,
     "Unknown City": 62,
     "Li\u00e8ge": 60,
@@ -158,7 +158,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 6408,
+    "Hungary": 6410,
     "Switzerland": 193,
     "Local/Unknown": 62,
     "Belgium": 93,
@@ -184,9 +184,9 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
+    "iPhone Safari": 888,
     "Windows Chrome": 730,
     "Android Chrome": 3985,
-    "iPhone Safari": 886,
     "Mac Safari": 385,
     "Windows Safari": 179,
     "Mac Chrome": 110,
@@ -202,6 +202,11 @@
     "Unknown": 9
   },
   "platform_scores": {
+    "iPhone Safari": {
+      "count": 888,
+      "avg": 7.34009009009009,
+      "max": 20
+    },
     "Windows Chrome": {
       "count": 730,
       "avg": 8.35068493150685,
@@ -211,11 +216,6 @@
       "count": 3985,
       "avg": 10.760853199498118,
       "max": 30
-    },
-    "iPhone Safari": {
-      "count": 886,
-      "avg": 7.336343115124153,
-      "max": 20
     },
     "Mac Safari": {
       "count": 385,
@@ -285,8 +285,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 6408,
-      "avg": 9.946317103620474
+      "count": 6410,
+      "avg": 9.946021840873636
     },
     "Switzerland": {
       "count": 193,
@@ -387,10 +387,10 @@
     "super_engaged": 106
   },
   "player_cities": {
+    "v9u08r": 1,
     "tccyzp": 3,
     "74w5qo": 1,
     "b7czk7": 1,
-    "v9u08r": 1,
     "x39chq": 1,
     "v81if3": 1,
     "qunhkx": 1,
@@ -946,10 +946,10 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "v9u08r": 1,
     "tccyzp": 1,
     "74w5qo": 1,
     "b7czk7": 1,
-    "v9u08r": 1,
     "x39chq": 1,
     "v81if3": 1,
     "qunhkx": 1,
@@ -1505,10 +1505,10 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "v9u08r": "Budapest",
     "tccyzp": "Budapest",
     "74w5qo": "Bataszek",
     "b7czk7": "Tiszapuspoki",
-    "v9u08r": "Budapest",
     "x39chq": "B\u00fclach",
     "v81if3": "B\u00fclach",
     "qunhkx": "Unknown City",
@@ -2064,6 +2064,11 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "v9u08r": {
+      "location": "Budapest, Hungary",
+      "platform": "iPhone Safari",
+      "timestamp": 1784384432.338949
+    },
     "tccyzp": {
       "location": "Szentgotthard, Hungary",
       "platform": "Windows Chrome",
@@ -2078,11 +2083,6 @@
       "location": "Tiszapuspoki, Hungary",
       "platform": "Windows Chrome",
       "timestamp": 1784983760.828259
-    },
-    "v9u08r": {
-      "location": "Budapest, Hungary",
-      "platform": "iPhone Safari",
-      "timestamp": 1784384432.338949
     },
     "v81if3": {
       "location": "B\u00fclach, Switzerland",
@@ -8422,7 +8422,7 @@
   ],
   "score_distribution": {
     "0-5": 1719,
-    "6-10": 2633,
+    "6-10": 2635,
     "11-15": 1584,
     "16-20": 815,
     "20+": 402
@@ -9210,6 +9210,11 @@
     },
     {
       "date": "2026-08-08",
+      "games": 2,
+      "unique_players": 1
+    },
+    {
+      "date": "2026-08-10",
       "games": 2,
       "unique_players": 1
     }
