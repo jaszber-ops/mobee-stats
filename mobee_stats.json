@@ -1,13 +1,15 @@
 {
-  "total_games": 7220,
-  "unique_players": 559,
-  "high_score_games": 764,
-  "avg_score": 9.807894736842105,
-  "median_score": 9.0,
+  "total_games": 7241,
+  "unique_players": 561,
+  "high_score_games": 768,
+  "avg_score": 9.803480182295264,
+  "median_score": 9,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
-    "Budapest": 3499,
+    "Mateszalka": 18,
+    "Paks": 3,
+    "Budapest": 3500,
     "Unknown City": 67,
     "Hajduszoboszlo": 5,
     "Nagykanizsa": 8,
@@ -100,7 +102,6 @@
     "Reykjavik": 1,
     "Zug": 10,
     "Basel": 25,
-    "Paks": 1,
     "Inglewood": 1,
     "Iregszemcse": 1,
     "Szeghalom": 5,
@@ -159,7 +160,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 6459,
+    "Hungary": 6480,
     "Local/Unknown": 67,
     "Germany": 108,
     "Switzerland": 193,
@@ -185,9 +186,9 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
+    "Android Chrome": 4062,
+    "Windows Chrome": 735,
     "iPhone Safari": 892,
-    "Android Chrome": 4043,
-    "Windows Chrome": 733,
     "Mac Safari": 385,
     "Windows Safari": 179,
     "Mac Chrome": 110,
@@ -203,20 +204,20 @@
     "Unknown": 9
   },
   "platform_scores": {
+    "Android Chrome": {
+      "count": 4062,
+      "avg": 10.877154111275233,
+      "max": 30
+    },
+    "Windows Chrome": {
+      "count": 735,
+      "avg": 8.346938775510203,
+      "max": 24
+    },
     "iPhone Safari": {
       "count": 892,
       "avg": 7.34304932735426,
       "max": 20
-    },
-    "Android Chrome": {
-      "count": 4043,
-      "avg": 10.885975760573832,
-      "max": 30
-    },
-    "Windows Chrome": {
-      "count": 733,
-      "avg": 8.3656207366985,
-      "max": 24
     },
     "Mac Safari": {
       "count": 385,
@@ -286,8 +287,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 6459,
-      "avg": 10.014088868245858
+      "count": 6480,
+      "avg": 10.008487654320987
     },
     "Local/Unknown": {
       "count": 67,
@@ -384,13 +385,15 @@
   },
   "engagement": {
     "one_time_players": 192,
-    "returning_players": 367,
-    "super_engaged": 106
+    "returning_players": 369,
+    "super_engaged": 107
   },
   "player_cities": {
+    "ouvzh6": 1,
+    "hl45vb": 1,
+    "6gawu9": 7,
     "ous1cq": 2,
     "tph4ih": 1,
-    "6gawu9": 7,
     "tccyzp": 3,
     "v9u08r": 1,
     "74w5qo": 1,
@@ -949,9 +952,11 @@
     "Unknown": 2
   },
   "player_platforms": {
+    "ouvzh6": 1,
+    "hl45vb": 1,
+    "6gawu9": 1,
     "ous1cq": 1,
     "tph4ih": 1,
-    "6gawu9": 1,
     "tccyzp": 1,
     "v9u08r": 1,
     "74w5qo": 1,
@@ -1510,9 +1515,11 @@
     "Unknown": 1
   },
   "player_most_common_city": {
+    "ouvzh6": "Mateszalka",
+    "hl45vb": "Paks",
+    "6gawu9": "Budapest",
     "ous1cq": "Budapest",
     "tph4ih": "Budapest",
-    "6gawu9": "Budapest",
     "tccyzp": "Budapest",
     "v9u08r": "Budapest",
     "74w5qo": "Bataszek",
@@ -2071,6 +2078,21 @@
     "Unknown": "12/6/2025"
   },
   "player_high_score_info": {
+    "ouvzh6": {
+      "location": "Mateszalka, Hungary",
+      "platform": "Android Chrome",
+      "timestamp": 1787936854.400649
+    },
+    "hl45vb": {
+      "location": "Paks, Hungary",
+      "platform": "Windows Chrome",
+      "timestamp": 1787917567.453019
+    },
+    "6gawu9": {
+      "location": "Budapest, Hungary",
+      "platform": "Android Chrome",
+      "timestamp": 1774097972.875869
+    },
     "ous1cq": {
       "location": "Unknown City, Local/Unknown",
       "platform": "iPhone Safari",
@@ -2080,11 +2102,6 @@
       "location": "Budapest, Hungary",
       "platform": "iPhone Safari",
       "timestamp": 1787864220.651419
-    },
-    "6gawu9": {
-      "location": "Budapest, Hungary",
-      "platform": "Android Chrome",
-      "timestamp": 1774097972.875869
     },
     "tccyzp": {
       "location": "Szentgotthard, Hungary",
@@ -4766,6 +4783,7 @@
     [
       "6gawu9",
       [
+        20,
         22,
         20,
         18,
@@ -8496,10 +8514,10 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1721,
-    "6-10": 2637,
-    "11-15": 1594,
-    "16-20": 842,
+    "0-5": 1724,
+    "6-10": 2652,
+    "11-15": 1596,
+    "16-20": 843,
     "20+": 426
   },
   "daily_stats": [
@@ -9312,6 +9330,11 @@
       "date": "2026-08-27",
       "games": 4,
       "unique_players": 2
+    },
+    {
+      "date": "2026-08-28",
+      "games": 21,
+      "unique_players": 3
     }
   ]
 }
