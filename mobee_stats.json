@@ -1,13 +1,13 @@
 {
-  "total_games": 7242,
+  "total_games": 7244,
   "unique_players": 562,
   "high_score_games": 768,
-  "avg_score": 9.802540734603701,
+  "avg_score": 9.80093870789619,
   "median_score": 9.0,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
-    "Budapest": 3501,
+    "Budapest": 3503,
     "Mateszalka": 18,
     "Paks": 3,
     "Unknown City": 67,
@@ -160,7 +160,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 6481,
+    "Hungary": 6483,
     "Local/Unknown": 67,
     "Germany": 108,
     "Switzerland": 193,
@@ -186,7 +186,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "iPhone Safari": 893,
+    "iPhone Safari": 895,
     "Android Chrome": 4062,
     "Windows Chrome": 735,
     "Mac Safari": 385,
@@ -205,8 +205,8 @@
   },
   "platform_scores": {
     "iPhone Safari": {
-      "count": 893,
-      "avg": 7.3381858902575585,
+      "count": 895,
+      "avg": 7.33072625698324,
       "max": 20
     },
     "Android Chrome": {
@@ -287,8 +287,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 6481,
-      "avg": 10.00740626446536
+      "count": 6483,
+      "avg": 10.005552984729292
     },
     "Local/Unknown": {
       "count": 67,
@@ -384,8 +384,8 @@
     }
   },
   "engagement": {
-    "one_time_players": 193,
-    "returning_players": 369,
+    "one_time_players": 192,
+    "returning_players": 370,
     "super_engaged": 107
   },
   "player_cities": {
@@ -2084,7 +2084,7 @@
     "f841yh": {
       "location": "Budapest, Hungary",
       "platform": "iPhone Safari",
-      "timestamp": 1787946691.812479
+      "timestamp": 1788006670.755159
     },
     "ouvzh6": {
       "location": "Mateszalka, Hungary",
@@ -8522,7 +8522,7 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1725,
+    "0-5": 1727,
     "6-10": 2652,
     "11-15": 1596,
     "16-20": 843,
@@ -9343,6 +9343,11 @@
       "date": "2026-08-28",
       "games": 22,
       "unique_players": 4
+    },
+    {
+      "date": "2026-08-29",
+      "games": 2,
+      "unique_players": 1
     }
   ]
 }
