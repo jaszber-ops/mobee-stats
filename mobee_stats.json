@@ -1,16 +1,16 @@
 {
-  "total_games": 7245,
+  "total_games": 7259,
   "unique_players": 562,
   "high_score_games": 768,
-  "avg_score": 9.801794340924776,
+  "avg_score": 9.826697892271662,
   "median_score": 9,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
-    "Budapest": 3504,
+    "Budapest": 3514,
+    "Unknown City": 71,
     "Mateszalka": 18,
     "Paks": 3,
-    "Unknown City": 67,
     "Hajduszoboszlo": 5,
     "Nagykanizsa": 8,
     "Berlin": 11,
@@ -160,8 +160,8 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 6484,
-    "Local/Unknown": 67,
+    "Hungary": 6494,
+    "Local/Unknown": 71,
     "Germany": 108,
     "Switzerland": 193,
     "Belgium": 93,
@@ -186,7 +186,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 4063,
+    "Android Chrome": 4077,
     "iPhone Safari": 895,
     "Windows Chrome": 735,
     "Mac Safari": 385,
@@ -205,8 +205,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 4063,
-      "avg": 10.878414964312086,
+      "count": 4077,
+      "avg": 10.91905813097866,
       "max": 30
     },
     "iPhone Safari": {
@@ -287,12 +287,12 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 6484,
-      "avg": 10.006477483035164
+      "count": 6494,
+      "avg": 10.02725592854943
     },
     "Local/Unknown": {
-      "count": 67,
-      "avg": 7.507462686567164
+      "count": 71,
+      "avg": 8.253521126760564
     },
     "Germany": {
       "count": 108,
@@ -4791,6 +4791,20 @@
     [
       "6gawu9",
       [
+        23,
+        25,
+        23,
+        29,
+        21,
+        27,
+        22,
+        22,
+        21,
+        19,
+        21,
+        23,
+        21,
+        21,
         16,
         20,
         22,
@@ -8526,8 +8540,8 @@
     "0-5": 1727,
     "6-10": 2652,
     "11-15": 1596,
-    "16-20": 844,
-    "20+": 426
+    "16-20": 845,
+    "20+": 439
   },
   "daily_stats": [
     {
@@ -9349,6 +9363,11 @@
       "date": "2026-08-29",
       "games": 3,
       "unique_players": 2
+    },
+    {
+      "date": "2026-08-30",
+      "games": 14,
+      "unique_players": 1
     }
   ]
 }
