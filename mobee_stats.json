@@ -1,13 +1,13 @@
 {
-  "total_games": 7302,
+  "total_games": 7319,
   "unique_players": 562,
   "high_score_games": 768,
-  "avg_score": 9.900575184880855,
-  "median_score": 9.0,
+  "avg_score": 9.924853122011204,
+  "median_score": 9,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
-    "Budapest": 3557,
+    "Budapest": 3574,
     "Unknown City": 71,
     "Mateszalka": 18,
     "Paks": 3,
@@ -160,7 +160,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 6537,
+    "Hungary": 6554,
     "Local/Unknown": 71,
     "Germany": 108,
     "Switzerland": 193,
@@ -186,7 +186,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 4120,
+    "Android Chrome": 4137,
     "iPhone Safari": 895,
     "Windows Chrome": 735,
     "Mac Safari": 385,
@@ -205,8 +205,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 4120,
-      "avg": 11.038592233009709,
+      "count": 4137,
+      "avg": 11.076867295141406,
       "max": 30
     },
     "iPhone Safari": {
@@ -287,8 +287,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 6537,
-      "avg": 10.10845953801438
+      "count": 6554,
+      "avg": 10.135032041501374
     },
     "Local/Unknown": {
       "count": 71,
@@ -4791,6 +4791,23 @@
     [
       "6gawu9",
       [
+        22,
+        18,
+        24,
+        20,
+        28,
+        20,
+        22,
+        0,
+        17,
+        23,
+        22,
+        24,
+        25,
+        26,
+        20,
+        14,
+        21,
         20,
         24,
         22,
@@ -8580,11 +8597,11 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1727,
+    "0-5": 1728,
     "6-10": 2652,
-    "11-15": 1596,
-    "16-20": 856,
-    "20+": 471
+    "11-15": 1597,
+    "16-20": 861,
+    "20+": 481
   },
   "daily_stats": [
     {
@@ -9415,6 +9432,11 @@
     {
       "date": "2026-08-31",
       "games": 20,
+      "unique_players": 1
+    },
+    {
+      "date": "2026-09-03",
+      "games": 17,
       "unique_players": 1
     }
   ]
