@@ -1,6 +1,50 @@
 [
   {
     "is_high_score": false,
+    "score": 22,
+    "city": "Somogyvar",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "6gawu9",
+    "game_number": 1233,
+    "game_code": "Unknown",
+    "timestamp": 1788611460.435609
+  },
+  {
+    "is_high_score": false,
+    "score": 13,
+    "city": "Somogyvar",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "6gawu9",
+    "game_number": 1232,
+    "game_code": "Unknown",
+    "timestamp": 1788611398.594529
+  },
+  {
+    "is_high_score": false,
+    "score": 27,
+    "city": "Somogyvar",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "6gawu9",
+    "game_number": 1231,
+    "game_code": "Unknown",
+    "timestamp": 1788611335.593879
+  },
+  {
+    "is_high_score": false,
+    "score": 16,
+    "city": "Somogyvar",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "6gawu9",
+    "game_number": 1230,
+    "game_code": "Unknown",
+    "timestamp": 1788611273.563679
+  },
+  {
+    "is_high_score": false,
     "score": 23,
     "city": "Budapest",
     "country": "Hungary",
