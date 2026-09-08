@@ -1,13 +1,13 @@
 {
-  "total_games": 7363,
+  "total_games": 7367,
   "unique_players": 562,
   "high_score_games": 768,
-  "avg_score": 9.992530218660871,
+  "avg_score": 9.999321297678838,
   "median_score": 9,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
-    "Budapest": 3614,
+    "Budapest": 3618,
     "Somogyvar": 4,
     "Unknown City": 71,
     "Mateszalka": 18,
@@ -161,7 +161,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 6598,
+    "Hungary": 6602,
     "Local/Unknown": 71,
     "Germany": 108,
     "Switzerland": 193,
@@ -187,7 +187,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 4181,
+    "Android Chrome": 4185,
     "iPhone Safari": 895,
     "Windows Chrome": 735,
     "Mac Safari": 385,
@@ -206,8 +206,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 4181,
-      "avg": 11.18392729012198,
+      "count": 4185,
+      "avg": 11.194743130227002,
       "max": 30
     },
     "iPhone Safari": {
@@ -288,8 +288,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 6598,
-      "avg": 10.209154289178539
+      "count": 6602,
+      "avg": 10.216601029990912
     },
     "Local/Unknown": {
       "count": 71,
@@ -4792,6 +4792,10 @@
     [
       "6gawu9",
       [
+        18,
+        25,
+        24,
+        23,
         17,
         21,
         23,
@@ -8645,8 +8649,8 @@
     "0-5": 1729,
     "6-10": 2652,
     "11-15": 1598,
-    "16-20": 874,
-    "20+": 510
+    "16-20": 875,
+    "20+": 513
   },
   "daily_stats": [
     {
@@ -9502,6 +9506,11 @@
     {
       "date": "2026-09-07",
       "games": 31,
+      "unique_players": 1
+    },
+    {
+      "date": "2026-09-08",
+      "games": 4,
       "unique_players": 1
     }
   ]
