@@ -1,12 +1,13 @@
 {
-  "total_games": 7469,
+  "total_games": 7474,
   "unique_players": 563,
   "high_score_games": 768,
-  "avg_score": 10.122506359619761,
-  "median_score": 9,
+  "avg_score": 10.12924805994113,
+  "median_score": 9.0,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
+    "Gyorszemere": 5,
     "Budapest": 3700,
     "Siofok": 16,
     "Veszprem": 4,
@@ -163,7 +164,7 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 6704,
+    "Hungary": 6709,
     "Local/Unknown": 71,
     "Germany": 108,
     "Switzerland": 193,
@@ -189,7 +190,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 4265,
+    "Android Chrome": 4270,
     "Windows Safari": 200,
     "iPhone Safari": 896,
     "Windows Chrome": 735,
@@ -208,8 +209,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 4265,
-      "avg": 11.389214536928488,
+      "count": 4270,
+      "avg": 11.399531615925058,
       "max": 30
     },
     "Windows Safari": {
@@ -290,8 +291,8 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 6704,
-      "avg": 10.350536992840096
+      "count": 6709,
+      "avg": 10.357877478014608
     },
     "Local/Unknown": {
       "count": 71,
@@ -392,7 +393,7 @@
     "super_engaged": 107
   },
   "player_cities": {
-    "6gawu9": 10,
+    "6gawu9": 11,
     "4ryygm": 1,
     "m42j9j": 1,
     "f841yh": 1,
@@ -4803,6 +4804,11 @@
       "6gawu9",
       [
         21,
+        18,
+        22,
+        20,
+        20,
+        21,
         19,
         24,
         22,
@@ -8740,8 +8746,8 @@
     "0-5": 1731,
     "6-10": 2666,
     "11-15": 1606,
-    "16-20": 902,
-    "20+": 564
+    "16-20": 905,
+    "20+": 566
   },
   "daily_stats": [
     {
@@ -9622,6 +9628,11 @@
     {
       "date": "2026-09-12",
       "games": 13,
+      "unique_players": 1
+    },
+    {
+      "date": "2026-09-14",
+      "games": 5,
       "unique_players": 1
     }
   ]
