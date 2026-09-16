@@ -1,6 +1,28 @@
 [
   {
     "is_high_score": false,
+    "score": 17,
+    "city": "Hajduszoboszlo",
+    "country": "Hungary",
+    "platform": "Windows Chrome",
+    "user_code": "tccyzp",
+    "game_number": 81,
+    "game_code": "Unknown",
+    "timestamp": 1789538132.608789
+  },
+  {
+    "is_high_score": false,
+    "score": 0,
+    "city": "Hajduszoboszlo",
+    "country": "Hungary",
+    "platform": "Windows Chrome",
+    "user_code": "tccyzp",
+    "game_number": 80,
+    "game_code": "Unknown",
+    "timestamp": 1789538075.955349
+  },
+  {
+    "is_high_score": false,
     "score": 5,
     "city": "Heves",
     "country": "Hungary",
