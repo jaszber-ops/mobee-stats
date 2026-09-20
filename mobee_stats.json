@@ -1,20 +1,20 @@
 {
-  "total_games": 7489,
+  "total_games": 7499,
   "unique_players": 563,
   "high_score_games": 768,
-  "avg_score": 10.138202697289358,
+  "avg_score": 10.15122016268836,
   "median_score": 9,
   "max_score": 30,
   "min_score": 0,
   "city_counts": {
-    "Budapest": 3708,
+    "Budapest": 3717,
+    "Unknown City": 72,
     "Hajduszoboszlo": 7,
     "Heves": 7,
     "Gyorszemere": 5,
     "Siofok": 16,
     "Veszprem": 4,
     "Somogyvar": 4,
-    "Unknown City": 71,
     "Mateszalka": 18,
     "Paks": 3,
     "Nagykanizsa": 8,
@@ -164,8 +164,8 @@
     "12/6/2025": 5
   },
   "country_counts": {
-    "Hungary": 6724,
-    "Local/Unknown": 71,
+    "Hungary": 6733,
+    "Local/Unknown": 72,
     "Germany": 108,
     "Switzerland": 193,
     "Belgium": 93,
@@ -190,7 +190,7 @@
     "6:11:06 PM": 1
   },
   "platform_counts": {
-    "Android Chrome": 4283,
+    "Android Chrome": 4293,
     "Windows Chrome": 737,
     "Windows Safari": 200,
     "iPhone Safari": 896,
@@ -209,8 +209,8 @@
   },
   "platform_scores": {
     "Android Chrome": {
-      "count": 4283,
-      "avg": 11.412094326406724,
+      "count": 4293,
+      "avg": 11.431865828092244,
       "max": 30
     },
     "Windows Chrome": {
@@ -291,12 +291,12 @@
   },
   "location_scores": {
     "Hungary": {
-      "count": 6724,
-      "avg": 10.367340868530636
+      "count": 6733,
+      "avg": 10.383038764295263
     },
     "Local/Unknown": {
-      "count": 71,
-      "avg": 8.253521126760564
+      "count": 72,
+      "avg": 8.13888888888889
     },
     "Germany": {
       "count": 108,
@@ -4803,6 +4803,16 @@
     [
       "6gawu9",
       [
+        22,
+        0,
+        28,
+        24,
+        19,
+        18,
+        21,
+        26,
+        22,
+        19,
         25,
         24,
         23,
@@ -8756,11 +8766,11 @@
     ]
   ],
   "score_distribution": {
-    "0-5": 1736,
+    "0-5": 1737,
     "6-10": 2667,
     "11-15": 1606,
-    "16-20": 907,
-    "20+": 573
+    "16-20": 910,
+    "20+": 579
   },
   "daily_stats": [
     {
@@ -9661,6 +9671,11 @@
     {
       "date": "2026-09-19",
       "games": 8,
+      "unique_players": 1
+    },
+    {
+      "date": "2026-09-20",
+      "games": 10,
       "unique_players": 1
     }
   ]
