@@ -1,6 +1,28 @@
 [
   {
     "is_high_score": false,
+    "score": 5,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Mac Chrome",
+    "user_code": "sbmcti",
+    "game_number": 1,
+    "game_code": "Unknown",
+    "timestamp": 1790443873.772529
+  },
+  {
+    "is_high_score": false,
+    "score": 1,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Mac Chrome",
+    "user_code": "jmswav",
+    "game_number": 1,
+    "game_code": "Unknown",
+    "timestamp": 1790443617.791109
+  },
+  {
+    "is_high_score": false,
     "score": 10,
     "city": "Mezotur",
     "country": "Hungary",
