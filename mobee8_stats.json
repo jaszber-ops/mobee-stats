@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-10-01T07:06:10.141443+00:00",
+  "generated_at": "2026-10-01T15:20:31.690262+00:00",
   "level_1": {
     "variant": "7",
-    "total_games": 205,
+    "total_games": 206,
     "unique_players": 20,
-    "avg_score": 3.94,
-    "median_score": 3,
+    "avg_score": 3.92,
+    "median_score": 3.0,
     "max_score": 17,
     "min_score": 0,
     "score_distribution": {
-      "0-5": 119,
+      "0-5": 120,
       "6-10": 73,
       "11-15": 11,
       "16-20": 2,
       "20+": 0
     },
     "score_histogram": {
+      "0": 88,
       "8": 20,
-      "0": 87,
       "10": 6,
       "2": 4,
       "1": 8,
@@ -155,6 +155,11 @@
         "date": "2026-08-10",
         "games": 1,
         "unique_players": 1
+      },
+      {
+        "date": "2026-10-01",
+        "games": 1,
+        "unique_players": 1
       }
     ],
     "top_players_by_score": [
@@ -187,8 +192,8 @@
         "score": 10,
         "avatarCoords": "2,9",
         "name": null,
-        "country": "HU",
-        "city": "Budapest"
+        "country": "LU",
+        "city": "Luxembourg"
       },
       {
         "playerId": "F7PS",
@@ -322,7 +327,7 @@
     "top_players_by_games": [
       {
         "playerId": "TJ5Z",
-        "games": 54,
+        "games": 55,
         "avgScore": 3.5,
         "avatarCoords": "2,9"
       },
@@ -432,6 +437,10 @@
       [
         "GB",
         2
+      ],
+      [
+        "LU",
+        1
       ]
     ],
     "top_cities": [
@@ -454,6 +463,10 @@
       [
         "Stockport",
         2
+      ],
+      [
+        "Luxembourg",
+        1
       ],
       [
         "New York City",
@@ -583,8 +596,8 @@
         "score": 6,
         "avatarCoords": "2,9",
         "name": null,
-        "country": "HU",
-        "city": "Budapest"
+        "country": "LU",
+        "city": "Luxembourg"
       },
       {
         "playerId": "F7PS",
