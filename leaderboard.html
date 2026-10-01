@@ -456,16 +456,17 @@
         <div class="header">
             <img src="assets/mobee_logo.png" alt="Møbee" class="logo">
             <h2>🏆 Leaderboard</h2>
+            <p><a href="tvos.html">Worldwide Apple TV scores</a></p>
             <p id="statsSubtitle">Loading...</p>
         </div>
 
         <!-- Scope Tabs -->
         <div class="scope-tabs">
-            <button class="scope-tab" data-scope="global">
+            <button class="scope-tab active" data-scope="global">
                 <span class="icon"><img src="assets/symbols/globe.png" alt=""></span>
                 Global
             </button>
-            <button class="scope-tab active" data-scope="city">
+            <button class="scope-tab" data-scope="city">
                 <span class="icon"><img src="assets/mobee_logo_sq.png" alt=""></span>
                 Budapest
             </button>
@@ -622,7 +623,7 @@
         let playerAvatars = {};
         let symbolsList = [];
         let currentSort = 'total_points';
-        let currentScope = 'city'; // 'global', 'city', or 'friends'
+        let currentScope = 'global'; // 'global', 'city', or 'friends'
         let currentTimeframe = 'alltime'; // 'alltime', 'weekly', or 'today'
         let isLegacyMode = false; // Toggle between legacy and current data
         let currentPlayer = new URLSearchParams(window.location.search).get('player')?.toUpperCase() || null;
@@ -799,11 +800,11 @@
 
             // Filter by timeframe
             if (timeframe === 'weekly' && filtered.length > 0) {
-                const latestTimestamp = Math.max(...filtered.map(g => g.timestamp));
+                const latestTimestamp = Date.now() / 1000;
                 const oneWeekBefore = latestTimestamp - (7 * 24 * 60 * 60);
                 filtered = filtered.filter(g => g.timestamp >= oneWeekBefore);
             } else if (timeframe === 'today' && filtered.length > 0) {
-                const latestTimestamp = Math.max(...filtered.map(g => g.timestamp));
+                const latestTimestamp = Date.now() / 1000;
                 const oneDayBefore = latestTimestamp - (24 * 60 * 60);
                 filtered = filtered.filter(g => g.timestamp >= oneDayBefore);
             }
@@ -860,11 +861,11 @@
 
             // Filter by timeframe
             if (timeframe === 'weekly' && filtered.length > 0) {
-                const latestTimestamp = Math.max(...filtered.map(g => g.timestamp));
+                const latestTimestamp = Date.now() / 1000;
                 const oneWeekBefore = latestTimestamp - (7 * 24 * 60 * 60);
                 filtered = filtered.filter(g => g.timestamp >= oneWeekBefore);
             } else if (timeframe === 'today' && filtered.length > 0) {
-                const latestTimestamp = Math.max(...filtered.map(g => g.timestamp));
+                const latestTimestamp = Date.now() / 1000;
                 const oneDayBefore = latestTimestamp - (24 * 60 * 60);
                 filtered = filtered.filter(g => g.timestamp >= oneDayBefore);
             }
@@ -937,7 +938,8 @@
         async function loadLeaderboard() {
             try {
                 // Try live API first, then static files as fallback for current games
-                let response = await fetch('/api/leaderboard');
+                let response;
+                try { response = await fetch('/api/leaderboard'); } catch (_) { response = {ok: false}; }
                 if (!response.ok) {
                     console.log('API not available, trying static files...');
                     response = await fetch('mobee_redis_data.json');
