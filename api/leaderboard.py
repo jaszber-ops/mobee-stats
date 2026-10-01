@@ -3,14 +3,14 @@ import os
 import urllib.request
 from http.server import BaseHTTPRequestHandler
 
-REDIS_URL = os.environ.get("UPSTASH_REDIS_URL", "")
-REDIS_TOKEN = os.environ.get("UPSTASH_REDIS_TOKEN", "")
+REDIS_URL = (os.environ.get("UPSTASH_REDIS_REST_URL") or os.environ.get("UPSTASH_REDIS_URL") or "")
+REDIS_TOKEN = (os.environ.get("UPSTASH_REDIS_REST_TOKEN") or os.environ.get("UPSTASH_REDIS_TOKEN") or "")
 
 def redis_cmd(cmd):
     """Execute a Redis command via Upstash REST API"""
     url = f"{REDIS_URL}/{cmd}"
     req = urllib.request.Request(url, headers={"Authorization": f"Bearer {REDIS_TOKEN}"})
-    with urllib.request.urlopen(req) as resp:
+    with urllib.request.urlopen(req, timeout=10) as resp:
         return json.loads(resp.read())["result"]
 
 def get_leaderboard_data():
@@ -85,7 +85,7 @@ class handler(BaseHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.send_header("Access-Control-Allow-Origin", "*")
             self.end_headers()
-            self.wfile.write(json.dumps({"error": str(e)}).encode())
+            self.wfile.write(json.dumps({"error": "Leaderboard temporarily unavailable"}).encode())
 
     def do_OPTIONS(self):
         self.send_response(200)
