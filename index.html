@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        if (location.hostname === 'mobee-leaderboard.trippplecard.games') {
+            location.replace('/leaderboard.html' + location.search + location.hash);
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mobee Game Statistics Report</title>
@@ -408,15 +413,17 @@
 
         async function loadStats() {
             try {
-                let response;
+                let stats;
                 try {
-                    response = await fetch('/api/stats');
+                    const response = await fetch('/api/stats');
+                    if (!response.ok) throw new Error('Live statistics unavailable');
+                    stats = await response.json();
+                    if (!stats || typeof stats.total_games !== 'number') throw new Error('Invalid statistics');
                 } catch (e) {
-                    response = await fetch('mobee_stats.json');
+                    const response = await fetch('mobee_stats.json');
+                    if (!response.ok) throw new Error('Saved statistics unavailable');
+                    stats = await response.json();
                 }
-
-                if (!response.ok) throw new Error('Failed to load stats');
-                const stats = await response.json();
 
                 displayStats(stats);
                 document.getElementById('loading').style.display = 'none';
@@ -435,7 +442,7 @@
             const now = new Date();
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             document.getElementById('generatedDate').textContent =
-                `Generated: ${now.toLocaleDateString('en-US', options)}`;
+                `Saved report • viewed ${now.toLocaleDateString('en-US', options)}`;
 
             // Main stats
             document.getElementById('totalGames').textContent = stats.total_games.toLocaleString();

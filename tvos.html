@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Møbee — Worldwide Apple TV Scores</title>
+<style>
+body{margin:0;background:#f0f4f8;color:#333;font:18px system-ui,sans-serif}main{max-width:760px;margin:50px auto;padding:24px}h1{text-align:center}nav{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}a{color:#a64b32}p{text-align:center;color:#555}ol{padding:0;list-style:none}li{display:flex;align-items:center;gap:20px;padding:16px;margin:10px 0;background:white;border-radius:14px}img{width:54px;height:54px;object-fit:contain}strong{margin-left:auto}button{font:inherit;padding:10px 20px;border:0;border-radius:12px;background:#bfca86;cursor:pointer}
+</style></head>
+<body><main><h1>Møbee leaderboard</h1>
+<nav><a href="leaderboard.html">Web scores</a><button id="tvos">Apple TV</button><button id="legacy">Legacy</button></nav>
+<p id="status" role="status">Loading…</p><ol id="scores"></ol>
+<p>Apple TV: 60-second solo games, best score per player. Scores are client-reported.<br>Legacy: historical web results, kept separately.</p>
+</main><script>
+let requestNumber=0;
+async function load(board){
+ const generation=++requestNumber;
+ const status=document.getElementById('status'),list=document.getElementById('scores');
+ status.textContent='Loading…';list.replaceChildren();
+ try {
+  const r=await fetch('/api/scores?board='+board);if(!r.ok)throw Error();
+  const data=await r.json();if(generation!==requestNumber)return;
+  for(const [i,e] of data.entries.entries()){
+   const row=document.createElement('li'),rank=document.createElement('span'),name=document.createElement('span'),score=document.createElement('strong');
+   rank.textContent=i+1;name.textContent=e.displayName;score.textContent=e.score;
+   row.append(rank);
+   if(/^(10|[1-9])-(1[0-3]|[1-9])$/.test(e.avatar)){const img=document.createElement('img');img.src='assets/avatars/'+e.avatar+'.png';img.alt='Chosen avatar';row.append(img);}
+   row.append(name,score);list.append(row);
+  }
+  status.textContent=(board==='legacy'?'Legacy web scores':'Worldwide Apple TV scores')+(data.entries.length?'':' • No scores yet');
+ }catch(_){if(generation===requestNumber)status.textContent='Scores are temporarily unavailable. Please try again.';}
+}
+document.getElementById('tvos').onclick=()=>load('tvos');
+document.getElementById('legacy').onclick=()=>load('legacy');
+load('tvos');
+</script></body></html>
