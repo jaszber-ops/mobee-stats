@@ -62,6 +62,28 @@ class ScoresTests(unittest.TestCase):
         self.assertEqual(len(scores.tv_board("ios")), 1)
         self.assertEqual(len(scores.tv_board("ios-standard")), 1)
 
+    def test_http_routes_select_ios_board_and_preserve_default_tv(self):
+        from http.server import HTTPServer
+        from threading import Thread
+        from urllib.request import urlopen, Request
+        server = HTTPServer(("127.0.0.1", 0), scores.handler)
+        thread = Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            for board, (_, rules) in scores.BOARDS.items():
+                scores.save_score(self.entry(rules=rules), "test")
+                with urlopen(f"http://127.0.0.1:{server.server_port}/api/scores?board={board}") as response:
+                    result = json.load(response)
+                    self.assertEqual(result["board"], board)
+                    self.assertEqual(result["entries"][0]["rules"], rules)
+                    self.assertEqual(response.headers["Access-Control-Allow-Origin"], "*")
+            with urlopen(f"http://127.0.0.1:{server.server_port}/api/scores") as response:
+                self.assertEqual(json.load(response)["board"], "tvos")
+        finally:
+            server.shutdown()
+            server.server_close()
+            thread.join()
+
     def test_legacy_best_per_player(self):
         data=[dict(user_code="old1",score=5,timestamp="100"),dict(user_code="old1",score=8,timestamp="101"),
               dict(user_code="old2",score=9,timestamp="102")]
