@@ -51,6 +51,17 @@ class ScoresTests(unittest.TestCase):
     def test_rate_limit(self):
         for _ in range(120): self.assertEqual(scores.save_score(self.entry(),"test")[0],200)
         self.assertEqual(scores.save_score(self.entry(),"test")[0],429)
+    def test_ios_boards_are_isolated_and_retry_safe(self):
+        player = str(uuid.uuid4())
+        for board, (_, rules) in scores.BOARDS.items():
+            d = self.entry(playerId=player, rules=rules)
+            self.assertEqual(scores.save_score(d, "test")[0], 200)
+            self.assertTrue(scores.save_score(d, "test")[1]["duplicate"])
+            self.assertEqual(scores.tv_board(board)[0]["rules"], rules)
+        self.assertEqual(len(scores.tv_board()), 1)
+        self.assertEqual(len(scores.tv_board("ios")), 1)
+        self.assertEqual(len(scores.tv_board("ios-standard")), 1)
+
     def test_legacy_best_per_player(self):
         data=[dict(user_code="old1",score=5,timestamp="100"),dict(user_code="old1",score=8,timestamp="101"),
               dict(user_code="old2",score=9,timestamp="102")]
