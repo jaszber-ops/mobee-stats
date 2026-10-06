@@ -51,6 +51,39 @@ class ScoresTests(unittest.TestCase):
     def test_rate_limit(self):
         for _ in range(120): self.assertEqual(scores.save_score(self.entry(),"test")[0],200)
         self.assertEqual(scores.save_score(self.entry(),"test")[0],429)
+    def test_ios_boards_are_isolated_and_retry_safe(self):
+        player = str(uuid.uuid4())
+        for board, (_, rules) in scores.BOARDS.items():
+            d = self.entry(playerId=player, rules=rules)
+            self.assertEqual(scores.save_score(d, "test")[0], 200)
+            self.assertTrue(scores.save_score(d, "test")[1]["duplicate"])
+            self.assertEqual(scores.tv_board(board)[0]["rules"], rules)
+        self.assertEqual(len(scores.tv_board()), 1)
+        self.assertEqual(len(scores.tv_board("ios")), 1)
+        self.assertEqual(len(scores.tv_board("ios-standard")), 1)
+
+    def test_http_routes_select_ios_board_and_preserve_default_tv(self):
+        from http.server import HTTPServer
+        from threading import Thread
+        from urllib.request import urlopen, Request
+        server = HTTPServer(("127.0.0.1", 0), scores.handler)
+        thread = Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            for board, (_, rules) in scores.BOARDS.items():
+                scores.save_score(self.entry(rules=rules), "test")
+                with urlopen(f"http://127.0.0.1:{server.server_port}/api/scores?board={board}") as response:
+                    result = json.load(response)
+                    self.assertEqual(result["board"], board)
+                    self.assertEqual(result["entries"][0]["rules"], rules)
+                    self.assertEqual(response.headers["Access-Control-Allow-Origin"], "*")
+            with urlopen(f"http://127.0.0.1:{server.server_port}/api/scores") as response:
+                self.assertEqual(json.load(response)["board"], "tvos")
+        finally:
+            server.shutdown()
+            server.server_close()
+            thread.join()
+
     def test_legacy_best_per_player(self):
         data=[dict(user_code="old1",score=5,timestamp="100"),dict(user_code="old1",score=8,timestamp="101"),
               dict(user_code="old2",score=9,timestamp="102")]

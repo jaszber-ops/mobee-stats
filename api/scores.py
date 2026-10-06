@@ -11,6 +11,10 @@ import uuid
 
 PREFIX = "mobee:solo:tvos:v1"
 RULES = "tvos-easy-60-v1"
+BOARDS = {"tvos": (PREFIX, RULES),
+          "ios": ("mobee:solo:ios:easy:v1", "ios-easy-60-v1"),
+          "ios-standard": ("mobee:solo:ios:standard:v1", "ios-standard-60-v1")}
+RULE_PREFIXES = {rules: prefix for prefix, rules in BOARDS.values()}
 MAX_BODY = 4096
 
 def redis_cmd(*args):
@@ -32,7 +36,7 @@ def valid_uuid(value):
     return str(uuid.UUID(value))
 
 def validate_submission(data):
-    if not isinstance(data, dict) or data.get("rules") != RULES:
+    if not isinstance(data, dict) or data.get("rules") not in RULE_PREFIXES:
         raise ValueError("Unsupported rules")
     identifier = valid_uuid(data.get("id"))
     player = valid_uuid(data.get("playerId"))
@@ -48,7 +52,7 @@ def validate_submission(data):
     if type(completed) not in (int, float) or not 0 < completed <= time.time() + 300:
         raise ValueError("Invalid completion time")
     return {"id": identifier, "playerId": player, "avatar": avatar, "score": score,
-            "completedAt": completed, "receivedAt": time.time(), "rules": RULES,
+            "completedAt": completed, "receivedAt": time.time(), "rules": data["rules"],
             "displayName": "Player " + player[:6].upper()}
 
 # Idempotent game receipt and best-per-player update in one atomic transaction.
@@ -71,23 +75,25 @@ return n
 
 def save_score(data, address):
     entry = validate_submission(data)
+    prefix = RULE_PREFIXES[entry["rules"]]
     # Vercel supplies the client address. Store only a short hash, with a 10-minute TTL.
     digest = hashlib.sha256(address.encode()).hexdigest()[:24]
-    if int(redis_cmd("EVAL", RATE, 1, PREFIX + ":rate:" + digest)) > 120:
+    if int(redis_cmd("EVAL", RATE, 1, prefix + ":rate:" + digest)) > 120:
         return 429, {"error": "Too many submissions; try again later"}
-    fresh = redis_cmd("EVAL", SAVE, 3, PREFIX + ":games", PREFIX + ":best",
-                      PREFIX + ":players", entry["id"], entry["playerId"],
+    fresh = redis_cmd("EVAL", SAVE, 3, prefix + ":games", prefix + ":best",
+                      prefix + ":players", entry["id"], entry["playerId"],
                       json.dumps(entry), entry["score"])
     return 200, {"accepted": True, "duplicate": not bool(fresh), "id": entry["id"]}
 
-def tv_board():
+def tv_board(board="tvos"):
+    prefix = BOARDS[board][0]
     # Include every player tied at the top-10 cutoff, then apply deterministic tie order.
-    top = redis_cmd("ZREVRANGE", PREFIX + ":best", 0, 9) or []
+    top = redis_cmd("ZREVRANGE", prefix + ":best", 0, 9) or []
     if not top:
         return []
-    cutoff = redis_cmd("ZSCORE", PREFIX + ":best", top[-1])
-    players = redis_cmd("ZREVRANGEBYSCORE", PREFIX + ":best", "+inf", cutoff) or []
-    raw = redis_cmd("HMGET", PREFIX + ":players", *players) if players else []
+    cutoff = redis_cmd("ZSCORE", prefix + ":best", top[-1])
+    players = redis_cmd("ZREVRANGEBYSCORE", prefix + ":best", "+inf", cutoff) or []
+    raw = redis_cmd("HMGET", prefix + ":players", *players) if players else []
     entries = [json.loads(item) for item in raw if item]
     return sorted(entries, key=lambda e: (-e["score"], e["receivedAt"], e["id"]))[:10]
 
@@ -118,10 +124,10 @@ class handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         board = parse_qs(urlparse(self.path).query).get("board", ["tvos"])[0]
-        if board not in ("tvos", "legacy"):
+        if board not in (*BOARDS, "legacy"):
             return self.reply(400, {"error": "Unknown leaderboard"})
         try:
-            entries = legacy_board() if board == "legacy" else tv_board()
+            entries = legacy_board() if board == "legacy" else tv_board(board)
             self.reply(200, {"board": board, "entries": entries,
                             "source": "legacy_snapshot" if board == "legacy" else "global",
                             "validation": "historical" if board == "legacy" else "client_reported"})
