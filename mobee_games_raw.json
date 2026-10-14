@@ -1,6 +1,39 @@
 [
   {
     "is_high_score": false,
+    "score": 6,
+    "city": "Kerecsend",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "r2xhmp",
+    "game_number": 828,
+    "game_code": "Unknown",
+    "timestamp": 1791950566.044349
+  },
+  {
+    "is_high_score": false,
+    "score": 9,
+    "city": "Kerecsend",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "r2xhmp",
+    "game_number": 827,
+    "game_code": "Unknown",
+    "timestamp": 1791950502.925949
+  },
+  {
+    "is_high_score": false,
+    "score": 6,
+    "city": "Kerecsend",
+    "country": "Hungary",
+    "platform": "Android Chrome",
+    "user_code": "r2xhmp",
+    "game_number": 826,
+    "game_code": "Unknown",
+    "timestamp": 1791950440.827459
+  },
+  {
+    "is_high_score": false,
     "score": 20,
     "city": "Budapest",
     "country": "Hungary",
