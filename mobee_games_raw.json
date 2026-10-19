@@ -1,6 +1,39 @@
 [
   {
     "is_high_score": false,
+    "score": 0,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Mac Chrome",
+    "user_code": "ay22ps",
+    "game_number": 95,
+    "game_code": "Unknown",
+    "timestamp": 1792428875.612849
+  },
+  {
+    "is_high_score": false,
+    "score": 8,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Mac Chrome",
+    "user_code": "ay22ps",
+    "game_number": 94,
+    "game_code": "Unknown",
+    "timestamp": 1792428777.097469
+  },
+  {
+    "is_high_score": false,
+    "score": 1,
+    "city": "Budapest",
+    "country": "Hungary",
+    "platform": "Mac Chrome",
+    "user_code": "ay22ps",
+    "game_number": 93,
+    "game_code": "Unknown",
+    "timestamp": 1792428716.015799
+  },
+  {
+    "is_high_score": false,
     "score": 24,
     "city": "Budapest",
     "country": "Hungary",
