@@ -15,7 +15,7 @@ BOARDS = {"tvos": (PREFIX, RULES),
           "ios": ("mobee:solo:ios:easy:v1", "ios-easy-60-v1"),
           "ios-standard": ("mobee:solo:ios:standard:v1", "ios-standard-60-v1")}
 RULE_PREFIXES = {rules: prefix for prefix, rules in BOARDS.values()}
-MAX_BODY = 4096
+MAX_BODY = 32768  # score + per-tap telemetry
 
 def redis_cmd(*args):
     url = os.environ.get("UPSTASH_REDIS_REST_URL") or os.environ.get("UPSTASH_REDIS_URL")
@@ -59,19 +59,32 @@ def validate_submission(data):
     completed = data.get("completedAt")
     if type(completed) not in (int, float) or not 0 < completed <= time.time() + 300:
         raise ValueError("Invalid completion time")
-    return {"id": identifier, "playerId": player, "avatar": avatar, "score": score,
-            "completedAt": completed, "receivedAt": time.time(), "rules": data["rules"],
-            "displayName": "Player " + player[:6].upper()}
+    entry = {"id": identifier, "playerId": player, "avatar": avatar, "score": score,
+             "completedAt": completed, "receivedAt": time.time(), "rules": data["rules"],
+             "displayName": "Player " + player[:6].upper()}
+    # Optional gameplay telemetry (every tap and every deal); kept with the game record only.
+    telemetry = {}
+    for key, limit in (("taps", 400), ("rounds", 200)):
+        items = data.get(key)
+        if isinstance(items, list) and len(items) <= limit and all(isinstance(i, dict) for i in items):
+            telemetry[key] = items
+    if isinstance(data.get("client"), dict):
+        telemetry["client"] = {k: str(v)[:64] for k, v in list(data["client"].items())[:8]}
+    if telemetry:
+        entry["telemetry"] = telemetry
+    return entry
 
 # Idempotent game receipt and best-per-player update in one atomic transaction.
 # Sorting metadata uses server receipt time to avoid trusting client time for ties.
+# KEYS: games, best, players, avatars. ARGV: game id, player id, full record, score, board record, avatar.
 SAVE = """
 if redis.call('HEXISTS', KEYS[1], ARGV[1]) == 1 then return 0 end
 redis.call('HSET', KEYS[1], ARGV[1], ARGV[3])
+redis.call('HSET', KEYS[4], ARGV[2], ARGV[6])
 local old = redis.call('ZSCORE', KEYS[2], ARGV[2])
 if not old or tonumber(ARGV[4]) > tonumber(old) then
   redis.call('ZADD', KEYS[2], ARGV[4], ARGV[2])
-  redis.call('HSET', KEYS[3], ARGV[2], ARGV[3])
+  redis.call('HSET', KEYS[3], ARGV[2], ARGV[5])
 end
 return 1
 """
@@ -90,9 +103,10 @@ def save_score(data, address, location=None):
     digest = hashlib.sha256(address.encode()).hexdigest()[:24]
     if int(redis_cmd("EVAL", RATE, 1, prefix + ":rate:" + digest)) > 120:
         return 429, {"error": "Too many submissions; try again later"}
-    fresh = redis_cmd("EVAL", SAVE, 3, prefix + ":games", prefix + ":best",
-                      prefix + ":players", entry["id"], entry["playerId"],
-                      json.dumps(entry), entry["score"])
+    board_entry = {k: v for k, v in entry.items() if k != "telemetry"}
+    fresh = redis_cmd("EVAL", SAVE, 4, prefix + ":games", prefix + ":best",
+                      prefix + ":players", prefix + ":avatars", entry["id"], entry["playerId"],
+                      json.dumps(entry), entry["score"], json.dumps(board_entry), entry["avatar"])
     return 200, {"accepted": True, "duplicate": not bool(fresh), "id": entry["id"]}
 
 def tv_board(board="tvos"):
@@ -105,6 +119,11 @@ def tv_board(board="tvos"):
     players = redis_cmd("ZREVRANGEBYSCORE", prefix + ":best", "+inf", cutoff) or []
     raw = redis_cmd("HMGET", prefix + ":players", *players) if players else []
     entries = [json.loads(item) for item in raw if item]
+    # Show each player's current avatar, not the one worn when the best score was set.
+    current = redis_cmd("HMGET", prefix + ":avatars", *[e["playerId"] for e in entries]) if entries else []
+    for e, avatar in zip(entries, current):
+        if avatar:
+            e["avatar"] = avatar
     return sorted(entries, key=lambda e: (-e["score"], e["receivedAt"], e["id"]))[:10]
 
 def legacy_board():

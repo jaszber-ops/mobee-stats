@@ -105,5 +105,20 @@ class ScoresTests(unittest.TestCase):
         scores.save_score(self.entry(rules="ios-standard-60-v1"), "test", None)
         self.assertNotIn("location", scores.tv_board("ios-standard")[0])
 
+    def test_board_shows_current_avatar_and_keeps_telemetry_off_the_board(self):
+        player = str(uuid.uuid4())
+        best = self.entry(playerId=player, score=20, avatar="1-1", rules="ios-easy-60-v1",
+                          taps=[{"t": 1200, "r": 1, "s": "dog", "ok": True, "card": 0, "slot": 3, "x": 0.4, "y": 0.5}],
+                          rounds=[{"r": 1, "t": 0, "cards": [0, 1, 2], "answer": "dog"}], client={"app": "ios", "v": "1.1"})
+        scores.save_score(best, "test")
+        scores.save_score(self.entry(playerId=player, score=5, avatar="8-12", rules="ios-easy-60-v1"), "test")
+        top = scores.tv_board("ios")[0]
+        self.assertEqual(top["score"], 20)
+        self.assertEqual(top["avatar"], "8-12")
+        self.assertNotIn("telemetry", top)
+        stored = json.loads(self.redis.hget("mobee:solo:ios:easy:v1:games", best["id"]))
+        self.assertEqual(stored["telemetry"]["taps"][0]["s"], "dog")
+        self.assertEqual(stored["telemetry"]["client"]["app"], "ios")
+
 if __name__ == "__main__":
     unittest.main()
