@@ -93,4 +93,17 @@ class ScoresTests(unittest.TestCase):
         self.assertTrue(all(e["rules"]=="legacy" for e in result))
         self.assertEqual(self.redis.dbsize(),0)
 
-if __name__ == "__main__":unittest.main()
+    def test_location_is_recorded_from_edge_headers_only(self):
+        loc = scores.location_from_headers({"x-vercel-ip-city": "Budapest", "x-vercel-ip-country": "HU"})
+        self.assertEqual(loc, {"city": "Budapest", "country": "HU"})
+        self.assertIsNone(scores.location_from_headers({}))
+        self.assertEqual(scores.location_from_headers({"x-vercel-ip-city": "S%C3%A3o%20Paulo", "x-vercel-ip-country": "br"}),
+                         {"city": "São Paulo", "country": "BR"})
+        d = self.entry(rules="ios-easy-60-v1")
+        scores.save_score(d, "test", loc)
+        self.assertEqual(scores.tv_board("ios")[0]["location"], loc)
+        scores.save_score(self.entry(rules="ios-standard-60-v1"), "test", None)
+        self.assertNotIn("location", scores.tv_board("ios-standard")[0])
+
+if __name__ == "__main__":
+    unittest.main()

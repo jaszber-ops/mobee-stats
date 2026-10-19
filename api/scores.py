@@ -1,7 +1,7 @@
 """Global boards. tvOS submissions are client-reported, not cheat-proof."""
 from http.server import BaseHTTPRequestHandler
 from pathlib import Path
-from urllib.parse import urlparse, parse_qs
+from urllib.parse import urlparse, parse_qs, unquote
 import hashlib
 import json
 import os
@@ -34,6 +34,14 @@ def valid_uuid(value):
     if not isinstance(value, str):
         raise ValueError("Invalid identifier")
     return str(uuid.UUID(value))
+
+def location_from_headers(headers):
+    """Coarse player location (city, country) from Vercel's edge geo headers; never the raw address."""
+    city = unquote(headers.get("x-vercel-ip-city", "") or "").strip()[:40]
+    country = (headers.get("x-vercel-ip-country", "") or "").strip().upper()[:2]
+    if not country.isalpha():
+        return None
+    return {"city": city, "country": country}
 
 def validate_submission(data):
     if not isinstance(data, dict) or data.get("rules") not in RULE_PREFIXES:
@@ -73,8 +81,10 @@ if n == 1 then redis.call('EXPIRE', KEYS[1], 600) end
 return n
 """
 
-def save_score(data, address):
+def save_score(data, address, location=None):
     entry = validate_submission(data)
+    if location:
+        entry["location"] = location
     prefix = RULE_PREFIXES[entry["rules"]]
     # Vercel supplies the client address. Store only a short hash, with a 10-minute TTL.
     digest = hashlib.sha256(address.encode()).hexdigest()[:24]
@@ -141,7 +151,7 @@ class handler(BaseHTTPRequestHandler):
                 return self.reply(413, {"error": "Invalid request size"})
             data = json.loads(self.rfile.read(length))
             address = self.headers.get("x-forwarded-for", "unknown").split(",")[0].strip()
-            status, response = save_score(data, address)
+            status, response = save_score(data, address, location_from_headers(self.headers))
             self.reply(status, response)
         except (ValueError, TypeError, AttributeError):
             self.reply(400, {"error": "Invalid score submission"})
