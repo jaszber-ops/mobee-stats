@@ -109,21 +109,30 @@ def save_score(data, address, location=None):
                       json.dumps(entry), entry["score"], json.dumps(board_entry), entry["avatar"])
     return 200, {"accepted": True, "duplicate": not bool(fresh), "id": entry["id"]}
 
+BOARD_LUA = """
+local top = redis.call('ZREVRANGE', KEYS[1], 0, 9)
+if #top == 0 then return {} end
+local cutoff = redis.call('ZSCORE', KEYS[1], top[#top])
+local players = redis.call('ZREVRANGEBYSCORE', KEYS[1], '+inf', cutoff)
+return {redis.call('HMGET', KEYS[2], unpack(players)), redis.call('HMGET', KEYS[3], unpack(players))}
+"""
+
 def tv_board(board="tvos"):
     prefix = BOARDS[board][0]
-    # Include every player tied at the top-10 cutoff, then apply deterministic tie order.
-    top = redis_cmd("ZREVRANGE", prefix + ":best", 0, 9) or []
-    if not top:
+    # One round trip: top 10 plus everyone tied at the cutoff, their records and current avatars.
+    result = redis_cmd("EVAL", BOARD_LUA, 3, prefix + ":best", prefix + ":players", prefix + ":avatars")
+    if not result:
         return []
-    cutoff = redis_cmd("ZSCORE", prefix + ":best", top[-1])
-    players = redis_cmd("ZREVRANGEBYSCORE", prefix + ":best", "+inf", cutoff) or []
-    raw = redis_cmd("HMGET", prefix + ":players", *players) if players else []
-    entries = [json.loads(item) for item in raw if item]
-    # Show each player's current avatar, not the one worn when the best score was set.
-    current = redis_cmd("HMGET", prefix + ":avatars", *[e["playerId"] for e in entries]) if entries else []
-    for e, avatar in zip(entries, current):
+    raw, avatars = result
+    entries = []
+    for item, avatar in zip(raw, avatars):
+        if not item:
+            continue
+        e = json.loads(item)
+        # Show each player's current avatar, not the one worn when the best score was set.
         if avatar:
             e["avatar"] = avatar
+        entries.append(e)
     return sorted(entries, key=lambda e: (-e["score"], e["receivedAt"], e["id"]))[:10]
 
 def legacy_board():
@@ -143,11 +152,11 @@ def legacy_board():
     return sorted(best.values(), key=lambda e: (-e["score"], e["completedAt"], e["id"]))[:10]
 
 class handler(BaseHTTPRequestHandler):
-    def reply(self, status, data):
+    def reply(self, status, data, cache="no-store"):
         self.send_response(status)
         self.send_header("Content-Type", "application/json")
         self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Cache-Control", "no-store")
+        self.send_header("Cache-Control", cache)
         self.end_headers()
         self.wfile.write(json.dumps(data).encode())
 
@@ -157,9 +166,12 @@ class handler(BaseHTTPRequestHandler):
             return self.reply(400, {"error": "Unknown leaderboard"})
         try:
             entries = legacy_board() if board == "legacy" else tv_board(board)
+            # Edge-cached for a few seconds so repeat views skip the function entirely; clients that
+            # just posted a score add a cache-busting query parameter to read through.
             self.reply(200, {"board": board, "entries": entries,
                             "source": "legacy_snapshot" if board == "legacy" else "global",
-                            "validation": "historical" if board == "legacy" else "client_reported"})
+                            "validation": "historical" if board == "legacy" else "client_reported"},
+                       cache="public, max-age=0, s-maxage=5, stale-while-revalidate=60")
         except Exception:
             self.reply(503, {"error": "Leaderboard temporarily unavailable"})
 
