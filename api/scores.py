@@ -1,4 +1,4 @@
-"""Global boards. tvOS submissions are client-reported, not cheat-proof."""
+"""Global boards. Scores are client-reported; iOS/web games must carry tap telemetry that replays to the claimed score and looks human."""
 from http.server import BaseHTTPRequestHandler
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs, unquote
@@ -16,6 +16,14 @@ BOARDS = {"tvos": (PREFIX, RULES),
           "ios-standard": ("mobee:solo:ios:standard:v1", "ios-standard-60-v1")}
 RULE_PREFIXES = {rules: prefix for prefix, rules in BOARDS.values()}
 MAX_BODY = 32768  # score + per-tap telemetry
+GAME_MS = 60000
+MIN_TAP_GAP_MS = 100      # two taps closer than this are not fingers
+MIN_REACTION_MS = 150     # deal -> correct tap; faster than any human on a fresh set of cards
+MIN_MEDIAN_REACTION_MS = 400
+MIN_REACTION_SPREAD = 0.12  # std/mean of reaction times over 8+ rounds; a bot is metronomic
+
+class Suspicious(ValueError):
+    """Submission is well-formed but the telemetry does not support the score; answered with 422."""
 
 def redis_cmd(*args):
     url = os.environ.get("UPSTASH_REDIS_REST_URL") or os.environ.get("UPSTASH_REDIS_URL")
@@ -72,7 +80,47 @@ def validate_submission(data):
         telemetry["client"] = {k: str(v)[:64] for k, v in list(data["client"].items())[:8]}
     if telemetry:
         entry["telemetry"] = telemetry
+    if data["rules"].startswith("ios-") or "taps" in telemetry:
+        verify_telemetry(entry)
     return entry
+
+def verify_telemetry(entry):
+    """Replay the deal/tap log: it must reproduce the score, respect the game's sequence and clock, and show human timing."""
+    telemetry = entry.get("telemetry", {})
+    rounds, taps = telemetry.get("rounds"), telemetry.get("taps")
+    if not rounds or taps is None:
+        raise Suspicious("Telemetry required")
+    deck_size = 10 if "standard" in entry["rules"] else 8
+    for i, r in enumerate(rounds):
+        cards = r.get("cards")
+        if r.get("r") != i + 1 or type(r.get("t")) is not int or not 0 <= r["t"] <= GAME_MS \
+                or not (isinstance(cards, list) and len(set(map(str, cards))) == 3 and all(type(c) is int and 0 <= c < deck_size for c in cards)) \
+                or not isinstance(r.get("answer"), str) or (i and r["t"] < rounds[i - 1]["t"]):
+            raise Suspicious("Malformed round" if type(r.get("t")) is not int or r.get("t", 0) <= GAME_MS else "Deals after the 60-second clock")
+    score, rnd, last_t, reactions = 0, 1, -MIN_TAP_GAP_MS, []
+    for tap in taps:
+        t, ok, sym = tap.get("t"), tap.get("ok"), tap.get("s")
+        if tap.get("r") != rnd or type(t) is not int or type(ok) is not bool or not isinstance(sym, str) \
+                or t < rounds[rnd - 1]["t"] or t - last_t < MIN_TAP_GAP_MS or ok != (sym == rounds[rnd - 1]["answer"]):
+            raise Suspicious("Malformed tap")
+        if t > GAME_MS:
+            raise Suspicious("Taps after the 60-second clock")
+        last_t = t
+        score = max(0, score + (1 if ok else -1))
+        if ok:
+            reactions.append(t - rounds[rnd - 1]["t"])
+            rnd += 1
+            if rnd > len(rounds):
+                raise Suspicious("Correct tap without a following deal")
+    if rnd != len(rounds) or score != entry["score"]:
+        raise Suspicious("Telemetry does not reproduce the score")
+    if reactions:
+        reactions.sort()
+        mean = sum(reactions) / len(reactions)
+        spread = (sum((x - mean) ** 2 for x in reactions) / len(reactions)) ** 0.5 / mean
+        if reactions[0] < MIN_REACTION_MS or reactions[len(reactions) // 2] < MIN_MEDIAN_REACTION_MS \
+                or (len(reactions) >= 8 and spread < MIN_REACTION_SPREAD):
+            raise Suspicious("Inhuman reaction times")
 
 # Idempotent game receipt and best-per-player update in one atomic transaction.
 # Sorting metadata uses server receipt time to avoid trusting client time for ties.
@@ -95,7 +143,14 @@ return n
 """
 
 def save_score(data, address, location=None):
-    entry = validate_submission(data)
+    try:
+        entry = validate_submission(data)
+    except Suspicious as reason:
+        game_id = data.get("id") if isinstance(data, dict) else None
+        if isinstance(game_id, str) and len(game_id) <= 40 and data.get("rules") in RULE_PREFIXES:
+            redis_cmd("HSET", RULE_PREFIXES[data["rules"]] + ":rejected", game_id,
+                      json.dumps({"reason": str(reason), "receivedAt": time.time(), "submission": data}))
+        return 422, {"accepted": False, "error": str(reason)}
     if location:
         entry["location"] = location
     prefix = RULE_PREFIXES[entry["rules"]]
@@ -170,7 +225,7 @@ class handler(BaseHTTPRequestHandler):
             # just posted a score add a cache-busting query parameter to read through.
             self.reply(200, {"board": board, "entries": entries,
                             "source": "legacy_snapshot" if board == "legacy" else "global",
-                            "validation": "historical" if board == "legacy" else "client_reported"},
+                            "validation": "historical" if board == "legacy" else "telemetry_replayed"},
                        cache="public, max-age=0, s-maxage=5, stale-while-revalidate=60")
         except Exception:
             self.reply(503, {"error": "Leaderboard temporarily unavailable"})

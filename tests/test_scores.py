@@ -13,6 +13,23 @@ spec = importlib.util.spec_from_file_location("scores", path)
 scores = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(scores)
 
+import random
+def game(score, wrong=0, reaction=1200, jitter=400, seed=1):
+    """Telemetry of a plausible 60-second game ending on `score`: score+wrong correct taps, `wrong` misses (each -1), human-ish timing."""
+    rng = random.Random(seed)
+    rounds, taps, t, rnd = [], [], 0, 1
+    correct = score + wrong
+    deals = [rng.sample(range(8), 3) for _ in range(correct + 1)]
+    rounds.append({"r": 1, "t": 0, "cards": deals[0], "answer": "star"})
+    misses = set(rng.sample(range(1, correct), wrong)) if wrong else set()
+    for i in range(correct):
+        if i in misses:
+            t += 500; taps.append({"t": t, "r": rnd, "s": "dog", "ok": False})
+        t += reaction + rng.randint(-jitter, jitter)
+        taps.append({"t": t, "r": rnd, "s": "star", "ok": True, "card": 0, "slot": 2})
+        rnd += 1; rounds.append({"r": rnd, "t": t + 10, "cards": deals[i + 1], "answer": "star"})
+    return {"rounds": rounds, "taps": taps, "client": {"app": "ios", "version": "1.1.0"}}
+
 class ScoresTests(unittest.TestCase):
     def setUp(self):
         self.redis = fakeredis.FakeRedis(decode_responses=True)
@@ -23,7 +40,27 @@ class ScoresTests(unittest.TestCase):
         d = dict(id=str(uuid.uuid4()), playerId=str(uuid.uuid4()), avatar="10-13",
                  score=12, completedAt=time.time(), durationSeconds=60, rules=scores.RULES)
         d.update(overrides)
+        if d["rules"].startswith("ios-") and "taps" not in d:
+            d.update(game(d["score"]))
         return d
+    def test_ios_requires_telemetry_that_replays_to_the_score(self):
+        ios = lambda **k: self.entry(rules="ios-easy-60-v1", **k)
+        self.assertEqual(scores.save_score(ios(), "test")[0], 200)
+        honest = game(9, wrong=2)
+        self.assertEqual(scores.save_score(ios(score=9, **honest), "test")[0], 200)
+        bad = [ios(taps=None, rounds=None),                       # no telemetry at all
+               ios(score=13, **game(12)),                         # score higher than the taps show
+               ios(score=9, **game(9, reaction=200, jitter=20)),   # every tap ~200 ms after the deal
+               ios(score=9, **game(9, jitter=0)),                 # metronomic reactions
+               ios(score=45, **game(45, reaction=1500))]          # 45 rounds at 1.5 s overrun the 60 s clock
+        for d in bad:
+            status, body = scores.save_score(d, "test")
+            self.assertEqual(status, 422, d.get("score"))
+            self.assertFalse(body["accepted"])
+        self.assertEqual(self.redis.hlen("mobee:solo:ios:easy:v1:rejected"), len(bad))
+        self.assertEqual(len(scores.tv_board("ios")), 2)
+    def test_tvos_without_telemetry_still_accepted(self):
+        self.assertEqual(scores.save_score(self.entry(), "test")[0], 200)
     def test_retry_is_idempotent_and_player_best_is_retained(self):
         d = self.entry()
         self.assertTrue(scores.save_score(d, "test")[1]["accepted"])
@@ -107,9 +144,8 @@ class ScoresTests(unittest.TestCase):
 
     def test_board_shows_current_avatar_and_keeps_telemetry_off_the_board(self):
         player = str(uuid.uuid4())
-        best = self.entry(playerId=player, score=20, avatar="1-1", rules="ios-easy-60-v1",
-                          taps=[{"t": 1200, "r": 1, "s": "dog", "ok": True, "card": 0, "slot": 3, "x": 0.4, "y": 0.5}],
-                          rounds=[{"r": 1, "t": 0, "cards": [0, 1, 2], "answer": "dog"}], client={"app": "ios", "v": "1.1"})
+        best = self.entry(playerId=player, score=20, avatar="1-1", rules="ios-easy-60-v1", **game(20))
+        best["taps"][0].update({"s": "star", "x": 0.4, "y": 0.5})
         scores.save_score(best, "test")
         scores.save_score(self.entry(playerId=player, score=5, avatar="8-12", rules="ios-easy-60-v1"), "test")
         top = scores.tv_board("ios")[0]
@@ -117,7 +153,7 @@ class ScoresTests(unittest.TestCase):
         self.assertEqual(top["avatar"], "8-12")
         self.assertNotIn("telemetry", top)
         stored = json.loads(self.redis.hget("mobee:solo:ios:easy:v1:games", best["id"]))
-        self.assertEqual(stored["telemetry"]["taps"][0]["s"], "dog")
+        self.assertEqual(stored["telemetry"]["taps"][0]["x"], 0.4)
         self.assertEqual(stored["telemetry"]["client"]["app"], "ios")
 
 if __name__ == "__main__":
