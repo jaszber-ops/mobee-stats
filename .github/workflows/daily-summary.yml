@@ -1,0 +1,27 @@
+name: Daily Møbee summary
+# Yesterday's games from play.trippplecard.games, iOS and Apple TV, posted to Slack every morning.
+on:
+  schedule:
+    - cron: '7 6 * * *'  # 08:07 in Budapest in summer, 07:07 in winter
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Print the message instead of posting it
+        type: boolean
+        default: true
+
+jobs:
+  summary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Post to Slack
+        env:
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN }}
+          SLACK_CHANNEL_ID: ${{ secrets.REPORT_CHANNEL_ID }}
+        run: python3 .github/scripts/daily_summary.py ${{ inputs.dry_run && '--dry-run' || '' }}
