@@ -52,6 +52,11 @@ characters, at most 16 characters) and keeps the player's latest name per board 
 - `name: ""`: the player cleared it; the board goes back to "Player XXXXXX".
 - A name containing "Møbee"/"Mobee", or one that isn't text, is ignored. The score is
   still accepted: the app re-sends anything refused with 400, so a name must never block it.
+- Rude names (a short English, German and Hungarian word list in `api/scores.py`, kept identical to
+  the app's) show as "Player", as if no name were set; the score still counts. Words in
+  `BLOCKED_ANYWHERE` are caught inside longer names and through spacing, accents, repeated
+  letters and digits ("s h 1 t", "fuuuck"); `BLOCKED_WORDS` only as whole words, because they
+  also occur in ordinary names (Szarvas, Hancock). No list catches everything.
 
 Existing scores need no migration. Removing a name by hand is `HDEL <prefix>:names <playerId>`.
 

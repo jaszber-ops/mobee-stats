@@ -228,5 +228,20 @@ class ScoresTests(unittest.TestCase):
         self.assertEqual(scores.tv_board("ios")[0]["displayName"], "Johnny")
         self.assertEqual(scores.tv_board()[0]["displayName"], "Player " + player[:6].upper())
 
+    def test_rude_names_show_as_player_and_the_score_still_counts(self):
+        ok = ["Johnny", "Zsófi", "Szarvas", "Classic", "Hancock", "Nigeria", "Nazira", "Assisi", "Dickens",
+              "Kassandra", "Cumbria", "Basil", "Analise", "Titus", "Penelope", "Áron"]
+        bad = ["sh1t", "s h i t", "fuuuck", "FüCK", "f*ck you", "kurva", "k.u.r.v.a", "Arsch", "4ss", "ASS",
+               "big dick", "szar", "Nazi", "hitler88", "geci", "b@zmeg", "köcsög", "Fotze", "Scheiße", "p0rn"]
+        self.assertEqual([n for n in ok if scores.name_blocked(n)], [])
+        self.assertEqual([n for n in bad if not scores.name_blocked(n)], [])
+        player = str(uuid.uuid4())
+        scores.save_score(self.live_app_submission(playerId=player, name="Johnny"), "test")
+        status, body = scores.save_score(self.live_app_submission(playerId=player, name="sh1t head", score=12, **game(12)), "test")
+        self.assertEqual((status, body["accepted"]), (200, True))
+        top = scores.tv_board("ios")[0]
+        self.assertEqual((top["score"], top["displayName"]), (12, "Player " + player[:6].upper()))
+        self.assertNotIn("name", json.loads(self.redis.hget("mobee:solo:ios:easy:v1:games", body["id"])))
+
 if __name__ == "__main__":
     unittest.main()

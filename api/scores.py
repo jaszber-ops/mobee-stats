@@ -3,6 +3,7 @@ from http.server import BaseHTTPRequestHandler
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs, unquote
 import hashlib
+import re
 import json
 import os
 import time
@@ -25,6 +26,33 @@ MIN_REACTION_SPREAD = 0.12  # std/mean of reaction times over 8+ rounds; a bot i
 
 NAME_MAX = 16  # same limit as the app's name field
 
+# Names nobody should see on a public board. Kept identical to www/scores.js in mobee-ios.
+# ANYWHERE: blocked wherever they appear, even inside a longer name or spelled out ("f.u.u.c.k", "sh1t").
+# WORDS: blocked only as a whole word, because they also occur inside ordinary names (Szarvas, Hancock).
+BLOCKED_ANYWHERE = ["fuck", "fck", "cunt", "nigger", "nigga", "faggot", "bitch", "whore", "asshole", "dickhead",
+                    "motherf", "hitler", "porn", "rapist", "kurva", "geci", "fasz", "picsa", "bazmeg", "baszd",
+                    "kocsog", "ribanc", "csicska", "ficken", "fotze", "wichser", "hurensohn", "schlampe"]
+BLOCKED_WORDS = ["ass", "arse", "shit", "dick", "cock", "tits", "sex", "anal", "cum", "piss", "penis", "slut",
+                 "rape", "retard", "nazi", "szar", "segg", "pina", "buzi", "basz", "arsch", "hure", "kacke",
+                 "scheisse", "scheise", "titten", "nutte"]
+LEET = str.maketrans({"0": "o", "1": "i", "3": "e", "4": "a", "5": "s", "7": "t", "8": "b", "@": "a", "$": "s",
+                      "!": "i", "\u00f8": "o", "\u00df": "ss"})
+
+def _letters_pattern(word):
+    """f+u+c+k+ : each letter may be repeated ("fuuuck"), but no letter may be dropped ("niger" stays allowed)."""
+    return "".join(re.escape(c) + "+" for c in word)
+
+BLOCKED_ANYWHERE_RE = re.compile("|".join(_letters_pattern(w) for w in BLOCKED_ANYWHERE))
+BLOCKED_WORDS_RE = re.compile("^(?:" + "|".join(_letters_pattern(w) for w in BLOCKED_WORDS) + ")$")
+
+def name_blocked(name):
+    plain = "".join(ch for ch in unicodedata.normalize("NFKD", name.lower()) if not unicodedata.combining(ch))
+    plain = plain.translate(LEET)
+    joined = re.sub(r"[^a-z]", "", plain)
+    if BLOCKED_ANYWHERE_RE.search(joined):
+        return True
+    return any(BLOCKED_WORDS_RE.match(w) for w in re.split(r"[^a-z]+", plain) + [joined] if w)
+
 def clean_name(raw):
     """Player name as the app sends it: ("set", name), ("clear", "") for an emptied name, or None to
     leave the stored name alone. A name we can't accept is ignored, never a reason to refuse the score:
@@ -38,6 +66,8 @@ def clean_name(raw):
     plain = "".join(ch for ch in unicodedata.normalize("NFKD", name) if not unicodedata.combining(ch)).lower()
     if "mobee" in plain or "m\u00f8bee" in plain:  # "Møbee" names are reserved, as in the app
         return None
+    if name_blocked(name):  # shown as the default "Player", as if no name were set; the score still counts
+        return ("clear", "")
     return ("set", name)
 
 class Suspicious(ValueError):
