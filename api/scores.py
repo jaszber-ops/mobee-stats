@@ -3,9 +3,11 @@ from http.server import BaseHTTPRequestHandler
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs, unquote
 import hashlib
+import re
 import json
 import os
 import time
+import unicodedata
 import urllib.request
 import uuid
 
@@ -21,6 +23,52 @@ MIN_TAP_GAP_MS = 100      # two taps closer than this are not fingers
 MIN_REACTION_MS = 150     # deal -> correct tap; faster than any human on a fresh set of cards
 MIN_MEDIAN_REACTION_MS = 400
 MIN_REACTION_SPREAD = 0.12  # std/mean of reaction times over 8+ rounds; a bot is metronomic
+
+NAME_MAX = 16  # same limit as the app's name field
+
+# Names nobody should see on a public board. Kept identical to www/scores.js in mobee-ios.
+# ANYWHERE: blocked wherever they appear, even inside a longer name or spelled out ("f.u.u.c.k", "sh1t").
+# WORDS: blocked only as a whole word, because they also occur inside ordinary names (Szarvas, Hancock).
+BLOCKED_ANYWHERE = ["fuck", "fck", "cunt", "nigger", "nigga", "faggot", "bitch", "whore", "asshole", "dickhead",
+                    "motherf", "hitler", "porn", "rapist", "kurva", "geci", "fasz", "picsa", "bazmeg", "baszd",
+                    "kocsog", "ribanc", "csicska", "ficken", "fotze", "wichser", "hurensohn", "schlampe"]
+BLOCKED_WORDS = ["ass", "arse", "shit", "dick", "cock", "tits", "sex", "anal", "cum", "piss", "penis", "slut",
+                 "rape", "retard", "nazi", "szar", "segg", "pina", "buzi", "basz", "arsch", "hure", "kacke",
+                 "scheisse", "scheise", "titten", "nutte"]
+LEET = str.maketrans({"0": "o", "1": "i", "3": "e", "4": "a", "5": "s", "7": "t", "8": "b", "@": "a", "$": "s",
+                      "!": "i", "\u00f8": "o", "\u00df": "ss"})
+
+def _letters_pattern(word):
+    """f+u+c+k+ : each letter may be repeated ("fuuuck"), but no letter may be dropped ("niger" stays allowed)."""
+    return "".join(re.escape(c) + "+" for c in word)
+
+BLOCKED_ANYWHERE_RE = re.compile("|".join(_letters_pattern(w) for w in BLOCKED_ANYWHERE))
+BLOCKED_WORDS_RE = re.compile("^(?:" + "|".join(_letters_pattern(w) for w in BLOCKED_WORDS) + ")$")
+
+def name_blocked(name):
+    plain = "".join(ch for ch in unicodedata.normalize("NFKD", name.lower()) if not unicodedata.combining(ch))
+    plain = plain.translate(LEET)
+    joined = re.sub(r"[^a-z]", "", plain)
+    if BLOCKED_ANYWHERE_RE.search(joined):
+        return True
+    return any(BLOCKED_WORDS_RE.match(w) for w in re.split(r"[^a-z]+", plain) + [joined] if w)
+
+def clean_name(raw):
+    """Player name as the app sends it: ("set", name), ("clear", "") for an emptied name, or None to
+    leave the stored name alone. A name we can't accept is ignored, never a reason to refuse the score:
+    the app keeps re-sending anything answered with 400, so a bad name must not block its queue."""
+    if raw is None or not isinstance(raw, str):
+        return None
+    text = "".join(ch for ch in unicodedata.normalize("NFKC", raw) if not unicodedata.category(ch).startswith("C"))
+    name = " ".join(text.split())[:NAME_MAX].strip()
+    if not name:
+        return ("clear", "")
+    plain = "".join(ch for ch in unicodedata.normalize("NFKD", name) if not unicodedata.combining(ch)).lower()
+    if "mobee" in plain or "m\u00f8bee" in plain:  # "Møbee" names are reserved, as in the app
+        return None
+    if name_blocked(name):  # shown as the default "Player", as if no name were set; the score still counts
+        return ("clear", "")
+    return ("set", name)
 
 class Suspicious(ValueError):
     """Submission is well-formed but the telemetry does not support the score; answered with 422."""
@@ -78,6 +126,11 @@ def validate_submission(data):
             telemetry[key] = items
     if isinstance(data.get("client"), dict):
         telemetry["client"] = {k: str(v)[:64] for k, v in list(data["client"].items())[:8]}
+    name = clean_name(data.get("name"))
+    if name:
+        entry["nameUpdate"] = name[0]
+        if name[0] == "set":
+            entry["name"] = name[1]
     if telemetry:
         entry["telemetry"] = telemetry
     if data["rules"].startswith("ios-") or "taps" in telemetry:
@@ -124,11 +177,14 @@ def verify_telemetry(entry):
 
 # Idempotent game receipt and best-per-player update in one atomic transaction.
 # Sorting metadata uses server receipt time to avoid trusting client time for ties.
-# KEYS: games, best, players, avatars. ARGV: game id, player id, full record, score, board record, avatar.
+# KEYS: games, best, players, avatars, names.
+# ARGV: game id, player id, full record, score, board record, avatar, name action (keep|set|clear), name.
 SAVE = """
 if redis.call('HEXISTS', KEYS[1], ARGV[1]) == 1 then return 0 end
 redis.call('HSET', KEYS[1], ARGV[1], ARGV[3])
 redis.call('HSET', KEYS[4], ARGV[2], ARGV[6])
+if ARGV[7] == 'set' then redis.call('HSET', KEYS[5], ARGV[2], ARGV[8])
+elseif ARGV[7] == 'clear' then redis.call('HDEL', KEYS[5], ARGV[2]) end
 local old = redis.call('ZSCORE', KEYS[2], ARGV[2])
 if not old or tonumber(ARGV[4]) > tonumber(old) then
   redis.call('ZADD', KEYS[2], ARGV[4], ARGV[2])
@@ -158,10 +214,12 @@ def save_score(data, address, location=None):
     digest = hashlib.sha256(address.encode()).hexdigest()[:24]
     if int(redis_cmd("EVAL", RATE, 1, prefix + ":rate:" + digest)) > 120:
         return 429, {"error": "Too many submissions; try again later"}
-    board_entry = {k: v for k, v in entry.items() if k != "telemetry"}
-    fresh = redis_cmd("EVAL", SAVE, 4, prefix + ":games", prefix + ":best",
-                      prefix + ":players", prefix + ":avatars", entry["id"], entry["playerId"],
-                      json.dumps(entry), entry["score"], json.dumps(board_entry), entry["avatar"])
+    action = entry.pop("nameUpdate", "keep")
+    board_entry = {k: v for k, v in entry.items() if k not in ("telemetry", "name")}
+    fresh = redis_cmd("EVAL", SAVE, 5, prefix + ":games", prefix + ":best",
+                      prefix + ":players", prefix + ":avatars", prefix + ":names", entry["id"], entry["playerId"],
+                      json.dumps(entry), entry["score"], json.dumps(board_entry), entry["avatar"],
+                      action, entry.get("name", ""))
     return 200, {"accepted": True, "duplicate": not bool(fresh), "id": entry["id"]}
 
 BOARD_LUA = """
@@ -169,24 +227,29 @@ local top = redis.call('ZREVRANGE', KEYS[1], 0, 9)
 if #top == 0 then return {} end
 local cutoff = redis.call('ZSCORE', KEYS[1], top[#top])
 local players = redis.call('ZREVRANGEBYSCORE', KEYS[1], '+inf', cutoff)
-return {redis.call('HMGET', KEYS[2], unpack(players)), redis.call('HMGET', KEYS[3], unpack(players))}
+return {redis.call('HMGET', KEYS[2], unpack(players)), redis.call('HMGET', KEYS[3], unpack(players)),
+        redis.call('HMGET', KEYS[4], unpack(players))}
 """
 
 def tv_board(board="tvos"):
     prefix = BOARDS[board][0]
-    # One round trip: top 10 plus everyone tied at the cutoff, their records and current avatars.
-    result = redis_cmd("EVAL", BOARD_LUA, 3, prefix + ":best", prefix + ":players", prefix + ":avatars")
+    # One round trip: top 10 plus everyone tied at the cutoff, their records, current avatars and names.
+    result = redis_cmd("EVAL", BOARD_LUA, 4, prefix + ":best", prefix + ":players", prefix + ":avatars",
+                       prefix + ":names")
     if not result:
         return []
-    raw, avatars = result
+    raw, avatars, names = result
     entries = []
-    for item, avatar in zip(raw, avatars):
+    for item, avatar, name in zip(raw, avatars, names):
         if not item:
             continue
         e = json.loads(item)
         # Show each player's current avatar, not the one worn when the best score was set.
         if avatar:
             e["avatar"] = avatar
+        # Likewise the player's current name; players who never set one keep "Player XXXXXX".
+        if name:
+            e["name"] = e["displayName"] = name
         entries.append(e)
     return sorted(entries, key=lambda e: (-e["score"], e["receivedAt"], e["id"]))[:10]
 
