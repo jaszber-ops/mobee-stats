@@ -1,6 +1,5 @@
 """Global boards. Scores are client-reported; iOS/web games must carry tap telemetry that replays to the claimed score and looks human."""
 from http.server import BaseHTTPRequestHandler
-from pathlib import Path
 from urllib.parse import urlparse, parse_qs, unquote
 import hashlib
 import json
@@ -190,22 +189,6 @@ def tv_board(board="tvos"):
         entries.append(e)
     return sorted(entries, key=lambda e: (-e["score"], e["receivedAt"], e["id"]))[:10]
 
-def legacy_board():
-    raw = json.loads((Path(__file__).resolve().parent.parent / "mobee_games_raw.json").read_text())
-    best = {}
-    for game in raw:
-        player = game.get("user_code")
-        score = game.get("score")
-        if not player or type(score) is not int or score < 0:
-            continue
-        entry = {"id": "legacy:" + player, "playerId": player, "avatar": "",
-                 "displayName": player, "score": score, "rules": "legacy",
-                 "completedAt": float(game.get("timestamp", 0))}
-        previous = best.get(player)
-        if previous is None or score > previous["score"]:
-            best[player] = entry
-    return sorted(best.values(), key=lambda e: (-e["score"], e["completedAt"], e["id"]))[:10]
-
 class handler(BaseHTTPRequestHandler):
     def reply(self, status, data, cache="no-store"):
         self.send_response(status)
@@ -217,15 +200,14 @@ class handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         board = parse_qs(urlparse(self.path).query).get("board", ["tvos"])[0]
-        if board not in (*BOARDS, "legacy"):
+        if board not in BOARDS:
             return self.reply(400, {"error": "Unknown leaderboard"})
         try:
-            entries = legacy_board() if board == "legacy" else tv_board(board)
+            entries = tv_board(board)
             # Edge-cached for a few seconds so repeat views skip the function entirely; clients that
             # just posted a score add a cache-busting query parameter to read through.
             self.reply(200, {"board": board, "entries": entries,
-                            "source": "legacy_snapshot" if board == "legacy" else "global",
-                            "validation": "historical" if board == "legacy" else "telemetry_replayed"},
+                            "source": "global", "validation": "telemetry_replayed"},
                        cache="public, max-age=0, s-maxage=5, stale-while-revalidate=60")
         except Exception:
             self.reply(503, {"error": "Leaderboard temporarily unavailable"})

@@ -121,14 +121,19 @@ class ScoresTests(unittest.TestCase):
             server.server_close()
             thread.join()
 
-    def test_legacy_best_per_player(self):
-        data=[dict(user_code="old1",score=5,timestamp="100"),dict(user_code="old1",score=8,timestamp="101"),
-              dict(user_code="old2",score=9,timestamp="102")]
-        with patch.object(Path,"read_text",return_value=json.dumps(data)):
-            result=scores.legacy_board()
-        self.assertEqual([e["score"] for e in result],[9,8])
-        self.assertTrue(all(e["rules"]=="legacy" for e in result))
-        self.assertEqual(self.redis.dbsize(),0)
+    def test_legacy_board_is_gone(self):
+        from http.server import HTTPServer
+        from threading import Thread
+        from urllib.request import urlopen
+        from urllib.error import HTTPError
+        server = HTTPServer(("127.0.0.1", 0), scores.handler)
+        Thread(target=server.serve_forever, daemon=True).start()
+        try:
+            with self.assertRaises(HTTPError) as caught:
+                urlopen(f"http://127.0.0.1:{server.server_port}/api/scores?board=legacy")
+            self.assertEqual(caught.exception.code, 400)
+        finally:
+            server.shutdown(); server.server_close()
 
     def test_location_is_recorded_from_edge_headers_only(self):
         loc = scores.location_from_headers({"x-vercel-ip-city": "Budapest", "x-vercel-ip-country": "HU"})
