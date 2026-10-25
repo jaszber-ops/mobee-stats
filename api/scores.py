@@ -13,8 +13,14 @@ PREFIX = "mobee:solo:tvos:v1"
 RULES = "tvos-easy-60-v1"
 BOARDS = {"tvos": (PREFIX, RULES),
           "ios": ("mobee:solo:ios:easy:v1", "ios-easy-60-v1"),
-          "ios-standard": ("mobee:solo:ios:standard:v1", "ios-standard-60-v1")}
+          "ios-standard": ("mobee:solo:ios:standard:v1", "ios-standard-60-v1"),
+          "twin": ("mobee:solo:twin:green:v1", "twin-green-120-v1")}
 RULE_PREFIXES = {rules: prefix for prefix, rules in BOARDS.values()}
+# Per game: clock length, cards in the deck, and whether a round is won by naming two shared symbols (Møbee Twin).
+RULE_SPECS = {"tvos-easy-60-v1": {"seconds": 60, "deck": 8, "pair": False},
+              "ios-easy-60-v1": {"seconds": 60, "deck": 8, "pair": False},
+              "ios-standard-60-v1": {"seconds": 60, "deck": 10, "pair": False},
+              "twin-green-120-v1": {"seconds": 120, "deck": 12, "pair": True}}
 MAX_BODY = 32768  # score + per-tap telemetry
 GAME_MS = 60000
 MIN_TAP_GAP_MS = 100      # two taps closer than this are not fingers
@@ -57,10 +63,11 @@ def validate_submission(data):
     identifier = valid_uuid(data.get("id"))
     player = valid_uuid(data.get("playerId"))
     score = data.get("score")
-    if type(score) is not int or not 0 <= score <= 120:
+    spec = RULE_SPECS[data["rules"]]
+    if type(score) is not int or not 0 <= score <= 2 * spec["seconds"]:
         raise ValueError("Invalid score")
-    if data.get("durationSeconds") != 60:
-        raise ValueError("Only completed 60-second games qualify")
+    if data.get("durationSeconds") != spec["seconds"]:
+        raise ValueError(f"Only completed {spec['seconds']}-second games qualify")
     avatar = data.get("avatar")
     if avatar not in {f"{r}-{c}" for r in range(1, 11) for c in range(1, 14)}:
         raise ValueError("Invalid avatar")
@@ -80,7 +87,7 @@ def validate_submission(data):
         telemetry["client"] = {k: str(v)[:64] for k, v in list(data["client"].items())[:8]}
     if telemetry:
         entry["telemetry"] = telemetry
-    if data["rules"].startswith("ios-") or "taps" in telemetry:
+    if data["rules"].startswith(("ios-", "twin-")) or "taps" in telemetry:
         verify_telemetry(entry)
     return entry
 
@@ -90,21 +97,32 @@ def verify_telemetry(entry):
     rounds, taps = telemetry.get("rounds"), telemetry.get("taps")
     if not rounds or taps is None:
         raise Suspicious("Telemetry required")
-    deck_size = 10 if "standard" in entry["rules"] else 8
+    spec = RULE_SPECS.get(entry["rules"], RULE_SPECS[RULES])
+    deck_size, game_ms, pair = spec["deck"], spec["seconds"] * 1000, spec["pair"]
+    def answer_of(r):
+        """The round's answer: one symbol, or (Twin) the set of the two shared symbols."""
+        if not pair:
+            return r.get("answer") if isinstance(r.get("answer"), str) else None
+        a = r.get("answers")
+        return frozenset(a) if isinstance(a, list) and len(a) == 2 and all(isinstance(x, str) for x in a) and len(set(a)) == 2 else None
     for i, r in enumerate(rounds):
         cards = r.get("cards")
-        if r.get("r") != i + 1 or type(r.get("t")) is not int or not 0 <= r["t"] <= GAME_MS \
+        if r.get("r") != i + 1 or type(r.get("t")) is not int or not 0 <= r["t"] <= game_ms \
                 or not (isinstance(cards, list) and len(set(map(str, cards))) == 3 and all(type(c) is int and 0 <= c < deck_size for c in cards)) \
-                or not isinstance(r.get("answer"), str) or (i and r["t"] < rounds[i - 1]["t"]):
-            raise Suspicious("Malformed round" if type(r.get("t")) is not int or r.get("t", 0) <= GAME_MS else "Deals after the 60-second clock")
+                or answer_of(r) is None or (i and r["t"] < rounds[i - 1]["t"]):
+            raise Suspicious("Malformed round" if type(r.get("t")) is not int or r.get("t", 0) <= game_ms else "Deals after the game clock")
     score, rnd, last_t, reactions = 0, 1, -MIN_TAP_GAP_MS, []
     for tap in taps:
         t, ok, sym = tap.get("t"), tap.get("ok"), tap.get("s")
-        if tap.get("r") != rnd or type(t) is not int or type(ok) is not bool or not isinstance(sym, str) \
-                or t < rounds[rnd - 1]["t"] or t - last_t < MIN_TAP_GAP_MS or ok != (sym == rounds[rnd - 1]["answer"]):
+        if pair:
+            named = frozenset(sym) if isinstance(sym, list) and len(sym) == 2 and all(isinstance(x, str) for x in sym) and len(set(sym)) == 2 else None
+        else:
+            named = sym if isinstance(sym, str) else None
+        if tap.get("r") != rnd or type(t) is not int or type(ok) is not bool or named is None \
+                or t < rounds[rnd - 1]["t"] or t - last_t < MIN_TAP_GAP_MS or ok != (named == answer_of(rounds[rnd - 1])):
             raise Suspicious("Malformed tap")
-        if t > GAME_MS:
-            raise Suspicious("Taps after the 60-second clock")
+        if t > game_ms:
+            raise Suspicious("Taps after the game clock")
         last_t = t
         score = max(0, score + (1 if ok else -1))
         if ok:
