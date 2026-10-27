@@ -28,6 +28,57 @@ MIN_REACTION_MS = 150     # deal -> correct tap; faster than any human on a fres
 MIN_MEDIAN_REACTION_MS = 400
 MIN_REACTION_SPREAD = 0.12  # std/mean of reaction times over 8+ rounds; a bot is metronomic
 
+BOARD_LABELS = {"ios": "Easy", "ios-standard": "Hard", "tvos": "Apple TV"}
+SLACK_TIMEOUT = 3  # seconds; a slow Slack must never hold up a score
+
+def slack_post(text):
+    """Post one message to Slack, via SLACK_WEBHOOK_URL or SLACK_BOT_TOKEN + SLACK_CHANNEL_ID.
+    Returns False (and does nothing) when neither is configured or Slack fails."""
+    webhook = os.environ.get("SLACK_WEBHOOK_URL")
+    token, channel = os.environ.get("SLACK_BOT_TOKEN"), os.environ.get("SLACK_CHANNEL_ID")
+    if webhook:
+        url, body, headers = webhook, {"text": text}, {}
+    elif token and channel:
+        url, body = "https://slack.com/api/chat.postMessage", {"channel": channel, "text": text, "unfurl_links": False}
+        headers = {"Authorization": "Bearer " + token}
+    else:
+        return False
+    try:
+        request = urllib.request.Request(url, data=json.dumps(body).encode(),
+                                         headers={"Content-Type": "application/json; charset=utf-8", **headers})
+        with urllib.request.urlopen(request, timeout=SLACK_TIMEOUT) as response:
+            return response.status == 200
+    except Exception:
+        return False
+
+def player_label(entry):
+    return entry.get("name") or entry.get("displayName") or "Player"
+
+def where(entry):
+    loc = entry.get("location") or {}
+    place = ", ".join(x for x in (loc.get("city"), loc.get("country")) if x)
+    app = ((entry.get("telemetry") or {}).get("client") or {}).get("app")
+    return " · ".join(x for x in (place, app) if x)
+
+def announce_top_ten(entry, prefix):
+    """After a new game is stored: if it set the player's best and that best is in the board's top 10,
+    ping Slack ("New #1 on Easy" / "#4 on Hard"). Never raises."""
+    try:
+        board = next(b for b, (p, _) in BOARDS.items() if p == prefix)
+        stored = redis_cmd("HGET", prefix + ":players", entry["playerId"])
+        if not stored or json.loads(stored).get("id") != entry["id"]:
+            return False  # not a new personal best
+        rank = int(redis_cmd("ZCOUNT", prefix + ":best", "(" + str(entry["score"]), "+inf")) + 1
+        if rank > 10:
+            return False
+        players = int(redis_cmd("ZCARD", prefix + ":best"))
+        head = f":trophy: *New #1 on {BOARD_LABELS[board]}*" if rank == 1 else f":star: *#{rank} on {BOARD_LABELS[board]}*"
+        detail = f"{player_label(entry)} — {entry['score']} points"
+        tail = " · ".join(x for x in (where(entry), f"{players} players on the board") if x)
+        return slack_post(f"{head}: {detail}\n{tail}")
+    except Exception:
+        return False
+
 class Suspicious(ValueError):
     """Submission is well-formed but the telemetry does not support the score; answered with 422."""
 
@@ -180,6 +231,8 @@ def save_score(data, address, location=None):
     fresh = redis_cmd("EVAL", SAVE, 4, prefix + ":games", prefix + ":best",
                       prefix + ":players", prefix + ":avatars", entry["id"], entry["playerId"],
                       json.dumps(entry), entry["score"], json.dumps(board_entry), entry["avatar"])
+    if fresh:
+        announce_top_ten(entry, prefix)
     return 200, {"accepted": True, "duplicate": not bool(fresh), "id": entry["id"]}
 
 BOARD_LUA = """
