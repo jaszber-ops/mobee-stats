@@ -28,14 +28,7 @@ It does not need Slack credentials or requests at page-load time.
 
 ## Vercel configuration
 
-Deploy this repository to both existing Vercel projects. The Python functions include
-the report JSON files. Set the same Upstash database in both projects using either pair:
-
-- UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN (preferred)
-- UPSTASH_REDIS_URL and UPSTASH_REDIS_TOKEN (existing aliases)
-
-The leaderboard deployment already had working Redis credentials; the stats deployment
-did not. Never put these values into the Apple TV app or GitHub source.
+See [DEPLOY.md](DEPLOY.md): the two Vercel projects, the Upstash and Slack variables, and how to deploy and roll back.
 
 ## New Apple TV scores
 
