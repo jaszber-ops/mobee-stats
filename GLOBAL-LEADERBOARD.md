@@ -73,6 +73,37 @@ characters, at most 16 characters) and keeps the player's latest name per board 
 
 Existing scores need no migration. Removing a name by hand is `HDEL <prefix>:names <playerId>`.
 
+## Reporting and hiding names
+
+Apple requires that user-generated content (here, player names) can be reported and removed.
+A name is identified by `board` + `playerId`; both are on every board entry.
+
+- `POST /api/scores?action=report` with `{"board": "ios", "playerId": "<uuid>", "name": "<as shown>"}`
+  (`name` is informational). Answers 200 `{"reported": true}`; 404 if that player has no name on the
+  board; 400 for a malformed body; 429 after 20 reports from one address in 10 minutes. CORS as for scores.
+  Each address counts once per name (`<prefix>:reports:<playerId>`, a set of hashed addresses). Every new
+  report pings Slack with the name, the board, the count and ready-made hide/unhide commands.
+- After 3 distinct reports the name is hidden automatically, pending review: the board shows
+  "Player XXXXXX" and the score stays. Hidden players are kept in `<prefix>:hidden`, report counts in
+  `<prefix>:reported`.
+- Admin actions need the `ADMIN_TOKEN` environment variable in the Vercel project that serves
+  /api/scores (a random secret of at least 16 characters; without it admin actions are off), sent as
+  `Authorization: Bearer <token>` and compared in constant time. Ten wrong tokens from one address lock
+  it out for 10 minutes.
+
+```sh
+# hide a name (it stays hidden if the player renames, until unhidden)
+curl -X POST 'https://mobee-leaderboard.trippplecard.games/api/scores?action=hide' \
+  -H "Authorization: Bearer $ADMIN_TOKEN" -H 'Content-Type: application/json' \
+  -d '{"board":"ios","playerId":"<uuid>"}'
+# reviewed and fine: show it again and clear its reports (action=unhide, same body)
+# what has been reported or hidden on a board
+curl 'https://mobee-leaderboard.trippplecard.games/api/scores?board=ios&action=reports' \
+  -H "Authorization: Bearer $ADMIN_TOKEN"
+```
+
+`PUBLIC_URL` (optional) changes the host printed in the Slack commands.
+
 ## Slack
 
 The score API posts to Slack when a new game sets a player's best and that best is in the
