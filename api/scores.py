@@ -17,7 +17,8 @@ BOARDS = {"tvos": (PREFIX, RULES),
           "ios": ("mobee:solo:ios:easy:v1", "ios-easy-60-v1"),
           "ios-standard": ("mobee:solo:ios:standard:v1", "ios-standard-90-v1"),
           "ios-expert": ("mobee:solo:ios:expert:v1", "ios-expert-120-v1"),
-          "twin": ("mobee:solo:twin:green:v1", "twin-green-120-v1")}
+          "twin": ("mobee:solo:twin:green:v1", "twin-green-120-v1"),
+          "twin-yellow": ("mobee:solo:twin:yellow:v1", "twin-yellow-120-v1")}
 # Older rules ids still accepted, and the board they count on. Hard went from 60 to 90 seconds in Møbee 2.0;
 # by the owner's decision the 60-second Hard scores stay on the same board as the 90-second ones.
 EARLIER_RULES = {"ios-standard-60-v1": "ios-standard"}
@@ -25,12 +26,14 @@ RULE_PREFIXES = {**{rules: prefix for prefix, rules in BOARDS.values()},
                  **{rules: BOARDS[board][0] for rules, board in EARLIER_RULES.items()}}
 # Per game: clock length, cards in the deck, and whether a round is won by naming two shared symbols (Møbee Twin).
 # Expert is the printed 17-card deck (Möbius plane of order 4: 20 figures per card, 68 in all, any 3 cards share 1).
+# Twin Easy is the green 12-card deck, Twin Hard the yellow 10-card deck (24 figures a card); any 3 Twin cards share 2.
 RULE_SPECS = {"tvos-easy-60-v1": {"seconds": 60, "deck": 8, "pair": False},
               "ios-easy-60-v1": {"seconds": 60, "deck": 8, "pair": False},
               "ios-standard-60-v1": {"seconds": 60, "deck": 10, "pair": False},
               "ios-standard-90-v1": {"seconds": 90, "deck": 10, "pair": False},
               "ios-expert-120-v1": {"seconds": 120, "deck": 17, "pair": False},
-              "twin-green-120-v1": {"seconds": 120, "deck": 12, "pair": True}}
+              "twin-green-120-v1": {"seconds": 120, "deck": 12, "pair": True},
+              "twin-yellow-120-v1": {"seconds": 120, "deck": 10, "pair": True}}
 MAX_BODY = 32768  # score + per-tap telemetry
 GAME_MS = 60000
 MIN_TAP_GAP_MS = 100      # two taps closer than this are not fingers
@@ -84,7 +87,7 @@ def clean_name(raw):
         return ("clear", "")
     return ("set", name)
 
-BOARD_LABELS = {"ios": "Easy", "ios-standard": "Hard", "ios-expert": "Expert", "tvos": "Apple TV", "twin": "Twin"}
+BOARD_LABELS = {"ios": "Easy", "ios-standard": "Hard", "ios-expert": "Expert", "tvos": "Apple TV", "twin": "Twin", "twin-yellow": "Twin Hard"}
 SLACK_TIMEOUT = 3  # seconds; a slow Slack must never hold up a score
 
 def slack_post(text):

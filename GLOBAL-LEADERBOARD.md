@@ -16,7 +16,8 @@ It does not need Slack credentials or requests at page-load time.
   | ios (Easy) | ios-easy-60-v1 | 60 s | 8 cards | mobee:solo:ios:easy:v1 |
   | ios-standard (Hard) | ios-standard-90-v1 (Møbee 2.0) and ios-standard-60-v1 (earlier apps) | 90 s / 60 s | 10 cards | mobee:solo:ios:standard:v1 |
   | ios-expert (Expert) | ios-expert-120-v1 | 120 s | 17 cards (Möbius plane of order 4, 20 figures a card) | mobee:solo:ios:expert:v1 |
-  | twin (Møbee Twin) | twin-green-120-v1 | 120 s | 12 cards, two shared symbols | mobee:solo:twin:green:v1 |
+  | twin (Møbee Twin Easy) | twin-green-120-v1 | 120 s | 12 cards (green deck), two shared symbols | mobee:solo:twin:green:v1 |
+  | twin-yellow (Møbee Twin Hard) | twin-yellow-120-v1 | 120 s | 10 cards (yellow deck, 24 figures a card), two shared symbols | mobee:solo:twin:yellow:v1 |
   | tvos (Apple TV) | tvos-easy-60-v1 | 60 s | 8 cards | mobee:solo:tvos:v1 |
 
   Hard became a 90-second game in Møbee 2.0. The 60- and 90-second Hard games deliberately share one
