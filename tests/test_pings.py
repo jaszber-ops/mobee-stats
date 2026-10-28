@@ -14,6 +14,7 @@ daily = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(daily)
 scores = daily.scores
 from test_scores import game
+import test_scores
 
 
 class SlackPingTests(unittest.TestCase):
@@ -26,7 +27,8 @@ class SlackPingTests(unittest.TestCase):
 
     def play(self, score, player=None, rules="ios-easy-60-v1", **extra):
         d = dict(id=str(uuid.uuid4()), playerId=player or str(uuid.uuid4()), avatar="2-4", score=score,
-                 completedAt=time.time(), durationSeconds=60, rules=rules, **game(score), **extra)
+                 completedAt=time.time(), durationSeconds=60, rules=rules, **game(score))
+        d.update(extra)
         d["client"] = {"app": "web"}
         status, _ = scores.save_score(d, "test", {"city": "Essen", "country": "DE"})
         self.assertEqual(status, 200)
@@ -57,6 +59,17 @@ class SlackPingTests(unittest.TestCase):
         scores.save_score(dict(id=str(uuid.uuid4()), playerId=str(uuid.uuid4()), avatar="2-4", score=3,
                                completedAt=time.time(), durationSeconds=60, rules="tvos-easy-60-v1"), "test")
         self.assertIn("New #1 on Apple TV", self.sent[-1])
+        self.play(5, rules="ios-standard-90-v1", durationSeconds=90)
+        self.assertIn("New #1 on Hard", self.sent[-1])
+        expert = test_scores.expert_game(7)
+        expert["client"] = {"app": "ios"}
+        status, _ = scores.save_score(dict(id=str(uuid.uuid4()), playerId=str(uuid.uuid4()), avatar="5-5", score=7,
+                                           completedAt=time.time(), durationSeconds=120, rules="ios-expert-120-v1",
+                                           **expert), "test", {"city": "Budapest", "country": "HU"})
+        self.assertEqual(status, 200)
+        self.assertIn("New #1 on Expert", self.sent[-1])
+        self.assertIn("7 points", self.sent[-1])
+        self.assertIn("Budapest, HU · ios", self.sent[-1])
 
     def test_slack_trouble_never_costs_the_score(self):
         patch.object(scores, "slack_post", side_effect=RuntimeError("down")).start()

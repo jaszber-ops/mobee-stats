@@ -30,6 +30,26 @@ def game(score, wrong=0, reaction=1200, jitter=400, seed=1):
         rnd += 1; rounds.append({"r": rnd, "t": t + 10, "cards": deals[i + 1], "answer": "star"})
     return {"rounds": rounds, "taps": taps, "client": {"app": "ios", "version": "1.1.0"}}
 
+def expert_game(score, wrong=0, reaction=4200, jitter=1800, seed=1, deck=17):
+    """Telemetry of a plausible two-minute Expert game: 17-card deck, 20 figures per card, one shared figure to find,
+    so rounds take a few seconds each. Taps carry the card/slot/x/y detail the app sends."""
+    rng = random.Random(seed)
+    rounds, taps, t, rnd = [], [], 0, 1
+    correct = score + wrong
+    deals = [rng.sample(range(deck), 3) for _ in range(correct + 1)]
+    figures = ["bulldozer", "hedgehog", "satellite", "violin", "camel", "umbrella", "butterfly", "smiley"]
+    answers = [rng.choice(figures) for _ in range(correct + 1)]
+    rounds.append({"r": 1, "t": 0, "cards": deals[0], "answer": answers[0]})
+    misses = set(rng.sample(range(1, correct), wrong)) if wrong else set()
+    for i in range(correct):
+        if i in misses:
+            t += 1100; taps.append({"t": t, "r": rnd, "s": "pine-tree", "ok": False, "card": 1, "slot": 7, "x": 0.31, "y": 0.62})
+        t += reaction + rng.randint(-jitter, jitter)
+        taps.append({"t": t, "r": rnd, "s": answers[i], "ok": True, "card": rng.randrange(3), "slot": rng.randrange(20),
+                     "x": round(rng.random(), 3), "y": round(rng.random(), 3)})
+        rnd += 1; rounds.append({"r": rnd, "t": t + 10, "cards": deals[i + 1], "answer": answers[i + 1]})
+    return {"rounds": rounds, "taps": taps, "client": {"app": "web", "version": "2.0.0", "lang": "en", "ua": "Mozilla/5.0"}}
+
 def twin_game(score, wrong=0, reaction=3500, jitter=1200, seed=1):
     """Telemetry of a plausible two-minute Twin game: each round is won by naming both shared symbols."""
     rng = random.Random(seed)
@@ -56,10 +76,12 @@ class ScoresTests(unittest.TestCase):
     def entry(self, **overrides):
         d = dict(id=str(uuid.uuid4()), playerId=str(uuid.uuid4()), avatar="10-13",
                  score=12, completedAt=time.time(), durationSeconds=60, rules=scores.RULES)
-        if overrides.get("rules", "").startswith("twin-"):
-            d["durationSeconds"] = 120
+        if overrides.get("rules") in scores.RULE_SPECS:
+            d["durationSeconds"] = scores.RULE_SPECS[overrides["rules"]]["seconds"]
         d.update(overrides)
-        if d["rules"].startswith("ios-") and "taps" not in d:
+        if d["rules"].startswith("ios-expert-") and "taps" not in d:
+            d.update(expert_game(d["score"]))
+        elif d["rules"].startswith("ios-") and "taps" not in d:
             d.update(game(d["score"]))
         if d["rules"].startswith("twin-") and "taps" not in d:
             d.update(twin_game(d["score"]))
@@ -82,6 +104,78 @@ class ScoresTests(unittest.TestCase):
         self.assertTrue(all(s != 200 for s in statuses), statuses)
         self.assertEqual(len(scores.tv_board("twin")), 2)
         self.assertTrue(all(e["rules"] == "twin-green-120-v1" for e in scores.tv_board("twin")))
+    def test_hard_90_second_games_share_the_existing_hard_board(self):
+        """Møbee 2.0 plays Hard for 90 s (ios-standard-90-v1); the 60-second Hard scores stay on the same board."""
+        hard = lambda **k: self.entry(**{"rules": "ios-standard-90-v1", **k})
+        old = self.entry(rules="ios-standard-60-v1", score=30, **game(30, reaction=1500, jitter=500))
+        self.assertEqual(scores.save_score(old, "test")[0], 200)
+        # 50 rounds at ~1.6 s run to ~80 s: past a 60-second clock, inside a 90-second one
+        long = game(50, reaction=1600, jitter=500, seed=3)
+        self.assertGreater(long["taps"][-1]["t"], 60000)
+        self.assertEqual(scores.save_score(hard(score=50, **long), "test")[0], 200)
+        self.assertEqual(scores.save_score(hard(score=9, **game(9, wrong=2, seed=5)), "test")[0], 200)
+        top = scores.tv_board("ios-standard")
+        self.assertEqual([(e["score"], e["rules"]) for e in top],
+                         [(50, "ios-standard-90-v1"), (30, "ios-standard-60-v1"), (9, "ios-standard-90-v1")])
+        self.assertEqual(self.redis.hlen("mobee:solo:ios:standard:v1:games"), 3)
+        bad = [hard(durationSeconds=60),                                            # a 90-second rules id needs 90 s
+               self.entry(rules="ios-standard-60-v1", score=50, **long),            # taps after a 60-second clock
+               hard(score=70, **game(70, reaction=1400, jitter=400)),               # 70 rounds at 1.4 s overrun 90 s
+               hard(score=9, **game(9, jitter=0))]                                  # metronomic
+        eleventh = game(5); eleventh["rounds"][2]["cards"] = [0, 4, 10]              # the Hard deck has 10 cards
+        bad.append(hard(score=5, **eleventh))
+        for d in bad:
+            try: status = scores.save_score(d, "test")[0]
+            except ValueError: status = 400
+            self.assertNotEqual(status, 200)
+        self.assertEqual(len(scores.tv_board("ios-standard")), 3)
+        self.assertEqual(self.redis.keys("mobee:solo:ios:standard:v2*"), [])
+    def test_expert_board_accepts_two_minute_games_on_the_17_card_deck(self):
+        expert = lambda **k: self.entry(**{"rules": "ios-expert-120-v1", **k})
+        honest = expert(score=24, **expert_game(24, wrong=3, seed=2))
+        self.assertEqual(scores.save_score(honest, "test")[0], 200)
+        self.assertLess(len(json.dumps(honest)), scores.MAX_BODY)
+        self.assertEqual(scores.save_score(expert(score=8, **expert_game(8, seed=6)), "test")[0], 200)
+        fast = expert_game(40, reaction=2600, jitter=900, seed=7)                    # a very good player: ~2.6 s a round
+        self.assertGreater(fast["rounds"][-1]["t"], 90000)
+        self.assertEqual(scores.save_score(expert(score=40, **fast), "test")[0], 200)
+        top = scores.tv_board("ios-expert")
+        self.assertEqual([e["score"] for e in top], [40, 24, 8])
+        self.assertTrue(all(e["rules"] == "ios-expert-120-v1" for e in top))
+        self.assertNotIn("telemetry", top[0])
+        self.assertEqual(self.redis.hlen("mobee:solo:ios:expert:v1:games"), 3)
+        # Expert stays off the other boards
+        self.assertEqual(scores.tv_board("ios-standard"), [])
+        self.assertEqual(scores.tv_board("ios"), [])
+    def test_expert_forgeries_are_refused(self):
+        expert = lambda **k: self.entry(**{"rules": "ios-expert-120-v1", **k})
+        off_deck = expert_game(6); off_deck["rounds"][3]["cards"] = [2, 9, 17]      # card 17 does not exist (0..16)
+        pair = twin_game(6)                                                           # two-symbol answers are Twin, not Expert
+        bad = [expert(taps=None, rounds=None),                                        # no telemetry
+               expert(durationSeconds=60),                                            # Expert games are two minutes
+               expert(score=15, **expert_game(14)),                                   # score above the taps
+               expert(score=12, **expert_game(12, reaction=300, jitter=50)),          # inhuman reactions
+               expert(score=12, **expert_game(12, jitter=0)),                         # metronomic
+               expert(score=60, **expert_game(60, reaction=2200, jitter=400)),        # 60 rounds at 2.2 s overrun 120 s
+               expert(score=6, **off_deck), expert(score=6, **pair),
+               expert(score=241)]                                                     # above any possible score
+        for d in bad:
+            try: status = scores.save_score(d, "test")[0]
+            except ValueError: status = 400
+            self.assertNotEqual(status, 200, d.get("score"))
+        self.assertEqual(scores.tv_board("ios-expert"), [])
+        self.assertGreaterEqual(self.redis.hlen("mobee:solo:ios:expert:v1:rejected"), 6)
+    def test_staging_app_rules_ids_are_all_accepted(self):
+        """rulesFor(level) in mobee-ios staging www/scores.js, with gameSeconds 60/90/120, and boardFor(level)."""
+        for level, rules, board in [(1, "ios-easy-60-v1", "ios"), (2, "ios-standard-90-v1", "ios-standard"),
+                                    (3, "ios-expert-120-v1", "ios-expert")]:
+            d = self.entry(rules=rules)
+            self.assertEqual(d["durationSeconds"], {1: 60, 2: 90, 3: 120}[level])
+            self.assertEqual(scores.save_score(d, "test")[0], 200, rules)
+            self.assertEqual(scores.tv_board(board)[0]["id"], d["id"])
+        # Twin 1.0 is unchanged
+        self.assertEqual(scores.save_score(self.entry(rules="twin-green-120-v1"), "test")[0], 200)
+        self.assertEqual(scores.tv_board("twin")[0]["rules"], "twin-green-120-v1")
     def test_ios_requires_telemetry_that_replays_to_the_score(self):
         ios = lambda **k: self.entry(rules="ios-easy-60-v1", **k)
         self.assertEqual(scores.save_score(ios(), "test")[0], 200)
@@ -137,6 +231,7 @@ class ScoresTests(unittest.TestCase):
         self.assertEqual(len(scores.tv_board()), 1)
         self.assertEqual(len(scores.tv_board("ios")), 1)
         self.assertEqual(len(scores.tv_board("ios-standard")), 1)
+        self.assertEqual(len(scores.tv_board("ios-expert")), 1)
 
     def test_http_routes_select_ios_board_and_preserve_default_tv(self):
         from http.server import HTTPServer
