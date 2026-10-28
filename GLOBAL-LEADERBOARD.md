@@ -41,6 +41,25 @@ reduce accidental/bulk abuse; they do not establish cheat-proof competitive scor
 Legacy, web multiplayer and Apple TV solo results remain separate competitions.
 No account linking across installations is implemented.
 
+## Player names
+
+Any submission may carry an optional `name`. The server tidies it (spacing, invisible
+characters, at most 16 characters) and keeps the player's latest name per board in
+`<board prefix>:names`, next to their current avatar. Board entries then show it as
+`displayName` and `name`; players who never set one keep "Player XXXXXX".
+
+- No `name` field (every app version released so far): the stored name is left alone.
+- `name: ""`: the player cleared it; the board goes back to "Player XXXXXX".
+- A name containing "Møbee"/"Mobee", or one that isn't text, is ignored. The score is
+  still accepted: the app re-sends anything refused with 400, so a name must never block it.
+- Rude names (a short English, German and Hungarian word list in `api/scores.py`, kept identical to
+  the app's) show as "Player", as if no name were set; the score still counts. Words in
+  `BLOCKED_ANYWHERE` are caught inside longer names and through spacing, accents, repeated
+  letters and digits ("s h 1 t", "fuuuck"); `BLOCKED_WORDS` only as whole words, because they
+  also occur in ordinary names (Szarvas, Hancock). No list catches everything.
+
+Existing scores need no migration. Removing a name by hand is `HDEL <prefix>:names <playerId>`.
+
 ## Slack
 
 The score API posts to Slack when a new game sets a player's best and that best is in the

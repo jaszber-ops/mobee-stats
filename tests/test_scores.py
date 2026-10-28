@@ -195,5 +195,92 @@ class ScoresTests(unittest.TestCase):
         self.assertEqual(stored["telemetry"]["taps"][0]["x"], 0.4)
         self.assertEqual(stored["telemetry"]["client"]["app"], "ios")
 
+    def live_app_submission(self, **overrides):
+        """Exactly what play.trippplecard.games and the released iOS app post today (www/scores.js on main): no name."""
+        d = dict(id=str(uuid.uuid4()), playerId=str(uuid.uuid4()), avatar="1-1", score=11,
+                 completedAt=int(time.time()), durationSeconds=60, rules="ios-easy-60-v1", **game(11))
+        d["client"] = {"app": "web", "version": "1.2.0", "lang": "en", "ua": "Mozilla/5.0"}
+        d.update(overrides)
+        return d
+
+    def test_live_app_scores_are_kept_exactly_as_before(self):
+        board_keys = {"id", "playerId", "avatar", "score", "completedAt", "receivedAt", "rules", "displayName", "location"}
+        for rules in ("ios-easy-60-v1", "ios-standard-60-v1"):
+            d = self.live_app_submission(rules=rules)
+            status, body = scores.save_score(d, "test", {"city": "Essen", "country": "DE"})
+            self.assertEqual((status, body["accepted"]), (200, True))
+            board = "ios" if "easy" in rules else "ios-standard"
+            top = scores.tv_board(board)[0]
+            self.assertEqual(set(top), board_keys)
+            self.assertEqual(top["displayName"], "Player " + d["playerId"][:6].upper())
+            stored = json.loads(self.redis.hget(scores.BOARDS[board][0] + ":games", d["id"]))
+            self.assertNotIn("name", stored)
+            self.assertEqual(stored["telemetry"]["taps"], d["taps"])
+        self.assertEqual(self.redis.keys("*:names"), [])
+
+    def test_records_written_before_names_existed_still_read(self):
+        prefix = scores.BOARDS["ios"][0]
+        old = {"id": str(uuid.uuid4()), "playerId": str(uuid.uuid4()), "avatar": "3-4", "score": 30,
+               "completedAt": 1, "receivedAt": 2, "rules": "ios-easy-60-v1", "displayName": "Player ABCDEF"}
+        self.redis.zadd(prefix + ":best", {old["playerId"]: 30})
+        self.redis.hset(prefix + ":players", old["playerId"], json.dumps(old))
+        scores.save_score(self.live_app_submission(name="Johnny", score=9, **game(9)), "test")
+        top = scores.tv_board("ios")
+        self.assertEqual([(e["score"], e["displayName"]) for e in top], [(30, "Player ABCDEF"), (9, "Johnny")])
+
+    def test_name_is_shown_kept_renamed_and_cleared(self):
+        player = str(uuid.uuid4())
+        first = self.live_app_submission(playerId=player, score=20, name="  Johnny  ", **game(20))
+        scores.save_score(first, "test")
+        self.assertEqual(scores.tv_board("ios")[0]["displayName"], "Johnny")
+        self.assertEqual(scores.tv_board("ios")[0]["name"], "Johnny")
+        self.assertEqual(json.loads(self.redis.hget("mobee:solo:ios:easy:v1:games", first["id"]))["name"], "Johnny")
+        # a later, lower game without a name field leaves the name alone
+        scores.save_score(self.live_app_submission(playerId=player, score=3, **game(3)), "test")
+        self.assertEqual(scores.tv_board("ios")[0]["displayName"], "Johnny")
+        # renaming shows on the best score that was set under the old name
+        scores.save_score(self.live_app_submission(playerId=player, score=4, name="Johnny B", **game(4)), "test")
+        self.assertEqual([(e["score"], e["displayName"]) for e in scores.tv_board("ios")], [(20, "Johnny B")])
+        # a retried submission cannot change the name again
+        scores.save_score(dict(first, name="Someone"), "test")
+        self.assertEqual(scores.tv_board("ios")[0]["displayName"], "Johnny B")
+        # emptying the name goes back to the default label
+        scores.save_score(self.live_app_submission(playerId=player, score=2, name="", **game(2)), "test")
+        top = scores.tv_board("ios")[0]
+        self.assertEqual(top["displayName"], "Player " + player[:6].upper())
+        self.assertNotIn("name", top)
+
+    def test_a_bad_name_never_costs_the_score(self):
+        player = str(uuid.uuid4())
+        scores.save_score(self.live_app_submission(playerId=player, name="Anna"), "test")
+        for bad in ["Møbee Master", "MOBEE", "Mo\u0301bee", 42, ["x"], {"a": 1}]:
+            status, body = scores.save_score(self.live_app_submission(playerId=player, name=bad), "test")
+            self.assertEqual((status, body["accepted"]), (200, True), bad)
+        self.assertEqual(scores.tv_board("ios")[0]["displayName"], "Anna")
+        scores.save_score(self.live_app_submission(playerId=player, name="Zs\u200bófi with a very long name"), "test")
+        self.assertEqual(scores.tv_board("ios")[0]["displayName"], "Zsófi with a ver")
+
+    def test_names_are_per_board_and_tvos_unchanged(self):
+        player = str(uuid.uuid4())
+        scores.save_score(self.live_app_submission(playerId=player, name="Johnny"), "test")
+        scores.save_score(self.entry(playerId=player), "test")
+        self.assertEqual(scores.tv_board("ios")[0]["displayName"], "Johnny")
+        self.assertEqual(scores.tv_board()[0]["displayName"], "Player " + player[:6].upper())
+
+    def test_rude_names_show_as_player_and_the_score_still_counts(self):
+        ok = ["Johnny", "Zsófi", "Szarvas", "Classic", "Hancock", "Nigeria", "Nazira", "Assisi", "Dickens",
+              "Kassandra", "Cumbria", "Basil", "Analise", "Titus", "Penelope", "Áron"]
+        bad = ["sh1t", "s h i t", "fuuuck", "FüCK", "f*ck you", "kurva", "k.u.r.v.a", "Arsch", "4ss", "ASS",
+               "big dick", "szar", "Nazi", "hitler88", "geci", "b@zmeg", "köcsög", "Fotze", "Scheiße", "p0rn"]
+        self.assertEqual([n for n in ok if scores.name_blocked(n)], [])
+        self.assertEqual([n for n in bad if not scores.name_blocked(n)], [])
+        player = str(uuid.uuid4())
+        scores.save_score(self.live_app_submission(playerId=player, name="Johnny"), "test")
+        status, body = scores.save_score(self.live_app_submission(playerId=player, name="sh1t head", score=12, **game(12)), "test")
+        self.assertEqual((status, body["accepted"]), (200, True))
+        top = scores.tv_board("ios")[0]
+        self.assertEqual((top["score"], top["displayName"]), (12, "Player " + player[:6].upper()))
+        self.assertNotIn("name", json.loads(self.redis.hget("mobee:solo:ios:easy:v1:games", body["id"])))
+
 if __name__ == "__main__":
     unittest.main()
