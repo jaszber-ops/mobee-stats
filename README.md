@@ -6,3 +6,5 @@
   and a summary of yesterday's games every morning (`.github/workflows/daily-summary.yml`).
 - The stats dashboard (`index.html`, `/api/stats`) still shows the last report of the old web game,
   saved in `mobee_stats.json`; the Slack scraping that produced it was removed in October 2026.
+- Player names can be reported from the app; 3 reports hide a name pending review, and the owner hides
+  or restores names with the `ADMIN_TOKEN` secret (see "Reporting and hiding names" in GLOBAL-LEADERBOARD.md).

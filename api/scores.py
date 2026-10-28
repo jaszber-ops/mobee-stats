@@ -2,6 +2,7 @@
 from http.server import BaseHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs, unquote
 import hashlib
+import hmac
 import re
 import json
 import os
@@ -107,8 +108,12 @@ def slack_post(text):
     except Exception:
         return False
 
+def slack_escape(text):
+    """Player-typed text in a Slack message: no links, mentions (<!channel>) or formatting."""
+    return str(text).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
 def player_label(entry):
-    return entry.get("name") or entry.get("displayName") or "Player"
+    return slack_escape(entry.get("name") or entry.get("displayName") or "Player")
 
 def where(entry):
     loc = entry.get("location") or {}
@@ -307,30 +312,126 @@ if #top == 0 then return {} end
 local cutoff = redis.call('ZSCORE', KEYS[1], top[#top])
 local players = redis.call('ZREVRANGEBYSCORE', KEYS[1], '+inf', cutoff)
 return {redis.call('HMGET', KEYS[2], unpack(players)), redis.call('HMGET', KEYS[3], unpack(players)),
-        redis.call('HMGET', KEYS[4], unpack(players))}
+        redis.call('HMGET', KEYS[4], unpack(players)), redis.call('HMGET', KEYS[5], unpack(players))}
 """
 
 def tv_board(board="tvos"):
     prefix = BOARDS[board][0]
-    # One round trip: top 10 plus everyone tied at the cutoff, their records, current avatars and names.
-    result = redis_cmd("EVAL", BOARD_LUA, 4, prefix + ":best", prefix + ":players", prefix + ":avatars",
-                       prefix + ":names")
+    # One round trip: top 10 plus everyone tied at the cutoff, their records, current avatars, names
+    # and whether their name is hidden.
+    result = redis_cmd("EVAL", BOARD_LUA, 5, prefix + ":best", prefix + ":players", prefix + ":avatars",
+                       prefix + ":names", prefix + ":hidden")
     if not result:
         return []
-    raw, avatars, names = result
+    raw, avatars, names, hidden = result
     entries = []
-    for item, avatar, name in zip(raw, avatars, names):
+    for item, avatar, name, hide in zip(raw, avatars, names, hidden):
         if not item:
             continue
         e = json.loads(item)
         # Show each player's current avatar, not the one worn when the best score was set.
         if avatar:
             e["avatar"] = avatar
-        # Likewise the player's current name; players who never set one keep "Player XXXXXX".
-        if name:
+        # Likewise the player's current name; players who never set one, or whose name was hidden after
+        # a report, keep "Player XXXXXX".
+        if name and not hide:
             e["name"] = e["displayName"] = name
         entries.append(e)
     return sorted(entries, key=lambda e: (-e["score"], e["receivedAt"], e["id"]))[:10]
+
+# --- Reporting names (App Store guideline 1.2: user-generated content must be reportable and removable) ---
+# A report is about one player's name on one board (board + playerId, both on every board entry).
+# Keys per board prefix:
+#   :reports:<playerId>  set of hashed reporter addresses (distinct reporters; one address counts once)
+#   :reported            hash playerId -> {"count", "name", "at"} for review
+#   :hidden              hash playerId -> {"name", "by": "auto"|"admin", "at"}; the board shows "Player XXXXXX"
+# Hiding is per player and board: a hidden player's later names stay hidden too, until unhidden.
+AUTO_HIDE_REPORTS = 3       # distinct reporters that hide a name pending review
+REPORT_RATE_LIMIT = 20      # reports per address per 10 minutes, across all boards
+ADMIN_FAILURE_LIMIT = 10    # wrong admin tokens per address per 10 minutes
+DEFAULT_PUBLIC_URL = "https://mobee-leaderboard.trippplecard.games"
+
+# KEYS: reports set, reported hash, hidden hash. ARGV: reporter hash, player id, name, threshold, now.
+# Returns {distinct reports, 1 if this report was new, 1 if this report hid the name}.
+REPORT = """
+local added = redis.call('SADD', KEYS[1], ARGV[1])
+local n = redis.call('SCARD', KEYS[1])
+redis.call('HSET', KEYS[2], ARGV[2], cjson.encode({count = n, name = ARGV[3], at = tonumber(ARGV[5])}))
+local hid = 0
+if n >= tonumber(ARGV[4]) and redis.call('HEXISTS', KEYS[3], ARGV[2]) == 0 then
+  redis.call('HSET', KEYS[3], ARGV[2], cjson.encode({name = ARGV[3], by = 'auto', at = tonumber(ARGV[5])}))
+  hid = 1
+end
+return {n, added, hid}
+"""
+
+def address_digest(address):
+    return hashlib.sha256(address.encode()).hexdigest()[:24]
+
+def report_target(data):
+    """(board, prefix, playerId) from a report or admin body; ValueError if malformed."""
+    if not isinstance(data, dict) or data.get("board") not in BOARDS:
+        raise ValueError("Unknown leaderboard")
+    return data["board"], BOARDS[data["board"]][0], valid_uuid(data.get("playerId"))
+
+def admin_command(board, player, action):
+    return (f"curl -X POST '{os.environ.get('PUBLIC_URL') or DEFAULT_PUBLIC_URL}/api/scores?action={action}' "
+            f"-H \"Authorization: Bearer $ADMIN_TOKEN\" -H 'Content-Type: application/json' "
+            f"-d '{{\"board\":\"{board}\",\"playerId\":\"{player}\"}}'")
+
+def report_name(data, address):
+    board, prefix, player = report_target(data)
+    name = redis_cmd("HGET", prefix + ":names", player)
+    if not name:
+        return 404, {"error": "This player has no name on the board"}
+    digest = address_digest(address)
+    if int(redis_cmd("EVAL", RATE, 1, "mobee:report:rate:" + digest)) > REPORT_RATE_LIMIT:
+        return 429, {"error": "Too many reports; try again later"}
+    count, new, hid = redis_cmd("EVAL", REPORT, 3, f"{prefix}:reports:{player}", prefix + ":reported",
+                                prefix + ":hidden", digest, player, name, AUTO_HIDE_REPORTS, int(time.time()))
+    if new:
+        try:
+            hidden = bool(redis_cmd("HEXISTS", prefix + ":hidden", player))
+            state = (":no_entry_sign: hidden from the board until reviewed" if hid
+                     else "already hidden" if hidden else "still shown")
+            slack_post(f":triangular_flag_on_post: *Name reported on {BOARD_LABELS[board]}*: “{slack_escape(name)}” "
+                       f"(player {player[:8]}) — {count} report{'s' if count != 1 else ''}, {state}.\n"
+                       f"Hide it: `{admin_command(board, player, 'hide')}`\n"
+                       f"Keep it shown (clears the reports): `{admin_command(board, player, 'unhide')}`")
+        except Exception:
+            pass
+    return 200, {"reported": True}
+
+def admin_authorized(headers, address):
+    """Bearer ADMIN_TOKEN, compared in constant time. Off entirely when ADMIN_TOKEN is not set."""
+    token = os.environ.get("ADMIN_TOKEN") or ""
+    given = (headers.get("Authorization") or "").removeprefix("Bearer ").strip()
+    if len(token) >= 16 and hmac.compare_digest(given.encode(), token.encode()):
+        return True
+    redis_cmd("EVAL", RATE, 1, "mobee:admin:fail:" + address_digest(address))
+    return False
+
+def admin_locked_out(address):
+    return int(redis_cmd("GET", "mobee:admin:fail:" + address_digest(address)) or 0) >= ADMIN_FAILURE_LIMIT
+
+def set_hidden(data, hide):
+    board, prefix, player = report_target(data)
+    if hide:
+        name = redis_cmd("HGET", prefix + ":names", player) or ""
+        redis_cmd("HSET", prefix + ":hidden", player, json.dumps({"name": name, "by": "admin", "at": int(time.time())}))
+    else:  # reviewed and kept: show the name again and start its report count afresh
+        redis_cmd("HDEL", prefix + ":hidden", player)
+        redis_cmd("HDEL", prefix + ":reported", player)
+        redis_cmd("DEL", f"{prefix}:reports:{player}")
+    return 200, {"board": board, "playerId": player, "hidden": hide}
+
+def review_list(board):
+    prefix = BOARDS[board][0]
+    def as_dict(flat):  # Upstash answers HGETALL with a flat [field, value, ...] list
+        pairs = flat.items() if isinstance(flat, dict) else zip((flat or [])[::2], (flat or [])[1::2])
+        return {k: json.loads(v) for k, v in pairs}
+    return {"board": board, "reported": as_dict(redis_cmd("HGETALL", prefix + ":reported")),
+            "hidden": as_dict(redis_cmd("HGETALL", prefix + ":hidden"))}
 
 class handler(BaseHTTPRequestHandler):
     def reply(self, status, data, cache="no-store"):
@@ -341,10 +442,30 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(json.dumps(data).encode())
 
+    def action(self):
+        return parse_qs(urlparse(self.path).query).get("action", [""])[0]
+
+    def address(self):
+        return self.headers.get("x-forwarded-for", "unknown").split(",")[0].strip()
+
+    def admin(self):
+        """None when the caller may use admin actions, else the refusal already sent."""
+        address = self.address()
+        if admin_locked_out(address):
+            return self.reply(429, {"error": "Too many attempts; try again later"}) or True
+        if not admin_authorized(self.headers, address):
+            return self.reply(401, {"error": "Not authorized"}) or True
+        return None
+
     def do_GET(self):
         board = parse_qs(urlparse(self.path).query).get("board", ["tvos"])[0]
         if board not in BOARDS:
             return self.reply(400, {"error": "Unknown leaderboard"})
+        if self.action() == "reports":
+            try:
+                return self.admin() or self.reply(200, review_list(board))
+            except Exception:
+                return self.reply(503, {"error": "Leaderboard temporarily unavailable"})
         try:
             entries = tv_board(board)
             # Edge-cached for a few seconds so repeat views skip the function entirely; clients that
@@ -361,11 +482,17 @@ class handler(BaseHTTPRequestHandler):
             if not 0 < length <= MAX_BODY:
                 return self.reply(413, {"error": "Invalid request size"})
             data = json.loads(self.rfile.read(length))
-            address = self.headers.get("x-forwarded-for", "unknown").split(",")[0].strip()
-            status, response = save_score(data, address, location_from_headers(self.headers))
+            action = self.action()
+            if action == "report":
+                return self.reply(*report_name(data, self.address()))
+            if action in ("hide", "unhide"):
+                return self.admin() or self.reply(*set_hidden(data, action == "hide"))
+            if action:
+                return self.reply(404, {"error": "Unknown action"})
+            status, response = save_score(data, self.address(), location_from_headers(self.headers))
             self.reply(status, response)
         except (ValueError, TypeError, AttributeError):
-            self.reply(400, {"error": "Invalid score submission"})
+            self.reply(400, {"error": "Invalid request" if self.action() else "Invalid score submission"})
         except Exception:
             self.reply(503, {"error": "Score service unavailable; retry later"})
 
