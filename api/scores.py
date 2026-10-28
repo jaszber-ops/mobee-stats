@@ -1,25 +1,35 @@
 """Global boards. Scores are client-reported; iOS/web games must carry tap telemetry that replays to the claimed score and looks human."""
 from http.server import BaseHTTPRequestHandler
-from pathlib import Path
 from urllib.parse import urlparse, parse_qs, unquote
 import hashlib
+import re
 import json
 import os
 import time
+import unicodedata
 import urllib.request
 import uuid
 
 PREFIX = "mobee:solo:tvos:v1"
 RULES = "tvos-easy-60-v1"
+# board -> (Redis prefix, rules id the current app sends for it)
 BOARDS = {"tvos": (PREFIX, RULES),
           "ios": ("mobee:solo:ios:easy:v1", "ios-easy-60-v1"),
-          "ios-standard": ("mobee:solo:ios:standard:v1", "ios-standard-60-v1"),
+          "ios-standard": ("mobee:solo:ios:standard:v1", "ios-standard-90-v1"),
+          "ios-expert": ("mobee:solo:ios:expert:v1", "ios-expert-120-v1"),
           "twin": ("mobee:solo:twin:green:v1", "twin-green-120-v1")}
-RULE_PREFIXES = {rules: prefix for prefix, rules in BOARDS.values()}
+# Older rules ids still accepted, and the board they count on. Hard went from 60 to 90 seconds in Møbee 2.0;
+# by the owner's decision the 60-second Hard scores stay on the same board as the 90-second ones.
+EARLIER_RULES = {"ios-standard-60-v1": "ios-standard"}
+RULE_PREFIXES = {**{rules: prefix for prefix, rules in BOARDS.values()},
+                 **{rules: BOARDS[board][0] for rules, board in EARLIER_RULES.items()}}
 # Per game: clock length, cards in the deck, and whether a round is won by naming two shared symbols (Møbee Twin).
+# Expert is the printed 17-card deck (Möbius plane of order 4: 20 figures per card, 68 in all, any 3 cards share 1).
 RULE_SPECS = {"tvos-easy-60-v1": {"seconds": 60, "deck": 8, "pair": False},
               "ios-easy-60-v1": {"seconds": 60, "deck": 8, "pair": False},
               "ios-standard-60-v1": {"seconds": 60, "deck": 10, "pair": False},
+              "ios-standard-90-v1": {"seconds": 90, "deck": 10, "pair": False},
+              "ios-expert-120-v1": {"seconds": 120, "deck": 17, "pair": False},
               "twin-green-120-v1": {"seconds": 120, "deck": 12, "pair": True}}
 MAX_BODY = 32768  # score + per-tap telemetry
 GAME_MS = 60000
@@ -28,7 +38,53 @@ MIN_REACTION_MS = 150     # deal -> correct tap; faster than any human on a fres
 MIN_MEDIAN_REACTION_MS = 400
 MIN_REACTION_SPREAD = 0.12  # std/mean of reaction times over 8+ rounds; a bot is metronomic
 
-BOARD_LABELS = {"ios": "Easy", "ios-standard": "Hard", "tvos": "Apple TV"}
+NAME_MAX = 16  # same limit as the app's name field
+
+# Names nobody should see on a public board. Kept identical to www/scores.js in mobee-ios.
+# ANYWHERE: blocked wherever they appear, even inside a longer name or spelled out ("f.u.u.c.k", "sh1t").
+# WORDS: blocked only as a whole word, because they also occur inside ordinary names (Szarvas, Hancock).
+BLOCKED_ANYWHERE = ["fuck", "fck", "cunt", "nigger", "nigga", "faggot", "bitch", "whore", "asshole", "dickhead",
+                    "motherf", "hitler", "porn", "rapist", "kurva", "geci", "fasz", "picsa", "bazmeg", "baszd",
+                    "kocsog", "ribanc", "csicska", "ficken", "fotze", "wichser", "hurensohn", "schlampe"]
+BLOCKED_WORDS = ["ass", "arse", "shit", "dick", "cock", "tits", "sex", "anal", "cum", "piss", "penis", "slut",
+                 "rape", "retard", "nazi", "szar", "segg", "pina", "buzi", "basz", "arsch", "hure", "kacke",
+                 "scheisse", "scheise", "titten", "nutte"]
+LEET = str.maketrans({"0": "o", "1": "i", "3": "e", "4": "a", "5": "s", "7": "t", "8": "b", "@": "a", "$": "s",
+                      "!": "i", "\u00f8": "o", "\u00df": "ss"})
+
+def _letters_pattern(word):
+    """f+u+c+k+ : each letter may be repeated ("fuuuck"), but no letter may be dropped ("niger" stays allowed)."""
+    return "".join(re.escape(c) + "+" for c in word)
+
+BLOCKED_ANYWHERE_RE = re.compile("|".join(_letters_pattern(w) for w in BLOCKED_ANYWHERE))
+BLOCKED_WORDS_RE = re.compile("^(?:" + "|".join(_letters_pattern(w) for w in BLOCKED_WORDS) + ")$")
+
+def name_blocked(name):
+    plain = "".join(ch for ch in unicodedata.normalize("NFKD", name.lower()) if not unicodedata.combining(ch))
+    plain = plain.translate(LEET)
+    joined = re.sub(r"[^a-z]", "", plain)
+    if BLOCKED_ANYWHERE_RE.search(joined):
+        return True
+    return any(BLOCKED_WORDS_RE.match(w) for w in re.split(r"[^a-z]+", plain) + [joined] if w)
+
+def clean_name(raw):
+    """Player name as the app sends it: ("set", name), ("clear", "") for an emptied name, or None to
+    leave the stored name alone. A name we can't accept is ignored, never a reason to refuse the score:
+    the app keeps re-sending anything answered with 400, so a bad name must not block its queue."""
+    if raw is None or not isinstance(raw, str):
+        return None
+    text = "".join(ch for ch in unicodedata.normalize("NFKC", raw) if not unicodedata.category(ch).startswith("C"))
+    name = " ".join(text.split())[:NAME_MAX].strip()
+    if not name:
+        return ("clear", "")
+    plain = "".join(ch for ch in unicodedata.normalize("NFKD", name) if not unicodedata.combining(ch)).lower()
+    if "mobee" in plain or "m\u00f8bee" in plain:  # "Møbee" names are reserved, as in the app
+        return None
+    if name_blocked(name):  # shown as the default "Player", as if no name were set; the score still counts
+        return ("clear", "")
+    return ("set", name)
+
+BOARD_LABELS = {"ios": "Easy", "ios-standard": "Hard", "ios-expert": "Expert", "tvos": "Apple TV", "twin": "Twin"}
 SLACK_TIMEOUT = 3  # seconds; a slow Slack must never hold up a score
 
 def slack_post(text):
@@ -136,6 +192,11 @@ def validate_submission(data):
             telemetry[key] = items
     if isinstance(data.get("client"), dict):
         telemetry["client"] = {k: str(v)[:64] for k, v in list(data["client"].items())[:8]}
+    name = clean_name(data.get("name"))
+    if name:
+        entry["nameUpdate"] = name[0]
+        if name[0] == "set":
+            entry["name"] = name[1]
     if telemetry:
         entry["telemetry"] = telemetry
     if data["rules"].startswith(("ios-", "twin-")) or "taps" in telemetry:
@@ -193,11 +254,14 @@ def verify_telemetry(entry):
 
 # Idempotent game receipt and best-per-player update in one atomic transaction.
 # Sorting metadata uses server receipt time to avoid trusting client time for ties.
-# KEYS: games, best, players, avatars. ARGV: game id, player id, full record, score, board record, avatar.
+# KEYS: games, best, players, avatars, names.
+# ARGV: game id, player id, full record, score, board record, avatar, name action (keep|set|clear), name.
 SAVE = """
 if redis.call('HEXISTS', KEYS[1], ARGV[1]) == 1 then return 0 end
 redis.call('HSET', KEYS[1], ARGV[1], ARGV[3])
 redis.call('HSET', KEYS[4], ARGV[2], ARGV[6])
+if ARGV[7] == 'set' then redis.call('HSET', KEYS[5], ARGV[2], ARGV[8])
+elseif ARGV[7] == 'clear' then redis.call('HDEL', KEYS[5], ARGV[2]) end
 local old = redis.call('ZSCORE', KEYS[2], ARGV[2])
 if not old or tonumber(ARGV[4]) > tonumber(old) then
   redis.call('ZADD', KEYS[2], ARGV[4], ARGV[2])
@@ -227,10 +291,12 @@ def save_score(data, address, location=None):
     digest = hashlib.sha256(address.encode()).hexdigest()[:24]
     if int(redis_cmd("EVAL", RATE, 1, prefix + ":rate:" + digest)) > 120:
         return 429, {"error": "Too many submissions; try again later"}
-    board_entry = {k: v for k, v in entry.items() if k != "telemetry"}
-    fresh = redis_cmd("EVAL", SAVE, 4, prefix + ":games", prefix + ":best",
-                      prefix + ":players", prefix + ":avatars", entry["id"], entry["playerId"],
-                      json.dumps(entry), entry["score"], json.dumps(board_entry), entry["avatar"])
+    action = entry.pop("nameUpdate", "keep")
+    board_entry = {k: v for k, v in entry.items() if k not in ("telemetry", "name")}
+    fresh = redis_cmd("EVAL", SAVE, 5, prefix + ":games", prefix + ":best",
+                      prefix + ":players", prefix + ":avatars", prefix + ":names", entry["id"], entry["playerId"],
+                      json.dumps(entry), entry["score"], json.dumps(board_entry), entry["avatar"],
+                      action, entry.get("name", ""))
     if fresh:
         announce_top_ten(entry, prefix)
     return 200, {"accepted": True, "duplicate": not bool(fresh), "id": entry["id"]}
@@ -240,42 +306,31 @@ local top = redis.call('ZREVRANGE', KEYS[1], 0, 9)
 if #top == 0 then return {} end
 local cutoff = redis.call('ZSCORE', KEYS[1], top[#top])
 local players = redis.call('ZREVRANGEBYSCORE', KEYS[1], '+inf', cutoff)
-return {redis.call('HMGET', KEYS[2], unpack(players)), redis.call('HMGET', KEYS[3], unpack(players))}
+return {redis.call('HMGET', KEYS[2], unpack(players)), redis.call('HMGET', KEYS[3], unpack(players)),
+        redis.call('HMGET', KEYS[4], unpack(players))}
 """
 
 def tv_board(board="tvos"):
     prefix = BOARDS[board][0]
-    # One round trip: top 10 plus everyone tied at the cutoff, their records and current avatars.
-    result = redis_cmd("EVAL", BOARD_LUA, 3, prefix + ":best", prefix + ":players", prefix + ":avatars")
+    # One round trip: top 10 plus everyone tied at the cutoff, their records, current avatars and names.
+    result = redis_cmd("EVAL", BOARD_LUA, 4, prefix + ":best", prefix + ":players", prefix + ":avatars",
+                       prefix + ":names")
     if not result:
         return []
-    raw, avatars = result
+    raw, avatars, names = result
     entries = []
-    for item, avatar in zip(raw, avatars):
+    for item, avatar, name in zip(raw, avatars, names):
         if not item:
             continue
         e = json.loads(item)
         # Show each player's current avatar, not the one worn when the best score was set.
         if avatar:
             e["avatar"] = avatar
+        # Likewise the player's current name; players who never set one keep "Player XXXXXX".
+        if name:
+            e["name"] = e["displayName"] = name
         entries.append(e)
     return sorted(entries, key=lambda e: (-e["score"], e["receivedAt"], e["id"]))[:10]
-
-def legacy_board():
-    raw = json.loads((Path(__file__).resolve().parent.parent / "mobee_games_raw.json").read_text())
-    best = {}
-    for game in raw:
-        player = game.get("user_code")
-        score = game.get("score")
-        if not player or type(score) is not int or score < 0:
-            continue
-        entry = {"id": "legacy:" + player, "playerId": player, "avatar": "",
-                 "displayName": player, "score": score, "rules": "legacy",
-                 "completedAt": float(game.get("timestamp", 0))}
-        previous = best.get(player)
-        if previous is None or score > previous["score"]:
-            best[player] = entry
-    return sorted(best.values(), key=lambda e: (-e["score"], e["completedAt"], e["id"]))[:10]
 
 class handler(BaseHTTPRequestHandler):
     def reply(self, status, data, cache="no-store"):
@@ -288,15 +343,14 @@ class handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         board = parse_qs(urlparse(self.path).query).get("board", ["tvos"])[0]
-        if board not in (*BOARDS, "legacy"):
+        if board not in BOARDS:
             return self.reply(400, {"error": "Unknown leaderboard"})
         try:
-            entries = legacy_board() if board == "legacy" else tv_board(board)
+            entries = tv_board(board)
             # Edge-cached for a few seconds so repeat views skip the function entirely; clients that
             # just posted a score add a cache-busting query parameter to read through.
             self.reply(200, {"board": board, "entries": entries,
-                            "source": "legacy_snapshot" if board == "legacy" else "global",
-                            "validation": "historical" if board == "legacy" else "telemetry_replayed"},
+                            "source": "global", "validation": "telemetry_replayed"},
                        cache="public, max-age=0, s-maxage=5, stale-while-revalidate=60")
         except Exception:
             self.reply(503, {"error": "Leaderboard temporarily unavailable"})

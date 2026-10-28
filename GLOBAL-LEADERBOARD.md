@@ -1,16 +1,30 @@
 # Shared Møbee scores
 
-The leaderboard domain opens /leaderboard.html; the stats domain retains its dashboard.
+The leaderboard domain serves the score API (/api/scores) and sends visitors of its root to
+play.trippplecard.games, where the boards are shown. The stats domain retains its dashboard.
 The stats API serves the report snapshot produced by the existing scheduled GitHub workflow.
 It does not need Slack credentials or requests at page-load time.
 
-## Existing data
+## Boards
 
-- Legacy scores remain in mobee_games_raw.json. No migration or deletion is required.
-- The existing web leaderboard reads mobee8:events:7 and mobee8:events:12 from Redis.
-- /tvos.html offers the worldwide Apple TV and historical Legacy boards.
-- /api/scores?board=legacy derives each historical player's best score from the saved records.
-- /api/scores?board=tvos returns the best score per anonymous TV player.
+- /api/scores?board=ios, ?board=ios-standard and ?board=ios-expert: play.trippplecard.games and the
+  iOS app (Easy, Hard, Expert; `boardFor(level)` in mobee-ios www/scores.js).
+- Rules ids per board (`rulesFor(level)` in the app) and what the server checks:
+
+  | Board | Rules id | Clock | Deck | Redis prefix |
+  |---|---|---|---|---|
+  | ios (Easy) | ios-easy-60-v1 | 60 s | 8 cards | mobee:solo:ios:easy:v1 |
+  | ios-standard (Hard) | ios-standard-90-v1 (Møbee 2.0) and ios-standard-60-v1 (earlier apps) | 90 s / 60 s | 10 cards | mobee:solo:ios:standard:v1 |
+  | ios-expert (Expert) | ios-expert-120-v1 | 120 s | 17 cards (Möbius plane of order 4, 20 figures a card) | mobee:solo:ios:expert:v1 |
+  | twin (Møbee Twin) | twin-green-120-v1 | 120 s | 12 cards, two shared symbols | mobee:solo:twin:green:v1 |
+  | tvos (Apple TV) | tvos-easy-60-v1 | 60 s | 8 cards | mobee:solo:tvos:v1 |
+
+  Hard became a 90-second game in Møbee 2.0. The 60- and 90-second Hard games deliberately share one
+  board (the owner's decision, October 2026): each game is checked against its own clock, and old
+  scores stay where they are.
+- /api/scores?board=tvos: the Apple TV app (also the default when no board is given).
+- The old leaderboard.html / tvos.html pages, the multiplayer leaderboard (/api/leaderboard)
+  and the legacy board were removed in October 2026. Their source data was not deleted.
 
 ## Vercel configuration
 
@@ -38,8 +52,26 @@ separate from the existing web data. Staff reset clears only the local TV top 10
 
 Submissions are client-reported. Validation, per-address rate limits and idempotency
 reduce accidental/bulk abuse; they do not establish cheat-proof competitive scores.
-Legacy, web multiplayer and Apple TV solo results remain separate competitions.
 No account linking across installations is implemented.
+
+## Player names
+
+Any submission may carry an optional `name`. The server tidies it (spacing, invisible
+characters, at most 16 characters) and keeps the player's latest name per board in
+`<board prefix>:names`, next to their current avatar. Board entries then show it as
+`displayName` and `name`; players who never set one keep "Player XXXXXX".
+
+- No `name` field (every app version released so far): the stored name is left alone.
+- `name: ""`: the player cleared it; the board goes back to "Player XXXXXX".
+- A name containing "Møbee"/"Mobee", or one that isn't text, is ignored. The score is
+  still accepted: the app re-sends anything refused with 400, so a name must never block it.
+- Rude names (a short English, German and Hungarian word list in `api/scores.py`, kept identical to
+  the app's) show as "Player", as if no name were set; the score still counts. Words in
+  `BLOCKED_ANYWHERE` are caught inside longer names and through spacing, accents, repeated
+  letters and digits ("s h 1 t", "fuuuck"); `BLOCKED_WORDS` only as whole words, because they
+  also occur in ordinary names (Szarvas, Hancock). No list catches everything.
+
+Existing scores need no migration. Removing a name by hand is `HDEL <prefix>:names <playerId>`.
 
 ## Slack
 
@@ -61,8 +93,7 @@ Run: pip install 'fakeredis[lua]'
 Then: python -m unittest discover -s tests -v
 
 Tests execute the actual Redis Lua scripts in an isolated fake Redis engine and cover
-idempotent retries, player bests, top-10 order, ties, invalid input, rate limits and
-legacy aggregation. They do not write production scores.
+idempotent retries, player bests, top-10 order, ties, invalid input and rate limits. They do not write production scores.
 
-Check both homepages, /api/stats, /api/leaderboard and /api/scores after deployment.
+Check both homepages, /api/stats and /api/scores after deployment.
 Do not submit fabricated scores to the production board as a smoke test.
