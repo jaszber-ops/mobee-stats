@@ -30,6 +30,23 @@ def game(score, wrong=0, reaction=1200, jitter=400, seed=1):
         rnd += 1; rounds.append({"r": rnd, "t": t + 10, "cards": deals[i + 1], "answer": "star"})
     return {"rounds": rounds, "taps": taps, "client": {"app": "ios", "version": "1.1.0"}}
 
+def twin_game(score, wrong=0, reaction=3500, jitter=1200, seed=1):
+    """Telemetry of a plausible two-minute Twin game: each round is won by naming both shared symbols."""
+    rng = random.Random(seed)
+    rounds, taps, t, rnd = [], [], 0, 1
+    correct = score + wrong
+    deals = [rng.sample(range(12), 3) for _ in range(correct + 1)]
+    pair = ["star", "moon"]
+    rounds.append({"r": 1, "t": 0, "cards": deals[0], "answers": pair})
+    misses = set(rng.sample(range(1, correct), wrong)) if wrong else set()
+    for i in range(correct):
+        if i in misses:
+            t += 900; taps.append({"t": t, "r": rnd, "s": ["star", "dog"], "ok": False})
+        t += reaction + rng.randint(-jitter, jitter)
+        taps.append({"t": t, "r": rnd, "s": ["moon", "star"], "ok": True, "card": 0, "slot": 2})
+        rnd += 1; rounds.append({"r": rnd, "t": t + 10, "cards": deals[i + 1], "answers": pair})
+    return {"rounds": rounds, "taps": taps, "client": {"app": "ios", "version": "1.2.0"}}
+
 class ScoresTests(unittest.TestCase):
     def setUp(self):
         self.redis = fakeredis.FakeRedis(decode_responses=True)
@@ -39,10 +56,32 @@ class ScoresTests(unittest.TestCase):
     def entry(self, **overrides):
         d = dict(id=str(uuid.uuid4()), playerId=str(uuid.uuid4()), avatar="10-13",
                  score=12, completedAt=time.time(), durationSeconds=60, rules=scores.RULES)
+        if overrides.get("rules", "").startswith("twin-"):
+            d["durationSeconds"] = 120
         d.update(overrides)
         if d["rules"].startswith("ios-") and "taps" not in d:
             d.update(game(d["score"]))
+        if d["rules"].startswith("twin-") and "taps" not in d:
+            d.update(twin_game(d["score"]))
         return d
+    def test_twin_board_replays_pairs_over_two_minutes(self):
+        twin = lambda **k: self.entry(rules="twin-green-120-v1", **k)
+        self.assertEqual(scores.save_score(twin(), "test")[0], 200)
+        self.assertEqual(scores.save_score(twin(score=20, **twin_game(20, wrong=3, seed=4)), "test")[0], 200)
+        bad = [twin(taps=None, rounds=None),                                        # no telemetry
+               twin(durationSeconds=60),                                            # Twin games are two minutes
+               twin(score=13, **twin_game(12)),                                     # score above the taps
+               twin(score=9, **game(9)),                                            # single-symbol answers are not Twin
+               twin(score=50, **twin_game(50, reaction=3000, jitter=300))]          # 50 rounds at 3 s overrun 120 s
+        one = twin_game(5); one["taps"][0]["s"] = ["moon", "moon"]                   # the same symbol twice
+        bad.append(twin(score=5, **one))
+        statuses = []
+        for d in bad:
+            try: statuses.append(scores.save_score(d, "test")[0])
+            except ValueError: statuses.append(400)
+        self.assertTrue(all(s != 200 for s in statuses), statuses)
+        self.assertEqual(len(scores.tv_board("twin")), 2)
+        self.assertTrue(all(e["rules"] == "twin-green-120-v1" for e in scores.tv_board("twin")))
     def test_ios_requires_telemetry_that_replays_to_the_score(self):
         ios = lambda **k: self.entry(rules="ios-easy-60-v1", **k)
         self.assertEqual(scores.save_score(ios(), "test")[0], 200)

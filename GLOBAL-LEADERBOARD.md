@@ -60,6 +60,20 @@ characters, at most 16 characters) and keeps the player's latest name per board 
 
 Existing scores need no migration. Removing a name by hand is `HDEL <prefix>:names <playerId>`.
 
+## Slack
+
+The score API posts to Slack when a new game sets a player's best and that best is in the
+board's top 10 ("New #1 on Easy", "#4 on Hard"), with the city and web/iOS. Retries, lower games
+and scores outside the top 10 stay quiet. It needs, in the Vercel project that serves
+/api/scores, either SLACK_WEBHOOK_URL or SLACK_BOT_TOKEN plus SLACK_CHANNEL_ID; without them
+nothing is posted. Slack is given 3 seconds and a failure never affects the score.
+
+Every morning `.github/workflows/daily-summary.yml` posts yesterday's games (Budapest time):
+games, players, new players, web/iOS/Apple TV, the best score per board, where people played and
+how many scores the cheat check refused. It uses the repository secrets UPSTASH_REDIS_REST_URL,
+UPSTASH_REDIS_REST_TOKEN, SLACK_TOKEN and REPORT_CHANNEL_ID. Run it by hand from the Actions tab;
+"dry run" (on by default there) prints the message in the log instead of posting it.
+
 ## Verification
 
 Run: pip install 'fakeredis[lua]'
