@@ -1,16 +1,16 @@
 # Shared Møbee scores
 
-The leaderboard domain opens /leaderboard.html; the stats domain retains its dashboard.
+The leaderboard domain serves the score API (/api/scores) and sends visitors of its root to
+play.trippplecard.games, where the boards are shown. The stats domain retains its dashboard.
 The stats API serves the report snapshot produced by the existing scheduled GitHub workflow.
 It does not need Slack credentials or requests at page-load time.
 
-## Existing data
+## Boards
 
-- Legacy scores remain in mobee_games_raw.json. No migration or deletion is required.
-- The existing web leaderboard reads mobee8:events:7 and mobee8:events:12 from Redis.
-- /tvos.html offers the worldwide Apple TV and historical Legacy boards.
-- /api/scores?board=legacy derives each historical player's best score from the saved records.
-- /api/scores?board=tvos returns the best score per anonymous TV player.
+- /api/scores?board=ios and ?board=ios-standard: play.trippplecard.games and the iOS app (Easy, Hard).
+- /api/scores?board=tvos: the Apple TV app (also the default when no board is given).
+- The old leaderboard.html / tvos.html pages, the multiplayer leaderboard (/api/leaderboard)
+  and the legacy board were removed in October 2026. Their source data was not deleted.
 
 ## Vercel configuration
 
@@ -38,7 +38,6 @@ separate from the existing web data. Staff reset clears only the local TV top 10
 
 Submissions are client-reported. Validation, per-address rate limits and idempotency
 reduce accidental/bulk abuse; they do not establish cheat-proof competitive scores.
-Legacy, web multiplayer and Apple TV solo results remain separate competitions.
 No account linking across installations is implemented.
 
 ## Player names
@@ -80,8 +79,7 @@ Run: pip install 'fakeredis[lua]'
 Then: python -m unittest discover -s tests -v
 
 Tests execute the actual Redis Lua scripts in an isolated fake Redis engine and cover
-idempotent retries, player bests, top-10 order, ties, invalid input, rate limits and
-legacy aggregation. They do not write production scores.
+idempotent retries, player bests, top-10 order, ties, invalid input and rate limits. They do not write production scores.
 
-Check both homepages, /api/stats, /api/leaderboard and /api/scores after deployment.
+Check both homepages, /api/stats and /api/scores after deployment.
 Do not submit fabricated scores to the production board as a smoke test.

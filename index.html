@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <script>
+        // The leaderboard domain only serves the score API; the boards live in the game itself.
         if (location.hostname === 'mobee-leaderboard.trippplecard.games') {
-            location.replace('/leaderboard.html' + location.search + location.hash);
+            location.replace('https://play.trippplecard.games/');
         }
     </script>
     <meta charset="UTF-8">
@@ -83,15 +84,6 @@
             background: #b8b8b8;
         }
 
-        .leaderboard-link {
-            background: #E86F51;
-            color: white;
-            border-color: #c95a3f;
-        }
-
-        .leaderboard-link:hover {
-            background: #d45c3e;
-        }
 
         .pdf-icon {
             width: 20px;
@@ -219,9 +211,6 @@
         <div id="content" style="display: none;">
             <header>
                 <div class="header-links">
-                    <a href="https://mobee-leaderboard.trippplecard.games/leaderboard.html" class="header-link leaderboard-link">
-                        🏆 Leaderboard
-                    </a>
                     <a href="mobee_stats_report.pdf" class="header-link pdf-download" download>
                         <img src="pdf.png" alt="PDF" class="pdf-icon">
                         Download PDF
