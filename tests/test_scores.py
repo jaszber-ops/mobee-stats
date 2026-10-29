@@ -50,12 +50,13 @@ def expert_game(score, wrong=0, reaction=4200, jitter=1800, seed=1, deck=17):
         rnd += 1; rounds.append({"r": rnd, "t": t + 10, "cards": deals[i + 1], "answer": answers[i + 1]})
     return {"rounds": rounds, "taps": taps, "client": {"app": "web", "version": "2.0.0", "lang": "en", "ua": "Mozilla/5.0"}}
 
-def twin_game(score, wrong=0, reaction=3500, jitter=1200, seed=1):
-    """Telemetry of a plausible two-minute Twin game: each round is won by naming both shared symbols."""
+def twin_game(score, wrong=0, reaction=3500, jitter=1200, seed=1, deck=12):
+    """Telemetry of a plausible two-minute Twin game: each round is won by naming both shared symbols.
+    deck: 12 cards (green, Easy) or 10 (yellow, Hard)."""
     rng = random.Random(seed)
     rounds, taps, t, rnd = [], [], 0, 1
     correct = score + wrong
-    deals = [rng.sample(range(12), 3) for _ in range(correct + 1)]
+    deals = [rng.sample(range(deck), 3) for _ in range(correct + 1)]
     pair = ["star", "moon"]
     rounds.append({"r": 1, "t": 0, "cards": deals[0], "answers": pair})
     misses = set(rng.sample(range(1, correct), wrong)) if wrong else set()
@@ -84,7 +85,7 @@ class ScoresTests(unittest.TestCase):
         elif d["rules"].startswith("ios-") and "taps" not in d:
             d.update(game(d["score"]))
         if d["rules"].startswith("twin-") and "taps" not in d:
-            d.update(twin_game(d["score"]))
+            d.update(twin_game(d["score"], deck=scores.RULE_SPECS[d["rules"]]["deck"]))
         return d
     def test_twin_board_replays_pairs_over_two_minutes(self):
         twin = lambda **k: self.entry(rules="twin-green-120-v1", **k)
@@ -104,6 +105,33 @@ class ScoresTests(unittest.TestCase):
         self.assertTrue(all(s != 200 for s in statuses), statuses)
         self.assertEqual(len(scores.tv_board("twin")), 2)
         self.assertTrue(all(e["rules"] == "twin-green-120-v1" for e in scores.tv_board("twin")))
+    def test_twin_hard_yellow_deck_has_its_own_board(self):
+        """Twin 2.0 Hard: the yellow 10-card deck (24 figures a card), two minutes, two shared symbols, board twin-yellow."""
+        yellow = lambda **k: self.entry(**{"rules": "twin-yellow-120-v1", **k})
+        self.assertEqual(scores.BOARDS["twin-yellow"], ("mobee:solo:twin:yellow:v1", "twin-yellow-120-v1"))
+        good = [yellow(score=8, **twin_game(8, reaction=6000, jitter=2500, deck=10)),
+                yellow(score=14, **twin_game(14, wrong=2, reaction=5500, jitter=2000, seed=3, deck=10))]
+        for d in good:
+            self.assertEqual(scores.save_score(d, "test")[0], 200)
+        self.assertEqual(scores.save_score(self.entry(rules="twin-green-120-v1"), "test")[0], 200)
+        green_deal = twin_game(6, deck=12)
+        green_deal["rounds"][0]["cards"] = [9, 10, 11]                                   # cards 10 and 11 are not in the yellow deck
+        bad = [yellow(taps=None, rounds=None),                                            # no telemetry
+               yellow(durationSeconds=60),                                                # two-minute games
+               yellow(score=7, **twin_game(6, deck=10)),                                  # score above the taps
+               yellow(score=6, **green_deal),                                             # card index outside the 10-card deck
+               yellow(score=9, **game(9)),                                                # single-symbol answers are not Twin
+               yellow(score=40, **twin_game(40, reaction=3200, jitter=300, deck=10))]     # 40 rounds overrun 120 s
+        statuses = []
+        for d in bad:
+            try: statuses.append(scores.save_score(d, "test")[0])
+            except ValueError: statuses.append(400)
+        self.assertTrue(all(s != 200 for s in statuses), statuses)
+        top = scores.tv_board("twin-yellow")
+        self.assertEqual([e["score"] for e in top], [14, 8])
+        self.assertTrue(all(e["rules"] == "twin-yellow-120-v1" for e in top))
+        self.assertEqual([e["rules"] for e in scores.tv_board("twin")], ["twin-green-120-v1"])  # boards stay apart
+        self.assertEqual(scores.BOARD_LABELS["twin-yellow"], "Twin Hard")
     def test_hard_90_second_games_share_the_existing_hard_board(self):
         """Møbee 2.0 plays Hard for 90 s (ios-standard-90-v1); the 60-second Hard scores stay on the same board."""
         hard = lambda **k: self.entry(**{"rules": "ios-standard-90-v1", **k})
@@ -173,9 +201,10 @@ class ScoresTests(unittest.TestCase):
             self.assertEqual(d["durationSeconds"], {1: 60, 2: 90, 3: 120}[level])
             self.assertEqual(scores.save_score(d, "test")[0], 200, rules)
             self.assertEqual(scores.tv_board(board)[0]["id"], d["id"])
-        # Twin 1.0 is unchanged
-        self.assertEqual(scores.save_score(self.entry(rules="twin-green-120-v1"), "test")[0], 200)
-        self.assertEqual(scores.tv_board("twin")[0]["rules"], "twin-green-120-v1")
+        # Twin: rulesFor(level) / boardFor(level) in mobee-ios twin www/scores.js (Easy green, Hard yellow)
+        for rules, board in [("twin-green-120-v1", "twin"), ("twin-yellow-120-v1", "twin-yellow")]:
+            self.assertEqual(scores.save_score(self.entry(rules=rules), "test")[0], 200, rules)
+            self.assertEqual(scores.tv_board(board)[0]["rules"], rules)
     def test_ios_requires_telemetry_that_replays_to_the_score(self):
         ios = lambda **k: self.entry(rules="ios-easy-60-v1", **k)
         self.assertEqual(scores.save_score(ios(), "test")[0], 200)
