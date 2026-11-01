@@ -413,3 +413,42 @@ class ScoresTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+class EditionBoardTests(ScoresTests):
+    """Client editions (mobee-editions): a board per edition and level, created on first use, avatars are figure ids."""
+    def edition(self, slug="herend", level="easy", **k):
+        seconds = scores.EDITION_LEVELS[level]["seconds"]
+        d = self.entry(rules=f"ed-{slug}-{level}-{seconds}-v1", durationSeconds=seconds, avatar="fox-cub")
+        d.update(game(d["score"]) if "taps" not in k else {})
+        d.update(k)
+        return d
+    def test_edition_boards_accept_replayed_games_and_stay_isolated(self):
+        self.assertEqual(scores.save_score(self.edition(), "test")[0], 200)
+        self.assertEqual(scores.save_score(self.edition(slug="eu-flags"), "test")[0], 200)
+        hard = self.edition(level="hard", score=9, **game(9, seed=3))
+        self.assertEqual(scores.save_score(hard, "test")[0], 200)
+        self.assertEqual([e["avatar"] for e in scores.tv_board("ed-herend-easy")], ["fox-cub"])
+        self.assertEqual(len(scores.tv_board("ed-eu-flags-easy")), 1)
+        self.assertEqual(scores.tv_board("ed-herend-hard")[0]["score"], 9)
+        self.assertEqual(scores.tv_board("ios"), [])  # nothing leaks into the app boards
+        self.assertEqual(scores.board_label("ed-herend-easy"), "herend edition · Easy")
+    def test_edition_forgeries_are_refused(self):
+        bad = [self.edition(taps=None, rounds=None),                        # editions must carry telemetry
+               self.edition(level="hard", durationSeconds=60),              # Hard is 90 seconds
+               self.edition(rules="ed-herend-hard-60-v1", durationSeconds=60),  # clock must match the level
+               self.edition(rules="ed-Herend-easy-60-v1"),                  # slug is lowercase
+               self.edition(avatar="../fox"),
+               self.edition(score=40)]                                      # telemetry does not replay
+        for d in bad:
+            try:
+                status, body = scores.save_score(d, "test")   # the handler turns ValueError into a 400
+            except ValueError:
+                continue
+            self.assertEqual(status, 422, body)
+            self.assertFalse(body.get("accepted"))
+        self.assertEqual(scores.tv_board("ed-herend-easy"), [])
+        self.assertEqual(scores.tv_board("ed-herend-hard"), [])
+    def test_unknown_edition_board_reads_empty_and_malformed_name_is_400(self):
+        self.assertEqual(scores.tv_board("ed-nobody-easy"), [])
+        self.assertIsNone(scores.board_prefix("ed-herend-expert"))
+        self.assertIsNone(scores.board_prefix("ed-herend"))

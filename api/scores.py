@@ -24,6 +24,41 @@ BOARDS = {"tvos": (PREFIX, RULES),
 EARLIER_RULES = {"ios-standard-60-v1": "ios-standard"}
 RULE_PREFIXES = {**{rules: prefix for prefix, rules in BOARDS.values()},
                  **{rules: BOARDS[board][0] for rules, board in EARLIER_RULES.items()}}
+# Client editions (mobee-editions runtime, <client>.mobeecards.com): one board per edition and level, created on
+# first use. Board "ed-<slug>-easy" takes rules "ed-<slug>-easy-60-v1"; Hard is 10 cards in 90 seconds.
+EDITION_BOARD = re.compile(r"^ed-([a-z0-9][a-z0-9-]{0,40})-(easy|hard)$")
+EDITION_RULES = re.compile(r"^ed-([a-z0-9][a-z0-9-]{0,40})-(easy|hard)-(60|90)-v1$")
+EDITION_LEVELS = {"easy": {"seconds": 60, "deck": 8, "pair": False}, "hard": {"seconds": 90, "deck": 10, "pair": False}}
+EDITION_AVATAR = re.compile(r"^[a-z0-9][a-z0-9-]{0,40}$")  # a figure id of the edition
+
+def edition_rules(rules):
+    """(slug, level) for an edition rules id, or None. The clock must match the level."""
+    m = EDITION_RULES.match(rules) if isinstance(rules, str) else None
+    if not m or int(m.group(3)) != EDITION_LEVELS[m.group(2)]["seconds"]:
+        return None
+    return m.group(1), m.group(2)
+
+def rules_prefix(rules):
+    """Redis prefix for a rules id (built-in boards and client editions), or None if unsupported."""
+    if rules in RULE_PREFIXES:
+        return RULE_PREFIXES[rules]
+    ed = edition_rules(rules)
+    return f"mobee:solo:ed:{ed[0]}:{ed[1]}:v1" if ed else None
+
+def rules_spec(rules):
+    ed = edition_rules(rules)
+    return EDITION_LEVELS[ed[1]] if ed else RULE_SPECS.get(rules, RULE_SPECS[RULES])
+
+def board_prefix(board):
+    """Redis prefix for a board name, or None if unknown."""
+    if board in BOARDS:
+        return BOARDS[board][0]
+    m = EDITION_BOARD.match(board) if isinstance(board, str) else None
+    return f"mobee:solo:ed:{m.group(1)}:{m.group(2)}:v1" if m else None
+
+def board_label(board):
+    m = EDITION_BOARD.match(board)
+    return f"{m.group(1)} edition · {m.group(2).capitalize()}" if m else BOARD_LABELS.get(board, board)
 # Per game: clock length, cards in the deck, and whether a round is won by naming two shared symbols (Møbee Twin).
 # Expert is the printed 17-card deck (Möbius plane of order 4: 20 figures per card, 68 in all, any 3 cards share 1).
 # Twin Easy is the green 12-card deck, Twin Hard the yellow 10-card deck (24 figures a card); any 3 Twin cards share 2.
@@ -123,7 +158,10 @@ def announce_top_ten(entry, prefix):
     """After a new game is stored: if it set the player's best and that best is in the board's top 10,
     ping Slack ("New #1 on Easy" / "#4 on Hard"). Never raises."""
     try:
-        board = next(b for b, (p, _) in BOARDS.items() if p == prefix)
+        board = next((b for b, (p, _) in BOARDS.items() if p == prefix), None)
+        if board is None:  # mobee:solo:ed:<slug>:<level>:v1
+            _, _, _, slug, level, _ = prefix.split(":")
+            board = f"ed-{slug}-{level}"
         stored = redis_cmd("HGET", prefix + ":players", entry["playerId"])
         if not stored or json.loads(stored).get("id") != entry["id"]:
             return False  # not a new personal best
@@ -131,7 +169,7 @@ def announce_top_ten(entry, prefix):
         if rank > 10:
             return False
         players = int(redis_cmd("ZCARD", prefix + ":best"))
-        head = f":trophy: *New #1 on {BOARD_LABELS[board]}*" if rank == 1 else f":star: *#{rank} on {BOARD_LABELS[board]}*"
+        head = f":trophy: *New #1 on {board_label(board)}*" if rank == 1 else f":star: *#{rank} on {board_label(board)}*"
         detail = f"{player_label(entry)} — {entry['score']} points"
         tail = " · ".join(x for x in (where(entry), f"{players} players on the board") if x)
         return slack_post(f"{head}: {detail}\n{tail}")
@@ -168,18 +206,20 @@ def location_from_headers(headers):
     return {"city": city, "country": country}
 
 def validate_submission(data):
-    if not isinstance(data, dict) or data.get("rules") not in RULE_PREFIXES:
+    if not isinstance(data, dict) or rules_prefix(data.get("rules")) is None:
         raise ValueError("Unsupported rules")
     identifier = valid_uuid(data.get("id"))
     player = valid_uuid(data.get("playerId"))
     score = data.get("score")
-    spec = RULE_SPECS[data["rules"]]
+    spec = rules_spec(data["rules"])
     if type(score) is not int or not 0 <= score <= 2 * spec["seconds"]:
         raise ValueError("Invalid score")
     if data.get("durationSeconds") != spec["seconds"]:
         raise ValueError(f"Only completed {spec['seconds']}-second games qualify")
     avatar = data.get("avatar")
-    if avatar not in {f"{r}-{c}" for r in range(1, 11) for c in range(1, 14)}:
+    grid = {f"{r}-{c}" for r in range(1, 11) for c in range(1, 14)}
+    # Editions use their own figures as avatars (a figure id); the apps use the shared avatar grid.
+    if avatar not in grid and not (edition_rules(data["rules"]) and isinstance(avatar, str) and EDITION_AVATAR.match(avatar)):
         raise ValueError("Invalid avatar")
     completed = data.get("completedAt")
     if type(completed) not in (int, float) or not 0 < completed <= time.time() + 300:
@@ -202,7 +242,7 @@ def validate_submission(data):
             entry["name"] = name[1]
     if telemetry:
         entry["telemetry"] = telemetry
-    if data["rules"].startswith(("ios-", "twin-")) or "taps" in telemetry:
+    if data["rules"].startswith(("ios-", "twin-", "ed-")) or "taps" in telemetry:
         verify_telemetry(entry)
     return entry
 
@@ -212,7 +252,7 @@ def verify_telemetry(entry):
     rounds, taps = telemetry.get("rounds"), telemetry.get("taps")
     if not rounds or taps is None:
         raise Suspicious("Telemetry required")
-    spec = RULE_SPECS.get(entry["rules"], RULE_SPECS[RULES])
+    spec = rules_spec(entry["rules"])
     deck_size, game_ms, pair = spec["deck"], spec["seconds"] * 1000, spec["pair"]
     def answer_of(r):
         """The round's answer: one symbol, or (Twin) the set of the two shared symbols."""
@@ -283,13 +323,13 @@ def save_score(data, address, location=None):
         entry = validate_submission(data)
     except Suspicious as reason:
         game_id = data.get("id") if isinstance(data, dict) else None
-        if isinstance(game_id, str) and len(game_id) <= 40 and data.get("rules") in RULE_PREFIXES:
-            redis_cmd("HSET", RULE_PREFIXES[data["rules"]] + ":rejected", game_id,
+        if isinstance(game_id, str) and len(game_id) <= 40 and rules_prefix(data.get("rules")):
+            redis_cmd("HSET", rules_prefix(data["rules"]) + ":rejected", game_id,
                       json.dumps({"reason": str(reason), "receivedAt": time.time(), "submission": data}))
         return 422, {"accepted": False, "error": str(reason)}
     if location:
         entry["location"] = location
-    prefix = RULE_PREFIXES[entry["rules"]]
+    prefix = rules_prefix(entry["rules"])
     # Vercel supplies the client address. Store only a short hash, with a 10-minute TTL.
     digest = hashlib.sha256(address.encode()).hexdigest()[:24]
     if int(redis_cmd("EVAL", RATE, 1, prefix + ":rate:" + digest)) > 120:
@@ -314,7 +354,7 @@ return {redis.call('HMGET', KEYS[2], unpack(players)), redis.call('HMGET', KEYS[
 """
 
 def tv_board(board="tvos"):
-    prefix = BOARDS[board][0]
+    prefix = board_prefix(board)
     # One round trip: top 10 plus everyone tied at the cutoff, their records, current avatars and names.
     result = redis_cmd("EVAL", BOARD_LUA, 4, prefix + ":best", prefix + ":players", prefix + ":avatars",
                        prefix + ":names")
@@ -346,7 +386,7 @@ class handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         board = parse_qs(urlparse(self.path).query).get("board", ["tvos"])[0]
-        if board not in BOARDS:
+        if board_prefix(board) is None:
             return self.reply(400, {"error": "Unknown leaderboard"})
         try:
             entries = tv_board(board)
