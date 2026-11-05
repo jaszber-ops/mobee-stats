@@ -17,6 +17,7 @@ BOARDS = {"tvos": (PREFIX, RULES),
           "ios": ("mobee:solo:ios:easy:v1", "ios-easy-60-v1"),
           "ios-standard": ("mobee:solo:ios:standard:v1", "ios-standard-90-v1"),
           "ios-expert": ("mobee:solo:ios:expert:v1", "ios-expert-120-v1"),
+          "ios-master": ("mobee:solo:ios:master:v1", "ios-master-150-v1"),
           "twin": ("mobee:solo:twin:green:v1", "twin-green-120-v1"),
           "twin-yellow": ("mobee:solo:twin:yellow:v1", "twin-yellow-120-v1")}
 # Older rules ids still accepted, and the board they count on. Hard went from 60 to 90 seconds in Møbee 2.0;
@@ -61,12 +62,14 @@ def board_label(board):
     return f"{m.group(1)} edition · {m.group(2).capitalize()}" if m else BOARD_LABELS.get(board, board)
 # Per game: clock length, cards in the deck, and whether a round is won by naming two shared symbols (Møbee Twin).
 # Expert is the printed 17-card deck (Möbius plane of order 4: 20 figures per card, 68 in all, any 3 cards share 1).
+# Master (Møbee 2.1) is the printed 26-card deck (Möbius plane of order 5: 30 figures per card, 130 in all), 150 s.
 # Twin Easy is the green 12-card deck, Twin Hard the yellow 10-card deck (24 figures a card); any 3 Twin cards share 2.
 RULE_SPECS = {"tvos-easy-60-v1": {"seconds": 60, "deck": 8, "pair": False},
               "ios-easy-60-v1": {"seconds": 60, "deck": 8, "pair": False},
               "ios-standard-60-v1": {"seconds": 60, "deck": 10, "pair": False},
               "ios-standard-90-v1": {"seconds": 90, "deck": 10, "pair": False},
               "ios-expert-120-v1": {"seconds": 120, "deck": 17, "pair": False},
+              "ios-master-150-v1": {"seconds": 150, "deck": 26, "pair": False},
               "twin-green-120-v1": {"seconds": 120, "deck": 12, "pair": True},
               "twin-yellow-120-v1": {"seconds": 120, "deck": 10, "pair": True}}
 MAX_BODY = 32768  # score + per-tap telemetry
@@ -122,7 +125,7 @@ def clean_name(raw):
         return ("clear", "")
     return ("set", name)
 
-BOARD_LABELS = {"ios": "Easy", "ios-standard": "Hard", "ios-expert": "Expert", "tvos": "Apple TV", "twin": "Twin", "twin-yellow": "Twin Hard"}
+BOARD_LABELS = {"ios": "Easy", "ios-standard": "Hard", "ios-expert": "Expert", "ios-master": "Master", "tvos": "Apple TV", "twin": "Twin", "twin-yellow": "Twin Hard"}
 SLACK_TIMEOUT = 3  # seconds; a slow Slack must never hold up a score
 
 def slack_post(text):

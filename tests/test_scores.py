@@ -82,6 +82,8 @@ class ScoresTests(unittest.TestCase):
         d.update(overrides)
         if d["rules"].startswith("ios-expert-") and "taps" not in d:
             d.update(expert_game(d["score"]))
+        elif d["rules"].startswith("ios-master-") and "taps" not in d:
+            d.update(expert_game(d["score"], deck=26))
         elif d["rules"].startswith("ios-") and "taps" not in d:
             d.update(game(d["score"]))
         if d["rules"].startswith("twin-") and "taps" not in d:
@@ -193,12 +195,33 @@ class ScoresTests(unittest.TestCase):
             self.assertNotEqual(status, 200, d.get("score"))
         self.assertEqual(scores.tv_board("ios-expert"), [])
         self.assertGreaterEqual(self.redis.hlen("mobee:solo:ios:expert:v1:rejected"), 6)
+    def test_master_board_takes_150_second_games_on_the_26_card_deck(self):
+        master = lambda **k: self.entry(**{"rules": "ios-master-150-v1", **k})
+        honest = master(score=20, **expert_game(20, wrong=2, reaction=5500, jitter=2000, seed=3, deck=26))
+        self.assertEqual(honest["durationSeconds"], 150)
+        self.assertLess(len(json.dumps(honest)), scores.MAX_BODY)
+        self.assertEqual(scores.save_score(honest, "test")[0], 200)
+        top = scores.tv_board("ios-master")
+        self.assertEqual([e["score"] for e in top], [20])
+        self.assertEqual(self.redis.hlen("mobee:solo:ios:master:v1:games"), 1)
+        self.assertEqual(scores.tv_board("ios-expert"), [], "Master stays off the Expert board")
+        self.assertEqual(scores.board_label("ios-master"), "Master")
+    def test_master_forgeries_are_refused(self):
+        master = lambda **k: self.entry(**{"rules": "ios-master-150-v1", **k})
+        off_deck = expert_game(6, deck=26); off_deck["rounds"][3]["cards"] = [2, 9, 26]   # card 26 does not exist (0..25)
+        bad = [master(taps=None, rounds=None), master(durationSeconds=120),
+               master(score=15, **expert_game(14, deck=26)), master(score=6, **off_deck)]
+        for d in bad:
+            try: status = scores.save_score(d, "test")[0]
+            except ValueError: status = 400
+            self.assertNotEqual(status, 200, d.get("score"))
+        self.assertEqual(scores.tv_board("ios-master"), [])
     def test_staging_app_rules_ids_are_all_accepted(self):
         """rulesFor(level) in mobee-ios staging www/scores.js, with gameSeconds 60/90/120, and boardFor(level)."""
         for level, rules, board in [(1, "ios-easy-60-v1", "ios"), (2, "ios-standard-90-v1", "ios-standard"),
-                                    (3, "ios-expert-120-v1", "ios-expert")]:
+                                    (3, "ios-expert-120-v1", "ios-expert"), (4, "ios-master-150-v1", "ios-master")]:
             d = self.entry(rules=rules)
-            self.assertEqual(d["durationSeconds"], {1: 60, 2: 90, 3: 120}[level])
+            self.assertEqual(d["durationSeconds"], {1: 60, 2: 90, 3: 120, 4: 150}[level])
             self.assertEqual(scores.save_score(d, "test")[0], 200, rules)
             self.assertEqual(scores.tv_board(board)[0]["id"], d["id"])
         # Twin: rulesFor(level) / boardFor(level) in mobee-ios twin www/scores.js (Easy green, Hard yellow)
